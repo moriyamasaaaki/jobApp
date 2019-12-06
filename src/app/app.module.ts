@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
-import { SerchComponent } from './serch/serch.component';
+import { SearchComponent } from './search/search.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 // 検索フォーム
@@ -19,7 +19,7 @@ import { MatButtonModule } from '@angular/material/button';
   declarations: [
     AppComponent,
     HeaderComponent,
-    SerchComponent
+    SearchComponent
   ],
   imports: [
     BrowserModule,

@@ -49,9 +49,12 @@ input {
   text-align: right;
 }
 
-.serch-btn {
+.search-btn {
   @include pc {
     padding: .4em;
+      &:hover {
+        opacity: .7;
+      }
   }
 }
 
@@ -65,5 +68,10 @@ input {
     button {
       color: #454545;
       padding: .8em 1em;
+        @include pc {
+          &:hover {
+            opacity: .7;
+          }
+        }
     }
 }

@@ -12,15 +12,10 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
-
-
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HeaderComponent,
-    SearchComponent
-  ],
+  declarations: [AppComponent, HeaderComponent, SearchComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -29,9 +24,10 @@ import { MatButtonModule } from '@angular/material/button';
     FormsModule,
     MatAutocompleteModule,
     MatFormFieldModule,
-    MatButtonModule
+    MatButtonModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

@@ -1,32 +1,28 @@
-<form class="search-form">
+<form  [formGroup]="form"  class="search-form">
   <div class="form-filed_item">
-  <mat-form-field class="search-full-width">
-    <div class="label_word">
-    <label for="keyword">キーワード：</label>
-    </div>
-      <input type="text" placeholder="会社名・職種 etc..." aria-label="Number" matInput [formControl]="myControl"
-        [matAutocomplete]="auto" style="font-size: 18px;">
-    <mat-autocomplete #auto="matAutocomplete">
-      <mat-option *ngFor="let option of options" [value]="option">
-        {{option}}
-      </mat-option>
-    </mat-autocomplete>
-  </mat-form-field>
+    <mat-form-field  class="search-full-width">
+      <mat-label>キーワード：</mat-label>
+        <input type="text" placeholder="会社名・職種 etc..." aria-label="Number" matInput formControlName="keyword"
+          [matAutocomplete]="auto" style="font-size: 18px;" required>
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let option of options" [value]="option">
+          {{option}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
   </div>
 
   <div class="form-filed_item">
-  <mat-form-field class="search-full-width">
-    <div class="label_word">
-    <label for="place">勤務地：</label>
-    </div>
-      <input type="text" placeholder="渋谷" aria-label="Number" matInput [formControl]="myControl"
-        [matAutocomplete]="auto" style="font-size: 18px;">
-    <mat-autocomplete #auto="matAutocomplete">
-      <mat-option *ngFor="let option of options" [value]="option">
-        {{option}}
-      </mat-option>
-    </mat-autocomplete>
-  </mat-form-field>
+    <mat-form-field class="search-full-width">
+      <mat-label>勤務地：</mat-label>
+        <input type="text" placeholder="渋谷" aria-label="Number" matInput formControlName="place"
+          [matAutocomplete]="auto" style="font-size: 18px;" required>
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let option of options" [value]="option">
+          {{option}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
   </div>
 
   <div class="form-filed_item form-filed-btn">

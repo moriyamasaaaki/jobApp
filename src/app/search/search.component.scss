@@ -2,8 +2,8 @@
 
 .search-form {
   width: 100%;
-  margin: 2em 0 3em;
-  padding: 0 .7em;
+  margin: 24px 0 32px;
+  padding: 0 8px;
   box-sizing: border-box;
 }
 
@@ -24,12 +24,12 @@ input {
   box-sizing: border-box;
   border-style: groove;
     &::placeholder {
-    font-size: 1.2em;
+    font-size: 16px;
   }
     @include tab {
       padding: 15px 0;
         &::placeholder {
-          font-size: 1.5em;
+          font-size: 18px;
         }
     }
 }
@@ -41,7 +41,7 @@ input {
   }
     @include pc {
       width: 40%;
-      padding: .2em;
+      padding: 5px;
     }
 }
 
@@ -51,7 +51,7 @@ input {
 
 .serch-btn {
   @include pc {
-    padding: .4em;
+    padding: 3px 6px;
       &:hover {
         opacity: .7;
       }
@@ -64,9 +64,8 @@ input {
 
 .search-button-row {
   text-align: center;
-  margin-bottom: 2em;
+  margin-bottom: 32px;
     button {
-      color: #454545;
       padding: .8em 1em;
         @include pc {
           &:hover {
@@ -74,4 +73,8 @@ input {
           }
         }
     }
+}
+
+.material-icons {
+  margin-left: 3px;
 }

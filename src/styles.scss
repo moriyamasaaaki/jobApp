@@ -12,11 +12,12 @@ footer {
 }
 
 .footer-content {
-  padding: 2em .7em;
+  padding: 24px 8px;
     @include tab {
       display: flex;
       justify-content: space-between;
       align-items: baseline;
+        padding: 32px 8px;
     }
 }
 
@@ -25,9 +26,9 @@ footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 1.3em;
+  margin-bottom: 20px;
     @include tab {
-      padding-bottom: 0;
+      margin-bottom: 0;
     }
     li {
       list-style: none;

@@ -1,0 +1,47 @@
+<form class="example-form">
+  <div class="form-filed_item">
+  <mat-form-field class="example-full-width">
+    <div class="label_word">
+    <label for="keyword">キーワード：</label>
+    </div>
+      <input type="text" placeholder="会社名・職種 etc..." aria-label="Number" matInput [formControl]="myControl"
+        [matAutocomplete]="auto">
+    <mat-autocomplete #auto="matAutocomplete">
+      <mat-option *ngFor="let option of options" [value]="option">
+        {{option}}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+  </div>
+
+  <div class="form-filed_item">
+  <mat-form-field class="example-full-width">
+    <div class="label_word">
+    <label for="place">勤務地：</label>
+    </div>
+      <input type="text" placeholder="渋谷" aria-label="Number" matInput [formControl]="myControl"
+        [matAutocomplete]="auto">
+    <mat-autocomplete #auto="matAutocomplete">
+      <mat-option *ngFor="let option of options" [value]="option">
+        {{option}}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+  </div>
+
+  <div class="form-filed_item form-filed-btn">
+    <!-- <mat-form-field> -->
+      <button class="serch-btn" mat-raised-button color="primary">検索<i class="material-icons">
+        search</i>
+      </button>
+    <!-- </mat-form-field> -->
+  </div>
+</form>
+
+<div class="example-button-row">
+  <button mat-raised-button color="accent">求人広告作成
+    <i class="material-icons">create</i>
+  </button>
+</div>
+
+

@@ -1,4 +1,54 @@
 /* You can add global styles to this file, and also import other style files */
 
+@import "mixins";
+@import "reset";
+
+
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+footer {
+  border-top: 1px solid #ff5100;
+}
+
+.footer_content {
+  padding: 2em .7em;
+    @include tab {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+}
+
+.footer-nav {
+  padding-left: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.3em;
+    @include tab {
+      padding-bottom: 0;
+    }
+    li {
+      list-style: none;
+      font-size: .8em;
+        @include tab {
+          padding: 0 1em;
+        }
+    }
+      a {
+        color: black;
+        text-decoration: none;
+          &:hover {
+            opacity: .7;
+            text-decoration: underline;
+          }
+      }
+}
+
+.copyright {
+  text-align: center;
+    small {
+      color: #585858;
+    }
+}

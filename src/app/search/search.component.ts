@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, Validators, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-search',
@@ -11,7 +11,7 @@ export class SearchComponent implements OnInit {
 form = this.fb.group({
   keyword: ['', [
     Validators.required,
-    Validators.maxLength(60)
+    Validators.maxLength(50)
   ]],
 
   place: ['', [
@@ -20,6 +20,16 @@ form = this.fb.group({
   ]],
 });
 
+
+get keywordControl() {
+  return this.form.get('keyword') as FormControl;
+}
+
+get placeControl() {
+  return this.form.get('place') as FormControl;
+}
+
+
   constructor(
     private fb: FormBuilder
   ) { }
@@ -27,4 +37,7 @@ form = this.fb.group({
   ngOnInit() {
   }
 
+  submit() {
+    console.log(this.form.value);
+  }
 }

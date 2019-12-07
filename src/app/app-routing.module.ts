@@ -3,6 +3,10 @@ import { Routes, RouterModule } from '@angular/router';
 
 
 const routes: Routes = [
+  {
+    path: 'top',
+    loadChildren: () => import('./top/top.module').then(m => m.TopModule)
+  },
 ];
 
 @NgModule({

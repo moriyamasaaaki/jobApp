@@ -1,7 +1,10 @@
 @import "mixins";
 
 header {
-  border-bottom: 1px solid #ff5100;
+  border-bottom: 1px solid skyblue;
+  background: #00c6ff;
+  background: -webkit-linear-gradient(to right, #0072ff, #00ade5);
+  background: linear-gradient(to right, #0072ff, #00ade5);
   padding: 12px 8px;
   display: flex;
   justify-content: space-between;
@@ -10,7 +13,7 @@ header {
       padding: 20px 8px;
     }
     a {
-      color: black;
+      color: #fff;
       text-decoration: none;
       padding: 12px 0;
     }

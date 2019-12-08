@@ -8,7 +8,10 @@ html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 footer {
-  border-top: 1px solid #ff5100;
+  border-top: 1px solid skyblue;
+  background: #00c6ff;
+  background: -webkit-linear-gradient(to right, #0072ff, #00ade5);
+  background: linear-gradient(to right, #0072ff, #00ade5);
 }
 
 .footer-content {
@@ -38,7 +41,7 @@ footer {
         }
     }
       a {
-        color: black;
+        color: #fff;
         text-decoration: none;
           &:hover {
             opacity: .7;
@@ -50,6 +53,7 @@ footer {
 .copyright {
   text-align: center;
     small {
-      color: #585858;
+      // color: #585858;
+      color: aliceblue;
     }
 }

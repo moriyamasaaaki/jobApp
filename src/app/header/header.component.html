@@ -6,6 +6,15 @@
     <ul>
       <li><a href="#">新規登録</a></li>
       <li><a href="#">ログイン</a></li>
+        <button mat-button [matMenuTriggerFor]="menu"><i class="material-icons">
+          how_to_reg
+        </i></button>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item>新規登録</button>
+            <button mat-menu-item>ログイン</button>
+            <button mat-menu-item>お気に入り一覧</button>
+            <button mat-menu-item>マイページ</button>
+        </mat-menu>
     </ul>
   </nav>
 </header>

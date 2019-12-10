@@ -7,7 +7,7 @@
   line-height: 1.5;
   @include pc {
     width: 70%;
-    margin: 0 auto;
+    margin: 0 auto 32px;
   }
   &__content {
     display: flex;

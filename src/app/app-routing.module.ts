@@ -23,6 +23,12 @@ const routes: Routes = [
     loadChildren: () => import('./comlaw/comlaw.module').then(m => m.ComlawModule)
   },
 
+    {
+    path: 'keep',
+    loadChildren: () => import('./keep/keep.module').then(m => m.KeepModule)
+  },
+
+
 ];
 
 @NgModule({

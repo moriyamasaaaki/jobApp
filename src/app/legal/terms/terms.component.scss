@@ -2,12 +2,14 @@
 
 .terms {
   line-height: 1.5;
+  padding: 0 8px;
   @include tab {
     width: 70%;
     margin: 0 auto;
   }
   @include pc {
     width: 50%;
+    padding: 0;
   }
 }
 

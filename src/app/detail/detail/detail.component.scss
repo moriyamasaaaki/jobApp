@@ -25,9 +25,9 @@
       }
     }
   }
-  img {
+  .job-img {
     @include tab {
-      display: block;
+      // display: block;
       margin: 0 auto;
       width: 80%;
     }
@@ -44,38 +44,70 @@
       width: 100%;
     }
   }
-}
+  &__btn {
+    text-align: center;
+  }
+  button {
+    margin: 10px 3px;
+    padding: 8px 40px;
+    @include pc {
+      margin: 16px 8px;
+      padding: 13px 72px;
+    }
+  }
+  &__taglist {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    li {
+      color: orange;
+      box-sizing: border-box;
+      border: 1px solid orange;
+      border-radius: 5px;
+      margin-right: 5px;
+      font-size: 11px;
+    }
+    a {
+      color: orange;
+      text-decoration: none;
+      padding: 5px;
+      &:hover {
+        opacity: 0.7;
+      }
+    }
+  }
 
-dl {
-  display: flex;
-  flex-wrap: wrap;
-  border: 1px solid #ccc;
-  border-top: none;
-  font-size: 14px;
-  margin-bottom: 16px;
-  line-height: 1.5;
-  @include tab {
-    width: 80%;
-    margin: 0 auto 16px;
+  dl {
+    display: flex;
+    flex-wrap: wrap;
+    border: 1px solid #ccc;
+    border-top: none;
+    font-size: 14px;
+    margin-bottom: 16px;
+    line-height: 1.5;
+    @include tab {
+      width: 80%;
+      margin: 0 auto 16px;
+    }
+    @include pc {
+      width: 40%;
+      margin: 0;
+    }
   }
-  @include pc {
-    width: 40%;
+  dt {
+    background: #f2f2f2;
+    width: 30%;
+    padding: 10px;
+    box-sizing: border-box;
+    border-top: 1px solid #ccc;
+  }
+  dd {
+    padding: 10px;
     margin: 0;
+    border-left: 1px solid #ccc;
+    border-top: 1px solid #ccc;
+    width: 70%;
+    background: #fff;
+    box-sizing: border-box;
   }
-}
-dt {
-  background: #f2f2f2;
-  width: 30%;
-  padding: 10px;
-  box-sizing: border-box;
-  border-top: 1px solid #ccc;
-}
-dd {
-  padding: 10px;
-  margin: 0;
-  border-left: 1px solid #ccc;
-  border-top: 1px solid #ccc;
-  width: 70%;
-  background: #fff;
-  box-sizing: border-box;
 }

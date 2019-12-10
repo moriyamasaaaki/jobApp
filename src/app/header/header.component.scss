@@ -9,14 +9,14 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-    @include pc {
-      padding: 20px 8px;
-    }
-    a {
-      color: #fff;
-      text-decoration: none;
-      padding: 12px 0;
-    }
+  @include pc {
+    padding: 20px 8px;
+  }
+  a {
+    color: #fff;
+    text-decoration: none;
+    padding: 12px 0;
+  }
 }
 
 .header-nav {
@@ -26,27 +26,24 @@ header {
     justify-content: space-between;
     align-items: center;
   }
-    li {
-      padding-left: 8px;
-        @include tab {
-          padding-left: 32px;
-        }
-          @include pc {
-            &:hover {
-              opacity: .7;
-              text-decoration: underline;
-            }
-          }
+  li {
+    padding-left: 8px;
+    @include tab {
+      padding-left: 32px;
     }
+    @include pc {
+      &:hover {
+        opacity: 0.7;
+        text-decoration: underline;
+      }
+    }
+  }
 }
 
 i {
   color: #fff;
 }
 
-
-
 .fill-remaining-space {
   flex: 1 1 auto;
 }
-

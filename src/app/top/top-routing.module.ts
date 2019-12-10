@@ -6,6 +6,7 @@ import { TopComponent } from './top/top.component';
 const routes: Routes = [
   {
     path: '',
+    pathMatch: 'full',
     component: TopComponent
   }
 ];

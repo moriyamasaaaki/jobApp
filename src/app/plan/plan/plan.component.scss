@@ -1,0 +1,42 @@
+@import "mixins";
+
+
+.plan {
+  margin-bottom: 40px;
+  &__container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    margin: 0 auto;
+  }
+  &__box {
+    width: 45%;
+    margin: 8px;
+    text-align: center;
+    line-height: 1.5;
+    box-sizing: border-box;
+    border: 1px solid #ededed;
+    border-radius: 8px;
+    padding: 16px;
+    box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
+    @include tab {
+      width: 25%;
+      padding: 32px 8px;
+    }
+      @include pc {
+        width: 15%;
+        padding: 48px 8px;
+      }
+}
+  &__register-btn {
+    margin-top: 16px;
+  }
+  span {
+    display: block;
+    font-size: 13px;
+  }
+  h3 {
+    font-size: 16px;
+  }
+}
+

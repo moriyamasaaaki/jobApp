@@ -12,8 +12,12 @@
           <mat-menu #menu="matMenu">
             <button mat-menu-item>新規登録</button>
             <button mat-menu-item>ログイン</button>
-            <button mat-menu-item>お気に入り一覧</button>
-            <button mat-menu-item>プロフィール</button>
+            <a routerLink="/keep">
+              <button mat-menu-item>お気に入り一覧</button>
+            </a>
+            <a routerLink="/profile">
+              <button mat-menu-item>プロフィール</button>
+            </a>
         </mat-menu>
     </ul>
   </nav>

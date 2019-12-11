@@ -1,0 +1,116 @@
+<section class="profile">
+  <div>
+  <mat-form-field>
+    <input matInput placeholder="名前">
+  </mat-form-field>
+  </div>
+
+  <div>
+  <mat-form-field>
+    <input matInput placeholder="住所">
+  </mat-form-field>
+  </div>
+
+  <div>
+  <mat-form-field>
+    <mat-select placeholder="年">
+      <mat-option value="option">1997年</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+
+  <mat-form-field>
+    <mat-select placeholder="月">
+      <mat-option value="option">1月</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-select placeholder="日">
+      <mat-option value="option">20日</mat-option>
+    </mat-select>
+  </mat-form-field>
+  </div>
+
+    <div>
+      <mat-select placeholder="性別"></mat-select>
+      <mat-radio-group formControlName="floatLabel">
+        <mat-radio-button value="men">男性</mat-radio-button>
+        <mat-radio-button value="women">女性</mat-radio-button>
+      </mat-radio-group>
+    </div>
+
+    <div>
+    <mat-form-field>
+      <input matInput placeholder="メールアドレス" [formControl]="email" required>
+    </mat-form-field>
+    </div>
+
+  <div>
+  <mat-form-field>
+    <input matInput placeholder="電話番号">
+  </mat-form-field>
+  </div>
+
+<div>
+  <mat-form-field>
+    <textarea matInput placeholder="自己紹介"></textarea>
+  </mat-form-field>
+</div>
+
+<div>
+  <mat-form-field>
+    <mat-select placeholder="学校区分">
+      <mat-option value="option">大学</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-select placeholder="卒業年度">
+      <mat-option value="option">大学</mat-option>
+      <mat-option value="option">高校</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+        <mat-select placeholder="卒業/在学/中退">
+          <mat-option value="option">大学</mat-option>
+          <mat-option value="option">高校</mat-option>
+        </mat-select>
+  </mat-form-field>
+
+
+  <mat-form-field>
+    <mat-select placeholder="年">
+      <mat-option value="option">2020年</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-select placeholder="月">
+      <mat-option value="option">3月</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+
+<div>
+  <mat-form-field>
+    <input matInput placeholder="資格１">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="資格２">
+  </mat-form-field>
+</div>
+
+<div>
+    <mat-form-field>
+      <textarea matInput placeholder="勤務可能な日時"></textarea>
+    </mat-form-field>
+</div>
+
+
+<div>
+  <button mat-raised-button color="primary">プロフィール更新</button>
+</div>
+
+</section>

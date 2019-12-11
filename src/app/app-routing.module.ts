@@ -28,6 +28,12 @@ const routes: Routes = [
     loadChildren: () => import('./keep/keep.module').then(m => m.KeepModule)
   },
 
+  {
+    path: 'profile',
+    loadChildren: () => import('./profile/profile.module').then(m => m.ProfileModule)
+  },
+
+
 
 ];
 

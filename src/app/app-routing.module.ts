@@ -38,6 +38,10 @@ const routes: Routes = [
     loadChildren: () => import('./form/form.module').then(m => m.FormModule)
   },
 
+  {
+    path: 'about',
+    loadChildren: () => import('./about/about.module').then(m => m.AboutModule)
+  },
 
 
 

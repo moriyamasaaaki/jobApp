@@ -48,6 +48,12 @@ const routes: Routes = [
     loadChildren: () => import('./plan/plan.module').then(m => m.PlanModule)
   },
 
+    {
+    path: 'companySideForm',
+    loadChildren: () => import('./company-side/company-side.module').then(m => m.CompanySideModule)
+  },
+
+
 
 
 

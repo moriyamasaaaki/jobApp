@@ -1,36 +1,43 @@
-<form action="" class="recruitment">
+<form [formGroup]="form" (ngSubmit)="submit()" class="recruitment">
   <div>
     <mat-form-field>
       <mat-label>タイトル</mat-label>
-      <input matInput placeholder="このようなバイトです">
+      <input matInput placeholder="このようなバイトです" formControlName="introduce" required>
+      <mat-error *ngIf="introduceControl.hasError('required')">必須入力です</mat-error>
+      <mat-error *ngIf="introduceControl.hasError('maxlength')">長すぎます。50文字以下にして下さい。</mat-error>
     </mat-form-field>
   </div>
 
   <div>
     <mat-form-field>
       <mat-label>勤務時間</mat-label>
-      <textarea matInput placeholder="18:00~22:00"></textarea>
+      <textarea matInput type="number" placeholder="18:00~22:00" formControlName="workTime" required></textarea>
+      <mat-error *ngIf="workTimeControl.hasError('required')">必須入力です</mat-error>
+      <mat-error *ngIf="workTimeControl.hasError('pattern')">数字で指定して下さい</mat-error>
     </mat-form-field>
   </div>
 
   <div>
     <mat-form-field>
       <mat-label>休日</mat-label>
-      <input matInput placeholder="週3日">
+      <input matInput placeholder="週3日" formControlName="holiday" required>
+      <mat-error *ngIf="holidayControl.hasError('required')">必須入力です</mat-error>
     </mat-form-field>
   </div>
 
   <div>
     <mat-form-field>
       <mat-label>福利厚生</mat-label>
-      <input matInput placeholder="あり">
+      <input matInput placeholder="あり" formControlName="welfare" required>
+      <mat-error *ngIf="welfareControl.hasError('required')">必須入力です</mat-error>
     </mat-form-field>
   </div>
 
   <div>
     <mat-form-field>
       <mat-label>概要</mat-label>
-      <textarea matInput placeholder="簡単なバイトの内容"></textarea>
+      <textarea matInput placeholder="簡単なバイトの内容" formControlName="overview" required></textarea>
+      <mat-error *ngIf="overviewControl.hasError('required')">必須入力です</mat-error>
     </mat-form-field>
   </div>
 
@@ -45,35 +52,37 @@
 
   <div>
     <mat-form-field>
-      <input matInput placeholder="企業名">
+      <input matInput placeholder="企業名" formControlName="company" required>
+      <mat-error *ngIf="companyControl.hasError('required')">必須入力です</mat-error>
     </mat-form-field>
   </div>
 
   <div>
     <mat-form-field>
-            <input matInput placeholder="時給" value="1000円">
+      <input matInput placeholder="時給" value="1000円" formControlName="salary" required>
+      <mat-error *ngIf="salaryControl.hasError('required')">必須入力です</mat-error>
     </mat-form-field>
     <span>〜</span>
     <mat-form-field>
-      <input matInput placeholder="時給" value="1200円">
+      <input matInput placeholder="時給" value="1200円" formControlName="salary" required>
+      <mat-error *ngIf="salaryControl.hasError('required')">必須入力です</mat-error>
     </mat-form-field>
   </div>
 
   <div>
     <mat-form-field>
       <mat-label>職種</mat-label>
-      <select matNativeControl required>
-        <option value="volvo">経理</option>
-        <option value="saab">営業</option>
-        <option value="mercedes">接客</option>
-        <option value="audi">アパレル</option>
+      <select matNativeControl formControlName="profession" required>
+        <mat-option value="profession"></mat-option>
       </select>
+      <mat-error *ngIf="professionControl.hasError('required')">必須項目です</mat-error>
     </mat-form-field>
   </div>
 
   <div>
     <mat-form-field>
-      <input matInput placeholder="勤務地" value="東京">
+      <input matInput placeholder="勤務地" value="東京" formControlName="location" required>
+      <mat-error *ngIf="locationControl.hasError('required')">必須項目です</mat-error>
     </mat-form-field>
   </div>
 

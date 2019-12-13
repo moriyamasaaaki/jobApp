@@ -5,20 +5,22 @@
   h2 {
     text-align: center;
   }
-  margin: 0 8px 24px;
+  margin: 0 8px 40px;
   max-width: 600px;
   line-height: 5;
   @include mobile {
-    margin: 0 auto 24px;
+    margin: 0 auto 40px;
     border: 1px solid #ededed;
     border-radius: 8px;
-    padding: 5px 16px;
+    padding: 16px 16px 56px;
     @include mat-elevation(4);
   }
   &__field {
     width: 100%;
   }
   &__btn {
+    display: block;
+    margin: 0 auto;
     @include pc {
       padding: 8px 24px;
     }

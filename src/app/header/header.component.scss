@@ -38,18 +38,26 @@ header {
         text-decoration: underline;
       }
     }
+    span {
+      display: inline-flex;
+      vertical-align: middle;
+    }
   }
 }
-
-
-i {
-  color: #fff;
+.iconlist {
+  color: lightgray;
+  display: inline-flex;
+  vertical-align: middle;
 }
 
-.fill-remaining-space {
-  flex: 1 1 auto;
+.header-icon {
+  color: #fff;
 }
 
 a {
   text-decoration: none;
+}
+
+.header__home {
+  color: #fff;
 }

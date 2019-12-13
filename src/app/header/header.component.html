@@ -4,24 +4,41 @@
   </a>
   <nav class="header-nav">
     <ul>
-      <li><a href="#">新規登録</a></li>
-      <li><a href="#">ログイン</a></li>
-        <button mat-button [matMenuTriggerFor]="menu"><i class="material-icons">
-          how_to_reg
-        </i></button>
+        <li>
+          <button mat-button [matMenuTriggerFor]="menu">
+            <mat-icon class="header__home">home</mat-icon>
+          </button>
+        </li>
           <mat-menu #menu="matMenu">
-            <button mat-menu-item>新規登録</button>
-            <button mat-menu-item>ログイン</button>
+            <button mat-menu-item>
+              <i class="material-icons iconlist">fiber_new</i>
+              <span>新規登録</span>
+            </button>
+
+            <button mat-menu-item>
+              <i class="material-icons iconlist">lock</i>
+              <span>ログイン</span>
+            </button>
+
             <a routerLink="/keep">
-              <button mat-menu-item>お気に入り一覧</button>
+              <button mat-menu-item><i class="material-icons iconlist">
+                star
+              </i><span>お気に入り一覧</span></button>
             </a>
+
             <a routerLink="/profile">
-              <button mat-menu-item>プロフィール</button>
+              <button mat-menu-item>
+                <i class="material-icons iconlist">person_pin</i>
+                <span>プロフィール</span>
+              </button>
             </a>
+
             <a routerLink="/plan">
-              <button mat-menu-item>プラン</button>
+              <button mat-menu-item>
+                <i class="material-icons iconlist">payment</i>
+                <span>プラン</span>
+              </button>
             </a>
-            <button mat-menu-item>カード登録</button>
         </mat-menu>
     </ul>
   </nav>

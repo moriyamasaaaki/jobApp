@@ -28,4 +28,13 @@
       margin-right: 3px;
     }
   }
+  p {
+    font-size: 12px;
+    font-weight: bold;
+    text-align: center;
+    color: orangered;
+      @include pc {
+        font-size: 14px;
+      }
+  }
 }

@@ -8,26 +8,26 @@ import { FormBuilder, Validators, FormControl } from '@angular/forms';
 })
 export class ProfileComponent implements OnInit {
 
-years = [
-  1960,
-  1961,
-  1962,
-  1963,
-  1964,
-  1965
-];
+  years = [
+    1960,
+    1961,
+    1962,
+    1963,
+    1964,
+    1965
+  ];
 
-months = new Array(13).fill(null);
-days = new Array(31).fill(null);
+  months = new Array(13).fill(null);
+  days = new Array(31).fill(null);
 
 
-schools = [
-  '中学','高校','専門','大学','大学院'
-];
+  schools = [
+    '中学', '高校', '専門', '大学', '大学院'
+  ];
 
-states = [
-  '卒業','在学中','中退'
-];
+  states = [
+    '卒業', '在学中', '中退'
+  ];
 
 
   form = this.fb.group({
@@ -44,21 +44,16 @@ states = [
     ]],
 
     month: ['', [
-    Validators.required,
+      Validators.required,
     ]],
 
     day: ['', [
       Validators.required,
     ]],
 
-    // gender: ['', [
-    //   Validators.required,
-    // ]],
-
-    // gender: this.fb.group({
-    //   men: [false],
-    //   women: [false],
-    // })
+    gender: ['', [
+      Validators.required,
+    ]],
 
     email: ['', [
       Validators.required,
@@ -98,50 +93,41 @@ states = [
     return this.form.get('address') as FormControl;
   }
 
-    get yearControl() {
+  get yearControl() {
     return this.form.get('year') as FormControl;
   }
 
-    get monthControl() {
+  get monthControl() {
     return this.form.get('month') as FormControl;
   }
 
-    get dayControl() {
+  get dayControl() {
     return this.form.get('day') as FormControl;
   }
 
-  //   get genderControl() {
-  //   return this.form.get('gender') as FormControl;
-  // }
+  get genderControl() {
+    return this.form.get('gender') as FormControl;
+  }
 
-    get emailControl() {
+  get emailControl() {
     return this.form.get('email') as FormControl;
   }
 
-    get telephoneControl() {
+  get telephoneControl() {
     return this.form.get('telephone') as FormControl;
   }
 
-    get schoolControl() {
+  get schoolControl() {
     return this.form.get('school') as FormControl;
   }
 
-    get stateControl() {
+  get stateControl() {
     return this.form.get('state') as FormControl;
   }
 
-    get possibleDayControl() {
+  get possibleDayControl() {
     return this.form.get('possibleDay') as FormControl;
   }
-
-
-
-
-
-
-
-
-
 
   constructor(
     private fb: FormBuilder

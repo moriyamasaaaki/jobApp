@@ -98,6 +98,6 @@ export class RecruitmentComponent implements OnInit {
 
   submit() {
     console.log(this.form.value);
-}
+  }
 
 }

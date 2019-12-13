@@ -1,10 +1,9 @@
-
-
-<form  class="companyForm" class.mat-elevation-z8>
+<form class="companyForm" [formGroup]="form" (ngSubmit)="submit()" class.mat-elevation-z8>
   <h2>無料登録ページ</h2>
   <div>
     <mat-form-field class="companyForm__field">
-      <input matInput placeholder="法人名（正式社名）">
+      <input matInput placeholder="法人名（正式社名）" formControlName="companyName" required>
+      <mat-error *ngIf="companyNameControl.hasError('required')">必須入力です</mat-error>
     </mat-form-field>
   </div>
 
@@ -16,31 +15,43 @@
 
   <div>
     <mat-form-field class="companyForm__field">
-      <input matInput placeholder="姓">
+      <input matInput placeholder="姓" formControlName="lastName">
+      <mat-error *ngIf="lastNameControl.hasError('required')">必須入力です</mat-error>
+      <mat-error *ngIf="lastNameControl.hasError('maxlength')">30文字以内にしてください。</mat-error>
+
     </mat-form-field>
     <mat-form-field class="companyForm__field">
-      <input matInput placeholder="名" >
+      <input matInput placeholder="名" formControlName="firstName" >
+      <mat-error *ngIf="firstNameControl.hasError('required')">必須入力です</mat-error>
+      <mat-error *ngIf="firstNameControl.hasError('maxlength')">30文字以内にしてください。</mat-error>
     </mat-form-field>
   </div>
 
   <div>
     <mat-form-field class="companyForm__field">
-      <input matInput placeholder="メールアドレス">
+      <input matInput placeholder="メールアドレス" formControlName="email" required>
+      <mat-error *ngIf="emailControl.hasError('required')">必須入力です</mat-error>
+      <mat-error *ngIf="emailControl.hasError('email')">メールアドレス形式にして下さい</mat-error>
     </mat-form-field>
   </div>
 
   <div>
     <mat-form-field class="companyForm__field">
-      <input matInput placeholder="パスワード">
-      <button mat-icon-button matSuffix></button>
+      <input matInput placeholder="パスワード" [type]="hide ? 'password' : 'text'" formControlName="password" required>
+      <button mat-icon-button matSuffix (click)="hide = !hide">
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+      <mat-error *ngIf="passwordControl.hasError('required')">必須入力です</mat-error>
+      <mat-error *ngIf="passwordControl.hasError('pattern')">8文字以上の半角英数字でお願いします</mat-error>
     </mat-form-field>
   </div>
 
   <div>
-    <mat-checkbox>利用規約に同意する</mat-checkbox>
+    <mat-checkbox formControlName="terms" required>利用規約に同意する</mat-checkbox>
+    <!-- <mat-error *ngIf="termsControl.hasError('required')">利用規約に同意されてません。</mat-error> -->
   </div>
 
-  <button class="companyForm__btn" mat-flat-button color="accent">
+  <button [disabled]="form.invalid || form.pristine" class="companyForm__btn" mat-flat-button color="accent">
     <span>無料登録する</span><i class="material-icons">done</i>
   </button>
 

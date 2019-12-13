@@ -2,7 +2,9 @@
 @import "~@angular/material/theming";
 
 .companyForm {
-  @include mat-elevation(4);
+  h2 {
+    text-align: center;
+  }
   margin: 0 8px 24px;
   max-width: 600px;
   line-height: 5;
@@ -11,6 +13,7 @@
     border: 1px solid #ededed;
     border-radius: 8px;
     padding: 5px 16px;
+    @include mat-elevation(4);
   }
   &__field {
     width: 100%;

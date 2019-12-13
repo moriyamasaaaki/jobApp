@@ -9,7 +9,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
 
 import { MatMenuModule } from '@angular/material/menu';
-
+import {MatIconModule} from '@angular/material/icon';
 @NgModule({
   declarations: [AppComponent, HeaderComponent],
   imports: [
@@ -17,7 +17,8 @@ import { MatMenuModule } from '@angular/material/menu';
     AppRoutingModule,
     BrowserAnimationsModule,
     MatButtonModule,
-    MatMenuModule
+    MatMenuModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]

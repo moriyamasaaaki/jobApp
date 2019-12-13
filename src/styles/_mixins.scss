@@ -1,6 +1,14 @@
+$mobile: 600px;
 $tab: 768px;
 $pc: 1024px;
 $pclarg: 1440px;
+
+@mixin mobile {
+  @media (min-width: ($mobile)) {
+    @content;
+  }
+}
+
 
 @mixin tab {
   @media (min-width: ($tab)) {

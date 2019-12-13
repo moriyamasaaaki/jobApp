@@ -3,10 +3,10 @@
 .new {
   border: 2px solid #eee;
   padding: 16px 5px;
-  margin:  8px 0;
+  margin:  0 0 24px;
   @include pc {
     width: 70%;
-    margin: 0 auto;
+    margin: 0 auto 64px;
   }
   &__post {
     display: flex;

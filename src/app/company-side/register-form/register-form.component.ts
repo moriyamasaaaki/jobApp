@@ -32,44 +32,32 @@ export class RegisterFormComponent implements OnInit {
       Validators.required,
       Validators.pattern(/^([a-zA-Z0-9]{8,})$/)
     ]],
-
-    // terms: ['', [
-    //   Validators.required,
-    // ]],
   });
 
   hide = true;
 
 
 
-    get companyNameControl() {
+  get companyNameControl() {
     return this.form.get('companyName') as FormControl;
   }
 
-    get lastNameControl() {
+  get lastNameControl() {
     return this.form.get('lastName') as FormControl;
   }
 
-    get firstNameControl() {
+  get firstNameControl() {
     return this.form.get('firstName') as FormControl;
   }
 
-      get emailControl() {
+  get emailControl() {
     return this.form.get('email') as FormControl;
   }
 
 
-    get passwordControl() {
+  get passwordControl() {
     return this.form.get('password') as FormControl;
   }
-
-  //   get termsControl() {
-  //   return this.form.get('terms') as FormControl;
-  // }
-
-
-
-
 
   constructor(
     private fb: FormBuilder
@@ -78,9 +66,9 @@ export class RegisterFormComponent implements OnInit {
   ngOnInit() {
   }
 
-    submit() {
+  submit() {
     console.log(this.form.value);
-}
+  }
 
 
 }

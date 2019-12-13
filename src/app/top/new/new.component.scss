@@ -3,7 +3,7 @@
 .new {
   border: 2px solid #eee;
   padding: 16px 5px;
-  margin:  8px;
+  margin:  8px 0;
   @include pc {
     width: 70%;
     margin: 0 auto;

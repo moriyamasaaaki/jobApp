@@ -38,14 +38,13 @@
   </mat-form-field>
   </div>
 
-    <!-- <div>
+    <div>
       <mat-select placeholder="性別"></mat-select>
-      <mat-radio-group formGroupName="gender" required>
-        <mat-radio-button formControlName="men">男性</mat-radio-button>
-        <mat-radio-button formControlName="women">女性</mat-radio-button>
-        <mat-error *ngIf="genderControl.hasError('required')">どちらか選択してください</mat-error>
+      <mat-radio-group formControlName="gender" required>
+        <mat-radio-button value="male">男性</mat-radio-button>
+        <mat-radio-button value="female">女性</mat-radio-button>
       </mat-radio-group>
-    </div> -->
+    </div>
 
     <div>
       <mat-form-field>

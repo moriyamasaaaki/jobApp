@@ -1,6 +1,7 @@
 <form [formGroup]="form" (ngSubmit)="Submit()" class="profile">
+  <h2>プロフィール設定</h2>
   <div>
-  <mat-form-field>
+  <mat-form-field class="profile__field">
     <mat-label>氏名</mat-label>
     <input matInput placeholder="名前" formControlName="myName" required>
     <mat-error *ngIf="myNameControl.hasError('required')">必須入力です</mat-error>
@@ -8,14 +9,14 @@
   </div>
 
   <div>
-  <mat-form-field>
+  <mat-form-field class="profile__field">
     <input matInput placeholder="住所" formControlName="address" required>
     <mat-error *ngIf="addressControl.hasError('required')">必須入力です</mat-error>
   </mat-form-field>
   </div>
 
   <div>
-  <mat-form-field>
+  <mat-form-field class="profile__field">
     <mat-select placeholder="年" formControlName="year">
       <mat-option value="option" required *ngFor="let year of years; let i = index;">{{year}}年</mat-option>
     </mat-select>
@@ -23,14 +24,14 @@
   </mat-form-field>
 
 
-  <mat-form-field>
+  <mat-form-field class="profile__field">
     <mat-select placeholder="月" formControlName="month" required>
       <mat-option value="option" *ngFor="let month of months; let i = index;">{{ i + month }}月</mat-option>
     </mat-select>
     <mat-error *ngIf="monthControl.hasError('required')">必須入力です</mat-error>
   </mat-form-field>
 
-  <mat-form-field>
+  <mat-form-field class="profile__field">
     <mat-select placeholder="日" formControlName="day" required>
       <mat-option value="option" *ngFor="let day of days; let i = index;">{{ i + day }}日</mat-option>
     </mat-select>
@@ -38,7 +39,7 @@
   </mat-form-field>
   </div>
 
-    <div>
+    <div class="profile__field">
       <mat-select placeholder="性別"></mat-select>
       <mat-radio-group formControlName="gender" required>
         <mat-radio-button value="male">男性</mat-radio-button>
@@ -47,7 +48,7 @@
     </div>
 
     <div>
-      <mat-form-field>
+      <mat-form-field class="profile__field">
         <input matInput placeholder="Email" formControlName="email" required>
         <mat-error *ngIf="emailControl.hasError('required')">必須入力です</mat-error>
         <mat-error *ngIf="emailControl.hasError('email')">メールアドレス形式ではありません。</mat-error>
@@ -55,7 +56,7 @@
     </div>
 
   <div>
-    <mat-form-field>
+    <mat-form-field class="profile__field">
       <input type="tel" matInput placeholder="電話番号" formControlName="telephone" required>
       <mat-error *ngIf="telephoneControl.hasError('required')">必須入力です</mat-error>
       <mat-error *ngIf="telephoneControl.hasError('pattern')">数字でハイフンなしでお願いします</mat-error>
@@ -63,20 +64,20 @@
   </div>
 
 <div>
-  <mat-form-field>
+  <mat-form-field class="profile__field">
     <textarea matInput placeholder="自己紹介"></textarea>
   </mat-form-field>
 </div>
 
 <div>
-  <mat-form-field>
+  <mat-form-field class="profile__field">
     <mat-select placeholder="学校区分" formControlName="school" required>
       <mat-option value="option" *ngFor="let school of schools">{{school}}</mat-option>
     </mat-select>
     <mat-error *ngIf="schoolControl.hasError('required')">選択してください</mat-error>
   </mat-form-field>
 
-  <mat-form-field>
+  <mat-form-field class="profile__field">
         <mat-select placeholder="卒業/在学/中退" formControlName="state" required>
           <mat-option value="option" *ngFor="let state of states; let i = index;">{{ state }}</mat-option>
         </mat-select>
@@ -84,26 +85,23 @@
   </mat-form-field>
 </div>
 
-<div>
-  <mat-form-field>
+<div class="profile__field">
+  <mat-form-field class="profile__field">
     <input matInput placeholder="資格１">
   </mat-form-field>
 
-  <mat-form-field>
+  <mat-form-field class="profile__field">
     <input matInput placeholder="資格２">
   </mat-form-field>
 </div>
 
-<div>
-    <mat-form-field>
+<div class="profile__field">
+    <mat-form-field class="profile__field">
       <textarea matInput placeholder="勤務可能な日時" formControlName="possibleDay" required></textarea>
         <mat-error *ngIf="stateControl.hasError('required')">必須入力です</mat-error>
     </mat-form-field>
 </div>
-
-
 <div>
-  <button [disabled]="form.invalid || form.pristine" mat-raised-button color="primary">プロフィール更新</button>
+  <button class="profile__btn" [disabled]="form.invalid || form.pristine" mat-raised-button color="primary">プロフィール更新</button>
 </div>
-
 </form>

@@ -1,0 +1,24 @@
+<h3>レビュー画面です</h3>
+<div>
+  <mat-label>社内の雰囲気の良さ</mat-label>
+  <mat-slider thumbLabel [displayWith]="formatLabel" tickInterval="100" min="0" max="10"></mat-slider>
+</div>
+
+<div>
+  <mat-label>サイト記載内容との差異</mat-label>
+  <mat-slider thumbLabel [displayWith]="descriptionLabel" tickInterval="100" min="0" max="4"></mat-slider>
+</div>
+<div>
+  <mat-label>シフトの融通が利く</mat-label>
+  <mat-slider thumbLabel [displayWith]="shiftLabel" tickInterval="100" min="0" max="2"></mat-slider>
+</div>
+
+<div>
+  <mat-label>職場の年層</mat-label>
+  <mat-slider thumbLabel [displayWith]="ageLabel" tickInterval="100" step="10" min="10" max="60"></mat-slider>
+</div>
+
+<div>
+  <mat-label>残業時間</mat-label>
+  <mat-slider thumbLabel [displayWith]="overtimeLabel" tickInterval="100" min="0" max="3"></mat-slider>
+</div>

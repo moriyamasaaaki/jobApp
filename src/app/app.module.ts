@@ -10,8 +10,9 @@ import { MatButtonModule } from '@angular/material/button';
 
 import { MatMenuModule } from '@angular/material/menu';
 import {MatIconModule} from '@angular/material/icon';
+import { NotFoundComponent } from './not-found/not-found.component';
 @NgModule({
-  declarations: [AppComponent, HeaderComponent],
+  declarations: [AppComponent, HeaderComponent, NotFoundComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

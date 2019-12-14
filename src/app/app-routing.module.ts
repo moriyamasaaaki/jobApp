@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 
 const routes: Routes = [
@@ -52,6 +53,11 @@ const routes: Routes = [
     path: 'companySideForm',
     loadChildren: () => import('./company-side/company-side.module').then(m => m.CompanySideModule)
   },
+
+  {
+    path: '**',
+    component: NotFoundComponent
+  }
 
 
 

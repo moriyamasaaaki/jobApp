@@ -1,12 +1,13 @@
-<form [formGroup]="form" (ngSubmit)="Submit()" class="profile">
+<form [formGroup]="form" (ngSubmit)="submit()" class="profile">
   <h2>プロフィール設定</h2>
   <div>
   <mat-form-field class="profile__field">
     <mat-label>氏名</mat-label>
-    <input matInput placeholder="名前" formControlName="myName" required>
+    <input matInput placeholder="名前" name="name" formControlName="myName" required>
     <mat-error *ngIf="myNameControl.hasError('required')">必須入力です</mat-error>
   </mat-form-field>
   </div>
+
 
   <div>
   <mat-form-field class="profile__field">
@@ -18,7 +19,7 @@
   <div>
   <mat-form-field class="profile__field">
     <mat-select placeholder="年" formControlName="year">
-      <mat-option value="option" required *ngFor="let year of years; let i = index;">{{year}}年</mat-option>
+      <mat-option value="{{year}}年" required *ngFor="let year of years; let i = index;">{{year}}年</mat-option>
     </mat-select>
     <mat-error *ngIf="yearControl.hasError('required')">必須入力です</mat-error>
   </mat-form-field>
@@ -26,14 +27,14 @@
 
   <mat-form-field class="profile__field">
     <mat-select placeholder="月" formControlName="month" required>
-      <mat-option value="option" *ngFor="let month of months; let i = index;">{{ i + month }}月</mat-option>
+      <mat-option value="{{ i + month }}月" *ngFor="let month of months; let i = index;">{{ i + month }}月</mat-option>
     </mat-select>
     <mat-error *ngIf="monthControl.hasError('required')">必須入力です</mat-error>
   </mat-form-field>
 
   <mat-form-field class="profile__field">
     <mat-select placeholder="日" formControlName="day" required>
-      <mat-option value="option" *ngFor="let day of days; let i = index;">{{ i + day }}日</mat-option>
+      <mat-option value="{{ i + day }}日" *ngFor="let day of days; let i = index;">{{ i + day }}日</mat-option>
     </mat-select>
     <mat-error *ngIf="dayControl.hasError('required')">必須入力です</mat-error>
   </mat-form-field>
@@ -42,8 +43,8 @@
     <div class="profile__field">
       <mat-select placeholder="性別"></mat-select>
       <mat-radio-group formControlName="gender" required>
-        <mat-radio-button value="male">男性</mat-radio-button>
-        <mat-radio-button value="female">女性</mat-radio-button>
+        <mat-radio-button value="男性">男性</mat-radio-button>
+        <mat-radio-button value="女性">女性</mat-radio-button>
       </mat-radio-group>
     </div>
 
@@ -65,21 +66,26 @@
 
 <div>
   <mat-form-field class="profile__field">
-    <textarea matInput placeholder="自己紹介"></textarea>
+    <textarea matInput placeholder="自己紹介" formControlName="introduce"></textarea>
   </mat-form-field>
 </div>
 
 <div>
   <mat-form-field class="profile__field">
     <mat-select placeholder="学校区分" formControlName="school" required>
-      <mat-option value="option" *ngFor="let school of schools">{{school}}</mat-option>
+      <mat-option value="{{school}}" *ngFor="let school of schools">{{school}}</mat-option>
     </mat-select>
     <mat-error *ngIf="schoolControl.hasError('required')">選択してください</mat-error>
   </mat-form-field>
 
   <mat-form-field class="profile__field">
+    <input matInput placeholder="〇〇大学〇〇学部" formControlName="belongs" required>
+    <mat-error *ngIf="addressControl.hasError('required')">必須入力です</mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="profile__field">
         <mat-select placeholder="卒業/在学/中退" formControlName="state" required>
-          <mat-option value="option" *ngFor="let state of states; let i = index;">{{ state }}</mat-option>
+          <mat-option value="{{ state }}" *ngFor="let state of states; let i = index;">{{ state }}</mat-option>
         </mat-select>
         <mat-error *ngIf="stateControl.hasError('required')">選択してください</mat-error>
   </mat-form-field>
@@ -87,11 +93,11 @@
 
 <div class="profile__field">
   <mat-form-field class="profile__field">
-    <input matInput placeholder="資格１">
+    <input matInput placeholder="資格１" formControlName="tagOne">
   </mat-form-field>
 
   <mat-form-field class="profile__field">
-    <input matInput placeholder="資格２">
+    <input matInput placeholder="資格２" formControlName="tagSecond">
   </mat-form-field>
 </div>
 
@@ -105,3 +111,16 @@
   <button class="profile__btn" [disabled]="form.invalid || form.pristine" mat-raised-button color="primary">プロフィール更新</button>
 </div>
 </form>
+
+<div class="submit__profile">
+  <p>名前：{{form.value.myName}}</p>
+  <p>住所：{{form.value.address}}</p>
+  <p>生年月日：{{form.value.year}}{{form.value.month}}{{form.value.day}}</p>
+  <p>性別：{{form.value.gender}}</p>
+  <p>メールアドレス：{{form.value.email}}</p>
+  <p>電話番号：{{form.value.telephone}}</p>
+  <p>自己紹介：{{form.value.introduce}}</p>
+  <p>学歴：{{form.value.belongs}}{{form.value.school}}{{form.value.state}}</p>
+  <p>タグ：{{form.value.tagOne}}、{{form.value.tagSecond}}</p>
+  <p>勤務可能な日：{{form.value.possibleDay}}</p>
+</div>

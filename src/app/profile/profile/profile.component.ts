@@ -77,6 +77,19 @@ export class ProfileComponent implements OnInit {
       Validators.required,
     ]],
 
+    tagOne: ['', [
+    ]],
+
+    tagSecond: ['', [
+    ]],
+
+    introduce: ['', [
+    ]],
+
+    belongs: ['', [
+      Validators.required,
+    ]],
+
 
 
 
@@ -127,6 +140,22 @@ export class ProfileComponent implements OnInit {
 
   get possibleDayControl() {
     return this.form.get('possibleDay') as FormControl;
+  }
+
+  get tagOneControl() {
+    return this.form.get('tagOne') as FormControl;
+  }
+
+  get tagSecondControl() {
+    return this.form.get('tagSecond') as FormControl;
+  }
+
+  get introduceControl() {
+    return this.form.get('introduce') as FormControl;
+  }
+
+  get belongsControl() {
+    return this.form.get('belongs') as FormControl;
   }
 
   constructor(

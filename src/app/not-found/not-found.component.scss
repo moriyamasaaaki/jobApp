@@ -1,7 +1,20 @@
 @import "mixins";
 
-h2 {
-  font-size: 48px;
+.found {
   text-align: center;
   margin: 40px 0;
+  h2 {
+      font-size: 40px;
+      margin-bottom: 8px;
+      @include pc {
+        font-size: 48px;
+        margin-bottom: 16px;
+      }
+  }
+  p {
+    font-size: 14px;
+    @include pc {
+      font-size: 16px;
+    }
+  }
 }

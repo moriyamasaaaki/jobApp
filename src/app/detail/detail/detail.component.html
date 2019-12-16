@@ -1,44 +1,39 @@
 <section class="detail">
   <div class="detail__title">
-    <h1>駅内だから通勤めっちゃ楽♪週末30円UP</h1>
+    <h1>{{ article.title }}</h1>
       <ul class="detail__taglist">
-        <li><a href="">タグ１</a></li>
-        <li><a href="">タグ２</a></li>
+        <li><a href="">{{ article.tagu }}</a></li>
+        <li><a href="">{{ article.tagu }}</a></li>
       </ul>
-      <span>株式会社◯◯◯</span>
-      <p>公開日： 2019年12月1日</p>
+      <span>{{ article.companyName }}</span>
+      <p>公開日： {{ article.date }}</p>
   </div>
     <div class="detail__recruit">
       <dl>
         <dt>概要</dt>
-        <dd>会社の内容が入ります。</dd>
+        <dd>{{ article.companyContent }}</dd>
 
         <dt>職種</dt>
-        <dd>コンサル・企画・経理・デザイナー</dd>
+        <dd>{{ article.occupation }}</dd>
 
         <dt>給与</dt>
-        <dd>時給1000〜1200円</dd>
+        <dd>{{ article.salary }}</dd>
 
         <dt>福利厚生</dt>
-        <dd>あり</dd>
+        <dd>{{ article.welfare }}</dd>
 
         <dt>勤務時間・日数・休日</dt>
-        <dd>09:30〜18:30, 18:00〜22:00
-          <br>
-          週３以上から
-          <br>
-          土日休日
-        </dd>
+        <dd>{{ article.workTime }}</dd>
 
         <dt>勤務地</dt>
-        <dd>東京都千代田区大手町111-11
+        <dd>{{ article.workPlace }}
           <br>
           <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12962.304508685393!2d139.75620068481774!3d35.68743768308378!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188c07a94ef3e9%3A0xcd2549ac06389fa!2z44CSMTAwLTAwMDQg5p2x5Lqs6YO95Y2D5Luj55Sw5Yy65aSn5omL55S6!5e0!3m2!1sja!2sjp!4v1575793750081!5m2!1sja!2sjp"
             width="200" height="150" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
         </dd>
       </dl>
       <div class="job-img">
-      <img src="/assets/images/job2.jpg" width="100%" alt="現場の雰囲気">
+      <img [src]="article.recruitmentImg" width="100%" alt="現場の雰囲気">
       <img src="/assets/images/job2.jpg" width="100%" alt="現場の雰囲気2">
       </div>
     </div>

@@ -3,7 +3,7 @@
   <div>
     <mat-form-field class="recruitment__field">
       <mat-label>タイトル</mat-label>
-      <input matInput placeholder="このようなバイトです" formControlName="introduce" required>
+      <input matInput placeholder="【ご案内スタッフ】電話で簡単アンケート! 日払い◎" formControlName="introduce" autocomplete="on" required>
       <mat-error *ngIf="introduceControl.hasError('required')">必須入力です</mat-error>
       <mat-error *ngIf="introduceControl.hasError('maxlength')">長すぎます。50文字以下にして下さい。</mat-error>
     </mat-form-field>
@@ -12,7 +12,7 @@
   <div>
     <mat-form-field class="recruitment__field">
       <mat-label>勤務時間</mat-label>
-      <textarea matInput type="number" placeholder="18:00~22:00" formControlName="workTime" required></textarea>
+      <textarea matInput type="number" placeholder="18:00~22:00" formControlName="workTime" autocomplete="off" required></textarea>
       <mat-error *ngIf="workTimeControl.hasError('required')">必須入力です</mat-error>
       <mat-error *ngIf="workTimeControl.hasError('pattern')">数字で指定して下さい</mat-error>
     </mat-form-field>
@@ -21,7 +21,7 @@
   <div>
     <mat-form-field class="recruitment__field">
       <mat-label>休日</mat-label>
-      <input matInput placeholder="週3日" formControlName="holiday" required>
+      <input matInput placeholder="週3日" formControlName="holiday" autocomplete="on" required>
       <mat-error *ngIf="holidayControl.hasError('required')">必須入力です</mat-error>
     </mat-form-field>
   </div>
@@ -29,7 +29,7 @@
   <div>
     <mat-form-field class="recruitment__field">
       <mat-label>福利厚生</mat-label>
-      <input matInput placeholder="あり" formControlName="welfare" required>
+      <input matInput placeholder="あり" formControlName="welfare" autocomplete="on" required>
       <mat-error *ngIf="welfareControl.hasError('required')">必須入力です</mat-error>
     </mat-form-field>
   </div>
@@ -37,35 +37,34 @@
   <div>
     <mat-form-field class="recruitment__field">
       <mat-label>概要</mat-label>
-      <textarea matInput placeholder="簡単なバイトの内容" formControlName="overview" required></textarea>
+      <textarea matInput placeholder="お客様に、オトクな情報をご紹介！" formControlName="overview" autocomplete="off" required></textarea>
       <mat-error *ngIf="overviewControl.hasError('required')">必須入力です</mat-error>
     </mat-form-field>
   </div>
 
   <div>
     <mat-form-field class="recruitment__field">
-      <input matInput placeholder="タグ１">
+      <mat-label>タグ</mat-label>
+      <input matInput placeholder="週２からOK!" autocomplete="on">
     </mat-form-field>
     <mat-form-field class="recruitment__field">
-      <input matInput placeholder="タグ２">
+      <mat-label>タグ</mat-label>
+      <input matInput placeholder="頭髪制限なし" autocomplete="on">
     </mat-form-field>
   </div>
 
   <div>
     <mat-form-field class="recruitment__field">
-      <input matInput placeholder="企業名" formControlName="company" required>
+      <mat-label>企業名</mat-label>
+      <input matInput placeholder="株式会社Tokyo bite" formControlName="company" autocomplete="organization" required>
       <mat-error *ngIf="companyControl.hasError('required')">必須入力です</mat-error>
     </mat-form-field>
   </div>
 
   <div>
     <mat-form-field class="recruitment__field">
-      <input matInput placeholder="時給" value="1000円" formControlName="salary" required>
-      <mat-error *ngIf="salaryControl.hasError('required')">必須入力です</mat-error>
-    </mat-form-field>
-    <span>〜</span>
-    <mat-form-field class="recruitment__field">
-      <input matInput placeholder="時給" value="1200円" formControlName="salary" required>
+      <mat-label>時給</mat-label>
+      <input matInput placeholder="1000~1200円" formControlName="salary" autocomplete="off" required>
       <mat-error *ngIf="salaryControl.hasError('required')">必須入力です</mat-error>
     </mat-form-field>
   </div>
@@ -73,23 +72,16 @@
   <div>
     <mat-form-field class="recruitment__field">
       <mat-label>職種</mat-label>
-      <select matNativeControl formControlName="profession" required>
-        <mat-option value="profession"></mat-option>
-      </select>
+        <input matInput placeholder="電話対応、清掃" formControlName="profession" autocomplete="off" required>
       <mat-error *ngIf="professionControl.hasError('required')">必須項目です</mat-error>
     </mat-form-field>
   </div>
 
   <div>
     <mat-form-field class="recruitment__field">
-      <input matInput placeholder="勤務地" value="東京" formControlName="location" required>
+      <mat-label>勤務地</mat-label>
+      <input matInput placeholder="渋谷、新宿" formControlName="location" autocomplete="on" required>
       <mat-error *ngIf="locationControl.hasError('required')">必須項目です</mat-error>
-    </mat-form-field>
-  </div>
-
-  <div>
-    <mat-form-field class="recruitment__field">
-      <textarea matInput placeholder="詳細テキスト"></textarea>
     </mat-form-field>
   </div>
 

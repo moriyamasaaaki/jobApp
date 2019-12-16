@@ -38,4 +38,15 @@
     text-align: center;
     margin-bottom: 16px;
   }
+  a {
+    display: block;
+    font-size: 13px;
+    margin-bottom: 8px;
+    color: #0860c0;
+    text-decoration: underline;
+    text-align: right;
+    &:hover {
+      opacity: .7;
+    }
+  }
 }

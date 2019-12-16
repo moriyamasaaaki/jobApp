@@ -55,6 +55,12 @@ const routes: Routes = [
   },
 
   {
+    path: 'joblist',
+    loadChildren: () => import('./joblist/joblist.module').then(m => m.JoblistModule)
+  },
+
+
+  {
     path: '**',
     component: NotFoundComponent
   }

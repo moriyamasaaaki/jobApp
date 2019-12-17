@@ -1,5 +1,5 @@
 <header>
-  <a routerLink="/top">
+  <a routerLink="/">
     <h1>Tokyo byte</h1>
   </a>
   <nav class="header-nav">
@@ -10,7 +10,7 @@
           </button>
         </li>
           <mat-menu #menu="matMenu">
-            <button mat-menu-item>
+            <button (click)="login()" mat-menu-item>
               <mat-icon>lock</mat-icon>
               <span>ログイン</span>
             </button>

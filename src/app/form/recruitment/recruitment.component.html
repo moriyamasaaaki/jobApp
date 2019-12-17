@@ -3,7 +3,7 @@
   <div>
     <mat-form-field class="recruitment__field">
       <mat-label>タイトル</mat-label>
-      <input matInput placeholder="【ご案内スタッフ】電話で簡単アンケート! 日払い◎" formControlName="introduce" autocomplete="on" required>
+      <input matInput placeholder="【ご案内スタッフ】電話で簡単アンケート! 日払い◎" formControlName="introduce" required>
       <mat-error *ngIf="introduceControl.hasError('required')">必須入力です</mat-error>
       <mat-error *ngIf="introduceControl.hasError('maxlength')">長すぎます。50文字以下にして下さい。</mat-error>
     </mat-form-field>
@@ -12,7 +12,7 @@
   <div>
     <mat-form-field class="recruitment__field">
       <mat-label>勤務時間</mat-label>
-      <textarea matInput type="number" placeholder="18:00~22:00" formControlName="workTime" autocomplete="off" required></textarea>
+      <textarea matInput type="number" placeholder="18:00~22:00" formControlName="workTime" required></textarea>
       <mat-error *ngIf="workTimeControl.hasError('required')">必須入力です</mat-error>
       <mat-error *ngIf="workTimeControl.hasError('pattern')">数字で指定して下さい</mat-error>
     </mat-form-field>

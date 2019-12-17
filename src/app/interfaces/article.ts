@@ -5,7 +5,10 @@ export interface Article {
   date: Date;
   companyContent: string;
   occupation: string;
-  salary: number;
+  salary: {
+    min: number;
+    max: number;
+  };
   welfare: string;
   workTime: string;
   workPlace: string;

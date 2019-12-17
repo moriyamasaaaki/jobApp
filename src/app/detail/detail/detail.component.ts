@@ -16,7 +16,10 @@ export class DetailComponent implements OnInit {
     date: new Date(),
     companyContent:  '会社概要が入ります。',
     occupation: '職種が入ります。',
-    salary: 1200,
+    salary: {
+      min: 1200,
+      max: 1300,
+    },
     welfare: 'あり',
     workTime: '18:00〜22：00',
     workPlace: '東京、新宿',

@@ -15,6 +15,11 @@
               <span>ログイン</span>
             </button>
 
+            <button *ngIf="user$ | async" (click)="logout()" mat-menu-item>
+              <mat-icon>lock</mat-icon>
+              <span>ログアウト</span>
+            </button>
+
             <a routerLink="/keep">
               <button mat-menu-item>
                 <mat-icon>star</mat-icon>

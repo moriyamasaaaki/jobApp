@@ -54,6 +54,7 @@
     }
   }
   img {
+      width: 100%;
     margin-bottom: 16px;
     @include pc {
       width: 30%;
@@ -75,7 +76,7 @@
       }
     }
   }
-  &__btn__right {
+  &__btn-right {
     margin-left: 5px;
     @include pc {
       margin-left: 8px;

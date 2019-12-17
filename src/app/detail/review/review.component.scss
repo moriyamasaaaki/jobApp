@@ -1,0 +1,51 @@
+@import "mixins";
+
+.review {
+  box-sizing: border-box;
+  border: 2px solid #ffa550;
+  padding: 24px;
+  border-radius: 8px;
+  margin-top: 40px;
+  h3 {
+    text-align: center;
+  }
+  margin: 0 8px 16px;
+  @include tab {
+    width: 80%;
+    margin: 0 auto;
+  }
+  @include pc {
+    width: 60%;
+  }
+  &__content {
+    font-size: 13px;
+    border-bottom: 1px dotted #ffa550;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    @include pc {
+      width: 50%;
+      flex-wrap: nowrap;
+    }
+  }
+  &__container {
+    @include pc {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+    }
+  }
+  &__label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  p {
+    border-left: 3px solid #ffa550;
+    padding-left: 5px;
+    margin-left: 16px;
+  }
+}

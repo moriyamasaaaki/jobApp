@@ -1,0 +1,49 @@
+<section class="review">
+  <h3>レビュー画面です</h3>
+  <div class="review__container">
+    <div class="review__content">
+      <p>社内の雰囲気の良さ</p>
+      <div class="review__label">
+        <mat-label>悪い</mat-label>
+        <mat-slider thumbLabel [displayWith]="formatLabel" tickInterval="100" min="0" max="10"></mat-slider>
+        <mat-label>良い</mat-label>
+      </div>
+    </div>
+
+    <div class="review__content">
+      <p>サイト記載内容との差異</p>
+      <div class="review__label">
+        <mat-label>ある</mat-label>
+        <mat-slider thumbLabel [displayWith]="descriptionLabel" tickInterval="100" min="0" max="4"></mat-slider>
+        <mat-label>ない</mat-label>
+      </div>
+    </div>
+
+    <div class="review__content">
+      <p>シフトの融通が利く</p>
+      <div class="review__label">
+        <mat-label>ない</mat-label>
+        <mat-slider thumbLabel [displayWith]="shiftLabel" tickInterval="100" min="0" max="2"></mat-slider>
+        <mat-label>利く</mat-label>
+      </div>
+    </div>
+
+    <div class="review__content">
+      <p>職場の年層</p>
+      <div class="review__label">
+        <mat-label>低い</mat-label>
+        <mat-slider thumbLabel [displayWith]="ageLabel" tickInterval="100" step="10" min="10" max="60"></mat-slider>
+        <mat-label>高い</mat-label>
+      </div>
+    </div>
+
+    <div class="review__content">
+      <p>残業時間</p>
+      <div class="review__label">
+        <mat-label>なし</mat-label>
+        <mat-slider thumbLabel [displayWith]="overtimeLabel" tickInterval="100" min="0" max="3"></mat-slider>
+        <mat-label>ある</mat-label>
+      </div>
+    </div>
+  </div>
+</section>

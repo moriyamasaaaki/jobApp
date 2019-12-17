@@ -2,26 +2,26 @@
   <h2>無料登録ページ</h2>
   <div>
     <mat-form-field class="companyForm__field">
-      <input matInput placeholder="法人名（正式社名）" formControlName="companyName" required>
+      <input matInput placeholder="法人名（正式社名）" formControlName="companyName" autocomplete="organization" required>
       <mat-error *ngIf="companyNameControl.hasError('required')">必須入力です</mat-error>
     </mat-form-field>
   </div>
 
   <div>
     <mat-form-field class="companyForm__field">
-      <input matInput placeholder="部署名（＊任意）">
+      <input matInput placeholder="部署名（＊任意）" autocomplete="organization-title">
     </mat-form-field>
   </div>
 
   <div>
     <mat-form-field class="companyForm__field">
-      <input matInput placeholder="姓" formControlName="lastName">
+      <input matInput placeholder="姓" formControlName="lastName" autocomplete="family-name">
       <mat-error *ngIf="lastNameControl.hasError('required')">必須入力です</mat-error>
       <mat-error *ngIf="lastNameControl.hasError('maxlength')">30文字以内にしてください。</mat-error>
 
     </mat-form-field>
     <mat-form-field class="companyForm__field">
-      <input matInput placeholder="名" formControlName="firstName" >
+      <input matInput placeholder="名" formControlName="firstName" autocomplete="given-name">
       <mat-error *ngIf="firstNameControl.hasError('required')">必須入力です</mat-error>
       <mat-error *ngIf="firstNameControl.hasError('maxlength')">30文字以内にしてください。</mat-error>
     </mat-form-field>
@@ -29,7 +29,7 @@
 
   <div>
     <mat-form-field class="companyForm__field">
-      <input matInput placeholder="メールアドレス" formControlName="email" required>
+      <input matInput placeholder="メールアドレス" formControlName="email" required autocomplete="email">
       <mat-error *ngIf="emailControl.hasError('required')">必須入力です</mat-error>
       <mat-error *ngIf="emailControl.hasError('email')">メールアドレス形式にして下さい</mat-error>
     </mat-form-field>
@@ -37,7 +37,7 @@
 
   <div>
     <mat-form-field class="companyForm__field">
-      <input matInput placeholder="パスワード" [type]="hide ? 'password' : 'text'" formControlName="password" required>
+      <input matInput placeholder="パスワード" [type]="hide ? 'password' : 'text'" formControlName="password" autocomplete="new-password" required>
       <button mat-icon-button matSuffix (click)="hide = !hide">
         <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
       </button>

@@ -3,14 +3,9 @@
   <mat-form-field  class="search-full-width">
     <mat-label>キーワード：</mat-label>
       <input type="text" placeholder="会社名・職種 etc..." aria-label="Number" matInput formControlName="keyword"
-        [matAutocomplete]="auto" style="font-size: 18px;" required>
+        autocomplete="organization" style="font-size: 18px;" required>
             <mat-error *ngIf="keywordControl.hasError('required')">必須入力です！</mat-error>
             <mat-error *ngIf="keywordControl.hasError('maxlength')">長すぎます。50文字以下にして下さい</mat-error>
-    <mat-autocomplete #auto="matAutocomplete">
-      <mat-option *ngFor="let option of options" [value]="option">
-        {{option}}
-      </mat-option>
-    </mat-autocomplete>
   </mat-form-field>
   </div>
 
@@ -18,14 +13,9 @@
   <mat-form-field class="search-full-width">
     <mat-label>勤務地：</mat-label>
       <input type="text" placeholder="渋谷" aria-label="Number" matInput formControlName="place"
-        [matAutocomplete]="auto" style="font-size: 18px;" required>
+        style="font-size: 18px;" required>
           <mat-error *ngIf="placeControl.hasError('required')">必須入力です！</mat-error>
           <mat-error *ngIf="placeControl.hasError('maxlength')">長すぎます。40文字以下にして下さい</mat-error>
-    <mat-autocomplete #auto="matAutocomplete">
-      <mat-option *ngFor="let option of options" [value]="option">
-        {{option}}
-      </mat-option>
-    </mat-autocomplete>
   </mat-form-field>
   </div>
 

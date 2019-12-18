@@ -45,9 +45,6 @@ body {
   }
   &__copyright {
     text-align: center;
-    small {
-      color: aliceblue;
-    }
   }
   &__content {
     @include tab {

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormControl } from '@angular/forms';
+import { AuthService } from '../services/auth.service';
+
 
 @Component({
   selector: 'app-search',
@@ -29,13 +31,20 @@ get placeControl() {
   return this.form.get('place') as FormControl;
 }
 
+  user$ = this.authService.afUser$;
 
   constructor(
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private authService: AuthService,
   ) { }
 
   ngOnInit() {
   }
+
+  companyLogin() {
+    this.authService.companyLogin();
+  }
+
 
   submit() {
     console.log(this.form.value);

@@ -27,4 +27,16 @@ export class AuthService {
     this.afAuth.auth.signOut();
     this.router.navigateByUrl('/');
   }
+
+  companyLogin() {
+    this.afAuth.auth.signInWithPopup(
+      new auth.GoogleAuthProvider()
+    ).then(() => {
+      this.snackBar.open('企業側としてログインしました。', null, {
+        duration: 2000
+      });
+    });
+  }
 }
+
+

@@ -37,4 +37,16 @@ export class AuthService {
     });
     this.router.navigateByUrl('/');
   }
+
+  companyLogin() {
+    this.afAuth.auth.signInWithPopup(
+      new auth.GoogleAuthProvider()
+    ).then(() => {
+      this.snackBar.open('企業側としてログインしました。', null, {
+        duration: 2000
+      });
+    });
+  }
 }
+
+

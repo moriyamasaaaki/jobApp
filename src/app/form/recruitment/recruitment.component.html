@@ -39,6 +39,7 @@
       <mat-label>概要</mat-label>
       <textarea matInput placeholder="お客様に、オトクな情報をご紹介！" formControlName="overview" autocomplete="off" required></textarea>
       <mat-error *ngIf="overviewControl.hasError('required')">必須入力です</mat-error>
+      <mat-error *ngIf="overviewControl.hasError('maxlength')">400文字以内にして下さい。</mat-error>
     </mat-form-field>
   </div>
 

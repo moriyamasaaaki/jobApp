@@ -3,58 +3,81 @@
 @import "mixins";
 @import "reset";
 
-
-html, body { height: 100%; }
-body { margin: 0; font-family: 'Times New Roman', Times, serif; }
-
-
-footer {
-  border-top: 1px solid skyblue;
-  background: #00c6ff;
-  background: -webkit-linear-gradient(to right, #0072ff, #00ade5);
-  background: linear-gradient(to right, #0072ff, #00ade5);
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: "Times New Roman", Times, serif;
 }
 
-.footer-content {
-  padding: 24px 8px;
-    @include tab {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-        padding: 32px 8px;
-    }
-}
-
-.footer-nav {
-  padding-left: 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
+.footer {
+      display: none;
+      @include tab {
+        display: block;
+      }
+  &__first-nav {
+    padding-left: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
     @include tab {
       margin-bottom: 0;
     }
     li {
       list-style: none;
-      font-size: .8em;
-        @include tab {
-          padding: 0 1em;
-        }
-    }
-      a {
-        color: #fff;
-        text-decoration: none;
-          &:hover {
-            opacity: .7;
-            text-decoration: underline;
-          }
+      font-size: 0.8em;
+      @include tab {
+        padding: 0 1em;
       }
+    }
+    a {
+      color: #fff;
+      text-decoration: none;
+      &:hover {
+        opacity: 0.7;
+        text-decoration: underline;
+      }
+    }
+  }
+  &__copyright {
+    text-align: center;
+  }
+  &__content {
+    @include tab {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
 }
 
-.copyright {
+
+.footer__box {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  @include tab {
+    display: none;
+  }
+  a {
+    color: #fff;
+  }
+}
+
+.footer__icons {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
   text-align: center;
-    small {
-      // color: #585858;
-      color: aliceblue;
-    }
+  padding: 24px 8px;
+  span {
+    display: block;
+    font-size: 5px;
+    text-align: center;
+  }
 }

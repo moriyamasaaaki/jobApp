@@ -1,17 +1,13 @@
 @import "mixins";
 
-header {
-  border-bottom: 1px solid skyblue;
-  background: #00c6ff;
-  background: -webkit-linear-gradient(to right, #0072ff, #00ade5);
-  background: linear-gradient(to right, #0072ff, #00ade5);
-  padding: 12px 8px;
+.header {
+  padding: 24px 8px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 40px;
   @include pc {
-    padding: 20px 8px;
+    padding: 50px 8px;
   }
   a {
     color: #fff;
@@ -20,13 +16,26 @@ header {
   }
 }
 
-.header-nav {
-  ul {
+.header__nav-mobile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @include pc {
+    display: none;
+  }
+}
+
+.header__nav-pc {
+  display: none;
+  @include pc {
     padding: 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
+}
+
+.header-nav {
   li {
     padding-left: 8px;
     @include tab {
@@ -41,6 +50,7 @@ header {
     span {
       display: inline-flex;
       vertical-align: middle;
+      color: #fff;
     }
   }
 }

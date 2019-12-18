@@ -1,9 +1,22 @@
 <header>
+  <mat-toolbar class="header" color="primary">
   <a routerLink="/">
     <h1>Tokyo byte</h1>
   </a>
   <nav class="header-nav">
-    <ul>
+    <ul class="header__nav-mobile">
+      <li>
+        <button (click)="login()" mat-menu-item>
+          <span>ログイン</span>
+        </button>
+      </li>
+      <li>
+        <button *ngIf="user$ | async" (click)="logout()" mat-menu-item>
+          <span>ログアウト</span>
+        </button>
+      </li>
+    </ul>
+    <ul class="header__nav-pc">
         <li>
           <button mat-button [matMenuTriggerFor]="menu">
             <mat-icon class="header__home">home</mat-icon>
@@ -43,5 +56,6 @@
         </mat-menu>
     </ul>
   </nav>
+  </mat-toolbar>
 </header>
 

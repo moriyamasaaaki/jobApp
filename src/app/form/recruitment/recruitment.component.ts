@@ -29,6 +29,7 @@ export class RecruitmentComponent implements OnInit {
 
     overview: ['', [
       Validators.required,
+      Validators.maxLength(400)
     ]],
 
     company: ['', [

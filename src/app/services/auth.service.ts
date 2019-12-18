@@ -21,7 +21,7 @@ export class AuthService {
 
   login() {
     this.afAuth.auth.signInWithPopup(
-      new auth.GithubAuthProvider()
+      new auth.GoogleAuthProvider()
     ).then(() => {
       this.snackBar.open('ようこそTokyo biteへ!', null, {
         duration: 2000

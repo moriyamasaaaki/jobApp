@@ -1,19 +1,46 @@
 <app-header></app-header>
 
-<!-- <app-search></app-search> -->
 <main class="container">
   <router-outlet></router-outlet>
 </main>
 
 <footer>
-  <div class="footer-content">
-      <ul class="footer-nav">
+  <div class="footer">
+    <mat-toolbar class="footer__content" color="primary">
+      <ul class="footer__first-nav">
         <li><a routerLink="/comlaw">特定商取引法に基づく表示</a></li>
         <li><a routerLink="/terms">利用規約</a></li>
         <li><a routerLink="/about">Tokyo biteについて</a></li>
+        <li><a routerLink="/">企業の方はこちらから</a></li>
       </ul>
-    <div class="copyright">
+    <div class="footer__copyright">
       <small>Copyright © Tokyo bite All rights reserved.</small>
     </div>
+    </mat-toolbar>
   </div>
+
+  <div class="footer__box">
+    <mat-toolbar class="footer__icons" color="primary">
+      <div>
+        <a routerLink="/">
+          <mat-icon aria-hidden="false">home<span>ホーム</span></mat-icon>
+        </a>
+      </div>
+    <div>
+      <a routerLink="/">
+        <mat-icon aria-hidden="false">settings_applications<span>設定</span></mat-icon>
+      </a>
+    </div>
+    <div>
+      <a routerLink="keep">
+        <mat-icon aria-hidden="false">star<span>お気に入り</span></mat-icon>
+      </a>
+    </div>
+    <div>
+      <a routerLink="profile">
+        <mat-icon class="footer__icon" aria-hidden="false">person<span>マイページ</span></mat-icon>
+      </a>
+    </div>
+  </mat-toolbar>
+</div>
 </footer>

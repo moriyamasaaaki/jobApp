@@ -1,18 +1,22 @@
-@import "mixins";
+@import 'mixins';
+@import '~@angular/material/theming';
 
 .header {
-  padding: 24px 8px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 40px;
-  @include pc {
-    padding: 50px 8px;
-  }
+  @include mat-elevation(4);
   a {
     color: #fff;
     text-decoration: none;
     padding: 12px 0;
+  }
+  h1 {
+    font-size: 24px;
+    @include pc {
+      font-size: 32px;
+    }
   }
 }
 
@@ -32,6 +36,9 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+  }
+  button {
+    color: #fff;
   }
 }
 

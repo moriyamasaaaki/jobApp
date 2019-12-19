@@ -1,61 +1,66 @@
 <header>
   <mat-toolbar class="header" color="primary">
-  <a routerLink="/">
-    <h1>Tokyo byte</h1>
-  </a>
-  <nav class="header-nav">
-    <ul class="header__nav-mobile">
-      <li>
-        <button (click)="login()" mat-menu-item>
-          <span>ログイン</span>
-        </button>
-      </li>
-      <li>
-        <button *ngIf="user$ | async" (click)="logout()" mat-menu-item>
-          <span>ログアウト</span>
-        </button>
-      </li>
-    </ul>
-    <ul class="header__nav-pc">
+    <a routerLink="/">
+      <h1>Tokyo byte</h1>
+    </a>
+    <nav class="header-nav">
+      <ul class="header__nav-mobile">
         <li>
-          <button mat-button [matMenuTriggerFor]="menu">
-            <mat-icon class="header__home">home</mat-icon>
+          <button mat-raised-button (click)="login()" color="accent">
+            ログイン
           </button>
         </li>
-          <mat-menu #menu="matMenu">
-            <button (click)="login()" mat-menu-item>
-              <mat-icon>lock</mat-icon>
-              <span>ログイン</span>
+        <li>
+          <button
+            mat-raised-button
+            *ngIf="user$ | async"
+            (click)="logout()"
+            color="accent"
+          >
+            ログアウト
+          </button>
+        </li>
+      </ul>
+      <ul class="header__nav-pc">
+        <button mat-raised-button (click)="login()" color="accent">
+          ログイン
+        </button>
+        <button
+          mat-raised-button
+          *ngIf="user$ | async"
+          (click)="logout()"
+          color="accent"
+        >
+          ログアウト
+        </button>
+        <li>
+          <button mat-button [matMenuTriggerFor]="menu">
+            <mat-icon class="header__home">menu</mat-icon>
+          </button>
+        </li>
+        <mat-menu #menu="matMenu">
+          <a routerLink="/keep">
+            <button mat-menu-item>
+              <mat-icon>star</mat-icon>
+              <span>お気に入り一覧</span>
             </button>
+          </a>
 
-            <button *ngIf="user$ | async" (click)="logout()" mat-menu-item>
-              <mat-icon>lock</mat-icon>
-              <span>ログアウト</span>
+          <a routerLink="/profile">
+            <button mat-menu-item>
+              <mat-icon>person_pin</mat-icon>
+              <span>プロフィール</span>
             </button>
+          </a>
 
-            <a routerLink="/keep">
-              <button mat-menu-item>
-                <mat-icon>star</mat-icon>
-                <span>お気に入り一覧</span>
-              </button>
-            </a>
-
-            <a routerLink="/profile">
-              <button mat-menu-item>
-                <mat-icon>person_pin</mat-icon>
-                <span>プロフィール</span>
-              </button>
-            </a>
-
-            <a routerLink="/plan">
-              <button mat-menu-item>
-                <mat-icon>payment</mat-icon>
-                <span>プラン</span>
-              </button>
-            </a>
+          <a routerLink="/plan">
+            <button mat-menu-item>
+              <mat-icon>payment</mat-icon>
+              <span>プラン</span>
+            </button>
+          </a>
         </mat-menu>
-    </ul>
-  </nav>
+      </ul>
+    </nav>
   </mat-toolbar>
 </header>
-

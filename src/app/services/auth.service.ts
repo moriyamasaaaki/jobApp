@@ -46,7 +46,6 @@ export class AuthService {
         duration: 2000
       });
     });
+    this.router.navigateByUrl('/companySideForm');
   }
 }
-
-

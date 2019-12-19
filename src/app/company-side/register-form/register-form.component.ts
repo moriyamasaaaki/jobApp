@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormControl } from '@angular/forms';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-register-form',
@@ -60,11 +61,17 @@ export class RegisterFormComponent implements OnInit {
   }
 
   constructor(
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private authService: AuthService,
   ) { }
 
   ngOnInit() {
   }
+
+  logout() {
+    this.authService.logout();
+  }
+
 
   submit() {
     console.log(this.form.value);

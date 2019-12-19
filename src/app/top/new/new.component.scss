@@ -1,11 +1,9 @@
-@import "mixins";
+@import 'mixins';
+@import 'topcommon';
 
-.new {
-  border: 2px solid #eee;
-  padding: 16px 5px;
-  margin:  0 0 24px;
+.box {
+  margin: 0 0 24px;
   @include pc {
-    width: 70%;
     margin: 0 auto 64px;
   }
   &__post {
@@ -37,10 +35,5 @@
   }
   i {
     color: lightgreen;
-  }
-  h2 {
-    font-size: 18px;
-    text-align: center;
-    margin-bottom: 16px;
   }
 }

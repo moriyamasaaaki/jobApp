@@ -1,12 +1,10 @@
-@import "mixins";
+@import 'mixins';
+@import 'topcommon';
 
-.attention {
-  border: 2px solid #eee;
-  padding: 16px 5px;
+.box {
   margin-bottom: 16px;
   line-height: 1.5;
   @include pc {
-    width: 70%;
     margin: 0 auto 32px;
   }
   &__content {
@@ -34,11 +32,6 @@
   li {
     font-size: 13px;
   }
-  h2 {
-    font-size: 18px;
-    text-align: center;
-    margin-bottom: 16px;
-  }
   a {
     display: block;
     font-size: 13px;
@@ -47,7 +40,7 @@
     text-decoration: underline;
     text-align: right;
     &:hover {
-      opacity: .7;
+      opacity: 0.7;
     }
   }
 }

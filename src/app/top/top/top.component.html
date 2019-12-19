@@ -1,5 +1,13 @@
 <article class="top__page">
   <app-search></app-search>
-  <app-attention></app-attention>
-  <app-new></app-new>
+  <section class="attention">
+    <h2 class="hdg">注目の求人</h2>
+    <a routerLink="/joblist">求人一覧へ >></a>
+    <app-attention></app-attention>
+  </section>
+
+  <section class="new">
+    <h2 class="hdg">新着の求人</h2>
+    <app-new></app-new>
+  </section>
 </article>

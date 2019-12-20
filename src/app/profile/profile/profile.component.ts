@@ -22,11 +22,11 @@ export class ProfileComponent implements OnInit {
 
     address: ['', [Validators.required]],
 
-    year: ['', [Validators.required]],
-
-    month: ['', [Validators.required]],
-
-    day: ['', [Validators.required]],
+    bday: this.fb.group({
+      year: ['', [Validators.required]],
+      month: ['', [Validators.required]],
+      day: ['', [Validators.required]]
+    }),
 
     gender: ['', [Validators.required]],
 
@@ -56,17 +56,16 @@ export class ProfileComponent implements OnInit {
   get addressControl() {
     return this.form.get('address') as FormControl;
   }
-
   get yearControl() {
-    return this.form.get('year') as FormControl;
+    return this.form.get('bday.year') as FormControl;
   }
 
   get monthControl() {
-    return this.form.get('month') as FormControl;
+    return this.form.get('bday.month') as FormControl;
   }
 
   get dayControl() {
-    return this.form.get('day') as FormControl;
+    return this.form.get('bday.day') as FormControl;
   }
 
   get genderControl() {

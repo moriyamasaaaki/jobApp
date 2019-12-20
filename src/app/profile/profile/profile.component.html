@@ -22,6 +22,7 @@
       <input
         matInput
         placeholder="住所"
+        name="address"
         formControlName="address"
         autocomplete="street-address"
         required
@@ -32,9 +33,9 @@
     </mat-form-field>
   </div>
 
-  <div>
+  <div formGroupName="bday">
     <mat-form-field class="profile__field">
-      <mat-select placeholder="年" formControlName="year">
+      <mat-select placeholder="年" formControlName="year" required>
         <mat-option
           value="{{ year }}年"
           required

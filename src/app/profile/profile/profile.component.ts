@@ -7,95 +7,46 @@ import { FormBuilder, Validators, FormControl } from '@angular/forms';
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent implements OnInit {
+  years = new Array(61).fill(null);
+  bottom = new Date().getFullYear() - 60;
 
-  years = [
-    1960,
-    1961,
-    1962,
-    1963,
-    1964,
-    1965
-  ];
-
-  months = new Array(13).fill(null);
+  months = new Array(12).fill(null);
   days = new Array(31).fill(null);
 
+  schools = ['中学', '高校', '専門', '大学', '大学院'];
 
-  schools = [
-    '中学', '高校', '専門', '大学', '大学院'
-  ];
-
-  states = [
-    '卒業', '在学中', '中退'
-  ];
-
+  states = ['卒業', '在学中', '中退'];
 
   form = this.fb.group({
-    myName: ['', [
-      Validators.required,
-    ]],
+    myName: ['', [Validators.required]],
 
-    address: ['', [
-      Validators.required,
-    ]],
+    address: ['', [Validators.required]],
 
-    year: ['', [
-      Validators.required,
-    ]],
+    year: ['', [Validators.required]],
 
-    month: ['', [
-      Validators.required,
-    ]],
+    month: ['', [Validators.required]],
 
-    day: ['', [
-      Validators.required,
-    ]],
+    day: ['', [Validators.required]],
 
-    gender: ['', [
-      Validators.required,
-    ]],
+    gender: ['', [Validators.required]],
 
-    email: ['', [
-      Validators.required,
-      Validators.email,
-    ]],
+    email: ['', [Validators.required, Validators.email]],
 
-    telephone: ['', [
-      Validators.required,
-      Validators.pattern(/^0\d{9,10}$/),
-    ]],
+    telephone: ['', [Validators.required, Validators.pattern(/^0\d{9,10}$/)]],
 
-    school: ['', [
-      Validators.required,
-    ]],
+    school: ['', [Validators.required]],
 
-    state: ['', [
-      Validators.required,
-    ]],
+    state: ['', [Validators.required]],
 
-    possibleDay: ['', [
-      Validators.required,
-    ]],
+    possibleDay: ['', [Validators.required]],
 
-    tagOne: ['', [
-    ]],
+    tagOne: ['', []],
 
-    tagSecond: ['', [
-    ]],
+    tagSecond: ['', []],
 
-    introduce: ['', [
-    ]],
+    introduce: ['', []],
 
-    belongs: ['', [
-      Validators.required,
-    ]],
-
-
-
-
-
-
-
+    belongs: ['', [Validators.required]]
   });
 
   get myNameControl() {
@@ -158,16 +109,11 @@ export class ProfileComponent implements OnInit {
     return this.form.get('belongs') as FormControl;
   }
 
-  constructor(
-    private fb: FormBuilder
-  ) { }
+  constructor(private fb: FormBuilder) {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   submit() {
     console.log(this.form.value);
   }
-
-
 }

@@ -1,51 +1,15 @@
 <div class="new-job-box">
-  <div class="new-job-box__post">
-    <a href="">
+  <div class="new-job-box__post" *ngFor="let new of news">
+    <div class="new-job-box__head">
       <span class="new-job-box__tag">New</span>
-      <p>求人の概要、内容、詳細</p>
-    </a>
-    <a href="" class="new-job-box__place">
-      <span>目黒駅</span><i class="material-icons">play_arrow</i>
-    </a>
-  </div>
-
-  <div class="new-job-box__post">
+      <a href="">
+        <p class="new-job-box__pc-title">{{ new.companyName }}</p>
+      </a>
+    </div>
+    <a href="">{{ new.title }}</a>
     <a href="">
-      <span class="new-job-box__tag">New</span>
-      <p>求人の概要、内容、詳細</p>
-    </a>
-    <a href="" class="new-job-box__place">
-      <span>目黒駅</span><i class="material-icons">play_arrow</i>
-    </a>
-  </div>
-
-  <div class="new-job-box__post">
-    <a href="">
-      <span class="new-job-box__tag">New</span>
-      <p>求人の概要、内容、詳細</p>
-    </a>
-    <a href="" class="new-job-box__place">
-      <span>目黒駅</span><i class="material-icons">play_arrow</i>
-    </a>
-  </div>
-
-  <div class="new-job-box__post">
-    <a href="">
-      <span class="new-job-box__tag">New</span>
-      <p>求人の概要、内容、詳細</p>
-    </a>
-    <a href="" class="new-job-box__place">
-      <span>目黒駅</span><i class="material-icons">play_arrow</i>
-    </a>
-  </div>
-
-  <div class="new-job-box__post">
-    <a href="">
-      <span class="new-job-box__tag">New</span>
-      <p>求人の概要、内容、詳細</p>
-    </a>
-    <a href="" class="new-job-box__place">
-      <span>目黒駅</span><i class="material-icons">play_arrow</i>
+      <span>{{ new.place }}</span
+      ><i class="material-icons">play_arrow</i>
     </a>
   </div>
 </div>

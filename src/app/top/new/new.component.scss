@@ -19,20 +19,37 @@
     padding: 5px;
     border-radius: 3px;
   }
-  &__place {
-    font-size: 12px;
-  }
   p {
     font-size: 12px;
     margin-left: 8px;
   }
   a {
+    font-size: 12px;
     display: flex;
     align-items: center;
     color: #0860c0;
     text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+      opacity: 0.7;
+    }
   }
   i {
     color: lightgreen;
+  }
+  &__pc-title {
+    display: none;
+    @include tab {
+      display: block;
+    }
+  }
+  &__head {
+    padding-right: 8px;
+    @include tab {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-right: 0;
+    }
   }
 }

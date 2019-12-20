@@ -14,26 +14,19 @@ body {
 
 .footer {
   background-color: #3f51b5;
-  padding: 32px 8px;
+  padding: 16px 8px;
   display: none;
   @include tab {
-    display: block;
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     justify-content: space-between;
     align-items: center;
   }
   &__first-nav {
-    padding-left: 0;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 20px;
-    @include tab {
-      margin-bottom: 0;
-      width: 50%;
-    }
     @include pc {
       justify-content: space-between;
     }
@@ -41,7 +34,7 @@ body {
       list-style: none;
       font-size: 12px;
       @include tab {
-        line-height: 2;
+        line-height: 2.5;
       }
       @include pc {
         font-size: 14px;
@@ -50,6 +43,7 @@ body {
     a {
       color: #fff;
       text-decoration: none;
+      padding: 8px;
       &:hover {
         opacity: 0.7;
         text-decoration: underline;
@@ -63,7 +57,7 @@ body {
   }
 }
 
-.footer__box {
+.footer-box {
   position: fixed;
   bottom: 0;
   left: 0;
@@ -73,20 +67,20 @@ body {
     display: none;
   }
   a {
+    display: block;
     color: #fff;
     text-decoration: none;
+    padding: 16px;
   }
-}
-
-.footer__icons {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  text-align: center;
-  padding: 8px;
-  span {
-    display: block;
-    font-size: 8px;
+  &__icons {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
     text-align: center;
+    span {
+      display: block;
+      font-size: 8px;
+      text-align: center;
+    }
   }
 }

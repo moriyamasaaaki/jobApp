@@ -6,7 +6,12 @@
     <nav class="header-nav">
       <ul class="header__nav-mobile">
         <li>
-          <button mat-raised-button (click)="login()" color="accent">
+          <button
+            mat-raised-button
+            *ngIf="!(user$ | async)"
+            (click)="login()"
+            color="accent"
+          >
             ログイン
           </button>
         </li>
@@ -22,12 +27,17 @@
         </li>
       </ul>
       <ul class="header__nav-pc">
-        <button mat-raised-button (click)="login()" color="accent">
+        <button
+          mat-raised-button
+          *ngIf="!(user$ | async)"
+          (click)="login()"
+          color="accent"
+        >
           ログイン
         </button>
         <button
           mat-raised-button
-          *ngIf="!(user$ | async)"
+          *ngIf="user$ | async"
           (click)="logout()"
           color="accent"
         >

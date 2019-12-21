@@ -1,8 +1,8 @@
 <header>
   <mat-toolbar class="header" color="primary">
-    <a routerLink="/">
-      <p>Tokyo byte</p>
-    </a>
+    <p>
+      <a routerLink="/">Tokyo byte</a>
+    </p>
     <nav class="header-nav">
       <ul class="header__nav-mobile">
         <li>
@@ -15,17 +15,23 @@
             ログイン
           </button>
         </li>
-        <li>
-          <button
-            mat-raised-button
-            *ngIf="user$ | async"
-            (click)="logout()"
-            color="accent"
-          >
-            ログアウト
-          </button>
-        </li>
+        <button mat-button [matMenuTriggerFor]="mobilemenu">
+          <mat-icon>more_vert</mat-icon>
+          <mat-menu #mobilemenu="matMenu">
+            <button mat-menu-item *ngIf="user$ | async" (click)="logout()">
+              <mat-icon>lock</mat-icon>
+              <span>ログアウト</span>
+            </button>
+            <a routerLink="/plan">
+              <button mat-menu-item>
+                <mat-icon>payment</mat-icon>
+                <span>プラン</span>
+              </button>
+            </a>
+          </mat-menu>
+        </button>
       </ul>
+
       <ul class="header__nav-pc">
         <button
           mat-raised-button
@@ -35,20 +41,17 @@
         >
           ログイン
         </button>
-        <button
-          mat-raised-button
-          *ngIf="user$ | async"
-          (click)="logout()"
-          color="accent"
-        >
-          ログアウト
-        </button>
+
         <li>
           <button mat-button [matMenuTriggerFor]="menu">
             <mat-icon class="header__home">menu</mat-icon>
           </button>
         </li>
         <mat-menu #menu="matMenu">
+          <button mat-menu-item *ngIf="user$ | async" (click)="logout()">
+            <mat-icon>lock</mat-icon>
+            <span>ログアウト</span>
+          </button>
           <a routerLink="/keep">
             <button mat-menu-item>
               <mat-icon>star</mat-icon>

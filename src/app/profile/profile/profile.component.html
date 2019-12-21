@@ -37,7 +37,7 @@
     <mat-form-field class="profile__field">
       <mat-select placeholder="年" formControlName="year" required>
         <mat-option
-          value="{{ year }}年"
+          [value]="bottom"
           required
           *ngFor="let year of years; let i = index"
           >{{ i + bottom }}年</mat-option
@@ -50,10 +50,8 @@
 
     <mat-form-field class="profile__field">
       <mat-select placeholder="月" formControlName="month" required>
-        <mat-option
-          value="{{ i + month }}月"
-          *ngFor="let month of months; let i = index"
-          >{{ i + month + 1 }}月</mat-option
+        <mat-option [value]="month" *ngFor="let month of months; let i = index"
+          >{{ i + month }}月</mat-option
         >
       </mat-select>
       <mat-error *ngIf="monthControl.hasError('required')"
@@ -63,10 +61,8 @@
 
     <mat-form-field class="profile__field">
       <mat-select placeholder="日" formControlName="day" required>
-        <mat-option
-          value="{{ i + day }}日"
-          *ngFor="let day of days; let i = index"
-          >{{ i + day + 1 }}日</mat-option
+        <mat-option [value]="day" *ngFor="let day of days; let i = index"
+          >{{ i + day }}日</mat-option
         >
       </mat-select>
       <mat-error *ngIf="dayControl.hasError('required')"
@@ -78,8 +74,8 @@
   <div class="profile__field">
     <mat-select placeholder="性別"></mat-select>
     <mat-radio-group formControlName="gender" required>
-      <mat-radio-button value="男性">男性</mat-radio-button>
-      <mat-radio-button value="女性">女性</mat-radio-button>
+      <mat-radio-button value="man">男性</mat-radio-button>
+      <mat-radio-button value="female">女性</mat-radio-button>
     </mat-radio-group>
   </div>
 
@@ -107,14 +103,14 @@
         type="tel"
         matInput
         placeholder="電話番号"
-        formControlName="telephone"
+        formControlName="tel"
         required
         autocomplete="tel"
       />
-      <mat-error *ngIf="telephoneControl.hasError('required')"
+      <mat-error *ngIf="telControl.hasError('required')"
         >必須入力です</mat-error
       >
-      <mat-error *ngIf="telephoneControl.hasError('pattern')"
+      <mat-error *ngIf="telControl.hasError('pattern')"
         >数字でハイフンなしでお願いします</mat-error
       >
     </mat-form-field>
@@ -133,7 +129,7 @@
   <div>
     <mat-form-field class="profile__field">
       <mat-select placeholder="学校区分" formControlName="school" required>
-        <mat-option value="{{ school }}" *ngFor="let school of schools">{{
+        <mat-option [value]="school" *ngFor="let school of schools">{{
           school
         }}</mat-option>
       </mat-select>
@@ -147,7 +143,6 @@
         matInput
         placeholder="〇〇大学〇〇学部"
         formControlName="belongs"
-        autocomplete="on"
         required
       />
       <mat-error *ngIf="addressControl.hasError('required')"
@@ -158,7 +153,7 @@
     <mat-form-field class="profile__field">
       <mat-select placeholder="卒業/在学/中退" formControlName="state" required>
         <mat-option
-          value="{{ state }}"
+          [value]="state"
           *ngFor="let state of states; let i = index"
           >{{ state }}</mat-option
         >

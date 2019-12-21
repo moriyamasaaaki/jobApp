@@ -10,8 +10,9 @@ export class ProfileComponent implements OnInit {
   years = new Array(61).fill(null);
   bottom = new Date().getFullYear() - 60;
 
-  months = new Array(12).fill(null);
-  days = new Array(31).fill(null);
+  num = +1;
+  months = new Array(12).fill(this.num);
+  days = new Array(31).fill(this.num);
 
   schools = ['中学', '高校', '専門', '大学', '大学院'];
 
@@ -32,7 +33,7 @@ export class ProfileComponent implements OnInit {
 
     email: ['', [Validators.required, Validators.email]],
 
-    telephone: ['', [Validators.required, Validators.pattern(/^0\d{9,10}$/)]],
+    tel: ['', [Validators.required, Validators.pattern(/^0\d{9,10}$/)]],
 
     school: ['', [Validators.required]],
 
@@ -76,8 +77,8 @@ export class ProfileComponent implements OnInit {
     return this.form.get('email') as FormControl;
   }
 
-  get telephoneControl() {
-    return this.form.get('telephone') as FormControl;
+  get telControl() {
+    return this.form.get('tel') as FormControl;
   }
 
   get schoolControl() {

@@ -20,6 +20,27 @@
   }
   &__btn {
     text-align: center;
+    margin: 24px 0 40px;
+    button {
+      margin: 8px;
+    }
+  }
+  &__footer-item {
+    a {
+      display: block;
+      text-decoration: none;
+      color: #454545;
+      text-align: center;
+      border-bottom: 2px solid #ededed;
+      font-size: 16px;
+      padding: 20px 0;
+      &:nth-child(1) {
+        border-top: 2px solid #ededed;
+      }
+      @include tab {
+        display: none;
+      }
+    }
   }
 }
 

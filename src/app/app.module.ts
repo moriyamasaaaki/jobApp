@@ -12,7 +12,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatToolbarModule } from '@angular/material/toolbar';
 
 import { MatMenuModule } from '@angular/material/menu';
-import {MatIconModule} from '@angular/material/icon';
+import { MatIconModule } from '@angular/material/icon';
 import { NotFoundComponent } from './not-found/not-found.component';
 
 import { AngularFireModule } from '@angular/fire';
@@ -20,8 +20,16 @@ import { environment } from '../environments/environment';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import { DeleteDialogComponent } from './delete-dialog/delete-dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
+
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, NotFoundComponent],
+  declarations: [
+    AppComponent,
+    HeaderComponent,
+    NotFoundComponent,
+    DeleteDialogComponent
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -34,9 +42,11 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
     AngularFireStorageModule,
     AngularFireAuthModule,
     MatSnackBarModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatDialogModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [DeleteDialogComponent]
 })
 export class AppModule {}

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { DeleteDialogComponent } from 'src/app/delete-dialog/delete-dialog.component';
 
 @Component({
   selector: 'app-mypage',
@@ -6,10 +8,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./mypage.component.scss']
 })
 export class MypageComponent implements OnInit {
-  constructor() {}
+  constructor(private dialog: MatDialog) {}
 
-  dialog() {
-    return alert('削除しますか？');
+  openDeleteDialog() {
+    this.dialog.open(DeleteDialogComponent);
   }
 
   ngOnInit() {}

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AttentionJob } from 'src/app/interfaces/article';
 
 @Component({
   selector: 'app-attention',
@@ -6,14 +7,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./attention.component.scss']
 })
 export class AttentionComponent implements OnInit {
-  attention = {
-    img: 'assets/images/job3.jpg',
-    companyName: '株式会社メルカリ',
-    place: '六本木駅',
-    salary: '時給2000円'
+  articlle: AttentionJob = {
+    recruitmentImg: 'assets/images/job3.jpg',
+    companyName: '株式会社tokyo bite',
+    workPlace: '六本木駅',
+    salary: {
+      min: 1200,
+      max: 1300
+    }
   };
 
-  attentions = new Array(3).fill(this.attention);
+  attentions = new Array(3).fill(null);
 
   constructor() {}
 

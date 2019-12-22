@@ -1,1 +1,74 @@
-<p>create-review works!</p>
+<form [formGroup]="form" class="create-review" (ngSubmit)="submit()">
+  <h1>レビュー画面です</h1>
+  <div class="create-review__container">
+    <div class="create-review__content">
+      <p>社内の雰囲気の良さ</p>
+      <div class="create-review__label">
+        <mat-label>悪い</mat-label>
+        <mat-slider
+          class="create-review__slider"
+          formControlName="atmosphere"
+          thumbLabel
+          tickInterval="100"
+          min="0"
+          max="5"
+          tickInterval="1"
+        >
+        </mat-slider>
+        <mat-label>良い</mat-label>
+      </div>
+    </div>
+
+    <div class="create-review__content">
+      <p>サイト記載内容との差異</p>
+      <div class="create-review__label">
+        <mat-label>ない</mat-label>
+        <mat-slider
+          class="create-review__slider"
+          formControlName="contentDiff"
+          thumbLabel
+          tickInterval="100"
+          min="0"
+          max="5"
+          tickInterval="1"
+        ></mat-slider>
+        <mat-label>ある</mat-label>
+      </div>
+    </div>
+
+    <div class="create-review__content">
+      <p>シフトの融通が利く</p>
+      <div class="create-review__label">
+        <mat-label>ない</mat-label>
+        <mat-slider
+          class="create-review__slider"
+          formControlName="sift"
+          thumbLabel
+          tickInterval="100"
+          min="0"
+          max="5"
+          tickInterval="1"
+        ></mat-slider>
+        <mat-label>利く</mat-label>
+      </div>
+    </div>
+
+    <div class="create-review__content">
+      <p>残業時間</p>
+      <div class="create-review__label">
+        <mat-label>なし</mat-label>
+        <mat-slider
+          class="create-review__slider"
+          formControlName="overtime"
+          thumbLabel
+          tickInterval="100"
+          min="0"
+          max="5"
+          tickInterval="1"
+        ></mat-slider>
+        <mat-label>ある</mat-label>
+      </div>
+    </div>
+  </div>
+  <button mat-raised-button color="primary">投稿する</button>
+</form>

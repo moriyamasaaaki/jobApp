@@ -1,5 +1,5 @@
 export interface UserProfile {
-  myName: string;
+  name: string;
   address: string;
   year: number;
   month: number;
@@ -16,7 +16,7 @@ export interface UserProfile {
 }
 
 export interface CompanyProfile {
-  companyName: string;
+  name: string;
   occupatioName: string;
   lastName: string;
   firstName: string;

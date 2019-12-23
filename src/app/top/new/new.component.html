@@ -2,13 +2,13 @@
   <div class="new-job-box__post" *ngFor="let new of news">
     <div class="new-job-box__head">
       <span class="new-job-box__tag">New</span>
-      <a href="">
-        <p class="new-job-box__pc-title">{{ new.companyName }}</p>
+      <a routerLink="/detail">
+        <p class="new-job-box__pc-title">{{ article.companyName }}</p>
       </a>
     </div>
-    <a href="">{{ new.title }}</a>
-    <a href="">
-      <span>{{ new.place }}</span
+    <a routerLink="/detail">{{ article.title }}</a>
+    <a routerLink="/detail">
+      <span>{{ article.workPlace }}</span
       ><i class="material-icons">play_arrow</i>
     </a>
   </div>

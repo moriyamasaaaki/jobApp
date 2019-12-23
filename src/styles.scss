@@ -1,7 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 
-@import "mixins";
-@import "reset";
+@import 'mixins';
+@import 'reset';
 
 html,
 body {
@@ -9,34 +9,41 @@ body {
 }
 body {
   margin: 0;
-  font-family: "Times New Roman", Times, serif;
+  font-family: 'Times New Roman', Times, serif;
 }
 
 .footer {
-      display: none;
-      @include tab {
-        display: block;
-      }
+  background-color: #3f51b5;
+  padding: 16px 8px;
+  display: none;
+  @include tab {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-content: space-between;
+    align-items: center;
+  }
   &__first-nav {
-    padding-left: 0;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 20px;
-    @include tab {
-      margin-bottom: 0;
+    @include pc {
+      justify-content: space-between;
     }
     li {
       list-style: none;
-      font-size: 0.8em;
+      font-size: 12px;
       @include tab {
-        padding: 0 1em;
+        line-height: 2.5;
+      }
+      @include pc {
+        font-size: 14px;
       }
     }
     a {
       color: #fff;
       text-decoration: none;
+      padding: 8px;
       &:hover {
         opacity: 0.7;
         text-decoration: underline;
@@ -45,39 +52,35 @@ body {
   }
   &__copyright {
     text-align: center;
-  }
-  &__content {
-    @include tab {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-  }
-}
-
-
-.footer__box {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  @include tab {
-    display: none;
-  }
-  a {
+    font-size: 14px;
     color: #fff;
   }
 }
 
-.footer__icons {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  text-align: center;
-  padding: 24px 8px;
-  span {
+.footer-box {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #3f51b5;
+  @include tab {
+    display: none;
+  }
+  a {
     display: block;
-    font-size: 5px;
+    color: #fff;
+    text-decoration: none;
+    padding: 16px;
+  }
+  &__icons {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
     text-align: center;
+    span {
+      display: block;
+      font-size: 8px;
+      text-align: center;
+    }
   }
 }

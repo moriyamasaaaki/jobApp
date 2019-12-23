@@ -18,21 +18,21 @@ export class ProfileComponent implements OnInit {
   states = ['卒業', '在学中', '中退'];
 
   form = this.fb.group({
-    myName: ['', [Validators.required]],
+    name: ['', [Validators.required]],
 
     address: ['', [Validators.required]],
 
-    bday: this.fb.group({
-      year: ['', [Validators.required]],
-      month: ['', [Validators.required]],
-      day: ['', [Validators.required]]
-    }),
+    year: ['', [Validators.required]],
+
+    month: ['', [Validators.required]],
+
+    day: ['', [Validators.required]],
 
     gender: ['', [Validators.required]],
 
     email: ['', [Validators.required, Validators.email]],
 
-    tel: ['', [Validators.required, Validators.pattern(/^0\d{9,10}$/)]],
+    telephone: ['', [Validators.required, Validators.pattern(/^0\d{9,10}$/)]],
 
     school: ['', [Validators.required]],
 
@@ -49,8 +49,8 @@ export class ProfileComponent implements OnInit {
     belongs: ['', [Validators.required]]
   });
 
-  get myNameControl() {
-    return this.form.get('myName') as FormControl;
+  get nameControl() {
+    return this.form.get('name') as FormControl;
   }
 
   get addressControl() {

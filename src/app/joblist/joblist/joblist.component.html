@@ -1,98 +1,38 @@
 <section class="keep">
   <h2>求人一覧</h2>
-  <div class="keep__box">
+  <div class="keep__box" *ngFor="let jobList of jobLists">
     <div class="keep__title">
-      <span>株式会社◯◯</span>
+      <span>{{ article.companyName }}</span>
       <a href="/detail">
-        <h3>≪日払OK≫週3日勤務で社員!?新しい働き方◎2現場で日給17000円</h3>
+        <h3>{{ article.title }}</h3>
       </a>
     </div>
     <div class="keep__content">
-      <img src="/assets/images/job3.jpg" alt="求人画像">
+      <img [src]="article.recruitmentImg" alt="求人画像" />
       <ul class="keep__content-list">
         <li>
           <i class="material-icons">compass_calibration</i>
-          <span>渋谷区/渋谷駅 徒歩1分</span>
+          <span>{{ article.workPlace }}</span>
         </li>
-        <li><i class="material-icons">
-            work
-          </i>建築・建設・土木作業、建築・土木その他、資材搬入・荷揚げ</li>
-        <li><i class="material-icons">
+        <li><i class="material-icons"> work </i>{{ article.occupation }}</li>
+        <li>
+          <i class="material-icons">
             money
           </i>
-          日給17,000円～</li>
-        <li><i class="material-icons">
-            access_time
-          </i>08:00～18:00</li>
+          時給{{ article.salary.min }}~{{ article.salary.max }}円
+        </li>
+        <li>
+          <i class="material-icons"> access_time </i>{{ article.workTime }}
+        </li>
       </ul>
     </div>
     <div class="keep__btn">
       <button mat-raised-button color="warn">お気に入り追加</button>
-      <button class="keep__btn-right" mat-raised-button color="primary">応募する</button>
-    </div>
-  </div>
-
-  <div class="keep__box">
-    <div class="keep__title">
-      <span>株式会社◯◯</span>
-      <a href="/detail">
-        <h3>≪日払OK≫週3日勤務で社員!?新しい働き方◎2現場で日給17000円</h3>
+      <a href="dammy@tokyobite.com">
+        <button class="keep__btn-right" mat-raised-button color="primary">
+          応募する
+        </button>
       </a>
-    </div>
-    <div class="keep__content">
-      <img src="/assets/images/job3.jpg" alt="求人画像">
-      <ul class="keep__content-list">
-        <li>
-          <i class="material-icons">compass_calibration</i>
-          <span>渋谷区/渋谷駅 徒歩1分</span>
-        </li>
-        <li><i class="material-icons">
-            work
-          </i>建築・建設・土木作業、建築・土木その他、資材搬入・荷揚げ</li>
-        <li><i class="material-icons">
-            money
-          </i>
-          日給17,000円～</li>
-        <li><i class="material-icons">
-            access_time
-          </i>08:00～18:00</li>
-      </ul>
-    </div>
-    <div class="keep__btn">
-      <button mat-raised-button color="warn">お気に入り追加</button>
-      <button class="keep__btn-right" mat-raised-button color="primary">応募する</button>
-    </div>
-  </div>
-
-  <div class="keep__box">
-    <div class="keep__title">
-      <span>株式会社◯◯</span>
-      <a href="/detail">
-        <h3>≪日払OK≫週3日勤務で社員!?新しい働き方◎2現場で日給17000円</h3>
-      </a>
-    </div>
-    <div class="keep__content">
-      <img src="/assets/images/job3.jpg" alt="求人画像">
-      <ul class="keep__content-list">
-        <li>
-          <i class="material-icons">compass_calibration</i>
-          <span>渋谷区/渋谷駅 徒歩1分</span>
-        </li>
-        <li><i class="material-icons">
-            work
-          </i>建築・建設・土木作業、建築・土木その他、資材搬入・荷揚げ</li>
-        <li><i class="material-icons">
-            money
-          </i>
-          日給17,000円～</li>
-        <li><i class="material-icons">
-            access_time
-          </i>08:00～18:00</li>
-      </ul>
-    </div>
-    <div class="keep__btn">
-      <button mat-raised-button color="warn">お気に入り追加</button>
-      <button class="keep__btn-right" mat-raised-button color="primary">応募する</button>
     </div>
   </div>
 </section>

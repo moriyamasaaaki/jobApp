@@ -10,7 +10,6 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class AuthService {
   afUser$: Observable<User> = this.afAuth.user;
-
   constructor(
     private afAuth: AngularFireAuth,
     private router: Router,
@@ -20,9 +19,7 @@ export class AuthService {
   }
 
   login() {
-    this.afAuth.auth.signInWithPopup(
-      new auth.GoogleAuthProvider()
-    ).then(() => {
+    this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider()).then(() => {
       this.snackBar.open('ようこそTokyo biteへ!', null, {
         duration: 2000
       });
@@ -39,9 +36,7 @@ export class AuthService {
   }
 
   companyLogin() {
-    this.afAuth.auth.signInWithPopup(
-      new auth.GoogleAuthProvider()
-    ).then(() => {
+    this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider()).then(() => {
       this.snackBar.open('企業側としてログインしました。', null, {
         duration: 2000
       });

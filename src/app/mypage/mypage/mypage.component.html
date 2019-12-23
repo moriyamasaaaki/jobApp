@@ -37,6 +37,16 @@
   </div>
   <div class="mypage__btn">
     <a routerLink="/profile" mat-raised-button color="primary">編集する</a>
-    <button mat-raised-button color="warn" (click)="dialog()">削除する</button>
+    <button mat-raised-button color="warn" (click)="openDeleteDialog()">
+      削除する
+    </button>
+  </div>
+
+  <div class="mypage__footer-item">
+    <a routerLink="/plan">プラン</a>
+    <a routerLink="/">企業の方はこちらから</a>
+    <a routerLink="/comlaw">特定商取引法に基づく表示</a>
+    <a routerLink="/terms">利用規約</a>
+    <a routerLink="/about">Tokyo biteについて</a>
   </div>
 </div>

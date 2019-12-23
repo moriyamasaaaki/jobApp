@@ -19,9 +19,11 @@
           <i class="material-icons">
             money
           </i>
-          {{ job.salary }}
+          時給{{ article.salary.min }}~{{ article.salary.max }}円
         </li>
-        <li><i class="material-icons"> access_time </i>{{ job.workTime }}s</li>
+        <li>
+          <i class="material-icons"> access_time </i>{{ article.workTime }}
+        </li>
       </ul>
     </div>
     <div class="job-card__btn">

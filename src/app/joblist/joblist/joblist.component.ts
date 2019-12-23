@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { JobList } from 'src/app/interfaces/article';
 
 @Component({
   selector: 'app-joblist',
@@ -6,17 +7,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./joblist.component.scss']
 })
 export class JoblistComponent implements OnInit {
-  job = {
-    companyName: '株式会社サイバーエージェント',
-    title: 'Go経験のあるエンジニア募集',
-    img: 'assets/images/job3.jpg',
-    place: '渋谷駅',
-    occupation: 'フロント、サーバー、iOS、機械学習、データサイエンティスト',
-    salary: 2000,
-    workTime: '08:00～18:00'
+  article: JobList = {
+    companyName: '株式会社Tokyo bite',
+    title: '求人の詳細が表示されます。',
+    recruitmentImg: '/assets/images/job1.jpg',
+    workPlace: '東京',
+    occupation: 'エンジニア',
+    salary: {
+      min: 1200,
+      max: 1500
+    },
+    workTime: '10:00~18:00'
   };
 
-  jobs = new Array(10).fill(this.job);
+  jobLists = new Array(5).fill(null);
 
   constructor() {}
 

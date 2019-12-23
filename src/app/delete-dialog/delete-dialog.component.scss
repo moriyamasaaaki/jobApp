@@ -1,0 +1,15 @@
+@import 'mixins';
+
+.delete-dialog {
+  line-height: 2;
+  text-align: center;
+  h2 {
+    font-size: 20px;
+  }
+  p {
+    font-size: 14px;
+  }
+  button {
+    margin: 8px;
+  }
+}

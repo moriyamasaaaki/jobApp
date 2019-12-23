@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Article } from 'src/app/interfaces/article';
+import { DetailJob } from 'src/app/interfaces/article';
 
 @Component({
   selector: 'app-detail',
@@ -7,18 +7,16 @@ import { Article } from 'src/app/interfaces/article';
   styleUrls: ['./detail.component.scss']
 })
 export class DetailComponent implements OnInit {
-  // @Input() article: Article;
-
-  article: Article = {
+  article: DetailJob = {
     title: 'タイトル',
     label: ['週２からOK', '未経験大歓迎'],
     companyName: '会社名',
     date: new Date(),
-    companyContent:  '会社概要が入ります。',
+    companyContent: '会社概要が入ります。',
     occupation: '職種が入ります。',
     salary: {
       min: 1200,
-      max: 1300,
+      max: 1300
     },
     welfare: 'あり',
     workTime: '18:00〜22：00',
@@ -26,9 +24,7 @@ export class DetailComponent implements OnInit {
     recruitmentImg: '/assets/images/job3.jpg'
   };
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }

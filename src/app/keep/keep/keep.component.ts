@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { JobList } from 'src/app/interfaces/article';
 
 @Component({
   selector: 'app-keep',
@@ -6,17 +7,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./keep.component.scss']
 })
 export class KeepComponent implements OnInit {
-  job = {
-    companyName: '株式会社サイバーエージェント',
-    title: 'Go経験のあるエンジニア募集',
-    img: 'assets/images/job3.jpg',
-    place: '渋谷駅',
+  article: JobList = {
+    companyName: '株式会社Tokyo biteaa',
+    title: 'タイトルが入ります。',
+    recruitmentImg: 'assets/images/job3.jpg',
+    workPlace: '渋谷駅',
     occupation: 'フロント、サーバー、iOS、機械学習、データサイエンティスト',
-    salary: 2000,
+    salary: {
+      min: 1200,
+      max: 1500
+    },
     workTime: '08:00～18:00'
   };
 
-  jobs = new Array(5).fill(this.job);
+  jobs = new Array(5).fill(null);
 
   constructor() {}
 

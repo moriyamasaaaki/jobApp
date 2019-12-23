@@ -1,40 +1,32 @@
-<section class="job-list">
+<section class="job-list job-card">
   <h2>求人一覧</h2>
-  <div class="job-list__box" *ngFor="let job of jobs">
-    <div class="job-list__title">
+  <div class="job-card__box" *ngFor="let job of jobs">
+    <div class="job-card__title">
       <span>{{ job.companyName }}</span>
       <a href="/detail">
         <h3>{{ job.title }}</h3>
       </a>
     </div>
-    <div class="job-list__content">
+    <div class="job-card__content">
       <img [src]="job.img" alt="求人画像" />
-      <ul class="job-list__content-list">
+      <ul class="job-card__content-list">
         <li>
           <i class="material-icons">compass_calibration</i>
           <span>{{ job.place }}</span>
         </li>
-        <li>
-          <i class="material-icons">
-            work </i
-          >{{ job.occupation }}
-        </li>
+        <li><i class="material-icons"> work </i>{{ job.occupation }}</li>
         <li>
           <i class="material-icons">
             money
           </i>
           {{ job.salary }}
         </li>
-        <li>
-          <i class="material-icons">
-            access_time </i
-          >{{ job.workTime }}s
-        </li>
+        <li><i class="material-icons"> access_time </i>{{ job.workTime }}s</li>
       </ul>
     </div>
-    <div class="job-list__btn">
+    <div class="job-card__btn">
       <button mat-raised-button color="warn">お気に入り追加</button>
-      <button class="job-list__btn-right" mat-raised-button color="primary">
+      <button class="job-card__btn-right" mat-raised-button color="primary">
         応募する
       </button>
     </div>

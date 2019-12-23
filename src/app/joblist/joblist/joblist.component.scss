@@ -1,12 +1,2 @@
 @import 'mixins';
-
-.job-list {
-  padding: 0 8px;
-  margin-bottom: 24px;
-  @include tab {
-    width: 70%;
-    margin: 0 auto 32px;
-    padding: 0;
-  }
-  @import 'job-box';
-}
+@import 'job-card';

@@ -1,13 +1,17 @@
 <section class="job-box">
   <div class="job-box__card" *ngFor="let attention of attentions">
-    <img [src]="attention.img" width="100%" alt="注目求人1" />
+    <a routerLink="/detail">
+      <img [src]="article.recruitmentImg" alt="" />
+    </a>
     <div class="job-box__content">
       <p>
-        <a href="" class="job-box__title">{{ attention.companyName }}</a>
+        <a routerLink="/detail" class="job-box__title">{{
+          article.companyName
+        }}</a>
       </p>
       <ul>
-        <li>{{ attention.place }}</li>
-        <li>{{ attention.salary }}</li>
+        <li>{{ article.workPlace }}</li>
+        <li>{{ article.salary.min }}~{{ article.salary.max }}円</li>
       </ul>
       <a routerLink="/detail">
         <button mat-raised-button color="primary">もっと見る</button>

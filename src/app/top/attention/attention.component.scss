@@ -38,4 +38,12 @@
   &__content {
     padding: 0 8px;
   }
+  a {
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+  img {
+    width: 100%;
+  }
 }

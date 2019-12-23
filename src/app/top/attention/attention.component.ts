@@ -7,8 +7,8 @@ import { AttentionJob } from 'src/app/interfaces/article';
   styleUrls: ['./attention.component.scss']
 })
 export class AttentionComponent implements OnInit {
-  articlle: AttentionJob = {
-    recruitmentImg: 'assets/images/job3.jpg',
+  article: AttentionJob = {
+    recruitmentImg: '/assets/images/job3.jpg',
     companyName: '株式会社tokyo bite',
     workPlace: '六本木駅',
     salary: {

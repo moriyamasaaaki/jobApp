@@ -22,8 +22,9 @@
       <input
         matInput
         placeholder="住所"
+        name="address"
         formControlName="address"
-        autocomplete="address-level3"
+        autocomplete="street-address"
         required
       />
       <mat-error *ngIf="addressControl.hasError('required')"
@@ -31,16 +32,14 @@
       >
     </mat-form-field>
   </div>
-
-  <div>
+  <div formGroupName="bday">
     <mat-form-field class="profile__field">
-      <mat-select placeholder="年" formControlName="year">
+      <mat-select placeholder="年" formControlName="year" required>
         <mat-option
-          value="{{ year }}年"
+          [value]="bottom"
           required
           *ngFor="let year of years; let i = index"
-          autocomplete="off"
-          >{{ year }}年</mat-option
+          >{{ i + bottom }}年</mat-option
         >
       </mat-select>
       <mat-error *ngIf="yearControl.hasError('required')"
@@ -50,11 +49,8 @@
 
     <mat-form-field class="profile__field">
       <mat-select placeholder="月" formControlName="month" required>
-        <mat-option
-          value="{{ i + month }}月"
-          *ngFor="let month of months; let i = index"
-          autocomplete="off"
-          >{{ i + month }}月</mat-option
+        <mat-option [value]="month" *ngFor="let month of months; let i = index"
+          >{{ i + 1 }}月</mat-option
         >
       </mat-select>
       <mat-error *ngIf="monthControl.hasError('required')"
@@ -64,11 +60,9 @@
 
     <mat-form-field class="profile__field">
       <mat-select placeholder="日" formControlName="day" required>
-        <mat-option
-          value="{{ i + day }}日"
-          *ngFor="let day of days; let i = index"
-          autocomplete="off"
-          >{{ i + day }}日</mat-option
+
+        <mat-option [value]="day" *ngFor="let day of days; let i = index"
+          >{{ i + 1 }}日</mat-option
         >
       </mat-select>
       <mat-error *ngIf="dayControl.hasError('required')"
@@ -79,9 +73,10 @@
 
   <div class="profile__field">
     <mat-select placeholder="性別"></mat-select>
-    <mat-radio-group formControlName="gender" required autocomplete="off">
-      <mat-radio-button value="男性">男性</mat-radio-button>
-      <mat-radio-button value="女性">女性</mat-radio-button>
+
+    <mat-radio-group formControlName="gender" required>
+      <mat-radio-button value="male">男性</mat-radio-button>
+      <mat-radio-button value="female">女性</mat-radio-button>
     </mat-radio-group>
   </div>
 
@@ -109,14 +104,14 @@
         type="tel"
         matInput
         placeholder="電話番号"
-        formControlName="telephone"
+        formControlName="tel"
         required
         autocomplete="tel"
       />
-      <mat-error *ngIf="telephoneControl.hasError('required')"
+      <mat-error *ngIf="telControl.hasError('required')"
         >必須入力です</mat-error
       >
-      <mat-error *ngIf="telephoneControl.hasError('pattern')"
+      <mat-error *ngIf="telControl.hasError('pattern')"
         >数字でハイフンなしでお願いします</mat-error
       >
     </mat-form-field>
@@ -128,7 +123,6 @@
         matInput
         placeholder="自己紹介"
         formControlName="introduce"
-        autocomplete="off"
       ></textarea>
     </mat-form-field>
   </div>
@@ -136,12 +130,9 @@
   <div>
     <mat-form-field class="profile__field">
       <mat-select placeholder="学校区分" formControlName="school" required>
-        <mat-option
-          value="{{ school }}"
-          *ngFor="let school of schools"
-          autocomplete="off"
-          >{{ school }}</mat-option
-        >
+        <mat-option [value]="school" *ngFor="let school of schools">{{
+          school
+        }}</mat-option>
       </mat-select>
       <mat-error *ngIf="schoolControl.hasError('required')"
         >選択してください</mat-error
@@ -153,7 +144,6 @@
         matInput
         placeholder="〇〇大学〇〇学部"
         formControlName="belongs"
-        autocomplete="off"
         required
       />
       <mat-error *ngIf="addressControl.hasError('required')"
@@ -164,9 +154,8 @@
     <mat-form-field class="profile__field">
       <mat-select placeholder="卒業/在学/中退" formControlName="state" required>
         <mat-option
-          value="{{ state }}"
+          [value]="state"
           *ngFor="let state of states; let i = index"
-          autocomplete="off"
           >{{ state }}</mat-option
         >
       </mat-select>
@@ -178,21 +167,11 @@
 
   <div class="profile__field">
     <mat-form-field class="profile__field">
-      <input
-        matInput
-        placeholder="資格１"
-        formControlName="tagOne"
-        autocomplete="off"
-      />
+      <input matInput placeholder="資格１" formControlName="tagOne" />
     </mat-form-field>
 
     <mat-form-field class="profile__field">
-      <input
-        matInput
-        placeholder="資格２"
-        formControlName="tagSecond"
-        autocomplete="off"
-      />
+      <input matInput placeholder="資格２" formControlName="tagSecond" />
     </mat-form-field>
   </div>
 
@@ -202,7 +181,6 @@
         matInput
         placeholder="勤務可能な日時"
         formControlName="possibleDay"
-        autocomplete="off"
         required
       ></textarea>
       <mat-error *ngIf="stateControl.hasError('required')"

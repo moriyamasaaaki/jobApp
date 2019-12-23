@@ -7,9 +7,10 @@ import { FormBuilder, Validators, FormControl } from '@angular/forms';
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent implements OnInit {
-  years = [1960, 1961, 1962, 1963, 1964, 1965];
+  years = new Array(61).fill(null);
+  bottom = new Date().getFullYear() - 60;
 
-  months = new Array(13).fill(null);
+  months = new Array(12).fill(null);
   days = new Array(31).fill(null);
 
   schools = ['中学', '高校', '専門', '大学', '大学院'];
@@ -55,17 +56,16 @@ export class ProfileComponent implements OnInit {
   get addressControl() {
     return this.form.get('address') as FormControl;
   }
-
   get yearControl() {
-    return this.form.get('year') as FormControl;
+    return this.form.get('bday.year') as FormControl;
   }
 
   get monthControl() {
-    return this.form.get('month') as FormControl;
+    return this.form.get('bday.month') as FormControl;
   }
 
   get dayControl() {
-    return this.form.get('day') as FormControl;
+    return this.form.get('bday.day') as FormControl;
   }
 
   get genderControl() {
@@ -76,8 +76,8 @@ export class ProfileComponent implements OnInit {
     return this.form.get('email') as FormControl;
   }
 
-  get telephoneControl() {
-    return this.form.get('telephone') as FormControl;
+  get telControl() {
+    return this.form.get('tel') as FormControl;
   }
 
   get schoolControl() {

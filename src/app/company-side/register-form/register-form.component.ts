@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormControl } from '@angular/forms';
-import { AuthService } from '../../services/auth.service';
+import { CompanyProfileService } from 'src/app/service/company-profile.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-register-form',
@@ -10,6 +11,8 @@ import { AuthService } from '../../services/auth.service';
 export class RegisterFormComponent implements OnInit {
   form = this.fb.group({
     name: ['', [Validators.required]],
+
+    department: ['', []],
 
     lastName: ['', [Validators.required, Validators.maxLength(30)]],
 
@@ -29,6 +32,10 @@ export class RegisterFormComponent implements OnInit {
     return this.form.get('name') as FormControl;
   }
 
+  get departmentControl() {
+    return this.form.get('department') as FormControl;
+  }
+
   get lastNameControl() {
     return this.form.get('lastName') as FormControl;
   }
@@ -45,7 +52,11 @@ export class RegisterFormComponent implements OnInit {
     return this.form.get('password') as FormControl;
   }
 
-  constructor(private fb: FormBuilder, private authService: AuthService) {}
+  constructor(
+    private fb: FormBuilder,
+    private companyProfileService: CompanyProfileService,
+    private authService: AuthService
+  ) {}
 
   ngOnInit() {}
 
@@ -55,5 +66,15 @@ export class RegisterFormComponent implements OnInit {
 
   submit() {
     console.log(this.form.value);
+    const userDate = this.form.value;
+    this.companyProfileService.createCompanyUser({
+      companyUserId: this.authService.uid,
+      name: userDate.name,
+      department: userDate.department,
+      lastName: userDate.lastName,
+      firstName: userDate.firstName,
+      email: userDate.email,
+      password: userDate.password
+    });
   }
 }

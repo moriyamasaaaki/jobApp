@@ -18,11 +18,11 @@ export interface UserProfile {
 }
 
 export interface CompanyProfile {
+  companyUserId: string;
   name: string;
-  occupatioName: string;
+  department: string;
   lastName: string;
   firstName: string;
   email: string;
   password: string;
-  terms: boolean;
 }

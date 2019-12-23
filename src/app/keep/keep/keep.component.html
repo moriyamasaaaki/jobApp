@@ -1,34 +1,37 @@
-<section class="keep">
+<section class="keep job-card">
   <h2>お気に入りした求人</h2>
-  <p>お気に入り/<span class="keep__number">１</span>件</p>
-  <div class="keep__box">
-    <div class="keep__title">
-      <span>株式会社◯◯</span>
-        <a href="/detail"><h3>≪日払OK≫週3日勤務で社員!?新しい働き方◎2現場で日給17000円</h3></a>
+  <p>お気に入り/<span class="job-card__number">１</span>件</p>
+  <div class="job-card__box" *ngFor="let job of jobs">
+    <div class="job-card__title">
+      <span>{{ article.companyName }}</span>
+      <a href="/detail"
+        ><h3>{{ article.title }}</h3></a
+      >
     </div>
-    <div class="keep__content">
-      <img src="/assets/images/job3.jpg" width="100%" alt="">
-        <ul class="keep__content-list">
-          <li>
-            <i class="material-icons">compass_calibration</i>
-            <span>渋谷区/渋谷駅 徒歩1分</span>
-          </li>
-          <li><i class="material-icons">
-            work
-          </i>建築・建設・土木作業、建築・土木その他、資材搬入・荷揚げ</li>
-          <li><i class="material-icons">
+    <div class="job-card__content">
+      <img [src]="article.recruitmentImg" width="100%" alt="" />
+      <ul class="job-card__content-list">
+        <li>
+          <i class="material-icons">compass_calibration</i>
+          <span>{{ article.workPlace }}</span>
+        </li>
+        <li><i class="material-icons"> work </i>{{ article.occupation }}</li>
+        <li>
+          <i class="material-icons">
             money
           </i>
-          日給17,000円～</li>
-          <li><i class="material-icons">
-            access_time
-          </i>08:00～18:00</li>
-        </ul>
+          時給{{ article.salary }}円
+        </li>
+        <li>
+          <i class="material-icons"> access_time </i>{{ article.workTime }}
+        </li>
+      </ul>
     </div>
-    <div class="keep__btn">
+    <div class="job-card__btn">
       <button mat-raised-button color="warn">お気に入り削除</button>
-      <button class="keep__btn__right" mat-raised-button color="primary">応募する</button>
+      <button class="job-card__btn__right" mat-raised-button color="primary">
+        応募する
+      </button>
     </div>
-
   </div>
 </section>

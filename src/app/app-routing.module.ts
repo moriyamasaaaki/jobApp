@@ -19,6 +19,16 @@ const routes: Routes = [
   },
 
   {
+    path: 'review',
+    loadChildren: () =>
+      import('./create-review/create-review.module').then(
+        m => m.CreateReviewModule
+      ),
+    canLoad: [AuthGuard],
+    canActivate: [AuthGuard]
+  },
+
+  {
     path: 'terms',
     loadChildren: () => import('./legal/legal.module').then(m => m.LegalModule)
   },

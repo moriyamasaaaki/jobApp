@@ -8,39 +8,25 @@ import { AuthService } from '../../services/auth.service';
   styleUrls: ['./register-form.component.scss']
 })
 export class RegisterFormComponent implements OnInit {
-
   form = this.fb.group({
-    companyName: ['', [
-      Validators.required,
-    ]],
+    name: ['', [Validators.required]],
 
-    lastName: ['', [
-      Validators.required,
-      Validators.maxLength(30)
-    ]],
+    lastName: ['', [Validators.required, Validators.maxLength(30)]],
 
-    firstName: ['', [
-      Validators.required,
-      Validators.maxLength(30)
-    ]],
+    firstName: ['', [Validators.required, Validators.maxLength(30)]],
 
-    email: ['', [
-      Validators.required,
-      Validators.email
-    ]],
+    email: ['', [Validators.required, Validators.email]],
 
-    password: ['', [
-      Validators.required,
-      Validators.pattern(/^([a-zA-Z0-9]{8,})$/)
-    ]],
+    password: [
+      '',
+      [Validators.required, Validators.pattern(/^([a-zA-Z0-9]{8,})$/)]
+    ]
   });
 
   hide = true;
 
-
-
-  get companyNameControl() {
-    return this.form.get('companyName') as FormControl;
+  get nameControl() {
+    return this.form.get('name') as FormControl;
   }
 
   get lastNameControl() {
@@ -55,27 +41,19 @@ export class RegisterFormComponent implements OnInit {
     return this.form.get('email') as FormControl;
   }
 
-
   get passwordControl() {
     return this.form.get('password') as FormControl;
   }
 
-  constructor(
-    private fb: FormBuilder,
-    private authService: AuthService,
-  ) { }
+  constructor(private fb: FormBuilder, private authService: AuthService) {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   logout() {
     this.authService.logout();
   }
 
-
   submit() {
     console.log(this.form.value);
   }
-
-
 }

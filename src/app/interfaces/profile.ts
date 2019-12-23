@@ -1,4 +1,5 @@
 export interface UserProfile {
+  userId: string;
   name: string;
   address: string;
   year: number;
@@ -11,8 +12,9 @@ export interface UserProfile {
   school: string;
   belongs: string;
   state: string;
-  label: string[];
-  workPlace: string;
+  tagOne: string;
+  tagSecond: string;
+  possibleDay: string;
 }
 
 export interface CompanyProfile {

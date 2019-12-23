@@ -10,9 +10,8 @@ export class ProfileComponent implements OnInit {
   years = new Array(61).fill(null);
   bottom = new Date().getFullYear() - 60;
 
-  num = +1;
-  months = new Array(12).fill(this.num);
-  days = new Array(31).fill(this.num);
+  months = new Array(12).fill(null);
+  days = new Array(31).fill(null);
 
   schools = ['中学', '高校', '専門', '大学', '大学院'];
 

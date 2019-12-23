@@ -51,7 +51,7 @@
     <mat-form-field class="profile__field">
       <mat-select placeholder="月" formControlName="month" required>
         <mat-option [value]="month" *ngFor="let month of months; let i = index"
-          >{{ i + month }}月</mat-option
+          >{{ i + 1 }}月</mat-option
         >
       </mat-select>
       <mat-error *ngIf="monthControl.hasError('required')"
@@ -62,7 +62,7 @@
     <mat-form-field class="profile__field">
       <mat-select placeholder="日" formControlName="day" required>
         <mat-option [value]="day" *ngFor="let day of days; let i = index"
-          >{{ i + day }}日</mat-option
+          >{{ i + 1 }}日</mat-option
         >
       </mat-select>
       <mat-error *ngIf="dayControl.hasError('required')"
@@ -74,7 +74,7 @@
   <div class="profile__field">
     <mat-select placeholder="性別"></mat-select>
     <mat-radio-group formControlName="gender" required>
-      <mat-radio-button value="man">男性</mat-radio-button>
+      <mat-radio-button value="male">男性</mat-radio-button>
       <mat-radio-button value="female">女性</mat-radio-button>
     </mat-radio-group>
   </div>

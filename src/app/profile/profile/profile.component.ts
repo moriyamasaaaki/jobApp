@@ -22,17 +22,16 @@ export class ProfileComponent implements OnInit {
 
     address: ['', [Validators.required]],
 
-    year: ['', [Validators.required]],
-
-    month: ['', [Validators.required]],
-
-    day: ['', [Validators.required]],
-
+    bday: this.fb.group({
+      year: ['', [Validators.required]],
+      month: ['', [Validators.required]],
+      day: ['', [Validators.required]]
+    }),
     gender: ['', [Validators.required]],
 
     email: ['', [Validators.required, Validators.email]],
 
-    telephone: ['', [Validators.required, Validators.pattern(/^0\d{9,10}$/)]],
+    tel: ['', [Validators.required, Validators.pattern(/^0\d{9,10}$/)]],
 
     school: ['', [Validators.required]],
 

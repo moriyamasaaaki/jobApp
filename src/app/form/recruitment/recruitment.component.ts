@@ -88,19 +88,9 @@ export class RecruitmentComponent implements OnInit {
 
   submit() {
     console.log(this.form.value);
-    const userDate = this.form.value;
     this.jobPostService.createJobPost({
       postId: this.authService.uid,
-      title: userDate.title,
-      workTime: userDate.workPlace,
-      holiday: userDate.holiday,
-      welfare: userDate.welfare,
-      overview: userDate.overview,
-      label: userDate.label,
-      company: userDate.company,
-      salary: userDate.salary,
-      occupation: userDate.occupation,
-      workPlace: userDate.workPlace
+      ...this.form.value
     });
   }
 }

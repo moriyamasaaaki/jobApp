@@ -66,15 +66,9 @@ export class RegisterFormComponent implements OnInit {
 
   submit() {
     console.log(this.form.value);
-    const userDate = this.form.value;
     this.companyProfileService.createCompanyUser({
       companyUserId: this.authService.uid,
-      name: userDate.name,
-      department: userDate.department,
-      lastName: userDate.lastName,
-      firstName: userDate.firstName,
-      email: userDate.email,
-      password: userDate.password
+      ...this.form.value
     });
   }
 }

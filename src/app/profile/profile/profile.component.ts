@@ -119,24 +119,9 @@ export class ProfileComponent implements OnInit {
 
   submit() {
     console.log(this.form.value);
-    const userDate = this.form.value;
     this.userProfileService.createUser({
       userId: this.authService.uid,
-      name: userDate.name,
-      address: userDate.address,
-      year: userDate.bday.year,
-      month: userDate.bday.month,
-      day: userDate.bday.day,
-      gender: userDate.gender,
-      email: userDate.email,
-      tel: userDate.tel,
-      introduce: userDate.introduce,
-      school: userDate.school,
-      belongs: userDate.belongs,
-      state: userDate.state,
-      tagOne: userDate.tagOne,
-      tagSecond: userDate.tagSecond,
-      possibleDay: userDate.possibleDay
+      ...this.form.value
     });
   }
 }

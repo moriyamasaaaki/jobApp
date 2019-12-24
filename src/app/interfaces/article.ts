@@ -33,3 +33,20 @@ export interface NewJob {
   title: string;
   workPlace: string;
 }
+
+export interface DamiJob {
+  postId: string;
+  title: string;
+  workTime: string;
+  holiday: string;
+  welfare: string;
+  overview: string;
+  label: string[];
+  company: string;
+  salary: {
+    min: number;
+    max: number;
+  };
+  occupation: string;
+  workPlace: string;
+}

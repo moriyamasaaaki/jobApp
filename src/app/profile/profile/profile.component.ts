@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormControl } from '@angular/forms';
+import { UserProfileService } from 'src/app/service/user-profile.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-profile',
@@ -107,11 +109,19 @@ export class ProfileComponent implements OnInit {
     return this.form.get('belongs') as FormControl;
   }
 
-  constructor(private fb: FormBuilder) {}
+  constructor(
+    private fb: FormBuilder,
+    private userProfileService: UserProfileService,
+    private authService: AuthService
+  ) {}
 
   ngOnInit() {}
 
   submit() {
     console.log(this.form.value);
+    this.userProfileService.createUser({
+      userId: this.authService.uid,
+      ...this.form.value
+    });
   }
 }

@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormControl } from '@angular/forms';
+import { JobPostService } from 'src/app/service/job-post.service';
+import { stringify } from 'querystring';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-recruitment',
@@ -7,53 +10,36 @@ import { FormBuilder, Validators, FormControl } from '@angular/forms';
   styleUrls: ['./recruitment.component.scss']
 })
 export class RecruitmentComponent implements OnInit {
-
   form = this.fb.group({
-    introduce: ['', [
-      Validators.required,
-      Validators.maxLength(50)
-    ]],
+    title: ['', [Validators.required, Validators.maxLength(50)]],
 
-    workTime: ['', [
-      Validators.required,
-      Validators.pattern(/([0-1][0-9]|2[0-3]):[0-5][0-9]/)
-    ]],
+    workTime: [
+      '',
+      [
+        Validators.required,
+        Validators.pattern(/([0-1][0-9]|2[0-3]):[0-5][0-9]/)
+      ]
+    ],
 
-    holiday: ['', [
-      Validators.required,
-    ]],
+    holiday: ['', [Validators.required]],
 
-    welfare: ['', [
-      Validators.required,
-    ]],
+    welfare: ['', [Validators.required]],
 
-    overview: ['', [
-      Validators.required,
-      Validators.maxLength(400)
-    ]],
+    overview: ['', [Validators.required, Validators.maxLength(400)]],
 
-    company: ['', [
-      Validators.required,
-    ]],
+    label: ['', []],
 
-    salary: ['', [
-      Validators.required,
-    ]],
+    company: ['', [Validators.required]],
 
-    profession: ['', [
-      Validators.required,
-    ]],
+    salary: ['', [Validators.required]],
 
-    location: ['', [
-      Validators.required,
-    ]],
+    occupation: ['', [Validators.required]],
 
-
-
+    workPlace: ['', [Validators.required]]
   });
 
-  get introduceControl() {
-    return this.form.get('introduce') as FormControl;
+  get titleControl() {
+    return this.form.get('title') as FormControl;
   }
 
   get workTimeControl() {
@@ -72,6 +58,10 @@ export class RecruitmentComponent implements OnInit {
     return this.form.get('overview') as FormControl;
   }
 
+  get labelControl() {
+    return this.form.get('label') as FormControl;
+  }
+
   get companyControl() {
     return this.form.get('company') as FormControl;
   }
@@ -80,25 +70,37 @@ export class RecruitmentComponent implements OnInit {
     return this.form.get('salary') as FormControl;
   }
 
-  get professionControl() {
-    return this.form.get('profession') as FormControl;
+  get occupationControl() {
+    return this.form.get('occupation') as FormControl;
   }
 
-  get locationControl() {
-    return this.form.get('location') as FormControl;
+  get workPlaceControl() {
+    return this.form.get('workPlace') as FormControl;
   }
-
-
 
   constructor(
-    private fb: FormBuilder
-  ) { }
+    private fb: FormBuilder,
+    private jobPostService: JobPostService,
+    private authService: AuthService
+  ) {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   submit() {
     console.log(this.form.value);
+    const userDate = this.form.value;
+    this.jobPostService.createJobPost({
+      postId: this.authService.uid,
+      title: userDate.title,
+      workTime: userDate.workPlace,
+      holiday: userDate.holiday,
+      welfare: userDate.welfare,
+      overview: userDate.overview,
+      label: userDate.label,
+      company: userDate.company,
+      salary: userDate.salary,
+      occupation: userDate.occupation,
+      workPlace: userDate.workPlace
+    });
   }
-
 }

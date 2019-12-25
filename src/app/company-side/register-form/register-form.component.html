@@ -65,6 +65,25 @@
   <div>
     <mat-form-field class="companyForm__field">
       <input
+        type="tel"
+        matInput
+        placeholder="電話番号"
+        formControlName="tel"
+        required
+        autocomplete="tel"
+      />
+      <mat-error *ngIf="telControl.hasError('required')"
+        >必須入力です</mat-error
+      >
+      <mat-error *ngIf="telControl.hasError('pattern')"
+        >数字でハイフンなしでお願いします</mat-error
+      >
+    </mat-form-field>
+  </div>
+
+  <div>
+    <mat-form-field class="companyForm__field">
+      <input
         matInput
         placeholder="メールアドレス"
         formControlName="email"

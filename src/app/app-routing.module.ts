@@ -92,6 +92,16 @@ const routes: Routes = [
   },
 
   {
+    path: 'companyProfile',
+    loadChildren: () =>
+      import('./company-profile/company-profile.module').then(
+        m => m.CompanyProfileModule
+      ),
+    canLoad: [AuthGuard],
+    canActivate: [AuthGuard]
+  },
+
+  {
     path: 'joblist',
     loadChildren: () =>
       import('./joblist/joblist.module').then(m => m.JoblistModule),

@@ -12,16 +12,14 @@ import { UserProfile } from 'src/app/interfaces/profile';
   styleUrls: ['./mypage.component.scss']
 })
 export class MypageComponent implements OnInit {
-  profile$: Observable<UserProfile> = this.UserProfileService.getUser(
-    this.AuthService.uid
+  profile$: Observable<UserProfile> = this.userProfileService.getUser(
+    this.authService.uid
   );
 
   constructor(
     private dialog: MatDialog,
-    // tslint:disable-next-line: no-shadowed-variable
-    private UserProfileService: UserProfileService,
-    // tslint:disable-next-line: no-shadowed-variable
-    private AuthService: AuthService
+    private userProfileService: UserProfileService,
+    private authService: AuthService
   ) {}
 
   openDeleteDialog() {

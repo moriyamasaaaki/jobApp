@@ -1,37 +1,41 @@
 <div class="mypage">
   <h2>マイページ</h2>
-  <div class="mypage__list">
+  <div class="mypage__list" *ngIf="profile$ | async as profile">
     <dl>
       <dt>名前</dt>
-      <dd>守屋 雅章</dd>
+      <dd>{{ profile.name }}</dd>
 
       <dt>住所</dt>
-      <dd>東京都品川区五反田〇〇-〇〇</dd>
+      <dd>{{ profile.address }}</dd>
 
       <dt>生年月日</dt>
-      <dd>1997年06月02日</dd>
+      <dd>
+        {{ profile.bday.year }}年{{ profile.bday.month }}月{{
+          profile.bday.day
+        }}日
+      </dd>
 
       <dt>性別</dt>
-      <dd>男性</dd>
+      <dd>{{ profile.gender }}</dd>
 
       <dt>メールアドレス</dt>
-      <dd>google@.com</dd>
+      <dd>{{ profile.email }}</dd>
 
       <dt>電話番号</dt>
-      <dd>0120-000-444</dd>
+      <dd>{{ profile.tel }}</dd>
 
       <dt>学歴</dt>
-      <dd>〇〇大学〇〇学部在学中</dd>
+      <dd>{{ profile.belongs }},{{ profile.school }}{{ profile.state }}</dd>
 
       <dt>資格</dt>
-      <dd>普通運転免許証, 基本情報技術者</dd>
+      <dd>{{ profile.tagOne }}, {{ profile.tagSecond }}</dd>
 
       <dt>勤務可能な日時</dt>
-      <dd>18:00~23:00, 22:00~26:00</dd>
+      <dd>{{ profile.possibleDay }}</dd>
 
       <dt>自己紹介</dt>
       <dd>
-        ああああああああああああああああああああああおおおおおおおおおおおおおおおおおおおおおおおおおええ
+        {{ profile.introduce }}
       </dd>
     </dl>
   </div>

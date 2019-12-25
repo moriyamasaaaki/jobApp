@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormControl } from '@angular/forms';
 import { UserProfileService } from 'src/app/service/user-profile.service';
 import { AuthService } from 'src/app/services/auth.service';
+import { Observable } from 'rxjs';
+import { UserProfile } from 'src/app/interfaces/profile';
 
 @Component({
   selector: 'app-profile',
@@ -11,42 +13,29 @@ import { AuthService } from 'src/app/services/auth.service';
 export class ProfileComponent implements OnInit {
   years = new Array(61).fill(null);
   bottom = new Date().getFullYear() - 60;
-
   months = new Array(12).fill(null);
   days = new Array(31).fill(null);
 
   schools = ['中学', '高校', '専門', '大学', '大学院'];
-
   states = ['卒業', '在学中', '中退'];
 
   form = this.fb.group({
     name: ['', [Validators.required]],
-
     address: ['', [Validators.required]],
-
     bday: this.fb.group({
       year: ['', [Validators.required]],
       month: ['', [Validators.required]],
       day: ['', [Validators.required]]
     }),
     gender: ['', [Validators.required]],
-
     email: ['', [Validators.required, Validators.email]],
-
     tel: ['', [Validators.required, Validators.pattern(/^0\d{9,10}$/)]],
-
     school: ['', [Validators.required]],
-
     state: ['', [Validators.required]],
-
     possibleDay: ['', [Validators.required]],
-
     tagOne: ['', []],
-
     tagSecond: ['', []],
-
     introduce: ['', []],
-
     belongs: ['', [Validators.required]]
   });
 
@@ -115,7 +104,13 @@ export class ProfileComponent implements OnInit {
     private authService: AuthService
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.userProfileService.getUser(this.authService.uid).subscribe(profile => {
+      if (profile) {
+        this.form.patchValue(profile);
+      }
+    });
+  }
 
   submit() {
     console.log(this.form.value);

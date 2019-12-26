@@ -1,13 +1,11 @@
 export interface JobList {
+  jobId: string;
   companyName: string;
   title: string;
   recruitmentImg: string;
   workPlace: string;
   occupation: string;
-  salary: {
-    min: number;
-    max: number;
-  };
+  salary: string;
   workTime: string;
 }
 
@@ -19,16 +17,15 @@ export interface DetailJob extends JobList {
 }
 
 export interface AttentionJob {
+  jobId: string;
   recruitmentImg: string;
   companyName: string;
   workPlace: string;
-  salary: {
-    min: number;
-    max: number;
-  };
+  salary: string;
 }
 
 export interface NewJob {
+  jobId: string;
   companyName: string;
   title: string;
   workPlace: string;

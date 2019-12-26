@@ -8,15 +8,13 @@ import { JobList } from 'src/app/interfaces/article';
 })
 export class JoblistComponent implements OnInit {
   article: JobList = {
+    jobId: '1',
     companyName: '株式会社Tokyo bite',
     title: '求人の詳細が表示されます。',
     recruitmentImg: '/assets/images/job1.jpg',
     workPlace: '東京',
     occupation: 'エンジニア',
-    salary: {
-      min: 1200,
-      max: 1500
-    },
+    salary: '1200',
     workTime: '10:00~18:00'
   };
 

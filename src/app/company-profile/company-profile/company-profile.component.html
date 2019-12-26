@@ -1,0 +1,40 @@
+<div class="company-profile">
+  <h2>企業側プロフィール</h2>
+  <div class="company-profile__list" *ngIf="profile$ | async as profile">
+    <dl>
+      <dt>会社名</dt>
+      <dd>{{ profile.name }}</dd>
+
+      <dt>部署名</dt>
+      <dd>{{ profile.department }}</dd>
+
+      <dt>お名前</dt>
+      <dd>{{ profile.firstName }} {{ profile.lastName }}</dd>
+
+      <dt>電話番号</dt>
+      <dd>{{ profile.tel }}</dd>
+
+      <dt>メールアドレス</dt>
+      <dd>{{ profile.email }}</dd>
+
+      <dt>パスワード</dt>
+      <dd>{{ profile.password }}</dd>
+    </dl>
+  </div>
+  <div class="company-profile__btn">
+    <a routerLink="/companySideForm" mat-raised-button color="primary"
+      >編集する</a
+    >
+    <button mat-raised-button color="warn" (click)="openDeleteDialog()">
+      削除する
+    </button>
+  </div>
+
+  <div class="company-profile__footer-item">
+    <a routerLink="/plan">プラン</a>
+    <a routerLink="/">企業の方はこちらから</a>
+    <a routerLink="/comlaw">特定商取引法に基づく表示</a>
+    <a routerLink="/terms">利用規約</a>
+    <a routerLink="/about">Tokyo biteについて</a>
+  </div>
+</div>

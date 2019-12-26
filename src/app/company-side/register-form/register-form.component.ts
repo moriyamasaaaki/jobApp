@@ -11,15 +11,11 @@ import { AuthService } from 'src/app/services/auth.service';
 export class RegisterFormComponent implements OnInit {
   form = this.fb.group({
     name: ['', [Validators.required]],
-
     department: ['', []],
-
     lastName: ['', [Validators.required, Validators.maxLength(30)]],
-
     firstName: ['', [Validators.required, Validators.maxLength(30)]],
-
     email: ['', [Validators.required, Validators.email]],
-
+    tel: ['', [Validators.required, Validators.pattern(/^0\d{9,10}$/)]],
     password: [
       '',
       [Validators.required, Validators.pattern(/^([a-zA-Z0-9]{8,})$/)]
@@ -48,6 +44,10 @@ export class RegisterFormComponent implements OnInit {
     return this.form.get('email') as FormControl;
   }
 
+  get telControl() {
+    return this.form.get('tel') as FormControl;
+  }
+
   get passwordControl() {
     return this.form.get('password') as FormControl;
   }
@@ -58,8 +58,15 @@ export class RegisterFormComponent implements OnInit {
     private authService: AuthService
   ) {}
 
-  ngOnInit() {}
-
+  ngOnInit() {
+    this.companyProfileService
+      .getCompanyUser(this.authService.uid)
+      .subscribe(profile => {
+        if (profile) {
+          this.form.patchValue(profile);
+        }
+      });
+  }
   logout() {
     this.authService.logout();
   }

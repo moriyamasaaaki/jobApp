@@ -23,6 +23,7 @@ export interface CompanyProfile {
   department: string;
   lastName: string;
   firstName: string;
+  tel: number;
   email: string;
   password: string;
 }

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormControl } from '@angular/forms';
 import { JobPostService } from 'src/app/service/job-post.service';
-import { stringify } from 'querystring';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -25,11 +24,11 @@ export class RecruitmentComponent implements OnInit {
 
     welfare: ['', [Validators.required]],
 
-    overview: ['', [Validators.required, Validators.maxLength(400)]],
+    companyContent: ['', [Validators.required, Validators.maxLength(400)]],
 
     label: ['', []],
 
-    company: ['', [Validators.required]],
+    companyName: ['', [Validators.required]],
 
     salary: ['', [Validators.required]],
 
@@ -54,16 +53,16 @@ export class RecruitmentComponent implements OnInit {
     return this.form.get('welfare') as FormControl;
   }
 
-  get overviewControl() {
-    return this.form.get('overview') as FormControl;
+  get companyContentControl() {
+    return this.form.get('companyContent') as FormControl;
   }
 
   get labelControl() {
     return this.form.get('label') as FormControl;
   }
 
-  get companyControl() {
-    return this.form.get('company') as FormControl;
+  get companyNameControl() {
+    return this.form.get('companyName') as FormControl;
   }
 
   get salaryControl() {
@@ -84,12 +83,24 @@ export class RecruitmentComponent implements OnInit {
     private authService: AuthService
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.jobPostService.getJobPost(this.authService.uid).subscribe(article => {
+      if (article) {
+        this.form.patchValue(article);
+      }
+    });
+  }
 
   submit() {
     console.log(this.form.value);
+    const now = new Date();
+    const year = now.getFullYear();
+    const month = now.getMonth() + 1;
+    const day = now.getDate();
+    const newDate = `${year}年${month}月${day}日`;
     this.jobPostService.createJobPost({
-      postId: this.authService.uid,
+      jobId: this.authService.uid,
+      date: newDate,
       ...this.form.value
     });
   }

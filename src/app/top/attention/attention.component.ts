@@ -8,13 +8,11 @@ import { AttentionJob } from 'src/app/interfaces/article';
 })
 export class AttentionComponent implements OnInit {
   article: AttentionJob = {
+    jobId: '1',
     recruitmentImg: '/assets/images/job3.jpg',
     companyName: '株式会社tokyo bite',
     workPlace: '六本木駅',
-    salary: {
-      min: 1200,
-      max: 1300
-    }
+    salary: '1000~1200円'
   };
 
   attentions = new Array(3).fill(null);

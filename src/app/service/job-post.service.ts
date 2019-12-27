@@ -5,6 +5,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
+import { AngularFireStorage } from '@angular/fire/storage';
 
 @Injectable({
   providedIn: 'root'
@@ -13,18 +14,21 @@ export class JobPostService {
   constructor(
     private db: AngularFirestore,
     private snackBar: MatSnackBar,
-    private router: Router
+    private router: Router,
+    private storage: AngularFireStorage
   ) {}
 
-  createJobPost(article: DetailJob) {
-    const id = this.db.createId();
+  createJobPost(article: DetailJob, avatarImage?: File) {
     return this.db
-      .doc(`JobPosts/${id}`)
+      .doc(`JobPosts/${article.jobId}`)
       .set(article)
       .then(() => {
         this.snackBar.open('求人を作成しました', null, {
           duration: 2000
         });
+        if (avatarImage) {
+          this.updateAvatar(article.jobId, avatarImage);
+        }
         this.router.navigateByUrl('/detail');
       });
   }
@@ -41,5 +45,14 @@ export class JobPostService {
           }
         })
       );
+  }
+  private async updateAvatar(jobId: string, file: File) {
+    console.log(jobId);
+    const result = await this.storage.ref(`JobPosts/${jobId}`).put(file);
+    const photoURL = await result.ref.getDownloadURL();
+    this.db.doc(`JobPosts/${jobId}`).update({
+      photoURL
+    });
+    console.log(photoURL);
   }
 }

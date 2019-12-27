@@ -5,6 +5,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
+import { AngularFireStorage } from '@angular/fire/storage';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,8 @@ export class UserProfileService {
   constructor(
     private db: AngularFirestore,
     private snackBar: MatSnackBar,
-    private router: Router
+    private router: Router,
+    private storage: AngularFireStorage
   ) {}
 
   createUser(profile: UserProfile) {
@@ -43,5 +45,14 @@ export class UserProfileService {
           }
         })
       );
+  }
+  async updateAvatar(userId: string, file: File) {
+    const result = await this.storage.ref(`userProfile/${userId}`).put(file);
+    const photoURL = await result.ref.getDownloadURL();
+
+    this.db.doc(`userProfile/${userId}`).update({
+      photoURL
+    });
+    console.log(photoURL);
   }
 }

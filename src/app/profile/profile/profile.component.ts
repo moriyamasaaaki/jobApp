@@ -20,6 +20,7 @@ export class ProfileComponent implements OnInit {
   states = ['卒業', '在学中', '中退'];
 
   form = this.fb.group({
+    photoURL: ['', []],
     name: ['', [Validators.required]],
     address: ['', [Validators.required]],
     bday: this.fb.group({
@@ -38,6 +39,11 @@ export class ProfileComponent implements OnInit {
     introduce: ['', []],
     belongs: ['', [Validators.required]]
   });
+  userId: string;
+
+  get photoURLControl() {
+    return this.form.get('photoURL') as FormControl;
+  }
 
   get nameControl() {
     return this.form.get('name') as FormControl;
@@ -110,6 +116,17 @@ export class ProfileComponent implements OnInit {
         this.form.patchValue(profile);
       }
     });
+  }
+  updateAvatar(event) {
+    if (event.target.files.length) {
+      const image = event.target.files[0];
+      this.userProfileService.updateAvatar(
+        (this.userId = this.authService.uid),
+        image
+      );
+      console.log(image);
+      console.log(this.userId);
+    }
   }
 
   submit() {

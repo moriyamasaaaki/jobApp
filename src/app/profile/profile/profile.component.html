@@ -1,13 +1,7 @@
 <form [formGroup]="form" (ngSubmit)="submit()" class="profile">
   <h2>プロフィール設定</h2>
   <div>
-    <input
-      type="file"
-      name="file"
-      (change)="updateAvatar($event)"
-      formControlName="photoURL"
-      id=""
-    />
+    <input type="file" (change)="setAvatar($event)" />
   </div>
   <div>
     <mat-form-field class="profile__field">

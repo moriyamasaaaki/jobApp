@@ -18,15 +18,17 @@ export class UserProfileService {
     private storage: AngularFireStorage
   ) {}
 
-  createUser(profile: UserProfile) {
-    const id = this.db.createId();
+  createUser(profile: UserProfile, avatarImage?: File) {
     return this.db
-      .doc(`userProfile/${id}`)
+      .doc(`userProfile/${profile.userId}`)
       .set(profile)
       .then(() => {
         this.snackBar.open('userを作成しました。', null, {
           duration: 2000
         });
+        if (avatarImage) {
+          this.updateAvatar(profile.userId, avatarImage);
+        }
         this.router.navigateByUrl('/mypage');
       });
   }
@@ -46,10 +48,10 @@ export class UserProfileService {
         })
       );
   }
-  async updateAvatar(userId: string, file: File) {
+  private async updateAvatar(userId: string, file: File) {
+    console.log(userId);
     const result = await this.storage.ref(`userProfile/${userId}`).put(file);
     const photoURL = await result.ref.getDownloadURL();
-
     this.db.doc(`userProfile/${userId}`).update({
       photoURL
     });

@@ -19,8 +19,9 @@ export class ProfileComponent implements OnInit {
   schools = ['中学', '高校', '専門', '大学', '大学院'];
   states = ['卒業', '在学中', '中退'];
 
+  image: File;
+
   form = this.fb.group({
-    photoURL: ['', []],
     name: ['', [Validators.required]],
     address: ['', [Validators.required]],
     bday: this.fb.group({
@@ -40,10 +41,6 @@ export class ProfileComponent implements OnInit {
     belongs: ['', [Validators.required]]
   });
   userId: string;
-
-  get photoURLControl() {
-    return this.form.get('photoURL') as FormControl;
-  }
 
   get nameControl() {
     return this.form.get('name') as FormControl;
@@ -117,23 +114,21 @@ export class ProfileComponent implements OnInit {
       }
     });
   }
-  updateAvatar(event) {
+
+  setAvatar(event) {
     if (event.target.files.length) {
       const image = event.target.files[0];
-      this.userProfileService.updateAvatar(
-        (this.userId = this.authService.uid),
-        image
-      );
-      console.log(image);
-      console.log(this.userId);
+      this.image = image;
     }
   }
-
   submit() {
     console.log(this.form.value);
-    this.userProfileService.createUser({
-      userId: this.authService.uid,
-      ...this.form.value
-    });
+    this.userProfileService.createUser(
+      {
+        userId: this.authService.uid,
+        ...this.form.value
+      },
+      this.image
+    );
   }
 }

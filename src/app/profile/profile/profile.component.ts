@@ -19,6 +19,8 @@ export class ProfileComponent implements OnInit {
   schools = ['中学', '高校', '専門', '大学', '大学院'];
   states = ['卒業', '在学中', '中退'];
 
+  image: File;
+
   form = this.fb.group({
     name: ['', [Validators.required]],
     address: ['', [Validators.required]],
@@ -38,6 +40,7 @@ export class ProfileComponent implements OnInit {
     introduce: ['', []],
     belongs: ['', [Validators.required]]
   });
+  userId: string;
 
   get nameControl() {
     return this.form.get('name') as FormControl;
@@ -112,11 +115,20 @@ export class ProfileComponent implements OnInit {
     });
   }
 
+  setAvatar(event) {
+    if (event.target.files.length) {
+      const image = event.target.files[0];
+      this.image = image;
+    }
+  }
   submit() {
     console.log(this.form.value);
-    this.userProfileService.createUser({
-      userId: this.authService.uid,
-      ...this.form.value
-    });
+    this.userProfileService.createUser(
+      {
+        userId: this.authService.uid,
+        ...this.form.value
+      },
+      this.image
+    );
   }
 }

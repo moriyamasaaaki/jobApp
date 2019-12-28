@@ -2,6 +2,9 @@
   <h2>マイページ</h2>
   <div class="mypage__list" *ngIf="profile$ | async as profile">
     <dl>
+      <dt>画像</dt>
+      <dd><img [src]="profile.photoURL" alt="" /></dd>
+
       <dt>名前</dt>
       <dd>{{ profile.name }}</dd>
 

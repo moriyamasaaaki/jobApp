@@ -1,4 +1,4 @@
-@import "mixins";
+@import 'mixins';
 
 .detail {
   margin: 0 8px 16px;
@@ -34,6 +34,9 @@
     @include pc {
       width: 20%;
       margin: 0 0 0 8px;
+    }
+    img {
+      width: 100%;
     }
   }
   &__recruit {

@@ -37,6 +37,8 @@ export class RecruitmentComponent implements OnInit {
     workPlace: ['', [Validators.required]]
   });
 
+  image: File;
+
   get titleControl() {
     return this.form.get('title') as FormControl;
   }
@@ -91,6 +93,13 @@ export class RecruitmentComponent implements OnInit {
     });
   }
 
+  setAvatar(event) {
+    if (event.target.files.length) {
+      const image = event.target.files[0];
+      this.image = image;
+    }
+  }
+
   submit() {
     console.log(this.form.value);
     const now = new Date();
@@ -98,10 +107,13 @@ export class RecruitmentComponent implements OnInit {
     const month = now.getMonth() + 1;
     const day = now.getDate();
     const newDate = `${year}年${month}月${day}日`;
-    this.jobPostService.createJobPost({
-      jobId: this.authService.uid,
-      date: newDate,
-      ...this.form.value
-    });
+    this.jobPostService.createJobPost(
+      {
+        jobId: this.authService.uid,
+        date: newDate,
+        ...this.form.value
+      },
+      this.image
+    );
   }
 }

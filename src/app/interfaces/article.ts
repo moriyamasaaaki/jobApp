@@ -25,7 +25,6 @@ export interface AttentionJob {
 }
 
 export interface NewJob {
-  jobId: string;
   companyName: string;
   title: string;
   workPlace: string;

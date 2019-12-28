@@ -8,7 +8,6 @@ import { NewJob } from 'src/app/interfaces/article';
 })
 export class NewComponent implements OnInit {
   article: NewJob = {
-    // jobId: '1',
     companyName: '株式会社Tokyo bite',
     title: 'やる気さえあればプロフェッショナルに育てます！即戦力も大歓迎！！',
     workPlace: '品川駅から徒歩５分'

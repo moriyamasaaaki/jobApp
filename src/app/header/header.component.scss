@@ -18,6 +18,12 @@
       font-size: 32px;
     }
   }
+  small {
+    font-size: 12px;
+    @include pc {
+      font-size: 14px;
+    }
+  }
 }
 
 .header__nav-mobile {

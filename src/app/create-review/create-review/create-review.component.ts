@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl } from '@angular/forms';
+import { ReviewService } from 'src/app/service/review.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-create-review',
@@ -27,11 +29,19 @@ export class CreateReviewComponent implements OnInit {
     return this.form.get('overtime') as FormControl;
   }
 
-  constructor(private fb: FormBuilder) {}
+  constructor(
+    private fb: FormBuilder,
+    private reviewService: ReviewService,
+    private authService: AuthService
+  ) {}
 
   ngOnInit() {}
 
   submit() {
     console.log(this.form.value);
+    this.reviewService.createReview({
+      userId: this.authService.uid,
+      ...this.form.value
+    });
   }
 }

@@ -19,5 +19,11 @@ service cloud.firestore {
       allow update: if request.auth.uid == resource.data.userId && resource.data.userId == request.resource.userId
       allow delete: if request.auth.uid == resource.data.userId == request.auth.uid;
     }
+    match /reviews/{userId} {
+      allow read, write: if true;
+      allow create: if request.auth.uid != null;
+      allow update: if request.auth.uid == resource.data.userId && resource.data.userId == request.resource.userId
+      allow delete: if request.auth.uid == resource.data.userId == request.auth.uid;
+    }
   }
 }

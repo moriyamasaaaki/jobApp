@@ -1,4 +1,4 @@
-<section class="review">
+<section class="review" *ngIf="review$ | async as review">
   <h3>会社についてのレビュー</h3>
   <div class="review__bars">
     <p>社内の雰囲気の良さ（悪い/良い）</p>
@@ -6,10 +6,10 @@
       <mat-progress-bar
         class="review__bar"
         mode="determinate"
-        value="40"
+        value="{{ review.atmosphere * 10 }}"
         color="primary"
       ></mat-progress-bar>
-      <span>40%</span>
+      <span>{{ review.atmosphere * 10 }}%</span>
     </div>
   </div>
 
@@ -19,10 +19,10 @@
       <mat-progress-bar
         class="review__bar"
         mode="determinate"
-        value="90"
+        value="{{ review.contentDiff * 10 }}"
         color="primary"
       ></mat-progress-bar>
-      <span>90%</span>
+      <span>{{ review.contentDiff * 10 }}%</span>
     </div>
   </div>
 
@@ -32,10 +32,10 @@
       <mat-progress-bar
         class="review__bar"
         mode="determinate"
-        value="10"
+        value="{{ review.sift * 10 }}"
         color="primary"
       ></mat-progress-bar>
-      <span>10%</span>
+      <span>{{ review.sift * 10 }}%</span>
     </div>
   </div>
 
@@ -45,10 +45,10 @@
       <mat-progress-bar
         class="review__bar"
         mode="determinate"
-        value="60"
+        value="{{ review.overtime * 10 }}"
         color="primary"
       ></mat-progress-bar>
-      <span>60%</span>
+      <span>{{ review.overtime * 10 }}%</span>
     </div>
   </div>
 </section>

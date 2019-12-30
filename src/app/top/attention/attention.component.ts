@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { AttentionJob } from 'src/app/interfaces/article';
+import { DetailJob } from 'src/app/interfaces/article';
+import { Observable } from 'rxjs';
+import { JobPostService } from 'src/app/service/job-post.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-attention',
@@ -7,17 +10,15 @@ import { AttentionJob } from 'src/app/interfaces/article';
   styleUrls: ['./attention.component.scss']
 })
 export class AttentionComponent implements OnInit {
-  article: AttentionJob = {
-    jobId: '1',
-    recruitmentImg: '/assets/images/job3.jpg',
-    companyName: '株式会社tokyo bite',
-    workPlace: '六本木駅',
-    salary: '1000~1200円'
-  };
-
+  article$: Observable<DetailJob> = this.jobPostService.getJobPost(
+    this.authService.uid
+  );
   attentions = new Array(3).fill(null);
 
-  constructor() {}
+  constructor(
+    private jobPostService: JobPostService,
+    private authService: AuthService
+  ) {}
 
   ngOnInit() {}
 }

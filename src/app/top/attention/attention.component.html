@@ -1,21 +1,23 @@
 <section class="job-box">
-  <div class="job-box__card" *ngFor="let attention of attentions">
-    <a routerLink="/detail">
-      <img [src]="article.recruitmentImg" alt="" />
-    </a>
-    <div class="job-box__content">
-      <p>
-        <a routerLink="/detail" class="job-box__title">{{
-          article.companyName
-        }}</a>
-      </p>
-      <ul>
-        <li>{{ article.workPlace }}</li>
-        <li>{{ article.salary.min }}~{{ article.salary.max }}円</li>
-      </ul>
+  <ng-container *ngIf="article$ | async as article">
+    <div class="job-box__card" *ngFor="let attention of attentions">
       <a routerLink="/detail">
-        <button mat-raised-button color="primary">もっと見る</button>
+        <img [src]="article.photoURL" alt="" />
       </a>
+      <div class="job-box__content">
+        <p>
+          <a routerLink="/detail" class="job-box__title">{{
+            article.companyName
+          }}</a>
+        </p>
+        <ul>
+          <li>{{ article.workPlace }}</li>
+          <li>{{ article.salary }}円</li>
+        </ul>
+        <a routerLink="/detail">
+          <button mat-raised-button color="primary">もっと見る</button>
+        </a>
+      </div>
     </div>
-  </div>
+  </ng-container>
 </section>

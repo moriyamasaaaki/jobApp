@@ -11,7 +11,6 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class AuthService {
   afUser$: Observable<User> = this.afAuth.user;
   uid: string;
-  user: string;
   constructor(
     private afAuth: AngularFireAuth,
     private router: Router,

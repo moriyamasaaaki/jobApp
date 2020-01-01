@@ -4,7 +4,7 @@
       <a routerLink="/">Tokyo byte</a>
     </p>
     <small *ngIf="user$ | async as user"
-      >ようこそ {{ this.user.displayName }}({{ this.user.email }}) さん!!</small
+      >ようこそ {{ user.displayName }}({{ user.email }}) さん!!</small
     >
     <nav class="header-nav">
       <ul class="header__nav-mobile">

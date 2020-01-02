@@ -105,6 +105,8 @@ export class RecruitmentComponent implements OnInit {
     this.jobPostService.createJobPost(
       {
         jobId: this.authService.uid,
+        createdAt: new Date(),
+        updatedAt: new Date(),
         ...this.form.value
       },
       this.image

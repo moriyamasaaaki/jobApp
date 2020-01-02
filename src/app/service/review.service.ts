@@ -5,6 +5,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
+import { AuthService } from '../services/auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,11 +14,12 @@ export class ReviewService {
   constructor(
     private db: AngularFirestore,
     private snackBar: MatSnackBar,
-    private router: Router
+    private router: Router,
+    private authService: AuthService
   ) {}
 
   createReview(review: Review) {
-    const id = this.db.createId();
+    const id = this.authService.uid;
     this.db
       .doc(`reviews/${id}`)
       .set(review)

@@ -3,6 +3,7 @@ import { DetailJob } from 'src/app/interfaces/article';
 import { JobPostService } from 'src/app/service/job-post.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { Observable } from 'rxjs';
+import { firestore } from 'firebase/app';
 
 @Component({
   selector: 'app-detail',
@@ -10,6 +11,7 @@ import { Observable } from 'rxjs';
   styleUrls: ['./detail.component.scss']
 })
 export class DetailComponent implements OnInit {
+  releaseDate = firestore.Timestamp.now().toDate();
   article$: Observable<DetailJob> = this.jobPostService.getJobPost(
     this.authService.uid
   );

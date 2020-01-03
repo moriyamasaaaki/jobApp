@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { NewJob } from 'src/app/interfaces/article';
+import { DetailJob } from 'src/app/interfaces/article';
+import { Observable } from 'rxjs';
+import { JobPostService } from 'src/app/service/job-post.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-new',
@@ -7,15 +10,16 @@ import { NewJob } from 'src/app/interfaces/article';
   styleUrls: ['./new.component.scss']
 })
 export class NewComponent implements OnInit {
-  article: NewJob = {
-    companyName: '株式会社Tokyo bite',
-    title: 'やる気さえあればプロフェッショナルに育てます！即戦力も大歓迎！！',
-    workPlace: '品川駅から徒歩５分'
-  };
+  article$: Observable<DetailJob> = this.jobPostService.getJobPost(
+    this.authService.uid
+  );
 
   news = new Array(10).fill(null);
 
-  constructor() {}
+  constructor(
+    private jobPostService: JobPostService,
+    private authService: AuthService
+  ) {}
 
   ngOnInit() {}
 }

@@ -1,36 +1,38 @@
 <section class="job-list job-card">
   <h2>求人一覧</h2>
-  <div class="job-card__box" *ngFor="let job of jobs">
-    <div class="job-card__title">
-      <span>{{ job.companyName }}</span>
-      <a href="/detail">
-        <h3>{{ job.title }}</h3>
-      </a>
+  <ng-container *ngIf="article$ | async as article">
+    <div class="job-card__box" *ngFor="let jobList of jobLists">
+      <div class="job-card__title">
+        <span>{{ article.companyName }}</span>
+        <a href="/detail">
+          <h3>{{ article.title }}</h3>
+        </a>
+      </div>
+      <div class="job-card__content">
+        <img [src]="article.photoURL" alt="" />
+        <ul class="job-card__content-list">
+          <li>
+            <i class="material-icons">compass_calibration</i>
+            <span>{{ article.workPlace }}</span>
+          </li>
+          <li><i class="material-icons"> work </i>{{ article.occupation }}</li>
+          <li>
+            <i class="material-icons">
+              money
+            </i>
+            時給{{ article.salary }}円
+          </li>
+          <li>
+            <i class="material-icons"> access_time </i>{{ article.workTime }}
+          </li>
+        </ul>
+      </div>
+      <div class="job-card__btn">
+        <button mat-raised-button color="warn">お気に入り追加</button>
+        <button class="job-card__btn-right" mat-raised-button color="primary">
+          応募する
+        </button>
+      </div>
     </div>
-    <div class="job-card__content">
-      <img [src]="job.img" alt="求人画像" />
-      <ul class="job-card__content-list">
-        <li>
-          <i class="material-icons">compass_calibration</i>
-          <span>{{ job.place }}</span>
-        </li>
-        <li><i class="material-icons"> work </i>{{ job.occupation }}</li>
-        <li>
-          <i class="material-icons">
-            money
-          </i>
-          時給{{ article.salary.min }}~{{ article.salary.max }}円
-        </li>
-        <li>
-          <i class="material-icons"> access_time </i>{{ article.workTime }}
-        </li>
-      </ul>
-    </div>
-    <div class="job-card__btn">
-      <button mat-raised-button color="warn">お気に入り追加</button>
-      <button class="job-card__btn-right" mat-raised-button color="primary">
-        応募する
-      </button>
-    </div>
-  </div>
+  </ng-container>
 </section>

@@ -19,8 +19,9 @@ export class JobPostService {
   ) {}
 
   createJobPost(article: DetailJob, avatarImage?: File) {
+    const id = this.db.createId();
     return this.db
-      .doc(`JobPosts/${article.jobId}`)
+      .doc(`JobPosts/${id}`)
       .set(article)
       .then(() => {
         this.snackBar.open('求人を作成しました', null, {

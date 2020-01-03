@@ -3,6 +3,9 @@
     <p>
       <a routerLink="/">Tokyo byte</a>
     </p>
+    <small *ngIf="user$ | async as user"
+      >ようこそ {{ user.displayName }}({{ user.email }}) さん!!</small
+    >
     <nav class="header-nav">
       <ul class="header__nav-mobile">
         <li>

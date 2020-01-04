@@ -19,10 +19,9 @@ export class ReviewService {
   ) {}
 
   createReview(review: Review) {
-    const id = this.authService.uid;
     this.db
-      .doc(`reviews/${id}`)
-      .set(review)
+      .collection('reviews')
+      .add(review)
       .then(() => {
         this.snackBar.open('レビュー投稿しました。', null, {
           duration: 2000

@@ -36,7 +36,6 @@
 }
 
 .header__nav-pc {
-  display: none;
   @include pc {
     padding: 0;
     display: flex;
@@ -48,7 +47,10 @@
   }
 }
 
-.header-nav {
+.header__nav-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   li {
     padding-left: 8px;
     @include tab {
@@ -67,6 +69,7 @@
     }
   }
 }
+
 .iconlist {
   color: lightgray;
   display: inline-flex;
@@ -84,4 +87,19 @@ a {
 
 .header__home {
   color: #fff;
+}
+
+.displayname-mobile {
+  display: block;
+  text-align: center;
+  @include pc {
+    display: none;
+  }
+}
+
+.displayname-pc {
+  display: none;
+  @include pc {
+    display: block;
+  }
 }

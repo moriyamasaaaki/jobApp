@@ -47,3 +47,15 @@
     font-size: 24px;
   }
 }
+
+.hdg-pc {
+  @include pc {
+    margin: 16px 0;
+  }
+}
+
+button {
+  display: block;
+  margin: 0 auto;
+  padding: 8px 16px;
+}

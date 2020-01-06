@@ -4,6 +4,7 @@
   margin: 0 0 24px;
   @include pc {
     margin: 0 auto 32px;
+    padding: 0 16px;
   }
   &__post {
     display: flex;
@@ -15,7 +16,7 @@
   &__tag {
     font-size: 11px;
     color: #fff;
-    background-color: #fca01a;
+    background-color: green;
     padding: 5px;
     border-radius: 3px;
   }
@@ -35,7 +36,7 @@
     }
   }
   i {
-    color: lightgreen;
+    color: green;
   }
   &__pc-title {
     display: none;

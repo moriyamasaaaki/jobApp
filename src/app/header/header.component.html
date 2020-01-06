@@ -16,10 +16,9 @@
         >
           ログイン
         </button>
-
         <div>
           <button mat-button [matMenuTriggerFor]="menu">
-            <mat-icon class="header__home">menu</mat-icon>
+            <img *ngIf="user$ | async as user" [src]="user.photoURL" alt="" />
           </button>
         </div>
         <mat-menu #menu="matMenu">

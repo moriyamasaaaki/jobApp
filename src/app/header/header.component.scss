@@ -68,6 +68,13 @@
       color: #fff;
     }
   }
+  img {
+    width: 40px;
+    border-radius: 50%;
+    @include pc {
+      width: 50px;
+    }
+  }
 }
 
 .iconlist {

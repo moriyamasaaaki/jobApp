@@ -120,9 +120,11 @@
       >
     </mat-form-field>
   </div>
-
   <div>
     <mat-checkbox>利用規約に同意する</mat-checkbox>
+  </div>
+  <div class="term">
+    <app-terms></app-terms>
   </div>
   <button
     [disabled]="form.invalid || form.pristine"

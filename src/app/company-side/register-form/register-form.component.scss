@@ -1,5 +1,5 @@
-@import "mixins";
-@import "~@angular/material/theming";
+@import 'mixins';
+@import '~@angular/material/theming';
 
 .companyForm {
   h2 {
@@ -20,7 +20,7 @@
   }
   &__btn {
     display: block;
-    margin: 0 auto;
+    margin: 72px auto 0;
     @include pc {
       padding: 8px 24px;
     }
@@ -33,8 +33,16 @@
     font-weight: bold;
     text-align: center;
     color: orangered;
-      @include pc {
-        font-size: 14px;
-      }
+    @include pc {
+      font-size: 14px;
+    }
   }
+}
+
+.term {
+  padding: 8px 0;
+  overflow: scroll;
+  height: 200px;
+  border: 2px solid #454545;
+  border-radius: 8px;
 }

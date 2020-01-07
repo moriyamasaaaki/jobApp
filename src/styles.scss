@@ -5,11 +5,15 @@
 
 html,
 body {
-  height: 100%;
+  min-height: 100%;
+  padding-bottom: 53px;
+  @include tab {
+    padding: 0;
+  }
 }
 body {
   margin: 0;
-  font-family: 'Times New Roman', Times, serif;
+  font-family: Arial, sans-serif;
 }
 
 .footer {
@@ -70,7 +74,7 @@ body {
     display: block;
     color: #fff;
     text-decoration: none;
-    padding: 16px;
+    padding: 8px;
   }
   &__icons {
     display: flex;

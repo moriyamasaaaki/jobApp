@@ -1,20 +1,21 @@
 @import 'mixins';
 
+.top__page {
+  padding: 16px 5px 0;
+}
+
 .attention,
 .new {
-  border: 2px solid #eee;
-  padding: 16px 5px;
-  border-radius: 8px;
   @include pc {
     width: 70%;
   }
 }
 
 .attention {
-  margin-bottom: 16px;
+  margin-bottom: 48px;
   line-height: 1.5;
   @include pc {
-    margin: 0 auto 32px;
+    margin: 0 auto 64px;
   }
   a {
     display: block;
@@ -30,8 +31,9 @@
 }
 
 .new {
-  margin: 0 0 24px;
   @include pc {
+    border: 2px solid #eee;
+    border-radius: 5px;
     margin: 0 auto 64px;
   }
 }
@@ -43,4 +45,16 @@
   @include pc {
     font-size: 24px;
   }
+}
+
+.hdg-pc {
+  @include pc {
+    margin: 16px 0;
+  }
+}
+
+button {
+  display: block;
+  margin: 0 auto;
+  padding: 8px 16px;
 }

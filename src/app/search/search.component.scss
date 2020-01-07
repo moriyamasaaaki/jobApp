@@ -1,4 +1,4 @@
-@import "mixins";
+@import 'mixins';
 
 .search-form {
   width: 100%;
@@ -11,6 +11,7 @@
 }
 
 input {
+  font-size: 16px;
   padding: 9px 0;
   width: 100%;
   border-radius: 5px;
@@ -23,6 +24,9 @@ input {
     &::placeholder {
       font-size: 18px;
     }
+  }
+  @include pc {
+    font-size: 18px;
   }
 }
 
@@ -56,7 +60,7 @@ input {
 
 .search-button-row {
   text-align: center;
-  margin-bottom: 32px;
+  margin-bottom: 72px;
   button {
     padding: 0.8em 1em;
     @include pc {

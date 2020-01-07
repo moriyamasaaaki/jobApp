@@ -13,7 +13,7 @@ export class AttentionComponent implements OnInit {
   article$: Observable<DetailJob> = this.jobPostService.getJobPost(
     this.authService.uid
   );
-  attentions = new Array(3).fill(null);
+  attentions = new Array(6).fill(null);
 
   constructor(
     private jobPostService: JobPostService,

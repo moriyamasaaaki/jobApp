@@ -1,39 +1,63 @@
-<form  [formGroup]="form" (ngSubmit)="submit()"  class="search-form">
+<form [formGroup]="form" (ngSubmit)="submit()" class="search-form">
   <div class="form-filed_item">
-  <mat-form-field  class="search-full-width">
-    <mat-label>キーワード：</mat-label>
-      <input type="text" placeholder="会社名・職種 etc..." aria-label="Number" matInput formControlName="keyword"
-        autocomplete="organization" style="font-size: 18px;" required>
-            <mat-error *ngIf="keywordControl.hasError('required')">必須入力です！</mat-error>
-            <mat-error *ngIf="keywordControl.hasError('maxlength')">長すぎます。50文字以下にして下さい</mat-error>
-  </mat-form-field>
+    <mat-form-field class="search-full-width">
+      <mat-label>キーワード：</mat-label>
+      <input
+        type="text"
+        placeholder="会社名・職種 etc..."
+        aria-label="Number"
+        matInput
+        formControlName="keyword"
+        autocomplete="organization"
+        required
+      />
+      <mat-error *ngIf="keywordControl.hasError('required')"
+        >必須入力です！</mat-error
+      >
+      <mat-error *ngIf="keywordControl.hasError('maxlength')"
+        >長すぎます。50文字以下にして下さい</mat-error
+      >
+    </mat-form-field>
   </div>
 
   <div class="form-filed_item">
-  <mat-form-field class="search-full-width">
-    <mat-label>勤務地：</mat-label>
-      <input type="text" placeholder="渋谷" aria-label="Number" matInput formControlName="place"
-        style="font-size: 18px;" required>
-          <mat-error *ngIf="placeControl.hasError('required')">必須入力です！</mat-error>
-          <mat-error *ngIf="placeControl.hasError('maxlength')">長すぎます。40文字以下にして下さい</mat-error>
-  </mat-form-field>
+    <mat-form-field class="search-full-width">
+      <mat-label>勤務地：</mat-label>
+      <input
+        type="text"
+        placeholder="渋谷"
+        aria-label="Number"
+        matInput
+        formControlName="place"
+        style="font-size: 18px;"
+        required
+      />
+      <mat-error *ngIf="placeControl.hasError('required')"
+        >必須入力です！</mat-error
+      >
+      <mat-error *ngIf="placeControl.hasError('maxlength')"
+        >長すぎます。40文字以下にして下さい</mat-error
+      >
+    </mat-form-field>
   </div>
 
   <div class="form-filed_item form-filed-btn">
-    <!-- <mat-form-field> -->
-      <a routerLink="/top">
-      <button class="search-btn" [disabled]="form.invalid" mat-raised-button color="primary"><span>検索</span><i class="material-icons">
-        search</i>
+    <a routerLink="/top">
+      <button
+        class="search-btn"
+        [disabled]="form.invalid"
+        mat-raised-button
+        color="primary"
+      >
+        <span>検索</span><i class="material-icons">search</i>
       </button>
-      </a>
-    <!-- </mat-form-field> -->
+    </a>
   </div>
 </form>
 
 <div class="search-button-row">
-    <button (click)="companyLogin()" mat-raised-button color="accent"><span>企業の方はこちらへ</span>
-      <i class="material-icons">create</i>
-    </button>
+  <button (click)="companyLogin()" mat-raised-button color="accent">
+    <span>企業の方はこちらへ</span>
+    <i class="material-icons">create</i>
+  </button>
 </div>
-
-

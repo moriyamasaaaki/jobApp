@@ -2,9 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormControl } from '@angular/forms';
 import { UserProfileService } from 'src/app/service/user-profile.service';
 import { AuthService } from 'src/app/services/auth.service';
-import { Observable } from 'rxjs';
-import { UserProfile } from 'src/app/interfaces/profile';
-
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',

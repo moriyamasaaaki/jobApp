@@ -3,7 +3,6 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { UserProfile } from '../interfaces/profile';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { AuthService } from '../services/auth.service';
@@ -30,7 +29,7 @@ export class UserProfileService {
       .set({ userId, ...profile })
       .then(() => {
         this.snackBar.open('userを作成しました。', null, {
-          duration: 2000
+          duration: 3000
         });
         if (avatarImage) {
           this.updateAvatar(userId, avatarImage);
@@ -47,23 +46,6 @@ export class UserProfileService {
     return this.db.collection<UserProfile>(`userProfile`).valueChanges();
   }
 
-  // getUser(userId: string): Observable<UserProfile> {
-  //   return this.db
-  //     .collection<UserProfile>('userProfile', ref =>
-  //       ref.where('userId', '==', userId)
-  //     )
-  //     .valueChanges()
-  //     .pipe(
-  //       map(userProfile => {
-  //         if (userProfile.length) {
-  //           return userProfile[0];
-  //         } else {
-  //           return null;
-  //         }
-  //       })
-  //     );
-  // }
-
   private async updateAvatar(userId: string, file: File) {
     console.log(userId);
     const result = await this.storage.ref(`userProfile/${userId}`).put(file);
@@ -76,6 +58,13 @@ export class UserProfileService {
 
   deleteProfile(userId: string): Promise<void> {
     console.log(userId);
-    return this.db.doc(`userProfile'/${userId}`).delete();
+    return this.db
+      .doc(`userProfile/${userId}`)
+      .delete()
+      .then(() => {
+        this.snackBar.open('プロフィールを削除しました。', null, {
+          duration: 3000
+        });
+      });
   }
 }

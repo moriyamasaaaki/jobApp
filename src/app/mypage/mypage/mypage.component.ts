@@ -12,7 +12,7 @@ import { UserProfile } from 'src/app/interfaces/profile';
   styleUrls: ['./mypage.component.scss']
 })
 export class MypageComponent implements OnInit {
-  profile$: Observable<UserProfile> = this.userProfileService.getUser(
+  profile$: Observable<UserProfile> = this.userProfileService.getProfile(
     this.authService.uid
   );
 

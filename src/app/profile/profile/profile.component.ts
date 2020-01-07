@@ -2,9 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormControl } from '@angular/forms';
 import { UserProfileService } from 'src/app/service/user-profile.service';
 import { AuthService } from 'src/app/services/auth.service';
-import { Observable } from 'rxjs';
-import { UserProfile } from 'src/app/interfaces/profile';
-
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -108,11 +105,13 @@ export class ProfileComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.userProfileService.getUser(this.authService.uid).subscribe(profile => {
-      if (profile) {
-        this.form.patchValue(profile);
-      }
-    });
+    this.userProfileService
+      .getProfile(this.authService.uid)
+      .subscribe(profile => {
+        if (profile) {
+          this.form.patchValue(profile);
+        }
+      });
   }
 
   setAvatar(event) {

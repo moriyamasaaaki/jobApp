@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { UserProfileService } from '../service/user-profile.service';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-delete-dialog',
@@ -6,7 +8,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./delete-dialog.component.scss']
 })
 export class DeleteDialogComponent implements OnInit {
-  constructor() {}
+  userId: string;
+  constructor(
+    private userProfileService: UserProfileService,
+    private authService: AuthService
+  ) {}
 
   ngOnInit() {}
+
+  delete() {
+    this.userProfileService.deleteProfile(this.authService.uid);
+  }
 }

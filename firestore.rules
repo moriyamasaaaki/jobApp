@@ -5,25 +5,25 @@ service cloud.firestore {
       allow read, write: if true;
       allow create: if request.auth.uid != null;
       allow update: if request.auth.uid == resource.data.userId && resource.data.userId == request.resource.userId
-      allow delete: if request.auth.uid == resource.data.userId == request.auth.uid;
+      allow delete: if true;
     }
     match /companyProfile/{userId} {
       allow read, write: if true;
       allow create: if request.auth.uid != null;
       allow update: if request.auth.uid == resource.data.userId && resource.data.userId == request.resource.userId
-      allow delete: if request.auth.uid == resource.data.userId == request.auth.uid;
+      allow delete: if request.auth.uid == resource.data.userId;
     }
     match /JobPosts/{userId} {
       allow read, write: if true;
       allow create: if request.auth.uid != null;
       allow update: if request.auth.uid == resource.data.userId && resource.data.userId == request.resource.userId
-      allow delete: if request.auth.uid == resource.data.userId == request.auth.uid;
+      allow delete: if request.auth.uid == resource.data.userId;
     }
     match /reviews/{userId} {
       allow read, write: if true;
       allow create: if request.auth.uid != null;
       allow update: if request.auth.uid == resource.data.userId && resource.data.userId == request.resource.userId
-      allow delete: if request.auth.uid == resource.data.userId == request.auth.uid;
+      allow delete: if request.auth.uid == resource.data.userId;
     }
   }
 }

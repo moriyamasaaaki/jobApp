@@ -108,11 +108,13 @@ export class ProfileComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.userProfileService.getUser(this.authService.uid).subscribe(profile => {
-      if (profile) {
-        this.form.patchValue(profile);
-      }
-    });
+    this.userProfileService
+      .getProfile(this.authService.uid)
+      .subscribe(profile => {
+        if (profile) {
+          this.form.patchValue(profile);
+        }
+      });
   }
 
   setAvatar(event) {

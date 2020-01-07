@@ -17,8 +17,6 @@ export class DeleteDialogComponent implements OnInit {
   ngOnInit() {}
 
   delete() {
-    const userId = this.authService.uid;
-    this.userProfileService.deleteProfile(userId);
-    // console.log(userId);
+    this.userProfileService.deleteProfile(this.authService.uid);
   }
 }

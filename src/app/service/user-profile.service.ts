@@ -47,17 +47,14 @@ export class UserProfileService {
   }
 
   private async updateAvatar(userId: string, file: File) {
-    console.log(userId);
     const result = await this.storage.ref(`userProfile/${userId}`).put(file);
     const photoURL = await result.ref.getDownloadURL();
     this.db.doc(`userProfile/${userId}`).update({
       photoURL
     });
-    console.log(photoURL);
   }
 
   deleteProfile(userId: string): Promise<void> {
-    console.log(userId);
     return this.db
       .doc(`userProfile/${userId}`)
       .delete()

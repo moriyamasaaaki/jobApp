@@ -1,9 +1,14 @@
 <div class="mypage">
   <h2>マイページ</h2>
-  <p class="mypage__default-text" *ngIf="!(profile$ | async)">
-    プロフィールがありません。
-  </p>
-  <div class="mypage__list" *ngIf="profile$ | async as profile">
+  <ng-template #defaultText class="mypage__default-text">
+    <p class="mypage__default-text">
+      プロフィールがありません。
+    </p>
+  </ng-template>
+  <div
+    class="mypage__list"
+    *ngIf="profile$ | async as profile; else defaultText"
+  >
     <dl>
       <dt>画像</dt>
       <dd><img [src]="profile.photoURL" alt="" /></dd>
@@ -45,18 +50,20 @@
       </dd>
     </dl>
   </div>
-  <div class="mypage__btn" *ngIf="profile$ | async as user">
+  <div class="mypage__btn" *ngIf="profile$ | async as user; else defaultBtn">
     <a routerLink="/profile" mat-raised-button color="primary">編集する</a>
     <button mat-raised-button color="warn" (click)="openDeleteDialog()">
       削除する
     </button>
   </div>
 
-  <div class="mypage__btn" *ngIf="!(profile$ | async)">
-    <button routerLink="/profile" mat-raised-button color="primary">
-      作成する
-    </button>
-  </div>
+  <ng-template #defaultBtn>
+    <div class="mypage__btn">
+      <button routerLink="/profile" mat-raised-button color="primary">
+        作成する
+      </button>
+    </div>
+  </ng-template>
 
   <div class="mypage__footer-item">
     <a routerLink="/plan">プラン</a>

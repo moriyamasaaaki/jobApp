@@ -1,7 +1,7 @@
 @import 'mixins';
 
 .top__page {
-  padding: 16px 5px;
+  padding: 16px 5px 0;
 }
 
 .attention,
@@ -31,7 +31,6 @@
 }
 
 .new {
-  margin: 0 0 24px;
   @include pc {
     border: 2px solid #eee;
     border-radius: 5px;

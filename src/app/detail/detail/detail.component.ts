@@ -11,7 +11,6 @@ import { firestore } from 'firebase/app';
   styleUrls: ['./detail.component.scss']
 })
 export class DetailComponent implements OnInit {
-  releaseDate = firestore.Timestamp.now().toDate();
   article$: Observable<DetailJob> = this.jobPostService.getJobPost(
     this.authService.uid
   );

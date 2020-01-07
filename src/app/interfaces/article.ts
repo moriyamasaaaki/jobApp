@@ -14,6 +14,7 @@ export interface DetailJob extends JobList {
   date: Date;
   companyContent: string;
   welfare: string;
+  createAt: Date;
 }
 
 export interface AttentionJob {

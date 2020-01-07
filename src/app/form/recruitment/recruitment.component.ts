@@ -102,15 +102,11 @@ export class RecruitmentComponent implements OnInit {
 
   submit() {
     console.log(this.form.value);
-    const now = new Date();
-    const year = now.getFullYear();
-    const month = now.getMonth() + 1;
-    const day = now.getDate();
-    const newDate = `${year}年${month}月${day}日`;
     this.jobPostService.createJobPost(
       {
         jobId: this.authService.uid,
-        date: newDate,
+        createdAt: new Date(),
+        updatedAt: new Date(),
         ...this.form.value
       },
       this.image

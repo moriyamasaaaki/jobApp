@@ -8,7 +8,7 @@
         </li>
       </ul>
       <span>{{ article.companyName }}</span>
-      <p>公開日： {{ article.date }}</p>
+      <p>公開日： {{ article.createdAt.toDate() | date: 'yyy年MM月dd日' }}</p>
     </div>
     <div class="detail__recruit">
       <dl>

@@ -23,7 +23,14 @@ export class MypageComponent implements OnInit {
   ) {}
 
   openDeleteDialog() {
-    this.dialog.open(DeleteDialogComponent);
+    this.dialog
+      .open(DeleteDialogComponent)
+      .afterClosed()
+      .subscribe(status => {
+        if (status) {
+          this.userProfileService.deleteProfile(this.authService.uid);
+        }
+      });
   }
 
   ngOnInit() {}

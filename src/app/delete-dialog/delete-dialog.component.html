@@ -3,6 +3,6 @@
   <p>削除すると元には戻せません。</p>
   <div mat-dialog-actions>
     <button mat-flat-button matDialogClose>キャンセル</button>
-    <button mat-flat-button color="warn" (click)="delete()">削除</button>
+    <button mat-flat-button color="warn" [matDialogClose]="true">削除</button>
   </div>
 </div>

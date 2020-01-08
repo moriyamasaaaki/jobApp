@@ -1,35 +1,46 @@
 <div class="company-profile">
   <h2>企業側プロフィール</h2>
-  <div class="company-profile__list" *ngIf="profile$ | async as profile">
-    <dl>
-      <dt>会社名</dt>
-      <dd>{{ profile.name }}</dd>
+  <ng-container *ngIf="profile$ | async as profile; else default">
+    <div class="company-profile__list">
+      <dl>
+        <dt>会社名</dt>
+        <dd>{{ profile.name }}</dd>
 
-      <dt>部署名</dt>
-      <dd>{{ profile.department }}</dd>
+        <dt>部署名</dt>
+        <dd>{{ profile.department }}</dd>
 
-      <dt>お名前</dt>
-      <dd>{{ profile.firstName }} {{ profile.lastName }}</dd>
+        <dt>お名前</dt>
+        <dd>{{ profile.firstName }} {{ profile.lastName }}</dd>
 
-      <dt>電話番号</dt>
-      <dd>{{ profile.tel }}</dd>
+        <dt>電話番号</dt>
+        <dd>{{ profile.tel }}</dd>
 
-      <dt>メールアドレス</dt>
-      <dd>{{ profile.email }}</dd>
+        <dt>メールアドレス</dt>
+        <dd>{{ profile.email }}</dd>
 
-      <dt>パスワード</dt>
-      <dd>{{ profile.password }}</dd>
-    </dl>
-  </div>
-  <div class="company-profile__btn">
-    <a routerLink="/companySideForm" mat-raised-button color="primary"
-      >編集する</a
-    >
-    <button mat-raised-button color="warn" (click)="openDeleteDialog()">
-      削除する
-    </button>
-  </div>
-
+        <dt>パスワード</dt>
+        <dd>{{ profile.password }}</dd>
+      </dl>
+    </div>
+    <div class="company-profile__btn">
+      <a routerLink="/companySideForm" mat-raised-button color="primary"
+        >編集する</a
+      >
+      <button mat-raised-button color="warn" (click)="openDeleteDialog()">
+        削除する
+      </button>
+    </div>
+  </ng-container>
+  <ng-template #default>
+    <p class="company-profile__default-text">
+      プロフィールがありません。
+    </p>
+    <div class="company-profile__btn">
+      <button routerLink="/companySideForm" mat-raised-button color="primary">
+        作成する
+      </button>
+    </div>
+  </ng-template>
   <div class="company-profile__footer-item">
     <a routerLink="/plan">プラン</a>
     <a routerLink="/">企業の方はこちらから</a>

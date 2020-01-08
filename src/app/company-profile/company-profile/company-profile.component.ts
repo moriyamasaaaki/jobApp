@@ -22,7 +22,14 @@ export class CompanyProfileComponent implements OnInit {
   ) {}
 
   openDeleteDialog() {
-    this.dialog.open(DeleteDialogComponent);
+    this.dialog
+      .open(DeleteDialogComponent)
+      .afterClosed()
+      .subscribe(status => {
+        if (status) {
+          this.companyProfileSurvice.deleteCompanyUser(this.authService.uid);
+        }
+      });
   }
 
   ngOnInit() {}

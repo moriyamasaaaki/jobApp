@@ -42,6 +42,13 @@
       }
     }
   }
+  &__default-text {
+    text-align: center;
+    font-size: 14px;
+    @include pc {
+      font-size: 16px;
+    }
+  }
 }
 
 dl {

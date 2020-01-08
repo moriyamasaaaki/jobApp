@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthService } from './services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -7,6 +8,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Tokyo bite';
+
+  constructor(private authService: AuthService) {}
+
+  login() {
+    this.authService.login();
+  }
 }
-
-

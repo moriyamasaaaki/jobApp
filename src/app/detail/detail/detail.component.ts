@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { DetailJob } from 'src/app/interfaces/article';
 import { JobPostService } from 'src/app/service/job-post.service';
-import { AuthService } from 'src/app/services/auth.service';
 import { Observable } from 'rxjs';
-import { firestore } from 'firebase/app';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-detail',
@@ -11,14 +10,16 @@ import { firestore } from 'firebase/app';
   styleUrls: ['./detail.component.scss']
 })
 export class DetailComponent implements OnInit {
-  article$: Observable<DetailJob> = this.jobPostService.getJobPost(
-    this.authService.uid
-  );
-
+  id: string;
+  article$: Observable<DetailJob>;
   constructor(
     private jobPostService: JobPostService,
-    private authService: AuthService
-  ) {}
+    private route: ActivatedRoute
+  ) {
+    route.paramMap.subscribe(params => {
+      this.article$ = this.jobPostService.getJobPost(params.get('id'));
+    });
+  }
 
   ngOnInit() {}
 }

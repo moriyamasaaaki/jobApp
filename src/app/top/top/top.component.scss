@@ -41,15 +41,16 @@
 .hdg {
   font-size: 18px;
   text-align: center;
-  margin-bottom: 16px;
+  margin-bottom: 24px;
   @include pc {
     font-size: 24px;
+    margin-bottom: 40px;
   }
 }
 
 .hdg-pc {
   @include pc {
-    margin: 16px 0;
+    padding-top: 16px;
   }
 }
 

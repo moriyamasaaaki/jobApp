@@ -1,5 +1,5 @@
 <div class="new-job-box">
-  <ng-container *ngIf="article$ | async as article">
+  <ng-container *ngIf="article$ | async as article; else default">
     <div class="new-job-box__post" *ngFor="let new of news">
       <div class="new-job-box__head">
         <span class="new-job-box__tag">New</span>
@@ -14,4 +14,9 @@
       </a>
     </div>
   </ng-container>
+  <ng-template #default>
+    <p class="new-job-box__default-text">
+      注目の求人はまだありません。
+    </p>
+  </ng-template>
 </div>

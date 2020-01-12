@@ -55,4 +55,11 @@
     display: block;
     margin: 0 auto;
   }
+  &__default-text {
+    margin: 0 auto;
+    font-size: 14px;
+    @include pc {
+      font-size: 16px;
+    }
+  }
 }

@@ -1,7 +1,7 @@
 <section class="keep job-card">
   <h2>お気に入りした求人</h2>
   <p>お気に入り/<span class="job-card__number">１</span>件</p>
-  <ng-container *ngIf="article$ | async as article">
+  <ng-container *ngIf="article$ | async as article; else default">
     <div class="job-card__box" *ngFor="let job of jobs">
       <div class="job-card__title">
         <span>{{ article.companyName }}</span>
@@ -36,4 +36,9 @@
       </div>
     </div>
   </ng-container>
+  <ng-template #default>
+    <p class="job-card__default-text">
+      お気に入りはまだありません。
+    </p>
+  </ng-template>
 </section>

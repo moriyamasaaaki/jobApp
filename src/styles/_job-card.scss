@@ -93,4 +93,12 @@
   &__number {
     color: orangered;
   }
+  &__default-text {
+    text-align: center;
+    margin-top: 48px;
+    font-size: 14px;
+    @include pc {
+      font-size: 16px;
+    }
+  }
 }

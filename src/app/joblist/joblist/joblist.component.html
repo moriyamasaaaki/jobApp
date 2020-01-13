@@ -1,6 +1,6 @@
 <section class="job-list job-card">
   <h2>求人一覧</h2>
-  <ng-container *ngIf="article$ | async as article">
+  <ng-container *ngIf="article$ | async as article; else default">
     <div class="job-card__box" *ngFor="let jobList of jobLists">
       <div class="job-card__title">
         <span>{{ article.companyName }}</span>
@@ -35,4 +35,9 @@
       </div>
     </div>
   </ng-container>
+  <ng-template #default>
+    <p class="job-card__default-text">
+      投稿はまだありません。
+    </p>
+  </ng-template>
 </section>

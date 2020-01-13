@@ -1,5 +1,5 @@
 <section class="job-box">
-  <ng-container *ngIf="article$ | async as article">
+  <ng-container *ngIf="article$ | async as article; else default">
     <div class="job-box__card" *ngFor="let attention of attentions">
       <a routerLink="/detail">
         <img [src]="article.photoURL" alt="" />
@@ -20,4 +20,9 @@
       </div>
     </div>
   </ng-container>
+  <ng-template #default>
+    <p class="job-box__default-text">
+      注目の求人はまだありません。
+    </p>
+  </ng-template>
 </section>

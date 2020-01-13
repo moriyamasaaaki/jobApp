@@ -113,4 +113,11 @@
     background: #fff;
     box-sizing: border-box;
   }
+  iframe {
+    width: 220px;
+    height: auto;
+    @include tab {
+      width: 300px;
+    }
+  }
 }

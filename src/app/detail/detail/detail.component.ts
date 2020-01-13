@@ -3,7 +3,6 @@ import { DetailJob } from 'src/app/interfaces/article';
 import { JobPostService } from 'src/app/service/job-post.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { Observable } from 'rxjs';
-import { firestore } from 'firebase/app';
 
 @Component({
   selector: 'app-detail',

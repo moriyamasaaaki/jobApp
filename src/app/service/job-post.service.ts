@@ -3,9 +3,9 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { DetailJob } from '../interfaces/article';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { AngularFireStorage } from '@angular/fire/storage';
+import { async } from '@angular/core/testing';
 
 @Injectable({
   providedIn: 'root'
@@ -18,42 +18,53 @@ export class JobPostService {
     private storage: AngularFireStorage
   ) {}
 
-  createJobPost(article: DetailJob, avatarImage?: File) {
+  uploadImage(file: File, id: string): Promise<void> {
+    return this.storage.upload(`jobPosts/${id}`, file).then(result => {
+      this.db.doc(`JobPosts/${id}`).update({
+        photoURL: result.ref.getDownloadURL()
+      });
+    });
+  }
+
+  uploadImages(files: File[], id: string): Promise<void> {
+    console.log(files);
+    console.log(id);
+    return Promise.all(
+      files.map((file, index) => {
+        const ref = this.storage.ref(`JobPosts/${id}-${index}`);
+        return ref.put(file);
+      })
+    ).then(async tasks => {
+      const jobImageUrls = [];
+      for (const task of tasks) {
+        jobImageUrls.push(await task.ref.getDownloadURL());
+      }
+      console.log(jobImageUrls);
+      return this.db.doc(`JobPosts/${id}`).update({
+        jobImageUrls
+      });
+    });
+  }
+
+  createJobPost(article: DetailJob, images?: File[]) {
+    console.log(article);
+    console.log(images);
     const id = this.db.createId();
     return this.db
       .doc(`JobPosts/${id}`)
-      .set(article)
+      .set({ id, ...article })
       .then(() => {
         this.snackBar.open('求人を作成しました', null, {
           duration: 2000
         });
-        if (avatarImage) {
-          this.updateAvatar(article.jobId, avatarImage);
+        if (images) {
+          this.uploadImages(images, id);
         }
-        this.router.navigateByUrl('/detail');
+        this.router.navigateByUrl(`/detail/${id}`);
       });
   }
-  getJobPost(jobId: string): Observable<DetailJob> {
-    return this.db
-      .collection<DetailJob>('JobPosts', ref => ref.where('jobId', '==', jobId))
-      .valueChanges()
-      .pipe(
-        map(JobPosts => {
-          if (JobPosts.length) {
-            return JobPosts[0];
-          } else {
-            return null;
-          }
-        })
-      );
-  }
-  private async updateAvatar(jobId: string, file: File) {
-    console.log(jobId);
-    const result = await this.storage.ref(`JobPosts/${jobId}`).put(file);
-    const photoURL = await result.ref.getDownloadURL();
-    this.db.doc(`JobPosts/${jobId}`).update({
-      photoURL
-    });
-    console.log(photoURL);
+
+  getJobPost(id: string): Observable<DetailJob> {
+    return this.db.doc<DetailJob>(`JobPosts/${id}`).valueChanges();
   }
 }

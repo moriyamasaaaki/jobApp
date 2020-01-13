@@ -6,6 +6,11 @@
     text-align: left;
     font-size: 20px;
   }
+  &__title-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
   &__title {
     line-height: 1.5;
     @include tab {
@@ -27,7 +32,6 @@
   }
   .job-img {
     @include tab {
-      // display: block;
       margin: 0 auto;
       width: 80%;
     }
@@ -50,7 +54,7 @@
   &__btn {
     text-align: center;
   }
-  button {
+  &__btn-add {
     margin: 10px 3px;
     padding: 8px 40px;
     @include pc {
@@ -118,6 +122,13 @@
     height: auto;
     @include tab {
       width: 300px;
+    }
+  }
+  &__default-text {
+    text-align: center;
+    font-size: 14px;
+    @include pc {
+      font-size: 16px;
     }
   }
 }

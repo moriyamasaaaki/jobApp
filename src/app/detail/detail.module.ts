@@ -8,6 +8,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { ReviewComponent } from './review/review.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatIconModule } from '@angular/material/icon';
+import { MatDialogModule } from '@angular/material/dialog';
 
 import { SafePipeModule } from 'safe-pipe';
 @NgModule({
@@ -18,7 +20,9 @@ import { SafePipeModule } from 'safe-pipe';
     MatButtonModule,
     MatFormFieldModule,
     MatProgressBarModule,
-    SafePipeModule
+    SafePipeModule,
+    MatIconModule,
+    MatDialogModule
   ]
 })
 export class DetailModule {}

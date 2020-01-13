@@ -1,8 +1,9 @@
 export interface JobList {
+  id: string;
   jobId: string;
   companyName: string;
   title: string;
-  recruitmentImg: string;
+  jobImageUrls: string[];
   workPlace: string;
   occupation: string;
   salary: string;

@@ -40,8 +40,11 @@
         </dd>
       </dl>
       <div class="job-img">
-        <img [src]="article.photoURL" alt="" />
-        <img [src]="article.photoURL" alt="" />
+        <img
+          [src]="imageURL"
+          *ngFor="let imageURL of article.jobImageUrls"
+          alt=""
+        />
       </div>
     </div>
   </div>

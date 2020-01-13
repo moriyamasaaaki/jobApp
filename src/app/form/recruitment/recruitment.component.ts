@@ -37,7 +37,7 @@ export class RecruitmentComponent implements OnInit {
     workPlace: ['', [Validators.required]]
   });
 
-  image: File;
+  images: File[];
 
   get titleControl() {
     return this.form.get('title') as FormControl;
@@ -93,15 +93,13 @@ export class RecruitmentComponent implements OnInit {
     });
   }
 
-  setAvatar(event) {
+  setImage(event) {
     if (event.target.files.length) {
-      const image = event.target.files[0];
-      this.image = image;
+      this.images = Object.values(event.target.files);
     }
   }
 
   submit() {
-    console.log(this.form.value);
     this.jobPostService.createJobPost(
       {
         jobId: this.authService.uid,
@@ -109,7 +107,7 @@ export class RecruitmentComponent implements OnInit {
         updatedAt: new Date(),
         ...this.form.value
       },
-      this.image
+      this.images
     );
   }
 }

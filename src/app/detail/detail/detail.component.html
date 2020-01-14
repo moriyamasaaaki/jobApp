@@ -1,7 +1,19 @@
 <section class="detail">
-  <div *ngIf="article$ | async as article">
+  <div *ngIf="article$ | async as article; else default">
     <div class="detail__title">
-      <h1>{{ article.title }}</h1>
+      <div class="detail__title-content">
+        <h1>{{ article.title }}</h1>
+        <div>
+          <button
+            mat-mini-fab
+            class="detail__delete-btn"
+            color="warn"
+            (click)="openDeleteDialog()"
+          >
+            <mat-icon>clear</mat-icon>
+          </button>
+        </div>
+      </div>
       <ul class="detail__taglist">
         <li>
           <a href="">{{ article.label }}</a>
@@ -49,10 +61,19 @@
     </div>
   </div>
   <div class="detail__btn">
-    <button mat-stroked-button color="primary">お気に入り</button>
+    <button mat-stroked-button color="primary" class="detail__btn-add">
+      お気に入り
+    </button>
     <a href="dammy@tokyobite.com">
-      <button mat-raised-button color="primary">応募する</button>
+      <button mat-raised-button color="primary" class="detail__btn-add">
+        応募する
+      </button>
     </a>
   </div>
+  <ng-template #default>
+    <p class="detail__default-text">
+      求人はありません。
+    </p>
+  </ng-template>
   <app-review></app-review>
 </section>

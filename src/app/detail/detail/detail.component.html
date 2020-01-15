@@ -1,40 +1,40 @@
 <section class="detail">
-  <div *ngIf="article$ | async as article">
+  <div *ngIf="jobs$ | async as job">
     <div class="detail__title">
-      <h1>{{ article.title }}</h1>
+      <h1>{{ job.title }}</h1>
       <ul class="detail__taglist">
         <li>
-          <a href="">{{ article.label }}</a>
+          <a href="">{{ job.label }}</a>
         </li>
       </ul>
-      <span>{{ article.companyName }}</span>
-      <p>公開日： {{ article.createdAt.toDate() | date: 'yyy年MM月dd日' }}</p>
+      <span>{{ job.companyName }}</span>
+      <p>公開日： {{ job.createdAt.toDate() | date: 'yyy年MM月dd日' }}</p>
     </div>
     <div class="detail__recruit">
       <dl>
         <dt>概要</dt>
-        <dd>{{ article.companyContent }}</dd>
+        <dd>{{ job.companyContent }}</dd>
 
         <dt>職種</dt>
-        <dd>{{ article.occupation }}</dd>
+        <dd>{{ job.occupation }}</dd>
 
         <dt>給与</dt>
-        <dd>{{ article.salary }}円</dd>
+        <dd>{{ job.salary }}円</dd>
 
         <dt>福利厚生</dt>
-        <dd>{{ article.welfare }}</dd>
+        <dd>{{ job.welfare }}</dd>
 
         <dt>勤務時間・日数・休日</dt>
-        <dd>{{ article.workTime }}</dd>
+        <dd>{{ job.workTime }}</dd>
 
         <dt>勤務地</dt>
         <dd>
-          {{ article.workPlace }}
+          {{ job.workPlace }}
           <br />
           <iframe
             [src]="
-              'https://maps.google.co.jp/maps?output=embed&q=' +
-                article.workPlace | safe: 'resourceUrl'
+              'https://maps.google.co.jp/maps?output=embed&q=' + job.workPlace
+                | safe: 'resourceUrl'
             "
           ></iframe>
         </dd>
@@ -42,7 +42,7 @@
       <div class="job-img">
         <img
           [src]="imageURL"
-          *ngFor="let imageURL of article.jobImageUrls"
+          *ngFor="let imageURL of job.jobImageUrls"
           alt=""
         />
       </div>

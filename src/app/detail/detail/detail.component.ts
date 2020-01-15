@@ -11,13 +11,13 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class DetailComponent implements OnInit {
   id: string;
-  article$: Observable<DetailJob>;
+  jobs$: Observable<DetailJob>;
   constructor(
     private jobPostService: JobPostService,
     private route: ActivatedRoute
   ) {
     route.paramMap.subscribe(params => {
-      this.article$ = this.jobPostService.getJobPost(params.get('id'));
+      this.jobs$ = this.jobPostService.getJobPost(params.get('id'));
     });
   }
 

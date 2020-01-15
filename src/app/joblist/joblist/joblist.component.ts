@@ -10,11 +10,7 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./joblist.component.scss']
 })
 export class JoblistComponent implements OnInit {
-  article$: Observable<DetailJob> = this.jobPostService.getJobPost(
-    this.authService.uid
-  );
-
-  jobLists = new Array(5).fill(null);
+  jobs$: Observable<DetailJob[]> = this.jobPostService.getAllJob();
 
   constructor(
     private jobPostService: JobPostService,

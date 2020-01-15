@@ -67,4 +67,20 @@ export class JobPostService {
   getJobPost(id: string): Observable<DetailJob> {
     return this.db.doc<DetailJob>(`JobPosts/${id}`).valueChanges();
   }
+
+  getNewJobs(): Observable<DetailJob[]> {
+    return this.db
+      .collection<DetailJob>(`JobPosts`, ref => {
+        return ref.orderBy('createdAt').limit(10);
+      })
+      .valueChanges();
+  }
+
+  getAttentionJobs(): Observable<DetailJob[]> {
+    return this.db
+      .collection<DetailJob>(`JobPosts`, ref => {
+        return ref.orderBy('createdAt').limit(9);
+      })
+      .valueChanges();
+  }
 }

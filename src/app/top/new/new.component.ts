@@ -10,7 +10,7 @@ import { JobPostService } from 'src/app/service/job-post.service';
 })
 export class NewComponent implements OnInit {
   id: string;
-  articles$: Observable<DetailJob[]> = this.jobPostService.getNewJobs();
+  jobs$: Observable<DetailJob[]> = this.jobPostService.getNewJobs();
 
   constructor(private jobPostService: JobPostService) {}
 

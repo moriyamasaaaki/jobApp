@@ -1,17 +1,17 @@
 <div class="new-job-box">
-  <ng-container *ngIf="articles$ | async as articles; else default">
-    <div class="new-job-box__post" *ngFor="let article of articles">
+  <ng-container *ngIf="jobs$ | async as jobs; else default">
+    <div class="new-job-box__post" *ngFor="let job of jobs">
       <div class="new-job-box__head">
         <span class="new-job-box__tag">New</span>
-        <a routerLink="/detail/{{ article.id }}">
-          <p class="new-job-box__pc-title">{{ article.companyName }}</p>
+        <a routerLink="/detail/{{ job.id }}">
+          <p class="new-job-box__pc-title">{{ job.companyName }}</p>
         </a>
       </div>
-      <a routerLink="/detail/{{ article.id }}" (click)="router()">{{
-        article.title
+      <a routerLink="/detail/{{ job.id }}" (click)="router()">{{
+        job.title
       }}</a>
-      <a routerLink="/detail/{{ article.id }}">
-        <span>{{ article.workPlace }}</span
+      <a routerLink="/detail/{{ job.id }}">
+        <span>{{ job.workPlace }}</span
         ><i class="material-icons">play_arrow</i>
       </a>
     </div>

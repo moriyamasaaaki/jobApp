@@ -68,6 +68,7 @@ export class JobPostService {
     return this.db.doc<DetailJob>(`JobPosts/${id}`).valueChanges();
   }
 
+
   getNewJobs(): Observable<DetailJob[]> {
     return this.db
       .collection<DetailJob>(`JobPosts`, ref => {
@@ -82,5 +83,16 @@ export class JobPostService {
         return ref.orderBy('createdAt').limit(9);
       })
       .valueChanges();
+  }
+
+  deleteJob(id: string): Promise<void> {
+    return this.db
+      .doc(`JobPosts/${id}`)
+      .delete()
+      .then(() => {
+        this.snackBar.open('求人を削除しました。', null, {
+          duration: 3000
+        });
+      });
   }
 }

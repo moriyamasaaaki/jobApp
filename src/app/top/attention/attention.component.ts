@@ -9,7 +9,7 @@ import { JobPostService } from 'src/app/service/job-post.service';
   styleUrls: ['./attention.component.scss']
 })
 export class AttentionComponent implements OnInit {
-  articles$: Observable<DetailJob[]> = this.jobPostService.getAttentionJobs();
+  jobs$: Observable<DetailJob[]> = this.jobPostService.getAttentionJobs();
 
   constructor(private jobPostService: JobPostService) {}
 

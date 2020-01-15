@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { DetailJob } from 'src/app/interfaces/article';
 import { Observable } from 'rxjs';
 import { JobPostService } from 'src/app/service/job-post.service';
-import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-new',
@@ -10,16 +9,10 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./new.component.scss']
 })
 export class NewComponent implements OnInit {
-  article$: Observable<DetailJob> = this.jobPostService.getJobPost(
-    this.authService.uid
-  );
+  id: string;
+  jobs$: Observable<DetailJob[]> = this.jobPostService.getNewJobs();
 
-  news = new Array(10).fill(null);
-
-  constructor(
-    private jobPostService: JobPostService,
-    private authService: AuthService
-  ) {}
+  constructor(private jobPostService: JobPostService) {}
 
   ngOnInit() {}
 }

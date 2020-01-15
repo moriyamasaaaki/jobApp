@@ -83,4 +83,15 @@ export class JobPostService {
       })
       .valueChanges();
   }
+
+  deleteJob(id: string): Promise<void> {
+    return this.db
+      .doc(`JobPosts/${id}`)
+      .delete()
+      .then(() => {
+        this.snackBar.open('求人を削除しました。', null, {
+          duration: 3000
+        });
+      });
+  }
 }

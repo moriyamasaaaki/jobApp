@@ -1,14 +1,16 @@
 <div class="new-job-box">
-  <ng-container *ngIf="article$ | async as article; else default">
-    <div class="new-job-box__post" *ngFor="let new of news">
+  <ng-container *ngIf="articles$ | async as articles; else default">
+    <div class="new-job-box__post" *ngFor="let article of articles">
       <div class="new-job-box__head">
         <span class="new-job-box__tag">New</span>
-        <a routerLink="/detail">
+        <a routerLink="/detail/{{ article.id }}">
           <p class="new-job-box__pc-title">{{ article.companyName }}</p>
         </a>
       </div>
-      <a routerLink="/detail">{{ article.title }}</a>
-      <a routerLink="/detail">
+      <a routerLink="/detail/{{ article.id }}" (click)="router()">{{
+        article.title
+      }}</a>
+      <a routerLink="/detail/{{ article.id }}">
         <span>{{ article.workPlace }}</span
         ><i class="material-icons">play_arrow</i>
       </a>
@@ -16,7 +18,7 @@
   </ng-container>
   <ng-template #default>
     <p class="new-job-box__default-text">
-      注目の求人はまだありません。
+      新着の求人はまだありません。
     </p>
   </ng-template>
 </div>

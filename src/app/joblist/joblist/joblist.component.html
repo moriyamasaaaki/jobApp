@@ -1,30 +1,28 @@
 <section class="job-list job-card">
   <h2>求人一覧</h2>
-  <ng-container *ngIf="article$ | async as article; else default">
-    <div class="job-card__box" *ngFor="let jobList of jobLists">
+  <ng-container *ngIf="jobs$ | async as jobs; else default">
+    <div class="job-card__box" *ngFor="let job of jobs">
       <div class="job-card__title">
-        <span>{{ article.companyName }}</span>
-        <a routerLink="/detail">
-          <h3>{{ article.title }}</h3>
+        <span>{{ job.companyName }}</span>
+        <a routerLink="/detail/{{ job.id }}">
+          <h3>{{ job.title }}</h3>
         </a>
       </div>
       <div class="job-card__content">
-        <img [src]="article.photoURL" alt="" />
+        <img [src]="job.jobImageUrls[0]" alt="" />
         <ul class="job-card__content-list">
           <li>
             <i class="material-icons">compass_calibration</i>
-            <span>{{ article.workPlace }}</span>
+            <span>{{ job.workPlace }}</span>
           </li>
-          <li><i class="material-icons"> work </i>{{ article.occupation }}</li>
+          <li><i class="material-icons"> work </i>{{ job.occupation }}</li>
           <li>
             <i class="material-icons">
               money
             </i>
-            時給{{ article.salary }}円
+            時給{{ job.salary }}円
           </li>
-          <li>
-            <i class="material-icons"> access_time </i>{{ article.workTime }}
-          </li>
+          <li><i class="material-icons"> access_time </i>{{ job.workTime }}</li>
         </ul>
       </div>
       <div class="job-card__btn">

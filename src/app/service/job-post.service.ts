@@ -5,7 +5,6 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AngularFireStorage } from '@angular/fire/storage';
-import { async } from '@angular/core/testing';
 
 @Injectable({
   providedIn: 'root'
@@ -70,7 +69,7 @@ export class JobPostService {
 
   getNewJobs(): Observable<DetailJob[]> {
     return this.db
-      .collection<DetailJob>(`JobPosts`, ref => {
+      .collection<DetailJob>('JobPosts', ref => {
         return ref.orderBy('createdAt').limit(10);
       })
       .valueChanges();
@@ -78,8 +77,16 @@ export class JobPostService {
 
   getAttentionJobs(): Observable<DetailJob[]> {
     return this.db
-      .collection<DetailJob>(`JobPosts`, ref => {
+      .collection<DetailJob>('JobPosts', ref => {
         return ref.orderBy('createdAt').limit(9);
+      })
+      .valueChanges();
+  }
+
+  getAllJob(): Observable<DetailJob[]> {
+    return this.db
+      .collection<DetailJob>('JobPosts', ref => {
+        return ref.orderBy('createdAt').limit(20);
       })
       .valueChanges();
   }

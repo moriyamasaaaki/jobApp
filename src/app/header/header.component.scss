@@ -6,7 +6,11 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 40px;
+  padding: 0 8px;
   @include mat-elevation(4);
+  @include pc {
+    padding: 0 32px;
+  }
   a {
     color: #fff;
     text-decoration: none;
@@ -18,95 +22,46 @@
       font-size: 32px;
     }
   }
-  small {
-    font-size: 12px;
-    @include pc {
-      font-size: 14px;
-    }
-  }
-}
-
-.header__nav-mobile {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  @include pc {
-    display: none;
-  }
-}
-
-.header__nav-pc {
-  @include pc {
-    padding: 0;
+  &__nav-mobile {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-  }
-  button {
-    color: #fff;
-  }
-}
-
-.header__nav-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  li {
-    padding-left: 8px;
-    @include tab {
-      padding-left: 32px;
-    }
     @include pc {
-      &:hover {
-        opacity: 0.7;
-        text-decoration: underline;
-      }
+      display: none;
     }
-    span {
-      display: inline-flex;
-      vertical-align: middle;
+  }
+  &__nav-pc {
+    @include pc {
+      padding: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    button {
       color: #fff;
     }
   }
-  img {
-    width: 40px;
-    border-radius: 50%;
-    @include pc {
-      width: 50px;
+  &__nav-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    li {
+      padding-left: 8px;
+      @include tab {
+        padding-left: 32px;
+      }
+      span {
+        display: inline-flex;
+        vertical-align: middle;
+        color: #fff;
+      }
     }
-  }
-}
-
-.iconlist {
-  color: lightgray;
-  display: inline-flex;
-  vertical-align: middle;
-  margin-right: 8px;
-}
-
-.header-icon {
-  color: #fff;
-}
-
-a {
-  text-decoration: none;
-}
-
-.header__home {
-  color: #fff;
-}
-
-.displayname-mobile {
-  display: block;
-  text-align: center;
-  @include pc {
-    display: none;
-  }
-}
-
-.displayname-pc {
-  display: none;
-  @include pc {
-    display: block;
+    img {
+      width: 40px;
+      border-radius: 50%;
+      @include pc {
+        width: 50px;
+      }
+    }
   }
 }

@@ -4,22 +4,29 @@
 .job-box {
   margin-bottom: 16px;
   line-height: 1.5;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: flex-start;
   width: 100%;
+  @include tab {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
   @include pc {
     margin: 0 auto 32px;
   }
   &__card {
     @include mat-elevation(4);
-    width: 48%;
+    width: 100%;
     margin: 0 auto;
     margin-bottom: 16px;
     padding-bottom: 16px;
     border: 2px solid #ededed;
     border-radius: 5px;
+    box-sizing: border-box;
+    @include tab {
+      width: 48%;
+      margin: 0 auto 32px;
+    }
     @include pc {
       width: 31%;
       margin-bottom: 56px;

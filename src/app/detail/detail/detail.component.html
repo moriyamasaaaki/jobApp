@@ -49,8 +49,24 @@
     </div>
   </div>
   <div class="detail__btn">
-    <button mat-stroked-button color="primary" class="detail__btn-add">
+    <!-- <button mat-stroked-button color="primary" class="detail__btn-add" (click)="addFavorite(job)">
       お気に入り
+    </button> -->
+    <button
+      mat-stroked-button
+      color="primary"
+      class="detail__btn-add"
+      (click)="addFavorite(job)"
+    >
+      お気に入り追加
+    </button>
+    <button
+      mat-stroked-button
+      color="primary"
+      class="detail__btn-add"
+      (click)="deleteFavorite(job)"
+    >
+      お気に入り削除
     </button>
     <a href="dammy@tokyobite.com">
       <button mat-raised-button color="primary" class="detail__btn-add">
@@ -58,6 +74,9 @@
       </button>
     </a>
   </div>
+  <p *ngIf="jobs$ | async as job">
+    お気に入り数{{ job.likedCount }}, {{ likedCount }}
+  </p>
   <ng-template #default>
     <p class="detail__default-text">
       求人はありません。

@@ -28,6 +28,7 @@ export class MypageComponent implements OnInit {
       .afterClosed()
       .subscribe(status => {
         if (status) {
+          console.log(this.authService.uid);
           this.userProfileService.deleteProfile(this.authService.uid);
         }
       });

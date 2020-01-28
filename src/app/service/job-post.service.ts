@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { DetailJob } from '../interfaces/article';
+import { DetailJob, Favorite, JobWidhFavorite } from '../interfaces/article';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, combineLatest, of } from 'rxjs';
 import { AngularFireStorage } from '@angular/fire/storage';
+import { map, switchMap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +18,7 @@ export class JobPostService {
     private storage: AngularFireStorage
   ) {}
 
+  //一枚の画像アップロード
   uploadImage(file: File, id: string): Promise<void> {
     return this.storage.upload(`jobPosts/${id}`, file).then(result => {
       this.db.doc(`JobPosts/${id}`).update({
@@ -25,6 +27,7 @@ export class JobPostService {
     });
   }
 
+  //複数枚画像アップロード
   uploadImages(files: File[], id: string): Promise<void> {
     console.log(files);
     console.log(id);
@@ -45,13 +48,14 @@ export class JobPostService {
     });
   }
 
-  createJobPost(article: DetailJob, images?: File[]) {
+  //求人作成
+  createJobPost(jobId: string, article: DetailJob, images?: File[]) {
     console.log(article);
     console.log(images);
     const id = this.db.createId();
     return this.db
       .doc(`JobPosts/${id}`)
-      .set({ id, ...article })
+      .set({ id, jobId, ...article })
       .then(() => {
         this.snackBar.open('求人を作成しました', null, {
           duration: 2000
@@ -67,6 +71,7 @@ export class JobPostService {
     return this.db.doc<DetailJob>(`JobPosts/${id}`).valueChanges();
   }
 
+  //新着投稿取得
   getNewJobs(): Observable<DetailJob[]> {
     return this.db
       .collection<DetailJob>('JobPosts', ref => {
@@ -75,6 +80,7 @@ export class JobPostService {
       .valueChanges();
   }
 
+  //注目投稿取得
   getAttentionJobs(): Observable<DetailJob[]> {
     return this.db
       .collection<DetailJob>('JobPosts', ref => {
@@ -83,14 +89,16 @@ export class JobPostService {
       .valueChanges();
   }
 
+  //求人一覧取得
   getAllJob(): Observable<DetailJob[]> {
     return this.db
       .collection<DetailJob>('JobPosts', ref => {
-        return ref.orderBy('createdAt').limit(20);
+        return ref.orderBy('createdAt').limit(30);
       })
       .valueChanges();
   }
 
+  //求人削除
   deleteJob(id: string): Promise<void> {
     return this.db
       .doc(`JobPosts/${id}`)
@@ -101,4 +109,102 @@ export class JobPostService {
         });
       });
   }
+  // --------------------------------
+  //いいね追加
+  likedItem(id: string, userId: string): Promise<void> {
+    return this.db.doc(`LikedUsers/${userId}/LikedItems/${id}`).set({ id });
+  }
+
+  //いいねした人のユーザーID
+  likedUser(id: string, userId: string): Promise<void> {
+    return this.db.doc(`likes/${id}/likedUsers/${userId}`).set({ userId });
+  }
+
+  // getLikedItems(userId: string): Observable<Favorite[]> {
+  //   return this.db
+  //     .collection<Favorite>(`LikedUsers/${userId}`)
+  //     .valueChanges()
+  //     .pipe(
+  //       switchMap(likes => {
+  //         return combineLatest(
+  //           likes.map(id => this.db.doc<Favorite>(`likes/${id}`).valueChanges())
+  //         );
+  //       })
+  //     );
+  // }
+
+  //いいね一覧取得
+  getLikedJobs(userId: string) {
+    return this.db
+      .collection<Favorite>(`LikedUsers/${userId}/LikedItems`)
+      .valueChanges()
+      .pipe(
+        switchMap(docs => {
+          return combineLatest(
+            docs.map(doc =>
+              this.db.doc<DetailJob>(`JobPosts/${doc.id}`).valueChanges()
+            )
+          );
+        })
+      );
+  }
+
+  //いいねを削除
+  deleteLikedJobs(userId: string, id: string): Promise<void> {
+    return this.db.doc(`LikedUsers/${userId}/LikedItems/${id}`).delete();
+  }
+
+  //いいねそたユーザー削除
+  deleteLikesUser(id: string, userId: string): Promise<void> {
+    return this.db.doc(`likes/${id}/likedUsers/${userId}`).delete();
+  }
+
+  //いいねしているかのチェック
+  isLiked(id: string, userId: string): Observable<boolean> {
+    return this.db
+      .doc(`likes/${id}/likedUsers/${userId}`)
+      .valueChanges()
+      .pipe(map(doc => !!doc));
+  }
+
+  //
+  // getMyLikedJobs(): Observable<JobWidhFavorite[]> {
+  //   let jobs: DetailJob[];
+  //   return this.db
+  //   .collection<DetailJob>('JobPosts')
+  //   .valueChanges()
+  //   .pipe(
+  //     switchMap((docs: DetailJob[]) => {
+  //       jobs = docs;
+  //       console.log(jobs);
+
+  //       if (jobs.length) {
+  //         const jobIds: string[] = jobs.filter((job, index, self) => {
+  //           return self.findIndex(item => job.id === item.id) === index;
+  //         }).map(job => job.id);
+  //         console.log(jobIds);
+
+  //         return combineLatest(jobIds.map((userId, id) => {
+  //           console.log(userId);
+  //           console.log(id);
+  //           return this.db
+  //             .doc<Favorite[]>(`LikedUsers/${userId}/LikedItems/${id}`)
+  //           .valueChanges();
+  //         }));
+  //       } else {
+  //         return of([]);
+  //       }
+  //     }),
+  //     map((likes: Favorite[]) => {
+  //       console.log(likes);
+  //       return jobs.map(job => {
+  //         const result: JobWidhFavorite = {
+  //           ...job,
+  //           likeAuthor: likes.find(like => like.id === job.id),
+  //         };
+  //         return result;
+  //       });
+  //     })
+  //   );
+  // }
 }

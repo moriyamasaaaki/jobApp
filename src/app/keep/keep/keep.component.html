@@ -1,35 +1,38 @@
 <section class="keep job-card">
   <h2>お気に入りした求人</h2>
-  <p>お気に入り/<span class="job-card__number">１</span>件</p>
-  <ng-container *ngIf="article$ | async as article; else default">
+  <ng-container *ngIf="jobs$ | async as jobs; else default">
+    <p>
+      お気に入り/<span class="job-card__number">{{ likedCount }}</span
+      >件
+    </p>
     <div class="job-card__box" *ngFor="let job of jobs">
       <div class="job-card__title">
-        <span>{{ article.companyName }}</span>
+        <span>{{ job.companyName }}</span>
         <a routerLink="/detail"
-          ><h3>{{ article.title }}</h3></a
+          ><h3>{{ job.title }}</h3></a
         >
       </div>
       <div class="job-card__content">
-        <img [src]="article.photoURL" width="100%" alt="" />
+        <img [src]="job.jobImageUrls[0]" width="100%" alt="" />
         <ul class="job-card__content-list">
           <li>
             <i class="material-icons">compass_calibration</i>
-            <span>{{ article.workPlace }}</span>
+            <span>{{ job.workPlace }}</span>
           </li>
-          <li><i class="material-icons"> work </i>{{ article.occupation }}</li>
+          <li><i class="material-icons"> work </i>{{ job.occupation }}</li>
           <li>
             <i class="material-icons">
               money
             </i>
-            時給{{ article.salary }}円
+            時給{{ job.salary }}円
           </li>
-          <li>
-            <i class="material-icons"> access_time </i>{{ article.workTime }}
-          </li>
+          <li><i class="material-icons"> access_time </i>{{ job.workTime }}</li>
         </ul>
       </div>
       <div class="job-card__btn">
-        <button mat-raised-button color="warn">お気に入り削除</button>
+        <button mat-raised-button color="warn" (click)="deleteLikedJob(job)">
+          お気に入り削除
+        </button>
         <button class="job-card__btn__right" mat-raised-button color="primary">
           応募する
         </button>

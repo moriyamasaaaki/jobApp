@@ -8,6 +8,7 @@ export interface JobList {
   occupation: string;
   salary: string;
   workTime: string;
+  likedCount: number;
 }
 
 export interface DetailJob extends JobList {
@@ -18,33 +19,12 @@ export interface DetailJob extends JobList {
   createAt: Date;
 }
 
-export interface AttentionJob {
-  jobId: string;
-  recruitmentImg: string;
-  companyName: string;
-  workPlace: string;
-  salary: string;
+export interface Favorite {
+  userId: string;
+  id: string;
+  likedCount: number;
 }
 
-export interface NewJob {
-  companyName: string;
-  title: string;
-  workPlace: string;
-}
-
-export interface DamiJob {
-  postId: string;
-  title: string;
-  workTime: string;
-  holiday: string;
-  welfare: string;
-  overview: string;
-  label: string[];
-  company: string;
-  salary: {
-    min: number;
-    max: number;
-  };
-  occupation: string;
-  workPlace: string;
+export interface JobWidhFavorite extends DetailJob {
+  likeAuthor: Favorite;
 }

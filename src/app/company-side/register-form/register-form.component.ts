@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { FormBuilder, Validators, FormControl } from '@angular/forms';
 import { CompanyProfileService } from 'src/app/service/company-profile.service';
 import { AuthService } from 'src/app/services/auth.service';
@@ -77,5 +77,12 @@ export class RegisterFormComponent implements OnInit {
       companyUserId: this.authService.uid,
       ...this.form.value
     });
+  }
+  @HostListener('window:beforeunload', ['$event'])
+  unloadNotification($event: any) {
+    if (this.form.dirty) {
+      $event.preventDefault();
+      $event.returnValue = '入力した内容がありますが、再読み込みしますか？';
+    }
   }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { FormBuilder, Validators, FormControl } from '@angular/forms';
 import { JobPostService } from 'src/app/service/job-post.service';
 import { AuthService } from 'src/app/services/auth.service';
@@ -109,5 +109,12 @@ export class RecruitmentComponent implements OnInit {
       },
       this.images
     );
+  }
+  @HostListener('window:beforeunload', ['$event'])
+  unloadNotification($event: any) {
+    if (this.form.dirty) {
+      $event.preventDefault();
+      $event.returnValue = '入力した内容がありますが、再読み込みしますか？';
+    }
   }
 }

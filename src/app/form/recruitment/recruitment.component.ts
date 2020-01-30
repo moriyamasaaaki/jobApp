@@ -2,6 +2,9 @@ import { Component, OnInit, HostListener } from '@angular/core';
 import { FormBuilder, Validators, FormControl } from '@angular/forms';
 import { JobPostService } from 'src/app/service/job-post.service';
 import { AuthService } from 'src/app/services/auth.service';
+import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
+import { DetailJob } from 'src/app/interfaces/article';
 
 @Component({
   selector: 'app-recruitment',
@@ -9,6 +12,8 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./recruitment.component.scss']
 })
 export class RecruitmentComponent implements OnInit {
+  jobs$: Observable<DetailJob>;
+  id: string;
   form = this.fb.group({
     title: ['', [Validators.required, Validators.maxLength(50)]],
 
@@ -38,6 +43,7 @@ export class RecruitmentComponent implements OnInit {
   });
 
   images: File[];
+  editJob: boolean;
 
   get titleControl() {
     return this.form.get('title') as FormControl;
@@ -82,14 +88,36 @@ export class RecruitmentComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private jobPostService: JobPostService,
-    private authService: AuthService
+    private authService: AuthService,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit() {
-    this.jobPostService.getJobPost(this.authService.uid).subscribe(article => {
-      if (article) {
-        this.form.patchValue(article);
-      }
+    this.route.queryParamMap.subscribe(params => {
+      this.jobPostService.getJobPost(params.get('id')).subscribe(article => {
+        if (article) {
+          this.editJob = true;
+          this.form.patchValue(article);
+          this.images;
+          console.log(article);
+        }
+      });
+    });
+  }
+
+  update() {
+    this.route.queryParamMap.subscribe(params => {
+      this.jobPostService.deleteJob(params.get('id')),
+        this.jobPostService.updateJob(
+          {
+            updatedAt: new Date(),
+            ...this.form.value
+          },
+          params.get('id'),
+          this.images
+        );
+      // console.log(this.images);
+      // console.log(...this.form.value);
     });
   }
 

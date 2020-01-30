@@ -3,6 +3,11 @@
   <div>
     <input type="file" (change)="setImage($event)" multiple />
   </div>
+
+  <div>
+    <img [src]="imageURL" *ngFor="let imageURL of job.jobImageUrls" alt="" />
+  </div>
+
   <div>
     <mat-form-field class="recruitment__field">
       <mat-label>タイトル</mat-label>
@@ -158,7 +163,6 @@
       >
     </mat-form-field>
   </div>
-
   <div>
     <mat-form-field class="recruitment__field">
       <mat-label>勤務地</mat-label>
@@ -174,10 +178,23 @@
       >
     </mat-form-field>
   </div>
-
-  <div>
-    <button class="recruitment__btn" mat-raised-button color="primary">
-      求人広告を登録する
-    </button>
-  </div>
+  <ng-container *ngIf="editJob; else default">
+    <div>
+      <button
+        class="recruitment__btn"
+        mat-raised-button
+        color="primary"
+        (click)="update()"
+      >
+        編集を完了する
+      </button>
+    </div>
+  </ng-container>
+  <ng-template #default>
+    <div>
+      <button class="recruitment__btn" mat-raised-button color="primary">
+        求人広告を登録する
+      </button>
+    </div>
+  </ng-template>
 </form>

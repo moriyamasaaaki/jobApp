@@ -47,6 +47,15 @@
         />
       </div>
     </div>
+    <button
+      [routerLink]="['/recruitment']"
+      [queryParams]="{ id: job.id }"
+      mat-stroked-button
+      color="primary"
+      class="detail__btn-add"
+    >
+      編集
+    </button>
   </div>
   <div class="detail__btn">
     <button mat-stroked-button color="primary" class="detail__btn-add">

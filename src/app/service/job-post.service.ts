@@ -17,6 +17,15 @@ export class JobPostService {
     private storage: AngularFireStorage
   ) {}
 
+  updateJob(article: DetailJob, id: string, images?: File[]): Promise<void> {
+    console.log(images);
+    return this.db.doc(`JobPosts/${id}`).update({
+      ...article,
+      updatedAt: new Date(),
+      images
+    });
+  }
+
   uploadImage(file: File, id: string): Promise<void> {
     return this.storage.upload(`jobPosts/${id}`, file).then(result => {
       this.db.doc(`JobPosts/${id}`).update({

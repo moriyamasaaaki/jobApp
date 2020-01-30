@@ -5,7 +5,12 @@
   </div>
 
   <div>
-    <img [src]="imageURL" *ngFor="let imageURL of job.jobImageUrls" alt="" />
+    <img
+      [src]="imageURL"
+      *ngFor="let imageURL of imageURLs"
+      alt=""
+      width="100%s"
+    />
   </div>
 
   <div>

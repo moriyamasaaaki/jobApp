@@ -14,9 +14,12 @@ import { DetailJob } from 'src/app/interfaces/article';
 export class RecruitmentComponent implements OnInit {
   jobs$: Observable<DetailJob>;
   id: string;
+  imageURLs: string[];
+  images: File[];
+  editJob: boolean;
+
   form = this.fb.group({
     title: ['', [Validators.required, Validators.maxLength(50)]],
-
     workTime: [
       '',
       [
@@ -24,26 +27,15 @@ export class RecruitmentComponent implements OnInit {
         Validators.pattern(/([0-1][0-9]|2[0-3]):[0-5][0-9]/)
       ]
     ],
-
     holiday: ['', [Validators.required]],
-
     welfare: ['', [Validators.required]],
-
     companyContent: ['', [Validators.required, Validators.maxLength(400)]],
-
     label: ['', []],
-
     companyName: ['', [Validators.required]],
-
     salary: ['', [Validators.required]],
-
     occupation: ['', [Validators.required]],
-
     workPlace: ['', [Validators.required]]
   });
-
-  images: File[];
-  editJob: boolean;
 
   get titleControl() {
     return this.form.get('title') as FormControl;
@@ -94,30 +86,15 @@ export class RecruitmentComponent implements OnInit {
 
   ngOnInit() {
     this.route.queryParamMap.subscribe(params => {
-      this.jobPostService.getJobPost(params.get('id')).subscribe(article => {
+      this.id = params.get('id');
+      this.jobPostService.getJobPost(this.id).subscribe(article => {
         if (article) {
           this.editJob = true;
           this.form.patchValue(article);
-          this.images;
+          this.imageURLs = article.jobImageUrls;
           console.log(article);
         }
       });
-    });
-  }
-
-  update() {
-    this.route.queryParamMap.subscribe(params => {
-      this.jobPostService.deleteJob(params.get('id')),
-        this.jobPostService.updateJob(
-          {
-            updatedAt: new Date(),
-            ...this.form.value
-          },
-          params.get('id'),
-          this.images
-        );
-      // console.log(this.images);
-      // console.log(...this.form.value);
     });
   }
 
@@ -127,7 +104,7 @@ export class RecruitmentComponent implements OnInit {
     }
   }
 
-  submit() {
+  create() {
     this.jobPostService.createJobPost(
       {
         jobId: this.authService.uid,
@@ -138,6 +115,26 @@ export class RecruitmentComponent implements OnInit {
       this.images
     );
   }
+
+  update() {
+    this.jobPostService.updateJob(
+      {
+        updatedAt: new Date(),
+        ...this.form.value
+      },
+      this.id,
+      this.images
+    );
+  }
+
+  submit() {
+    if (this.editJob) {
+      this.update();
+    } else {
+      this.create();
+    }
+  }
+
   @HostListener('window:beforeunload', ['$event'])
   unloadNotification($event: any) {
     if (this.form.dirty) {

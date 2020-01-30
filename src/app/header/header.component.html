@@ -5,6 +5,9 @@
     </p>
     <nav class="header__nav">
       <div class="header__nav-item">
+        <button routerLink="/recruitment" mat-icon-button>
+          <mat-icon>add</mat-icon>
+        </button>
         <button
           mat-raised-button
           *ngIf="!(user$ | async)"

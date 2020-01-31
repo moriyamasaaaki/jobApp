@@ -18,7 +18,6 @@ export const countUpLiked = functions.firestore
           .update('likedCount', admin.firestore.FieldValue.increment(1));
         return markEventTried(eventId);
       } else {
-        console.log(should);
         return;
       }
     });

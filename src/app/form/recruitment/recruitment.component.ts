@@ -92,7 +92,6 @@ export class RecruitmentComponent implements OnInit {
           this.editJob = true;
           this.form.patchValue(article);
           this.imageURLs = article.jobImageUrls;
-          console.log(article);
         }
       });
     });

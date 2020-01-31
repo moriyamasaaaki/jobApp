@@ -43,7 +43,6 @@ export class DetailComponent implements OnInit {
       .subscribe(status => {
         if (status) {
           this.route.paramMap.subscribe(params => {
-            console.log(params);
             this.jobPostService.deleteJob(params.get('id'));
           });
         }

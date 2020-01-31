@@ -18,7 +18,6 @@ export class JobPostService {
     private storage: AngularFireStorage
   ) {}
 
-
   updateJob(article: DetailJob, id: string, images?: File[]): Promise<void> {
     return this.db
       .doc(`JobPosts/${id}`)
@@ -34,7 +33,6 @@ export class JobPostService {
       });
   }
 
-  
   //一枚の画像アップロード
   uploadImage(file: File, id: string): Promise<void> {
     return this.storage.upload(`jobPosts/${id}`, file).then(result => {
@@ -46,8 +44,6 @@ export class JobPostService {
 
   //複数枚画像アップロード
   uploadImages(files: File[], id: string): Promise<void> {
-    console.log(files);
-    console.log(id);
     return Promise.all(
       files.map((file, index) => {
         const ref = this.storage.ref(`JobPosts/${id}-${index}`);
@@ -58,7 +54,6 @@ export class JobPostService {
       for (const task of tasks) {
         jobImageUrls.push(await task.ref.getDownloadURL());
       }
-      console.log(jobImageUrls);
       return this.db.doc(`JobPosts/${id}`).update({
         jobImageUrls
       });
@@ -67,8 +62,6 @@ export class JobPostService {
 
   //求人作成
   createJobPost(jobId: string, article: DetailJob, images?: File[]) {
-    console.log(article);
-    console.log(images);
     const id = this.db.createId();
     return this.db
       .doc(`JobPosts/${id}`)

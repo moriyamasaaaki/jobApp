@@ -120,19 +120,6 @@ export class JobPostService {
     return this.db.doc(`likes/${id}/likedUsers/${userId}`).set({ userId });
   }
 
-  // getLikedItems(userId: string): Observable<Favorite[]> {
-  //   return this.db
-  //     .collection<Favorite>(`LikedUsers/${userId}`)
-  //     .valueChanges()
-  //     .pipe(
-  //       switchMap(likes => {
-  //         return combineLatest(
-  //           likes.map(id => this.db.doc<Favorite>(`likes/${id}`).valueChanges())
-  //         );
-  //       })
-  //     );
-  // }
-
   //いいね一覧取得
   getLikedJobs(userId: string) {
     return this.db
@@ -166,45 +153,4 @@ export class JobPostService {
       .valueChanges()
       .pipe(map(doc => !!doc));
   }
-
-  //
-  // getMyLikedJobs(): Observable<JobWidhFavorite[]> {
-  //   let jobs: DetailJob[];
-  //   return this.db
-  //   .collection<DetailJob>('JobPosts')
-  //   .valueChanges()
-  //   .pipe(
-  //     switchMap((docs: DetailJob[]) => {
-  //       jobs = docs;
-  //       console.log(jobs);
-
-  //       if (jobs.length) {
-  //         const jobIds: string[] = jobs.filter((job, index, self) => {
-  //           return self.findIndex(item => job.id === item.id) === index;
-  //         }).map(job => job.id);
-  //         console.log(jobIds);
-
-  //         return combineLatest(jobIds.map((userId, id) => {
-  //           console.log(userId);
-  //           console.log(id);
-  //           return this.db
-  //             .doc<Favorite[]>(`LikedUsers/${userId}/LikedItems/${id}`)
-  //           .valueChanges();
-  //         }));
-  //       } else {
-  //         return of([]);
-  //       }
-  //     }),
-  //     map((likes: Favorite[]) => {
-  //       console.log(likes);
-  //       return jobs.map(job => {
-  //         const result: JobWidhFavorite = {
-  //           ...job,
-  //           likeAuthor: likes.find(like => like.id === job.id),
-  //         };
-  //         return result;
-  //       });
-  //     })
-  //   );
-  // }
 }

@@ -2,11 +2,12 @@ import { Component, OnInit, Input } from '@angular/core';
 import { DetailJob } from 'src/app/interfaces/article';
 import { JobPostService } from 'src/app/service/job-post.service';
 import { Observable } from 'rxjs';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { DeleteDialogComponent } from 'src/app/delete-dialog/delete-dialog.component';
 import { AuthService } from 'src/app/services/auth.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-detail',
@@ -29,9 +30,9 @@ export class DetailComponent implements OnInit {
   id: string;
   jobs$: Observable<DetailJob>;
   likedCount: number;
+  like: boolean;
 
   ngOnInit() {
-    // this.likedCount = this.job.likedCount;
     this.likedCount = 0;
   }
 
@@ -49,37 +50,26 @@ export class DetailComponent implements OnInit {
       });
   }
 
-  addFavorite(job: DetailJob) {
-    // this.likedCount = job.likedCount;
+  toggleLiked(job: DetailJob) {
     this.route.paramMap.subscribe(params => {
-      this.jobPostService.likedItem(params.get('id'), this.authService.uid),
-        this.jobPostService.likedUser(params.get('id'), this.authService.uid);
-    }),
-      this.likedCount++;
-    this.snackBar.open('お気に入り追加しました。', null, {
-      duration: 3000
-    });
-  }
-
-  deleteFavorite(job: DetailJob) {
-    // this.likedCount = job.likedCount;
-    this.route.paramMap.subscribe(params => {
-      this.jobPostService.deleteLikedJobs(
-        this.authService.uid,
-        params.get('id')
-      );
-      this.jobPostService.deleteLikesUser(
-        params.get('id'),
-        this.authService.uid
-      );
-    });
-    if (this.likedCount <= 0) {
-      return 0;
-    }
-    this.likedCount--;
-    console.log(this.likedCount);
-    this.snackBar.open('お気に入り削除しました。', null, {
-      duration: 3000
+      this.id = params.get('id');
+      if (this.authService.uid && !this.like) {
+        this.jobPostService.likedItem(this.id, this.authService.uid);
+        this.jobPostService.likedUser(this.id, this.authService.uid);
+        this.likedCount++;
+        this.like = true;
+        this.snackBar.open('お気に入り追加しました。', null, {
+          duration: 3000
+        });
+      } else {
+        this.jobPostService.deleteLikedJobs(this.authService.uid, this.id);
+        this.jobPostService.deleteLikesUser(this.id, this.authService.uid);
+        this.likedCount--;
+        this.like = false;
+        this.snackBar.open('お気に入り削除しました。', null, {
+          duration: 3000
+        });
+      }
     });
   }
 }

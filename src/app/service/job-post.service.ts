@@ -17,6 +17,21 @@ export class JobPostService {
     private storage: AngularFireStorage
   ) {}
 
+  updateJob(article: DetailJob, id: string, images?: File[]): Promise<void> {
+    return this.db
+      .doc(`JobPosts/${id}`)
+      .update({ id, ...article, updatedAt: new Date() })
+      .then(() => {
+        this.snackBar.open('求人を更新しました', null, {
+          duration: 2000
+        });
+        if (images) {
+          this.uploadImages(images, id);
+        }
+        this.router.navigateByUrl(`/detail/${id}`);
+      });
+  }
+
   uploadImage(file: File, id: string): Promise<void> {
     return this.storage.upload(`jobPosts/${id}`, file).then(result => {
       this.db.doc(`JobPosts/${id}`).update({
@@ -51,7 +66,7 @@ export class JobPostService {
     const id = this.db.createId();
     return this.db
       .doc(`JobPosts/${id}`)
-      .set({ id, ...article })
+      .set({ id, ...article, createdAt: new Date() })
       .then(() => {
         this.snackBar.open('求人を作成しました', null, {
           duration: 2000

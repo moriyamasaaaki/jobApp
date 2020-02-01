@@ -4,7 +4,14 @@
     <div class="mypage__list">
       <dl>
         <dt>画像</dt>
-        <dd><img [src]="profile.photoURL" alt="" /></dd>
+        <ng-container *ngIf="profile.photoURL; else defaultImg">
+          <dd><img [src]="profile.photoURL" alt="" /></dd>
+        </ng-container>
+        <ng-template #defaultImg>
+          <dd>
+            <img src="assets/user-2935527_1280.png" alt="" />
+          </dd>
+        </ng-template>
 
         <dt>名前</dt>
         <dd>{{ profile.name }}</dd>

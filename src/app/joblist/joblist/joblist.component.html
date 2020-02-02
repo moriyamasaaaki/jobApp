@@ -9,7 +9,12 @@
         </a>
       </div>
       <div class="job-card__content">
-        <img [src]="job.jobImageUrls[0]" alt="" />
+        <ng-container *ngIf="job.jobImageUrls; else defaultImg">
+          <img [src]="job.jobImageUrls[0]" alt="" />
+        </ng-container>
+        <ng-template #defaultImg>
+          <img src="assets/unnamed.png" alt="" />
+        </ng-template>
         <ul class="job-card__content-list">
           <li>
             <i class="material-icons">compass_calibration</i>

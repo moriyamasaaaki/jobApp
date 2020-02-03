@@ -39,13 +39,20 @@
           ></iframe>
         </dd>
       </dl>
-      <div class="job-img">
-        <img
-          [src]="imageURL"
-          *ngFor="let imageURL of job.jobImageUrls"
-          alt=""
-        />
-      </div>
+      <ng-container *ngIf="imageURL; else defaultImg">
+        <div class="job-img">
+          <img
+            [src]="imageURL"
+            *ngFor="let imageURL of job.jobImageUrls"
+            alt=""
+          />
+        </div>
+      </ng-container>
+      <ng-template #defaultImg>
+        <div class="job-img">
+          <img src="assets/unnamed.png" alt="" />
+        </div>
+      </ng-template>
     </div>
     <app-review></app-review>
     <button

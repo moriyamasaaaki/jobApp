@@ -92,7 +92,6 @@ export class RecruitmentComponent implements OnInit {
           this.editJob = true;
           this.form.patchValue(article);
           this.imageURLs = article.jobImageUrls;
-          console.log(article);
         }
       });
     });
@@ -106,10 +105,11 @@ export class RecruitmentComponent implements OnInit {
 
   create() {
     this.jobPostService.createJobPost(
+      this.authService.uid,
       {
-        jobId: this.authService.uid,
         createdAt: new Date(),
         updatedAt: new Date(),
+        likedCount: 0,
         ...this.form.value
       },
       this.images

@@ -13,5 +13,20 @@ service cloud.firestore {
     match /reviews/{userId} {
       allow read, write: if true;
     }
+    match /likes/{id}/likedUsers/{userId} {
+      allow read, write: if true;
+    }
+
+    match /LikedUsers/{userId}/LikedItems/{id} {
+      allow read, write: if true;
+    }
+
+    match /LikedUsers/{userId} {
+      allow read, write: if true;
+    }
+
+    match /likes/{id} {
+      allow read, write: if true;
+    }
   }
 }

@@ -66,8 +66,15 @@
     </button>
   </div>
   <div class="detail__btn">
-    <button mat-stroked-button color="primary" class="detail__btn-add">
-      お気に入り
+    <button
+      mat-stroked-button
+      color="primary"
+      class="detail__btn-add"
+      (click)="toggleLiked(job)"
+      [class.like]="like"
+      *ngIf="jobs$ | async as job"
+    >
+      お気に入り{{ job.likedCount }}
     </button>
     <a href="dammy@tokyobite.com">
       <button mat-raised-button color="primary" class="detail__btn-add">
@@ -75,9 +82,5 @@
       </button>
     </a>
   </div>
-  <ng-template #default>
-    <p class="detail__default-text">
-      求人はありません。
-    </p>
-  </ng-template>
+  <app-review></app-review>
 </section>

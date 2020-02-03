@@ -3,6 +3,7 @@ import { DetailJob } from 'src/app/interfaces/article';
 import { Observable } from 'rxjs';
 import { JobPostService } from 'src/app/service/job-post.service';
 import { AuthService } from 'src/app/services/auth.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-joblist',
@@ -14,8 +15,17 @@ export class JoblistComponent implements OnInit {
 
   constructor(
     private jobPostService: JobPostService,
-    private authService: AuthService
+    private authService: AuthService,
+    private route: ActivatedRoute
   ) {}
+
+  // addFavorite() {
+  //   this.route.paramMap.subscribe(params => {
+  //     this.jobPostService.likedItem(
+  //       params.get('id'),
+  //       this.authService.uid);
+  //   });
+  // }
 
   ngOnInit() {}
 }

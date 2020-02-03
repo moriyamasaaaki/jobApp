@@ -2,6 +2,7 @@ import { Component, OnInit, HostListener } from '@angular/core';
 import { FormBuilder, Validators, FormControl } from '@angular/forms';
 import { UserProfileService } from 'src/app/service/user-profile.service';
 import { AuthService } from 'src/app/services/auth.service';
+import { JobPostService } from 'src/app/service/job-post.service';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -101,7 +102,8 @@ export class ProfileComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private userProfileService: UserProfileService,
-    private authService: AuthService
+    private authService: AuthService,
+    private jobPostService: JobPostService
   ) {}
 
   ngOnInit() {

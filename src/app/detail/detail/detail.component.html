@@ -39,7 +39,7 @@
           ></iframe>
         </dd>
       </dl>
-      <ng-container *ngIf="imageURL; else defaultImg">
+      <ng-container *ngIf="job.jobImageUrls; else defaultImg">
         <div class="job-img">
           <img
             [src]="imageURL"
@@ -82,5 +82,4 @@
       </button>
     </a>
   </div>
-  <app-review></app-review>
 </section>

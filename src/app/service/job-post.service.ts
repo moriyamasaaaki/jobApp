@@ -94,7 +94,7 @@ export class JobPostService {
   getAttentionJobs(): Observable<DetailJob[]> {
     return this.db
       .collection<DetailJob>('JobPosts', ref => {
-        return ref.orderBy('createdAt').limit(9);
+        return ref.orderBy('createdAt').limit(12);
       })
       .valueChanges();
   }

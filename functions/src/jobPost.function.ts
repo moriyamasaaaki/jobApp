@@ -4,6 +4,7 @@ import { addIndex, updateIndex, removeIndex } from './algolia';
 export const createArticle = functions.firestore
   .document('JobPosts/{id}')
   .onCreate(async (snap, context) => {
+    console.log(snap);
     return addIndex(snap.data());
   });
 
@@ -11,11 +12,12 @@ export const createArticle = functions.firestore
 export const updateLessonMeta = functions.firestore
   .document('JobPosts/{id}')
   .onUpdate(async (change, context) => {
+    console.log(change);
     const newData = change.after.data();
-
     if (!newData) {
       throw new Error('データが存在しません');
     }
+    console.log(newData);
     return updateIndex(newData);
   });
 
@@ -23,5 +25,6 @@ export const updateLessonMeta = functions.firestore
 export const deleteArticle = functions.firestore
   .document('JobPosts/{id}')
   .onDelete(async (snapshot, context) => {
+    console.log(context);
     return removeIndex(context.params.id);
   });

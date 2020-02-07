@@ -1,5 +1,5 @@
 import * as functions from 'firebase-functions';
-import * as algoliasearch from 'algoliasearch';
+const algoliasearch = require('algoliasearch');
 
 const ALGOLIA_ID = functions.config().algolia.app_id;
 const ALGOLIA_ADMIN_KEY = functions.config().algolia.api_key;
@@ -8,13 +8,13 @@ const index = client.initIndex('JobPosts');
 
 // レコードを分割して追加する処理
 const addRecords = (item: any) => {
-  const records = item.body
+  const records = item.companyContent
     .match(/[\s\S]{1,500}/gm)
-    .map((body: any, i: number) => {
+    .map((companyContent: any, i: number) => {
       return {
         ...item,
         objectID: item.id + '-' + i,
-        body
+        companyContent
       };
     });
   return Promise.all(records.map((record: any) => index.addObject(record)));
@@ -24,12 +24,20 @@ const addRecords = (item: any) => {
 export const addIndex = (data: any) => {
   const item = data;
   item.objectID = data.id;
+  item.companyContent = item.companyContent;
   item.createdAt = item.createdAt.toMillis();
-
-  if (item.body && item.body.length > 500) {
+  console.log(item);
+  console.log(item.objectID);
+  console.log(item.companyContent);
+  console.log(item.createdAt);
+  if (item.companyContent && item.companyContent.length > 500) {
+    console.log('インデックス');
+    console.log(index);
     return addRecords(item);
   } else {
-    return index.addObject(item);
+    console.log('インデックス');
+    console.log(index);
+    return index.getObject(item);
   }
 };
 
@@ -42,12 +50,13 @@ export const removeIndex = (id: string) => {
 export const updateIndex = async (data: any) => {
   const item = data;
   item.objectID = data.id;
+  item.companyContent = item.companyContent;
   item.updatedAt = item.updatedAt.toMillis();
   item.createdAt = item.createdAt.toMillis();
   await removeIndex(item.id);
-  if (item.body && item.body.length > 500) {
+  if (item.companyContent && item.companyContent.length > 500) {
     return addRecords(item);
   } else {
-    return index.addObject(item);
+    return index.getObject(item);
   }
 };

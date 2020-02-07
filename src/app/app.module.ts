@@ -23,6 +23,10 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { DeleteDialogComponent } from './delete-dialog/delete-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
 
+// //アルゴリア関連モジュール
+// import { NgAisModule } from 'angular-instantsearch';
+// import { MatAutocompleteModule } from '@angular/material/autocomplete';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,6 +48,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatSnackBarModule,
     MatToolbarModule,
     MatDialogModule
+    // NgAisModule,
+    // MatAutocompleteModule
   ],
   providers: [],
   bootstrap: [AppComponent],

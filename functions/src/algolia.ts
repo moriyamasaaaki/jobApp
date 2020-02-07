@@ -17,7 +17,7 @@ const addRecords = (item: any) => {
         companyContent
       };
     });
-  return Promise.all(records.map((record: any) => index.addObject(record)));
+  return Promise.all(records.map((record: any) => index.saveObject(record)));
 };
 
 // レコード追加する処理
@@ -37,7 +37,7 @@ export const addIndex = (data: any) => {
   } else {
     console.log('インデックス');
     console.log(index);
-    return index.getObject(item);
+    return index.saveObject(item);
   }
 };
 
@@ -57,6 +57,6 @@ export const updateIndex = async (data: any) => {
   if (item.companyContent && item.companyContent.length > 500) {
     return addRecords(item);
   } else {
-    return index.getObject(item);
+    return index.saveObject(item);
   }
 };

@@ -1,1 +1,63 @@
-<p>about works!</p>
+<div class="about">
+  <div class="about__title">
+    <h2>Tokyo biteについて</h2>
+    <p>ご利用方法</p>
+  </div>
+  <mat-tab-group>
+    <mat-tab label="企業側">
+      <mat-vertical-stepper [linear]="isLinear" #stepper>
+        <mat-step>
+          <ng-template matStepLabel>プロフィール作成</ng-template>
+          <div class="about__tab-content">
+            <p>企業側でログインしたらプロフィールを作成する。</p>
+            <p>＊プロフィールを作成しないと求人作成することはできません。</p>
+            <img src="assets/companyProfile.png" width="100%" alt="" />
+          </div>
+        </mat-step>
+        <mat-step>
+          <ng-template matStepLabel>求人作成</ng-template>
+          <div class="about__tab-content">
+            <p>求人広告の編集・削除について</p>
+            <img src="assets/recuit.png" width="100%" alt="" />
+          </div>
+        </mat-step>
+        <mat-step>
+          <ng-template matStepLabel>求人の編集・削除</ng-template>
+          <div class="about__tab-content">
+            <p>求人広告の編集・削除について</p>
+          </div>
+        </mat-step>
+      </mat-vertical-stepper>
+    </mat-tab>
+
+    <mat-tab label="ユーザー側">
+      <mat-vertical-stepper [linear]="isLinear" #stepper>
+        <mat-step>
+          <ng-template matStepLabel>プロフィール作成</ng-template>
+          <div class="about__tab-content">
+            <p>ユーザー側でログインしたらプロフィールを作成する。</p>
+            <p>プロフィールを作成しないと応募することはできません。</p>
+            <img src="assets/userProfile.png" width="100%" alt="" />
+          </div>
+        </mat-step>
+        <mat-step>
+          <ng-template matStepLabel>求人に応募する</ng-template>
+          <div class="about__tab-content">
+            <p>応募について</p>
+          </div>
+        </mat-step>
+        <mat-step>
+          <ng-template matStepLabel>その他</ng-template>
+          <p>その他</p>
+        </mat-step>
+      </mat-vertical-stepper>
+    </mat-tab>
+
+    <mat-tab label="Tokyo biteについて">
+      <div class="about__tab-content about__tab-content-second">
+        <p>Tokyo biteは都内を限定とした求人サービスです。</p>
+        <img src="assets/team-work.jpg" width="100%" alt="" />
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+</div>

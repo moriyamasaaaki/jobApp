@@ -1,0 +1,33 @@
+@import 'mixins';
+
+.about {
+  p {
+    font-size: 16px;
+  }
+  @include pc {
+    width: 60%;
+    margin: 0 auto;
+  }
+  &__title {
+    text-align: center;
+    h2 {
+      font-weight: 500;
+      margin-bottom: 8px;
+      @include pc {
+        font-size: 32px;
+      }
+    }
+    p {
+      margin-bottom: 24px;
+    }
+  }
+  &__tab-content {
+    line-height: 2;
+  }
+  &__tab-content-second {
+    padding: 0 8px;
+    p {
+      padding: 24px 0;
+    }
+  }
+}

@@ -1,6 +1,7 @@
 // This file can be replaced during build by using the `fileReplacements` array.
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
+import * as algoliasearch from 'algoliasearch/lite';
 
 export const environment = {
   production: false,
@@ -13,12 +14,13 @@ export const environment = {
     messagingSenderId: '924262314569',
     appId: '1:924262314569:web:e5817a22d3576ebe00c598',
     measurementId: 'G-BD2W9674M1'
-  },
-  algolia: {
-    app_id: 'MH2FZTG934',
-    api_key: '70dd8f07aa6b75c986a3be7da8a31142'
   }
 };
+
+export const searchClient = algoliasearch(
+  'MH2FZTG934',
+  '70dd8f07aa6b75c986a3be7da8a31142'
+);
 
 /*
  * For easier debugging in development mode, you can import the following file

@@ -8,9 +8,8 @@ describe('AttentionComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AttentionComponent ]
-    })
-    .compileComponents();
+      declarations: [AttentionComponent]
+    }).compileComponents();
   }));
 
   beforeEach(() => {

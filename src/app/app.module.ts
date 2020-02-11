@@ -50,7 +50,7 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
     MatToolbarModule,
     MatDialogModule,
     NgAisModule.forRoot(),
-    MatAutocompleteModule
+    MatAutocompleteModule,
     MatTooltipModule
   ],
   providers: [],

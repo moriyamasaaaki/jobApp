@@ -64,7 +64,8 @@ const routes: Routes = [
 
   {
     path: 'recruitment',
-    loadChildren: () => import('./form/form.module').then(m => m.FormModule),
+    loadChildren: () =>
+      import('./recruitment/recruitment.module').then(m => m.FormModule),
     canLoad: [AuthGuard],
     canActivate: [AuthGuard]
   },

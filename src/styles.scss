@@ -88,3 +88,30 @@ body {
     }
   }
 }
+
+//アルゴリア関連スタイル
+.ais-SearchBox-form {
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  display: flex;
+  justify-content: space-between;
+  padding: 8px;
+  margin: 0 auto 24px;
+  max-width: 500px;
+  @include pc {
+    margin: 0 auto 48px;
+  }
+}
+
+.ais-SearchBox-input {
+  outline: none;
+}
+
+.ais-Hits {
+  text-align: center;
+}
+
+svg {
+  width: 13px;
+  height: 13px;
+}

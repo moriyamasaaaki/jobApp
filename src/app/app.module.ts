@@ -24,6 +24,10 @@ import { DeleteDialogComponent } from './delete-dialog/delete-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatTooltipModule } from '@angular/material/tooltip';
 
+// //アルゴリア関連モジュール
+import { NgAisModule } from 'angular-instantsearch';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,6 +49,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatSnackBarModule,
     MatToolbarModule,
     MatDialogModule,
+    NgAisModule.forRoot(),
+    MatAutocompleteModule
     MatTooltipModule
   ],
   providers: [],

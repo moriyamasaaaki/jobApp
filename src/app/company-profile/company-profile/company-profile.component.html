@@ -1,7 +1,7 @@
-<div class="company-profile">
-  <h2>企業側プロフィール</h2>
+<div class="company-profile profile-card">
+  <h1>企業側プロフィール</h1>
   <ng-container *ngIf="profile$ | async as profile; else default">
-    <div class="company-profile__list">
+    <div class="profile-card__list">
       <dl>
         <dt>会社名</dt>
         <dd>{{ profile.name }}</dd>
@@ -22,7 +22,7 @@
         <dd>{{ profile.password }}</dd>
       </dl>
     </div>
-    <div class="company-profile__btn">
+    <div class="profile-card__btn">
       <a routerLink="/companySideForm" mat-raised-button color="primary"
         >編集する</a
       >
@@ -32,16 +32,16 @@
     </div>
   </ng-container>
   <ng-template #default>
-    <p class="company-profile__default-text">
+    <p class="profile-card__default-text">
       プロフィールがありません。
     </p>
-    <div class="company-profile__btn">
+    <div class="profile-card__btn">
       <button routerLink="/companySideForm" mat-raised-button color="primary">
         作成する
       </button>
     </div>
   </ng-template>
-  <div class="company-profile__footer-item">
+  <div class="profile-card__footer-item">
     <a routerLink="/plan">プラン</a>
     <a routerLink="/">企業の方はこちらから</a>
     <a routerLink="/comlaw">特定商取引法に基づく表示</a>

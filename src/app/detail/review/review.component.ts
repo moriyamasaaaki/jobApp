@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ReviewService } from 'src/app/service/review.service';
+import { ReviewService } from 'src/app/services/review.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { Observable } from 'rxjs';
 import { Review } from 'src/app/interfaces/review';

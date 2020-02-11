@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { DetailJob } from 'src/app/interfaces/article';
-import { JobPostService } from 'src/app/service/job-post.service';
+import { JobPostService } from 'src/app/services/job-post.service';
 import { Observable } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';

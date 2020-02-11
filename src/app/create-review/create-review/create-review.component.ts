@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl } from '@angular/forms';
-import { ReviewService } from 'src/app/service/review.service';
+import { ReviewService } from 'src/app/services/review.service';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({

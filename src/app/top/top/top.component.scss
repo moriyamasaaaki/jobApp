@@ -7,7 +7,8 @@
 .attention,
 .new {
   @include pc {
-    width: 70%;
+    max-width: 1000px;
+    margin: 0 auto;
   }
 }
 
@@ -16,6 +17,10 @@
   line-height: 1.5;
   @include pc {
     margin: 0 auto 64px;
+  }
+  h1 {
+    font-size: 24px;
+    text-align: center;
   }
   a {
     display: block;

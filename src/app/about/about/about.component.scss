@@ -10,12 +10,8 @@
   }
   &__title {
     text-align: center;
-    h2 {
-      font-weight: 500;
+    h1 {
       margin-bottom: 8px;
-      @include pc {
-        font-size: 32px;
-      }
     }
     p {
       margin-bottom: 24px;

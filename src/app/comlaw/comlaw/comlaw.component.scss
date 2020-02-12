@@ -1,4 +1,4 @@
-@import "mixins";
+@import 'mixins';
 
 .comlaw {
   margin: 0 8px 16px;
@@ -10,13 +10,9 @@
       width: 100%;
     }
   }
-  h2 {
-    font-size: 20px;
+  h1 {
     text-align: center;
     margin-bottom: 24px;
-    @include pc {
-      font-size: 24px;
-    }
   }
 }
 

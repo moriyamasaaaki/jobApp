@@ -67,9 +67,6 @@ export class RegisterFormComponent implements OnInit {
         }
       });
   }
-  logout() {
-    this.authService.logout();
-  }
 
   submit() {
     console.log(this.form.value);

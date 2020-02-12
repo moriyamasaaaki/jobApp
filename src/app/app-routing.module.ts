@@ -40,6 +40,12 @@ const routes: Routes = [
   },
 
   {
+    path: 'privacy',
+    loadChildren: () =>
+      import('./privacy/privacy.module').then(m => m.PrivacyModule)
+  },
+
+  {
     path: 'keep',
     loadChildren: () => import('./keep/keep.module').then(m => m.KeepModule),
     canLoad: [AuthGuard],

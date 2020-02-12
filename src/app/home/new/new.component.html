@@ -3,13 +3,10 @@
     <div class="new-job-box__post" *ngFor="let job of jobs">
       <div class="new-job-box__head">
         <span class="new-job-box__tag">New</span>
-        <a routerLink="/detail/{{ job.id }}">
-          <p class="new-job-box__pc-title">{{ job.companyName }}</p>
+        <a routerLink="/detail/{{ job.id }}" (click)="router()"
+          >{{ job.title }}
         </a>
       </div>
-      <a routerLink="/detail/{{ job.id }}" (click)="router()">{{
-        job.title
-      }}</a>
       <a routerLink="/detail/{{ job.id }}">
         <span>{{ job.workPlace }}</span
         ><i class="material-icons">play_arrow</i>

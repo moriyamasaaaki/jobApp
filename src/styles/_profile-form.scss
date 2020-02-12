@@ -1,0 +1,30 @@
+@import 'mixins';
+@import '~@angular/material/theming';
+
+.profile-form {
+  h1 {
+    font-size: 24px;
+    text-align: center;
+  }
+  margin: 0 0 40px;
+  max-width: 1000px;
+  padding: 0 8px;
+  line-height: 5;
+  @include mobile {
+    margin: 0 auto 40px;
+    border: 1px solid #ededed;
+    border-radius: 8px;
+    padding: 16px 16px 56px;
+    @include mat-elevation(4);
+  }
+  &__field {
+    width: 100%;
+  }
+  &__btn {
+    display: block;
+    margin: 72px auto 0;
+    @include pc {
+      padding: 8px 24px;
+    }
+  }
+}

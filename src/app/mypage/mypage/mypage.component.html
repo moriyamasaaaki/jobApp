@@ -1,7 +1,7 @@
-<div class="mypage">
-  <h2>マイページ</h2>
+<div class="mypage profile-card">
+  <h1>マイページ</h1>
   <ng-container *ngIf="profile$ | async as profile; else default">
-    <div class="mypage__list">
+    <div class="profile-card__list">
       <dl>
         <dt>画像</dt>
         <ng-container *ngIf="profile.photoURL; else defaultImg">
@@ -50,7 +50,7 @@
         </dd>
       </dl>
     </div>
-    <div class="mypage__btn">
+    <div class="profile-card__btn">
       <a routerLink="/profile" mat-raised-button color="primary">編集する</a>
       <button mat-raised-button color="warn" (click)="openDeleteDialog()">
         削除する
@@ -58,16 +58,16 @@
     </div>
   </ng-container>
   <ng-template #default>
-    <p class="mypage__default-text">
+    <p class="profile-card__default-text">
       プロフィールがありません。
     </p>
-    <div class="mypage__btn">
+    <div class="profile-card__btn">
       <button routerLink="/profile" mat-raised-button color="primary">
         作成する
       </button>
     </div>
   </ng-template>
-  <div class="mypage__footer-item">
+  <div class="profile-card__footer-item">
     <a routerLink="/plan">プラン</a>
     <a routerLink="/">企業の方はこちらから</a>
     <a routerLink="/comlaw">特定商取引法に基づく表示</a>

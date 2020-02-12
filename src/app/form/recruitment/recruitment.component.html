@@ -1,5 +1,5 @@
-<form [formGroup]="form" (ngSubmit)="submit()" class="recruitment">
-  <h2>求人広告作成</h2>
+<form [formGroup]="form" (ngSubmit)="submit()" class="recruitment profile-form">
+  <h1>求人広告作成</h1>
   <div>
     <input type="file" (change)="setImage($event)" multiple />
   </div>
@@ -9,7 +9,7 @@
   </div>
 
   <div>
-    <mat-form-field class="recruitment__field">
+    <mat-form-field class="profile-form__field">
       <mat-label>タイトル</mat-label>
       <input
         matInput
@@ -27,7 +27,7 @@
   </div>
 
   <div>
-    <mat-form-field class="recruitment__field">
+    <mat-form-field class="profile-form__field">
       <mat-label>勤務時間</mat-label>
       <textarea
         matInput
@@ -45,7 +45,7 @@
   </div>
 
   <div>
-    <mat-form-field class="recruitment__field">
+    <mat-form-field class="profile-form__field">
       <mat-label>休日</mat-label>
       <input
         matInput
@@ -61,7 +61,7 @@
   </div>
 
   <div>
-    <mat-form-field class="recruitment__field">
+    <mat-form-field class="profile-form__field">
       <mat-label>福利厚生</mat-label>
       <input
         matInput
@@ -77,7 +77,7 @@
   </div>
 
   <div>
-    <mat-form-field class="recruitment__field">
+    <mat-form-field class="profile-form__field">
       <mat-label>概要</mat-label>
       <textarea
         matInput
@@ -96,7 +96,7 @@
   </div>
 
   <div>
-    <mat-form-field class="recruitment__field">
+    <mat-form-field class="profile-form__field">
       <mat-label>タグ</mat-label>
       <input
         matInput
@@ -105,7 +105,7 @@
         autocomplete="on"
       />
     </mat-form-field>
-    <mat-form-field class="recruitment__field">
+    <mat-form-field class="profile-form__field">
       <mat-label>タグ</mat-label>
       <input
         matInput
@@ -117,7 +117,7 @@
   </div>
 
   <div>
-    <mat-form-field class="recruitment__field">
+    <mat-form-field class="profile-form__field">
       <mat-label>企業名</mat-label>
       <input
         matInput
@@ -133,7 +133,7 @@
   </div>
 
   <div>
-    <mat-form-field class="recruitment__field">
+    <mat-form-field class="profile-form__field">
       <mat-label>時給</mat-label>
       <input
         matInput
@@ -149,7 +149,7 @@
   </div>
 
   <div>
-    <mat-form-field class="recruitment__field">
+    <mat-form-field class="profile-form__field">
       <mat-label>職種</mat-label>
       <input
         matInput
@@ -164,7 +164,7 @@
     </mat-form-field>
   </div>
   <div>
-    <mat-form-field class="recruitment__field">
+    <mat-form-field class="profile-form__field">
       <mat-label>勤務地</mat-label>
       <input
         matInput
@@ -181,7 +181,7 @@
   <ng-container *ngIf="editJob; else default">
     <div>
       <button
-        class="recruitment__btn"
+        class="profile-form__btn"
         mat-raised-button
         color="primary"
         (click)="update()"
@@ -192,7 +192,7 @@
   </ng-container>
   <ng-template #default>
     <div>
-      <button class="recruitment__btn" mat-raised-button color="primary">
+      <button class="profile-form__btn" mat-raised-button color="primary">
         求人広告を登録する
       </button>
     </div>

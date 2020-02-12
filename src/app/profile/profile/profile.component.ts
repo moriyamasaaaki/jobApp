@@ -18,6 +18,7 @@ export class ProfileComponent implements OnInit {
   states = ['卒業', '在学中', '中退'];
 
   image: File;
+  userId: string;
 
   form = this.fb.group({
     name: ['', [Validators.required]],
@@ -38,7 +39,6 @@ export class ProfileComponent implements OnInit {
     introduce: ['', []],
     belongs: ['', [Validators.required]]
   });
-  userId: string;
 
   get nameControl() {
     return this.form.get('name') as FormControl;
@@ -102,8 +102,7 @@ export class ProfileComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private userProfileService: UserProfileService,
-    private authService: AuthService,
-    private jobPostService: JobPostService
+    private authService: AuthService
   ) {}
 
   ngOnInit() {

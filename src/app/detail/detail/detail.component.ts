@@ -7,6 +7,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { DeleteDialogComponent } from 'src/app/delete-dialog/delete-dialog.component';
 import { AuthService } from 'src/app/services/auth.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { LikedService } from 'src/app/services/liked.service';
 
 @Component({
   selector: 'app-detail',
@@ -14,8 +15,15 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrls: ['./detail.component.scss']
 })
 export class DetailComponent implements OnInit {
+  job: DetailJob;
+  id: string;
+  jobs$: Observable<DetailJob>;
+  likedCount: number;
+  like: boolean;
+
   constructor(
     private jobPostService: JobPostService,
+    private likedService: LikedService,
     private route: ActivatedRoute,
     private dialog: MatDialog,
     private authService: AuthService,
@@ -25,11 +33,6 @@ export class DetailComponent implements OnInit {
       this.jobs$ = this.jobPostService.getJobPost(params.get('id'));
     });
   }
-  job: DetailJob;
-  id: string;
-  jobs$: Observable<DetailJob>;
-  likedCount: number;
-  like: boolean;
 
   ngOnInit() {
     this.likedCount = 0;
@@ -52,16 +55,16 @@ export class DetailComponent implements OnInit {
     this.route.paramMap.subscribe(params => {
       this.id = params.get('id');
       if (this.authService.uid && !this.like) {
-        this.jobPostService.likedItem(this.id, this.authService.uid);
-        this.jobPostService.likedUser(this.id, this.authService.uid);
+        this.likedService.likedItem(this.id, this.authService.uid);
+        this.likedService.likedUser(this.id, this.authService.uid);
         this.likedCount++;
         this.like = true;
         this.snackBar.open('お気に入り追加しました。', null, {
           duration: 3000
         });
       } else {
-        this.jobPostService.deleteLikedJobs(this.authService.uid, this.id);
-        this.jobPostService.deleteLikesUser(this.id, this.authService.uid);
+        this.likedService.deleteLikedJobs(this.authService.uid, this.id);
+        this.likedService.deleteLikesUser(this.id, this.authService.uid);
         this.likedCount--;
         this.like = false;
         this.snackBar.open('お気に入り削除しました。', null, {

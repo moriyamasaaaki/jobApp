@@ -4,7 +4,6 @@
 .job-box {
   margin-bottom: 16px;
   line-height: 1.5;
-  width: 100%;
   @include tab {
     display: flex;
     flex-wrap: wrap;
@@ -63,10 +62,7 @@
   }
   &__default-text {
     margin: 0 auto;
-    font-size: 14px;
-    @include pc {
-      font-size: 16px;
-    }
+    font-size: 16px;
   }
   &__default-img {
     border-bottom: 1px solid lightgray;

@@ -1,11 +1,11 @@
 <section class="job-list job-card">
-  <h2>求人一覧</h2>
+  <h1>求人一覧</h1>
   <ng-container *ngIf="jobs$ | async as jobs; else default">
     <div class="job-card__box" *ngFor="let job of jobs">
       <div class="job-card__title">
         <span>{{ job.companyName }}</span>
         <a routerLink="/detail/{{ job.id }}">
-          <h3>{{ job.title }}</h3>
+          <h2>{{ job.title }}</h2>
         </a>
       </div>
       <div class="job-card__content">

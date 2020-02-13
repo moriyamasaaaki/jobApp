@@ -1,12 +1,12 @@
 <form
-  class="companyForm"
+  class="companyForm profile-form"
   [formGroup]="form"
   (ngSubmit)="submit()"
   class.mat-elevation-z8
 >
-  <h2>無料登録ページ</h2>
+  <h1>無料登録ページ</h1>
   <div>
-    <mat-form-field class="companyForm__field">
+    <mat-form-field class="profile-form__field">
       <input
         matInput
         placeholder="法人名（正式社名）"
@@ -21,7 +21,7 @@
   </div>
 
   <div>
-    <mat-form-field class="companyForm__field">
+    <mat-form-field class="profile-form__field">
       <input
         matInput
         placeholder="部署名（＊任意）"
@@ -32,7 +32,7 @@
   </div>
 
   <div>
-    <mat-form-field class="companyForm__field">
+    <mat-form-field class="profile-form__field">
       <input
         matInput
         placeholder="姓"
@@ -46,7 +46,7 @@
         >30文字以内にしてください。</mat-error
       >
     </mat-form-field>
-    <mat-form-field class="companyForm__field">
+    <mat-form-field class="profile-form__field">
       <input
         matInput
         placeholder="名"
@@ -63,7 +63,7 @@
   </div>
 
   <div>
-    <mat-form-field class="companyForm__field">
+    <mat-form-field class="profile-form__field">
       <input
         type="tel"
         matInput
@@ -82,7 +82,7 @@
   </div>
 
   <div>
-    <mat-form-field class="companyForm__field">
+    <mat-form-field class="profile-form__field">
       <input
         matInput
         placeholder="メールアドレス"
@@ -100,7 +100,7 @@
   </div>
 
   <div>
-    <mat-form-field class="companyForm__field">
+    <mat-form-field class="profile-form__field">
       <input
         matInput
         placeholder="パスワード"
@@ -128,7 +128,7 @@
   </div>
   <button
     [disabled]="form.invalid || form.pristine"
-    class="companyForm__btn"
+    class="profile-form__btn"
     mat-flat-button
     color="accent"
   >
@@ -136,5 +136,3 @@
   </button>
   <p>ご記入頂いた内容は後からでも変更可能です。</p>
 </form>
-<a routerLink="/recruitment" mat-flat-button color="primary">求人広告を作成</a>
-<button (click)="logout()" mat-flat-button color="warn">ログアウト</button>

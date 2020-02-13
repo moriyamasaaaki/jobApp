@@ -19,16 +19,6 @@ const routes: Routes = [
   },
 
   {
-    path: 'review',
-    loadChildren: () =>
-      import('./create-review/create-review.module').then(
-        m => m.CreateReviewModule
-      ),
-    canLoad: [AuthGuard],
-    canActivate: [AuthGuard]
-  },
-
-  {
     path: 'terms',
     loadChildren: () => import('./legal/legal.module').then(m => m.LegalModule)
   },
@@ -37,6 +27,12 @@ const routes: Routes = [
     path: 'comlaw',
     loadChildren: () =>
       import('./comlaw/comlaw.module').then(m => m.ComlawModule)
+  },
+
+  {
+    path: 'privacy',
+    loadChildren: () =>
+      import('./privacy/privacy.module').then(m => m.PrivacyModule)
   },
 
   {
@@ -49,7 +45,7 @@ const routes: Routes = [
   {
     path: 'profile',
     loadChildren: () =>
-      import('./profile/profile.module').then(m => m.ProfileModule),
+      import('./create-user-profile/profile.module').then(m => m.ProfileModule),
     canLoad: [AuthGuard],
     canActivate: [AuthGuard]
   },
@@ -84,7 +80,7 @@ const routes: Routes = [
   {
     path: 'companySideForm',
     loadChildren: () =>
-      import('./company-side/company-side.module').then(
+      import('./create-company-profile/company-side.module').then(
         m => m.CompanySideModule
       ),
     canLoad: [AuthGuard],

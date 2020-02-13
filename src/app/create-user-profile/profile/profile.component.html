@@ -1,10 +1,10 @@
-<form [formGroup]="form" (ngSubmit)="submit()" class="profile">
-  <h2>プロフィール設定</h2>
+<form [formGroup]="form" (ngSubmit)="submit()" class="profile profile-form">
+  <h1>プロフィール設定</h1>
   <div>
     <input type="file" (change)="setAvatar($event)" />
   </div>
   <div>
-    <mat-form-field class="profile__field">
+    <mat-form-field class="profile-form__field">
       <mat-label>氏名</mat-label>
       <input
         matInput
@@ -21,7 +21,7 @@
   </div>
 
   <div>
-    <mat-form-field class="profile__field">
+    <mat-form-field class="profile-form__field">
       <input
         matInput
         placeholder="住所"
@@ -36,7 +36,7 @@
     </mat-form-field>
   </div>
   <div formGroupName="bday">
-    <mat-form-field class="profile__field">
+    <mat-form-field class="profile-form__field">
       <mat-select placeholder="年" formControlName="year" required>
         <mat-option
           [value]="bottom"
@@ -50,7 +50,7 @@
       >
     </mat-form-field>
 
-    <mat-form-field class="profile__field">
+    <mat-form-field class="profile-form__field">
       <mat-select placeholder="月" formControlName="month" required>
         <mat-option [value]="i" *ngFor="let month of months; let i = index"
           >{{ i + 1 }}月</mat-option
@@ -61,7 +61,7 @@
       >
     </mat-form-field>
 
-    <mat-form-field class="profile__field">
+    <mat-form-field class="profile-form__field">
       <mat-select placeholder="日" formControlName="day" required>
         <mat-option [value]="i" *ngFor="let day of days; let i = index"
           >{{ i + 1 }}日</mat-option
@@ -73,7 +73,7 @@
     </mat-form-field>
   </div>
 
-  <div class="profile__field">
+  <div class="profile-form__field">
     <mat-label>性別：</mat-label>
     <mat-radio-group formControlName="gender" required>
       <mat-radio-button value="male">男性</mat-radio-button>
@@ -82,7 +82,7 @@
   </div>
 
   <div>
-    <mat-form-field class="profile__field">
+    <mat-form-field class="profile-form__field">
       <input
         matInput
         placeholder="Email"
@@ -100,7 +100,7 @@
   </div>
 
   <div>
-    <mat-form-field class="profile__field">
+    <mat-form-field class="profile-form__field">
       <input
         type="tel"
         matInput
@@ -119,7 +119,7 @@
   </div>
 
   <div>
-    <mat-form-field class="profile__field">
+    <mat-form-field class="profile-form__field">
       <textarea
         matInput
         placeholder="自己紹介"
@@ -129,7 +129,7 @@
   </div>
 
   <div>
-    <mat-form-field class="profile__field">
+    <mat-form-field class="profile-form__field">
       <mat-select placeholder="学校区分" formControlName="school" required>
         <mat-option [value]="school" *ngFor="let school of schools">{{
           school
@@ -140,7 +140,7 @@
       >
     </mat-form-field>
 
-    <mat-form-field class="profile__field">
+    <mat-form-field class="profile-form__field">
       <input
         matInput
         placeholder="〇〇大学〇〇学部"
@@ -152,7 +152,7 @@
       >
     </mat-form-field>
 
-    <mat-form-field class="profile__field">
+    <mat-form-field class="profile-form__field">
       <mat-select placeholder="卒業/在学/中退" formControlName="state" required>
         <mat-option
           [value]="state"
@@ -166,18 +166,18 @@
     </mat-form-field>
   </div>
 
-  <div class="profile__field">
-    <mat-form-field class="profile__field">
+  <div class="profile-form__field">
+    <mat-form-field class="profile-form__field">
       <input matInput placeholder="資格１" formControlName="tagOne" />
     </mat-form-field>
 
-    <mat-form-field class="profile__field">
+    <mat-form-field class="profile-form__field">
       <input matInput placeholder="資格２" formControlName="tagSecond" />
     </mat-form-field>
   </div>
 
-  <div class="profile__field">
-    <mat-form-field class="profile__field">
+  <div class="profile-form__field">
+    <mat-form-field class="profile-form__field">
       <textarea
         matInput
         placeholder="勤務可能な日時"
@@ -191,7 +191,7 @@
   </div>
   <div>
     <button
-      class="profile__btn"
+      class="profile-form__btn"
       [disabled]="form.invalid || form.pristine"
       mat-raised-button
       color="primary"

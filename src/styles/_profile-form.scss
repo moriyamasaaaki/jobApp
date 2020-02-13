@@ -1,12 +1,14 @@
-@import "mixins";
-@import "~@angular/material/theming";
+@import 'mixins';
+@import '~@angular/material/theming';
 
-.profile {
-  h2 {
+.profile-form {
+  h1 {
+    font-size: 24px;
     text-align: center;
   }
-  margin: 0 8px 40px;
-  max-width: 600px;
+  margin: 0 0 40px;
+  max-width: 1000px;
+  padding: 0 8px;
   line-height: 5;
   @include mobile {
     margin: 0 auto 40px;
@@ -20,17 +22,9 @@
   }
   &__btn {
     display: block;
-    margin: 0 auto;
+    margin: 72px auto 0;
     @include pc {
       padding: 8px 24px;
     }
-  }
-}
-
-
-.submit__profile {
-  p {
-    font-size: 16px;
-    line-height: 1.5;
   }
 }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DetailJob } from 'src/app/interfaces/article';
 import { Observable } from 'rxjs';
-import { JobPostService } from 'src/app/service/job-post.service';
+import { JobPostService } from 'src/app/services/job-post.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { ActivatedRoute } from '@angular/router';
 

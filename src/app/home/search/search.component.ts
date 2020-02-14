@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../services/auth.service';
-import { searchClient } from '../../environments/environment';
+import { AuthService } from '../../services/auth.service';
+import { searchClient } from '../../../environments/environment';
 
 @Component({
   selector: 'app-search',

@@ -10,7 +10,7 @@ const API_KEY = functions.config().sendgrid.key;
 
 // メールクライアント初期化
 sgMail.setApiKey(API_KEY);
-// console.log(API_KEY);
+console.log(API_KEY);
 
 export const userSendEmail = functions.firestore
   .document('userProfile/{userId}')
@@ -26,11 +26,12 @@ export const userSendEmail = functions.firestore
         console.log(user);
         const msg = {
           to: user.email,
-          from: '',
-          subject: 'Tokyo biteにご登録ありがとうございます',
+          from: {
+            email: 'moriya-7071@outlook.com',
+            name: 'Tokyo bite'
+          },
           templateId: 'd-fcbcd1da133d49a29f1f1602fc1972c2',
-          substitutionWrappers: ['{{', '}}'],
-          substitutions: {
+          dynamicTemplateData: {
             name: user.name
           }
         };

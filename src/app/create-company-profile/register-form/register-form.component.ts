@@ -1,6 +1,6 @@
 import { Component, OnInit, HostListener } from '@angular/core';
 import { FormBuilder, Validators, FormControl } from '@angular/forms';
-import { CompanyProfileService } from 'src/app/service/company-profile.service';
+import { CompanyProfileService } from 'src/app/services/company-profile.service';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({

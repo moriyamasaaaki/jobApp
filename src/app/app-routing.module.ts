@@ -7,7 +7,7 @@ const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    loadChildren: () => import('./top/top.module').then(m => m.TopModule)
+    loadChildren: () => import('./home/top.module').then(m => m.TopModule)
   },
 
   {
@@ -60,7 +60,8 @@ const routes: Routes = [
 
   {
     path: 'recruitment',
-    loadChildren: () => import('./form/form.module').then(m => m.FormModule),
+    loadChildren: () =>
+      import('./recruitment/recruitment.module').then(m => m.FormModule),
     canLoad: [AuthGuard],
     canActivate: [AuthGuard]
   },

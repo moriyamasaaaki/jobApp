@@ -1,8 +1,8 @@
 import { Component, OnInit, HostListener } from '@angular/core';
 import { FormBuilder, Validators, FormControl } from '@angular/forms';
-import { UserProfileService } from 'src/app/service/user-profile.service';
+import { UserProfileService } from 'src/app/services/user-profile.service';
 import { AuthService } from 'src/app/services/auth.service';
-import { JobPostService } from 'src/app/service/job-post.service';
+import { JobPostService } from 'src/app/services/job-post.service';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -18,6 +18,7 @@ export class ProfileComponent implements OnInit {
   states = ['卒業', '在学中', '中退'];
 
   image: File;
+  userId: string;
 
   form = this.fb.group({
     name: ['', [Validators.required]],
@@ -38,7 +39,6 @@ export class ProfileComponent implements OnInit {
     introduce: ['', []],
     belongs: ['', [Validators.required]]
   });
-  userId: string;
 
   get nameControl() {
     return this.form.get('name') as FormControl;
@@ -102,8 +102,7 @@ export class ProfileComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private userProfileService: UserProfileService,
-    private authService: AuthService,
-    private jobPostService: JobPostService
+    private authService: AuthService
   ) {}
 
   ngOnInit() {

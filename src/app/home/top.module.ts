@@ -7,7 +7,7 @@ import { AttentionComponent } from './attention/attention.component';
 
 import { MatButtonModule } from '@angular/material/button';
 import { NewComponent } from './new/new.component';
-import { SearchComponent } from '../search/search.component';
+import { SearchComponent } from './search/search.component';
 
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';

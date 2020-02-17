@@ -12,6 +12,11 @@
           検索結果"{{ results.query }}"は見つかりませんでした
         </ng-container>
         <div *ngIf="results.query && results.query.length > 0">
+          <ais-stats>
+            <ng-template let-state="state">
+              {{ state.nbHits }} 件ヒットしました
+            </ng-template>
+          </ais-stats>
           <div class="job-box">
             <div class="job-box__card" *ngFor="let hit of hits">
               <ng-container *ngIf="hit.jobImageUrls; else defaultImg">

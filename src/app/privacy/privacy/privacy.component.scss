@@ -1,0 +1,26 @@
+@import 'mixins';
+
+.privacy {
+  line-height: 1.7;
+  padding: 8px;
+  max-width: 1200px;
+  margin: 0 auto 40px;
+  h1 {
+    text-align: center;
+    margin-bottom: 24px;
+  }
+  strong {
+    display: block;
+    font-size: 16px;
+    margin-bottom: 8px;
+  }
+  ul {
+    margin-bottom: 24px;
+  }
+  li {
+    font-size: 14px;
+  }
+  &__list-style {
+    list-style: inside;
+  }
+}

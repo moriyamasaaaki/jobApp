@@ -1,5 +1,5 @@
 import * as functions from 'firebase-functions';
-// import { markEventTried, shouldEventRun } from './utility.function';
+import { shouldEventRun } from './utility.function';
 import * as admin from 'firebase-admin';
 import * as sgMail from '@sendgrid/mail';
 
@@ -12,37 +12,45 @@ const API_KEY = functions.config().sendgrid.key;
 sgMail.setApiKey(API_KEY);
 console.log(API_KEY);
 
+//ユーザー登録のメール送信
 export const userSendEmail = functions.firestore
   .document('userProfile/{userId}')
   .onCreate(async (snap, context) => {
     const userId = context.params.userId;
-
     return db
       .doc(`userProfile/${userId}`)
       .get()
       .then(doc => {
-        const user: any = doc.data();
-
-        console.log(user);
-        const msg = {
-          to: user.email,
-          from: {
-            email: 'moriya-7071@outlook.com',
-            name: 'Tokyo bite'
-          },
-          templateId: 'd-fcbcd1da133d49a29f1f1602fc1972c2',
-          dynamicTemplateData: {
-            name: user.name
-          }
-        };
-        console.log(sgMail);
-        console.log(msg);
-        return sgMail.send(msg);
-      })
-      .then(() => console.log('ユーザーにメールを送信しました!'))
-      .catch(err => console.log(err));
+        const eventId = context.eventId;
+        return shouldEventRun(eventId)
+          .then((should: boolean) => {
+            if (should) {
+              const user: any = doc.data();
+              console.log(user);
+              const msg = {
+                to: user.email,
+                from: {
+                  email: 'moriya-7071@outlook.com',
+                  name: 'Tokyo bite'
+                },
+                templateId: 'd-fcbcd1da133d49a29f1f1602fc1972c2',
+                dynamicTemplateData: {
+                  name: user.name
+                }
+              };
+              console.log(sgMail);
+              console.log(msg);
+              return sgMail.send(msg);
+            } else {
+              return;
+            }
+          })
+          .then(() => console.log('ユーザーにメールを送信しました!'))
+          .catch(err => console.log(err));
+      });
   });
 
+// 企業の登録メール送信
 export const companySendEmail = functions.firestore
   .document('companyProfile/{companyUserId}')
   .onCreate(async (snap, context) => {
@@ -52,27 +60,34 @@ export const companySendEmail = functions.firestore
       .doc(`companyProfile/${companyUserId}`)
       .get()
       .then(doc => {
-        const company: any = doc.data();
-
-        console.log(company);
-        const msg = {
-          to: company.email,
-          from: {
-            email: 'moriya-7071@outlook.com',
-            name: 'Tokyo bite'
-          },
-          templateId: 'd-b5af033ea4454189a9e902eace8d21ca',
-          dynamicTemplateData: {
-            name: company.name,
-            lastName: company.lastName,
-            firstName: company.firstName,
-            password: company.password
-          }
-        };
-        console.log(sgMail);
-        console.log(msg);
-        return sgMail.send(msg);
-      })
-      .then(() => console.log('企業様にメールを送信しました!'))
-      .catch(err => console.log(err));
+        const eventId = context.eventId;
+        return shouldEventRun(eventId)
+          .then((should: boolean) => {
+            if (should) {
+              const company: any = doc.data();
+              console.log(company);
+              const msg = {
+                to: company.email,
+                from: {
+                  email: 'moriya-7071@outlook.com',
+                  name: 'Tokyo bite'
+                },
+                templateId: 'd-b5af033ea4454189a9e902eace8d21ca',
+                dynamicTemplateData: {
+                  name: company.name,
+                  lastName: company.lastName,
+                  firstName: company.firstName,
+                  password: company.password
+                }
+              };
+              console.log(sgMail);
+              console.log(msg);
+              return sgMail.send(msg);
+            } else {
+              return;
+            }
+          })
+          .then(() => console.log('企業様にメールを送信しました!'))
+          .catch(err => console.log(err));
+      });
   });

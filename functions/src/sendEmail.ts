@@ -39,6 +39,40 @@ export const userSendEmail = functions.firestore
         console.log(msg);
         return sgMail.send(msg);
       })
-      .then(() => console.log('email sent!'))
+      .then(() => console.log('ユーザーにメールを送信しました!'))
+      .catch(err => console.log(err));
+  });
+
+export const companySendEmail = functions.firestore
+  .document('companyProfile/{companyUserId}')
+  .onCreate(async (snap, context) => {
+    const companyUserId = context.params.companyUserId;
+
+    return db
+      .doc(`companyProfile/${companyUserId}`)
+      .get()
+      .then(doc => {
+        const company: any = doc.data();
+
+        console.log(company);
+        const msg = {
+          to: company.email,
+          from: {
+            email: 'moriya-7071@outlook.com',
+            name: 'Tokyo bite'
+          },
+          templateId: 'd-b5af033ea4454189a9e902eace8d21ca',
+          dynamicTemplateData: {
+            name: company.name,
+            lastName: company.lastName,
+            firstName: company.firstName,
+            password: company.password
+          }
+        };
+        console.log(sgMail);
+        console.log(msg);
+        return sgMail.send(msg);
+      })
+      .then(() => console.log('企業様にメールを送信しました!'))
       .catch(err => console.log(err));
   });

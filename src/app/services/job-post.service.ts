@@ -64,7 +64,7 @@ export class JobPostService {
     const id = this.db.createId();
     return this.db
       .doc(`JobPosts/${id}`)
-      .set({ id, ...article, createdAt: new Date() })
+      .set({ id, jobId, ...article, createdAt: new Date() })
       .then(() => {
         this.snackBar.open('求人を作成しました', null, {
           duration: 2000
@@ -117,5 +117,14 @@ export class JobPostService {
           duration: 3000
         });
       });
+  }
+
+  //自社の投稿一覧表示
+  getMyCompanyJobList(companyUserId: string): Observable<DetailJob[]> {
+    return this.db
+      .collection<DetailJob>(`JobPosts`, ref => {
+        return ref.where('jobId', '==', companyUserId);
+      })
+      .valueChanges();
   }
 }

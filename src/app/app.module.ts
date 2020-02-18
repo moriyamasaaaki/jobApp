@@ -28,6 +28,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { NgAisModule } from 'angular-instantsearch';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
+import { NgxStripeModule } from 'ngx-stripe';
 @NgModule({
   declarations: [
     AppComponent,
@@ -51,7 +52,8 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
     MatDialogModule,
     NgAisModule.forRoot(),
     MatAutocompleteModule,
-    MatTooltipModule
+    MatTooltipModule,
+    NgxStripeModule.forRoot('rk_test_WnmjP37aMAAPnbrumrqFEKrN00MEUSQHZb')
   ],
   providers: [],
   bootstrap: [AppComponent],

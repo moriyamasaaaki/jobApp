@@ -107,6 +107,16 @@ const routes: Routes = [
   },
 
   {
+    path: 'companyjoblist',
+    loadChildren: () =>
+      import('./company-job-list/company-job-list.module').then(
+        m => m.CompanyJobListModule
+      ),
+    canLoad: [AuthGuard],
+    canActivate: [AuthGuard]
+  },
+
+  {
     path: '**',
     component: NotFoundComponent
   }

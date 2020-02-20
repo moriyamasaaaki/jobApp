@@ -1,0 +1,18 @@
+<div class="subscription">
+  <h2>プレミアムプラン(¥1,200/月)</h2>
+  <p>プレミアムに登録しますか？？</p>
+  <p>
+    毎月1,200円の料金が発生します。解約しない限り毎月継続して料金が発生します。
+  </p>
+  <div class="subscription__submit-btn">
+    <button mat-button matDialogClose>キャンセル</button>
+    <button
+      mat-raised-button
+      color="primary"
+      [matDialogClose]="true"
+      (click)="buySubscribe()"
+    >
+      購入する
+    </button>
+  </div>
+</div>

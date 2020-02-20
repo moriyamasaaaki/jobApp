@@ -1,0 +1,22 @@
+@import 'mixins';
+
+.subscription {
+  form {
+    @include pc {
+      width: 400px;
+    }
+  }
+  h2 {
+    text-align: center;
+    margin-bottom: 16px;
+  }
+  button {
+    margin: 16px 8px;
+  }
+  &__field {
+    width: 100%;
+  }
+  &__submit-btn {
+    text-align: center;
+  }
+}

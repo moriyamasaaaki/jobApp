@@ -20,21 +20,30 @@ import { environment } from '../environments/environment';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFireFunctionsModule } from '@angular/fire/functions';
 import { DeleteDialogComponent } from './delete-dialog/delete-dialog.component';
+import { StripeComponent } from './stripe/stripe/stripe.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 // //アルゴリア関連モジュール
 import { NgAisModule } from 'angular-instantsearch';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
+// ストライプ
 import { NgxStripeModule } from 'ngx-stripe';
+import { SubscriptionComponent } from './stripe/subscription/subscription.component';
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     NotFoundComponent,
-    DeleteDialogComponent
+    DeleteDialogComponent,
+    StripeComponent,
+    SubscriptionComponent
   ],
   imports: [
     BrowserModule,
@@ -47,16 +56,25 @@ import { NgxStripeModule } from 'ngx-stripe';
     AngularFirestoreModule,
     AngularFireStorageModule,
     AngularFireAuthModule,
+    AngularFireFunctionsModule,
     MatSnackBarModule,
     MatToolbarModule,
     MatDialogModule,
     NgAisModule.forRoot(),
     MatAutocompleteModule,
     MatTooltipModule,
-    NgxStripeModule.forRoot('rk_test_WnmjP37aMAAPnbrumrqFEKrN00MEUSQHZb')
+    NgxStripeModule.forRoot('pk_test_9HpgVwuc2WJTcyFgqugNOF3N002BxciwCC'),
+    ReactiveFormsModule,
+    FormsModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [DeleteDialogComponent]
+  entryComponents: [
+    DeleteDialogComponent,
+    StripeComponent,
+    SubscriptionComponent
+  ]
 })
 export class AppModule {}

@@ -107,14 +107,6 @@ const routes: Routes = [
   },
 
   {
-    path: 'stripe',
-    loadChildren: () =>
-      import('./stripe/stripe.module').then(m => m.StripeModule),
-    canLoad: [AuthGuard],
-    canActivate: [AuthGuard]
-  },
-
-  {
     path: '**',
     component: NotFoundComponent
   }

@@ -1,5 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import {
+  FormGroup,
+  FormBuilder,
+  Validators,
+  FormControl
+} from '@angular/forms';
 import {
   StripeCardComponent,
   ElementOptions,
@@ -7,8 +12,7 @@ import {
   StripeService
 } from 'ngx-stripe';
 import { FeeService } from 'src/app/services/fee.service';
-// import { StripeService } from '../../services/stripe.service';
-
+import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-stripe',
   templateUrl: './stripe.component.html',
@@ -34,7 +38,7 @@ export class StripeComponent implements OnInit {
   };
 
   elementsOptions: ElementsOptions = {
-    locale: 'es'
+    locale: 'ja'
   };
 
   stripeTest: FormGroup;
@@ -42,17 +46,28 @@ export class StripeComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private stripeService: StripeService,
-    private feeService: FeeService
+    private feeService: FeeService,
+    private snackbar: MatSnackBar
   ) {}
 
   ngOnInit() {
     this.stripeTest = this.fb.group({
-      name: ['', [Validators.required]]
+      name: ['', [Validators.required]],
+      email: ['', [Validators.required, Validators.email]]
     });
+  }
+
+  get nameControl() {
+    return this.stripeTest.get('name') as FormControl;
+  }
+
+  get emailControl() {
+    return this.stripeTest.get('email') as FormControl;
   }
 
   buy() {
     const name = this.stripeTest.get('name').value;
+    const email = this.stripeTest.get('email').value;
     this.stripeService
       .createToken(this.card.getCard(), { name })
       .subscribe(result => {
@@ -60,10 +75,15 @@ export class StripeComponent implements OnInit {
           const tokenId = result.token.id;
           this.feeService.createCustomer({
             source: tokenId,
-            email: 'm.masa6262@gmail.com', // 決済にまつわる通知をするために必要
+            email,
             description: ''
           });
+          this.snackbar.open('クレジットカードを登録しました。', null, {
+            duration: 3000
+          });
           console.log(result.token.id);
+          console.log(name);
+          console.log(email);
         } else if (result.error) {
           console.log(result.error.message);
         }

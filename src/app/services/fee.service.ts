@@ -13,6 +13,12 @@ export class FeeService {
     description: string;
   }): Promise<void> {
     const callable = this.fns.httpsCallable('createCustomer');
+    this.fns.httpsCallable('registerForBilling');
     return callable(params).toPromise();
+  }
+
+  //サブスク開始
+  createSubscribe() {
+    this.fns.httpsCallable('registerForBilling');
   }
 }

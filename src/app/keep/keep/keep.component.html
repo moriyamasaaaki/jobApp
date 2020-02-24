@@ -14,7 +14,7 @@
       </div>
 
       <div class="job-card__content">
-        <ng-container *ngIf="article.photoURL; else defaultImg">
+        <ng-container *ngIf="job.jobImageUrls; else defaultImg">
           <img [src]="job.jobImageUrls[0]" alt="" />
         </ng-container>
         <ng-template #defaultImg>

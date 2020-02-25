@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { CanDeactivate } from '@angular/router';
 import { Observable, of } from 'rxjs';
-import { ProfileComponent } from '../create-user-profile/profile/profile.component';
+import { ProfileComponent } from '../profile/profile/profile.component';
 
 @Injectable({
   providedIn: 'root'

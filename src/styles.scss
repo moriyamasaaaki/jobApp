@@ -22,7 +22,10 @@ $my-theme: mat-light-theme(
 html,
 body {
   min-height: 100%;
-  padding-bottom: 40px;
+  padding-bottom: 53px;
+  @include tab {
+    padding: 0;
+  }
 }
 body {
   margin: 0;

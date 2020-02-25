@@ -22,7 +22,6 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { DeleteDialogComponent } from './delete-dialog/delete-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
-import { MatTooltipModule } from '@angular/material/tooltip';
 
 // //アルゴリア関連モジュール
 import { NgAisModule } from 'angular-instantsearch';
@@ -50,8 +49,7 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
     MatToolbarModule,
     MatDialogModule,
     NgAisModule.forRoot(),
-    MatAutocompleteModule,
-    MatTooltipModule
+    MatAutocompleteModule
   ],
   providers: [],
   bootstrap: [AppComponent],

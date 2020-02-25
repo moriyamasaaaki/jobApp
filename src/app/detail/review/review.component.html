@@ -1,0 +1,61 @@
+<section class="review">
+  <ng-container *ngIf="review$ | async as review; else default">
+    <h3>会社についてのレビュー</h3>
+    <div class="review__bars">
+      <p>社内の雰囲気の良さ（悪い/良い）</p>
+      <div class="review__bar-flex">
+        <mat-progress-bar
+          class="review__bar"
+          mode="determinate"
+          value="{{ review.atmosphere * 10 }}"
+          color="primary"
+        ></mat-progress-bar>
+        <span>{{ review.atmosphere * 10 }}%</span>
+      </div>
+    </div>
+
+    <div class="review__bars">
+      <p>サイト記載内容との差異（ない/ある）</p>
+      <div class="review__bar-flex">
+        <mat-progress-bar
+          class="review__bar"
+          mode="determinate"
+          value="{{ review.contentDiff * 10 }}"
+          color="primary"
+        ></mat-progress-bar>
+        <span>{{ review.contentDiff * 10 }}%</span>
+      </div>
+    </div>
+
+    <div class="review__bars">
+      <p>シフトの融通が利く（利かない/利く）</p>
+      <div class="review__bar-flex">
+        <mat-progress-bar
+          class="review__bar"
+          mode="determinate"
+          value="{{ review.sift * 10 }}"
+          color="primary"
+        ></mat-progress-bar>
+        <span>{{ review.sift * 10 }}%</span>
+      </div>
+    </div>
+
+    <div class="review__bars">
+      <p>残業時間（なし/ある）</p>
+      <div class="review__bar-flex">
+        <mat-progress-bar
+          class="review__bar"
+          mode="determinate"
+          value="{{ review.overtime * 10 }}"
+          color="primary"
+        ></mat-progress-bar>
+        <span>{{ review.overtime * 10 }}%</span>
+      </div>
+    </div>
+  </ng-container>
+  <ng-template #default>
+    <p class="review__default-text">
+      レビューはまだありません。
+    </p>
+  </ng-template>
+</section>

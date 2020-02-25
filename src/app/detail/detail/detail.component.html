@@ -64,22 +64,35 @@
     >
       編集
     </button>
-  </div>
-  <div class="detail__btn">
-    <button
-      mat-stroked-button
-      color="primary"
-      class="detail__btn-add"
-      (click)="toggleLiked(job)"
-      [class.like]="like"
-      *ngIf="jobs$ | async as job"
-    >
-      お気に入り{{ job.likedCount }}
-    </button>
-    <a href="dammy@tokyobite.com">
-      <button mat-raised-button color="primary" class="detail__btn-add">
-        応募する
-      </button>
-    </a>
+
+    <div class="detail__btn">
+      <ng-container *ngIf="like; else noLike">
+        <button
+          mat-raised-button
+          class="detail__btn-add"
+          (click)="toggleLiked()"
+          [class.like]="like"
+        >
+          お気に入り解除
+          {{ likedCount }}
+        </button>
+      </ng-container>
+      <ng-template #noLike>
+        <button
+          mat-raised-button
+          class="detail__btn-add"
+          (click)="toggleLiked()"
+          [class.like]="like"
+        >
+          お気に入り追加
+          {{ likedCount }}
+        </button>
+      </ng-template>
+      <a href="dammy@tokyobite.com">
+        <button mat-raised-button color="primary" class="detail__btn-add">
+          応募する
+        </button>
+      </a>
+    </div>
   </div>
 </section>

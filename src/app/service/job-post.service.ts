@@ -33,16 +33,7 @@ export class JobPostService {
       });
   }
 
-  //一枚の画像アップロード
-  uploadImage(file: File, id: string): Promise<void> {
-    return this.storage.upload(`jobPosts/${id}`, file).then(result => {
-      this.db.doc(`JobPosts/${id}`).update({
-        photoURL: result.ref.getDownloadURL()
-      });
-    });
-  }
-
-  //複数枚画像アップロード
+  // 複数枚画像アップロード
   uploadImages(files: File[], id: string): Promise<void> {
     return Promise.all(
       files.map((file, index) => {
@@ -60,7 +51,7 @@ export class JobPostService {
     });
   }
 
-  //求人作成
+  // 求人作成
   createJobPost(jobId: string, article: DetailJob, images?: File[]) {
     const id = this.db.createId();
     return this.db
@@ -80,8 +71,7 @@ export class JobPostService {
   getJobPost(id: string): Observable<DetailJob> {
     return this.db.doc<DetailJob>(`JobPosts/${id}`).valueChanges();
   }
-
-  //新着投稿取得
+  // 新着投稿取得
   getNewJobs(): Observable<DetailJob[]> {
     return this.db
       .collection<DetailJob>('JobPosts', ref => {
@@ -90,7 +80,7 @@ export class JobPostService {
       .valueChanges();
   }
 
-  //注目投稿取得
+  // 注目投稿取得
   getAttentionJobs(): Observable<DetailJob[]> {
     return this.db
       .collection<DetailJob>('JobPosts', ref => {
@@ -99,7 +89,7 @@ export class JobPostService {
       .valueChanges();
   }
 
-  //求人一覧取得
+  // 求人一覧取得
   getAllJob(): Observable<DetailJob[]> {
     return this.db
       .collection<DetailJob>('JobPosts', ref => {
@@ -108,7 +98,7 @@ export class JobPostService {
       .valueChanges();
   }
 
-  //求人削除
+  // 求人削除
   deleteJob(id: string): Promise<void> {
     return this.db
       .doc(`JobPosts/${id}`)
@@ -120,7 +110,7 @@ export class JobPostService {
       });
   }
 
-  //自社の投稿一覧表示
+  // 自社の投稿一覧表示
   getMyCompanyJobList(companyUserId: string): Observable<DetailJob[]> {
     return this.db
       .collection<DetailJob>(`JobPosts`, ref => {

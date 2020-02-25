@@ -1,12 +1,29 @@
 <section class="detail">
   <div *ngIf="jobs$ | async as job">
     <div class="detail__title">
-      <h1>{{ job.title }}</h1>
-      <ul class="detail__taglist">
-        <li>
-          <a href="">{{ job.label }}</a>
-        </li>
-      </ul>
+      <div class="detail__title-head">
+        <div>
+          <h1>{{ job.title }}</h1>
+          <ul class="detail__taglist">
+            <li>
+              <a href="">{{ job.label }}</a>
+            </li>
+          </ul>
+        </div>
+        <div class="detail__title-btn">
+          <button
+            [routerLink]="['/recruitment']"
+            [queryParams]="{ id: job.id }"
+            mat-mini-fab
+            color="primary"
+          >
+            <mat-icon>create</mat-icon>
+          </button>
+          <button mat-mini-fab color="warn">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+      </div>
       <span>{{ job.companyName }}</span>
       <p>公開日： {{ job.createdAt.toDate() | date: 'yyy年MM月dd日' }}</p>
     </div>
@@ -54,16 +71,6 @@
         </div>
       </ng-template>
     </div>
-    <button
-      [routerLink]="['/recruitment']"
-      [queryParams]="{ id: job.id }"
-      mat-stroked-button
-      color="primary"
-      class="detail__btn-add"
-    >
-      編集
-    </button>
-
     <div class="detail__btn">
       <ng-container *ngIf="like; else noLike">
         <button

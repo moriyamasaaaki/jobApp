@@ -7,23 +7,13 @@ const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    loadChildren: () => import('./top/top.module').then(m => m.TopModule)
+    loadChildren: () => import('./home/top.module').then(m => m.TopModule)
   },
 
   {
     path: 'detail',
     loadChildren: () =>
       import('./detail/detail.module').then(m => m.DetailModule),
-    canLoad: [AuthGuard],
-    canActivate: [AuthGuard]
-  },
-
-  {
-    path: 'review',
-    loadChildren: () =>
-      import('./create-review/create-review.module').then(
-        m => m.CreateReviewModule
-      ),
     canLoad: [AuthGuard],
     canActivate: [AuthGuard]
   },
@@ -40,6 +30,12 @@ const routes: Routes = [
   },
 
   {
+    path: 'privacy',
+    loadChildren: () =>
+      import('./privacy/privacy.module').then(m => m.PrivacyModule)
+  },
+
+  {
     path: 'keep',
     loadChildren: () => import('./keep/keep.module').then(m => m.KeepModule),
     canLoad: [AuthGuard],
@@ -49,7 +45,7 @@ const routes: Routes = [
   {
     path: 'profile',
     loadChildren: () =>
-      import('./profile/profile.module').then(m => m.ProfileModule),
+      import('./create-user-profile/profile.module').then(m => m.ProfileModule),
     canLoad: [AuthGuard],
     canActivate: [AuthGuard]
   },
@@ -64,7 +60,8 @@ const routes: Routes = [
 
   {
     path: 'recruitment',
-    loadChildren: () => import('./form/form.module').then(m => m.FormModule),
+    loadChildren: () =>
+      import('./recruitment/form.module').then(m => m.FormModule),
     canLoad: [AuthGuard],
     canActivate: [AuthGuard]
   },
@@ -84,7 +81,7 @@ const routes: Routes = [
   {
     path: 'companySideForm',
     loadChildren: () =>
-      import('./company-side/company-side.module').then(
+      import('./create-company-profile/company-side.module').then(
         m => m.CompanySideModule
       ),
     canLoad: [AuthGuard],

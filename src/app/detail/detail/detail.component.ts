@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DetailJob } from 'src/app/interfaces/article';
-import { JobPostService } from 'src/app/service/job-post.service';
+import { JobPostService } from 'src/app/services/job-post.service';
 import { Observable } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
@@ -28,17 +28,13 @@ export class DetailComponent implements OnInit {
     private route: ActivatedRoute,
     private dialog: MatDialog,
     private authService: AuthService,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private likedService: LikedService
   ) {
     route.paramMap.subscribe(params => {
       this.jobs$ = this.jobPostService.getJobPost(params.get('id'));
     });
   }
-  job: DetailJob;
-  id: string;
-  jobs$: Observable<DetailJob>;
-  likedCount: number;
-  like: boolean;
 
   ngOnInit() {
     this.getlikes();

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DeleteDialogComponent } from 'src/app/delete-dialog/delete-dialog.component';
-import { CompanyProfileService } from 'src/app/service/company-profile.service';
+import { CompanyProfileService } from 'src/app/services/company-profile.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { Observable } from 'rxjs';
 import { CompanyProfile } from 'src/app/interfaces/profile';

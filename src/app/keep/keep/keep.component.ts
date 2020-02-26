@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { DetailJob } from 'src/app/interfaces/article';
-import { JobPostService } from 'src/app/service/job-post.service';
+import { JobPostService } from 'src/app/services/job-post.service';
 import { Observable } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
+import { LikedService } from 'src/app/services/liked.service';
 
 @Component({
   selector: 'app-keep',
@@ -12,16 +13,17 @@ import { AuthService } from 'src/app/services/auth.service';
 export class KeepComponent implements OnInit {
   constructor(
     private jobPostService: JobPostService,
-    private authService: AuthService
+    private authService: AuthService,
+    private likedService: LikedService
   ) {}
 
-  jobs$: Observable<DetailJob[]> = this.jobPostService.getLikedJobs(
+  jobs$: Observable<DetailJob[]> = this.likedService.getLikedJobs(
     this.authService.uid
   );
 
   deleteLikedJob(job: DetailJob) {
     const joblikeId = job.id;
-    this.jobPostService.deleteLikedJobs(this.authService.uid, joblikeId);
+    this.likedService.deleteLikedJobs(this.authService.uid, joblikeId);
   }
 
   ngOnInit() {}

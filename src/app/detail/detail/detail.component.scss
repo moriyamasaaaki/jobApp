@@ -30,6 +30,16 @@
       }
     }
   }
+  &__title-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  &__title-btn {
+    button {
+      margin: 4px;
+    }
+  }
   .job-img {
     @include tab {
       margin: 0 auto;

@@ -4,12 +4,12 @@ import { Observable } from 'rxjs';
 import { JobPostService } from 'src/app/services/job-post.service';
 
 @Component({
-  selector: 'app-joblist',
-  templateUrl: './joblist.component.html',
-  styleUrls: ['./joblist.component.scss']
+  selector: 'app-attention',
+  templateUrl: './attention.component.html',
+  styleUrls: ['./attention.component.scss']
 })
-export class JoblistComponent implements OnInit {
-  jobs$: Observable<DetailJob[]> = this.jobPostService.getAllJob();
+export class AttentionComponent implements OnInit {
+  jobs$: Observable<DetailJob[]> = this.jobPostService.getAttentionJobs();
 
   constructor(private jobPostService: JobPostService) {}
 

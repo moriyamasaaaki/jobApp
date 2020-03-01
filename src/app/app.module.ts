@@ -35,7 +35,7 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 // ストライプ
 import { NgxStripeModule } from 'ngx-stripe';
-import { SubscriptionComponent } from './stripe/subscription/subscription.component';
+import { PaymentComponent } from './stripe/payment/payment.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,7 +43,7 @@ import { SubscriptionComponent } from './stripe/subscription/subscription.compon
     NotFoundComponent,
     DeleteDialogComponent,
     StripeComponent,
-    SubscriptionComponent
+    PaymentComponent
   ],
   imports: [
     BrowserModule,
@@ -71,10 +71,6 @@ import { SubscriptionComponent } from './stripe/subscription/subscription.compon
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [
-    DeleteDialogComponent,
-    StripeComponent,
-    SubscriptionComponent
-  ]
+  entryComponents: [DeleteDialogComponent, StripeComponent, PaymentComponent]
 })
 export class AppModule {}

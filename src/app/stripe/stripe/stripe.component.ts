@@ -13,12 +13,20 @@ import {
 } from 'ngx-stripe';
 import { FeeService } from 'src/app/services/fee.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { take } from 'rxjs/operators';
 @Component({
   selector: 'app-stripe',
   templateUrl: './stripe.component.html',
   styleUrls: ['./stripe.component.scss']
 })
 export class StripeComponent implements OnInit {
+  tokenID: string;
+  subscriptionID: string;
+  customerId: string;
+  planID$ = this.feeService.getCustomer().subscribe((plan: any) => {
+    this.subscriptionID = plan.subscriptionId;
+    this.customerId = plan.customerId;
+  });
   @ViewChild(StripeCardComponent, { static: false }) card: StripeCardComponent;
 
   cardOptions: ElementOptions = {
@@ -73,20 +81,80 @@ export class StripeComponent implements OnInit {
       .subscribe(result => {
         if (result.token) {
           const tokenId = result.token.id;
+          this.tokenID = tokenId;
           this.feeService.createCustomer({
             source: tokenId,
             email,
-            description: ''
+            name
           });
           this.snackbar.open('クレジットカードを登録しました。', null, {
             duration: 3000
           });
-          console.log(result.token.id);
-          console.log(name);
-          console.log(email);
         } else if (result.error) {
+          this.snackbar.open('クレジットカードを登録に失敗しました。', null, {
+            duration: 3000
+          });
           console.log(result.error.message);
         }
       });
+  }
+
+  // サブスクスタート
+  startSubscribe() {
+    this.feeService
+      .getCustomer()
+      .pipe(take(1))
+      .subscribe((customer: any) => {
+        console.log(customer);
+        this.feeService
+          .getSubscription({
+            userId: customer.userId,
+            customerId: customer.customerId,
+            planId: 'plan_GlHy7qsQOyJKhx'
+          })
+          .then(() => {
+            this.snackbar.open('有料プランに登録しました。', null, {
+              duration: 3000
+            });
+          })
+          .catch(() => {
+            this.snackbar.open('有料プランの登録失敗しました。', null, {
+              duration: 3000
+            });
+          });
+      });
+  }
+
+  // サブスク解除
+  stopSubscribe() {
+    this.feeService.getCustomer().subscribe((customer: any) => {
+      console.log(customer);
+      this.feeService
+        .stopSubscription({
+          userId: customer.userId,
+          planId: 'plan_GlHy7qsQOyJKhx'
+        })
+        .then(() => {
+          this.snackbar.open('有料プランを解約しました。', null, {
+            duration: 3000
+          });
+        })
+        .catch(() => {
+          this.snackbar.open('有料プランの解約に失敗しました', null, {
+            duration: 3000
+          });
+        });
+    });
+  }
+
+  // 顧客削除
+  deleteSubscribe() {
+    this.feeService.getCustomer().subscribe((customer: any) => {
+      console.log(customer);
+      this.feeService.deleteCustomer(customer.customerId);
+    });
+    this.snackbar.open('削除しました。', null, {
+      duration: 3000
+    });
   }
 }

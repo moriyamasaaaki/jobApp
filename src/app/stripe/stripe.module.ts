@@ -7,9 +7,9 @@ import { StripeComponent } from './stripe/stripe.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { SubscriptionComponent } from './subscription/subscription.component';
+import { PaymentComponent } from './payment/payment.component';
 @NgModule({
-  declarations: [StripeComponent, SubscriptionComponent],
+  declarations: [StripeComponent, PaymentComponent],
   imports: [
     CommonModule,
     StripeRoutingModule,

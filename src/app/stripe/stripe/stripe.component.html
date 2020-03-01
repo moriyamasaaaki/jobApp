@@ -1,40 +1,88 @@
 <div class="stripe">
-  <h2>クレジットカード登録</h2>
-  <form novalidate (ngSubmit)="buy()" [formGroup]="stripeTest">
-    <mat-form-field class="stripe__field">
-      <mat-label>カード名義</mat-label>
-      <input
-        matInput
-        placeholder="TARO YAMADA"
-        formControlName="name"
-        required
-      />
-    </mat-form-field>
-    <mat-form-field class="stripe__field">
-      <mat-label>メールアドレス</mat-label>
-      <input
-        matInput
-        placeholder="tokyo@bite.com"
-        formControlName="email"
-        required
-      />
-    </mat-form-field>
-    <ngx-stripe-card
-      [options]="cardOptions"
-      [elementsOptions]="elementsOptions"
-    ></ngx-stripe-card>
-    <div class="stripe__submit-btn">
-      <button mat-stroked-button color="basic" matDialogClose>
-        キャンセル
-      </button>
-      <button
-        type="submit"
-        mat-raised-button
-        color="primary"
-        [matDialogClose]="true"
-      >
-        登録
-      </button>
+  <ng-container *ngIf="customerId && !subscriptionID">
+    <div class="subscription">
+      <h2>プレミアムプラン(¥980/月)</h2>
+      <p>プレミアムに登録しますか？？</p>
+      <p>
+        毎月980円の料金が発生します。解約しない限り毎月継続して料金が発生します。
+      </p>
+      <div class="subscription__submit-btn">
+        <button mat-button matDialogClose>キャンセル</button>
+        <button
+          mat-raised-button
+          color="primary"
+          [matDialogClose]="true"
+          (click)="startSubscribe()"
+        >
+          購入する
+        </button>
+      </div>
     </div>
-  </form>
+  </ng-container>
+  <ng-container *ngIf="subscriptionID">
+    <div class="subscription">
+      <h2>プレミアムプラン(¥1,200/月)</h2>
+      <p>プレミアムプランを解約しますか？？</p>
+      <p>
+        解約すると月額購読は中止されます。
+      </p>
+      <div class="subscription__submit-btn">
+        <button mat-button matDialogClose>キャンセル</button>
+        <button
+          mat-raised-button
+          color="primary"
+          [matDialogClose]="true"
+          (click)="stopSubscribe()"
+        >
+          解約する
+        </button>
+      </div>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="!customerId && !subscriptionID">
+    <div class="stripe__card">
+      <h2>クレジットカード登録</h2>
+      <form novalidate (ngSubmit)="buy()" [formGroup]="stripeTest">
+        <mat-form-field class="stripe__field">
+          <mat-label>カード名義</mat-label>
+          <input
+            matInput
+            placeholder="TARO YAMADA"
+            formControlName="name"
+            required
+          />
+        </mat-form-field>
+        <mat-form-field class="stripe__field">
+          <mat-label>メールアドレス</mat-label>
+          <input
+            matInput
+            placeholder="tokyo@bite.com"
+            formControlName="email"
+            required
+          />
+        </mat-form-field>
+        <ngx-stripe-card
+          [options]="cardOptions"
+          [elementsOptions]="elementsOptions"
+        ></ngx-stripe-card>
+        <div class="stripe__img">
+          <img src="assets/stripe.png" width="100" alt="" />
+        </div>
+        <div class="stripe__submit-btn">
+          <button mat-stroked-button color="basic" matDialogClose>
+            キャンセル
+          </button>
+          <button
+            type="submit"
+            mat-raised-button
+            color="primary"
+            [matDialogClose]="true"
+            [disabled]="stripeTest.invalid || stripeTest.pristine"
+          >
+            登録
+          </button>
+        </div>
+      </form>
+    </div>
+  </ng-container>
 </div>

@@ -29,8 +29,8 @@ service cloud.firestore {
       allow read, write: if true;
     }
 
-    match /customers/{customerId} {
-  allow read, write: if request.auth.uid == customerId;
+    match /customers/{userId} {
+      allow read, write: if request.auth.uid == userId;
 }
   }
 }

@@ -23,8 +23,8 @@ export class FeeService {
     return callable(params).toPromise();
   }
 
-  // サブスク
-  getSubscription(data: {
+  // サブスク開始
+  startSubscription(data: {
     userId: string;
     customerId: string;
     planId: string;

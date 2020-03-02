@@ -107,7 +107,7 @@ export class StripeComponent implements OnInit {
       .subscribe((customer: any) => {
         console.log(customer);
         this.feeService
-          .getSubscription({
+          .startSubscription({
             userId: customer.userId,
             customerId: customer.customerId,
             planId: 'plan_GlHy7qsQOyJKhx'

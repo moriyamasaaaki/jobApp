@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DetailJob } from 'src/app/interfaces/article';
+import { JobPostService } from 'src/app/services/job-post.service';
 import { Observable } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
 import { LikedService } from 'src/app/services/liked.service';
@@ -11,8 +12,9 @@ import { LikedService } from 'src/app/services/liked.service';
 })
 export class KeepComponent implements OnInit {
   constructor(
-    private likedService: LikedService,
-    private authService: AuthService
+    private jobPostService: JobPostService,
+    private authService: AuthService,
+    private likedService: LikedService
   ) {}
 
   jobs$: Observable<DetailJob[]> = this.likedService.getLikedJobs(

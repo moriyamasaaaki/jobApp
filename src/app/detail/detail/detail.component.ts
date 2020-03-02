@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { DetailJob } from 'src/app/interfaces/article';
 import { JobPostService } from 'src/app/services/job-post.service';
 import { Observable } from 'rxjs';
@@ -8,6 +8,7 @@ import { DeleteDialogComponent } from 'src/app/delete-dialog/delete-dialog.compo
 import { AuthService } from 'src/app/services/auth.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { LikedService } from 'src/app/services/liked.service';
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-detail',
@@ -20,14 +21,15 @@ export class DetailComponent implements OnInit {
   jobs$: Observable<DetailJob>;
   likedCount: number;
   like: boolean;
+  likeid: string;
 
   constructor(
     private jobPostService: JobPostService,
-    private likedService: LikedService,
     private route: ActivatedRoute,
     private dialog: MatDialog,
     private authService: AuthService,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private likedService: LikedService
   ) {
     route.paramMap.subscribe(params => {
       this.jobs$ = this.jobPostService.getJobPost(params.get('id'));
@@ -35,7 +37,7 @@ export class DetailComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.likedCount = 0;
+    this.getlikes();
   }
 
   openDeleteDialog() {
@@ -51,24 +53,45 @@ export class DetailComponent implements OnInit {
       });
   }
 
-  toggleLiked(job: DetailJob) {
+  getlikes() {
     this.route.paramMap.subscribe(params => {
+      this.jobPostService
+        .getJobPost(params.get('id'))
+        .pipe(take(1))
+        .subscribe(result => {
+          this.likedCount = result.likedCount;
+          this.likeid = result.id;
+          if (this.authService.uid) {
+            this.likedService
+              .isLiked(this.likeid, this.authService.uid)
+              .pipe(take(1))
+              .subscribe(likedJob => {
+                this.like = likedJob;
+              });
+          }
+        });
+    });
+  }
+
+  toggleLiked() {
+    this.route.paramMap.subscribe(params => {
+      const authId = this.authService.uid;
       this.id = params.get('id');
-      if (this.authService.uid && !this.like) {
-        this.likedService.likedItem(this.id, this.authService.uid);
-        this.likedService.likedUser(this.id, this.authService.uid);
+      if (authId && !this.like) {
+        this.likedService.likedItem(this.id, authId);
+        this.likedService.likedUser(this.id, authId);
         this.likedCount++;
         this.like = true;
         this.snackBar.open('お気に入り追加しました。', null, {
-          duration: 3000
+          duration: 1000
         });
-      } else {
-        this.likedService.deleteLikedJobs(this.authService.uid, this.id);
-        this.likedService.deleteLikesUser(this.id, this.authService.uid);
+      } else if (authId && this.like) {
+        this.likedService.deleteLikedJobs(authId, this.id);
+        this.likedService.deleteLikesUser(this.id, authId);
         this.likedCount--;
         this.like = false;
         this.snackBar.open('お気に入り削除しました。', null, {
-          duration: 3000
+          duration: 1000
         });
       }
     });

@@ -5,7 +5,7 @@
     </p>
     <nav class="header__nav">
       <div class="header__nav-item">
-        <button routerLink="/recruitment" mat-icon-button matTooltip="求人作成">
+        <button routerLink="/recruitment" mat-icon-button>
           <mat-icon>add</mat-icon>
         </button>
         <button
@@ -17,11 +17,7 @@
           ログイン
         </button>
         <div class="header__user-icon">
-          <button
-            mat-icon-button
-            [matMenuTriggerFor]="menu"
-            matTooltip="マイページ"
-          >
+          <button mat-icon-button [matMenuTriggerFor]="menu">
             <img *ngIf="user$ | async as user" [src]="user.photoURL" alt="" />
           </button>
         </div>

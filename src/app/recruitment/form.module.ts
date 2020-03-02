@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { FormRoutingModule } from './recruitment-routing.module';
+import { FormRoutingModule } from './form-routing.module';
 import { RecruitmentComponent } from './recruitment/recruitment.component';
 
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';

@@ -61,7 +61,7 @@ const routes: Routes = [
   {
     path: 'recruitment',
     loadChildren: () =>
-      import('./recruitment/recruitment.module').then(m => m.FormModule),
+      import('./recruitment/form.module').then(m => m.FormModule),
     canLoad: [AuthGuard],
     canActivate: [AuthGuard]
   },
@@ -102,6 +102,16 @@ const routes: Routes = [
     path: 'joblist',
     loadChildren: () =>
       import('./joblist/joblist.module').then(m => m.JoblistModule),
+    canLoad: [AuthGuard],
+    canActivate: [AuthGuard]
+  },
+
+  {
+    path: 'companyjoblist',
+    loadChildren: () =>
+      import('./company-job-list/company-job-list.module').then(
+        m => m.CompanyJobListModule
+      ),
     canLoad: [AuthGuard],
     canActivate: [AuthGuard]
   },

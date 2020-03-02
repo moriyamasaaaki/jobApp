@@ -1,5 +1,5 @@
 <section class="keep job-card">
-  <h1>お気に入りした求人</h1>
+  <h2>お気に入りした求人</h2>
   <ng-container *ngIf="jobs$ | async as jobs; else default">
     <p>
       お気に入り/<span class="job-card__number">{{ likedCount }}</span
@@ -9,12 +9,12 @@
       <div class="job-card__title">
         <span>{{ job.companyName }}</span>
         <a routerLink="/detail"
-          ><h2>{{ job.title }}</h2></a
+          ><h3>{{ job.title }}</h3></a
         >
       </div>
 
       <div class="job-card__content">
-        <ng-container *ngIf="article.photoURL; else defaultImg">
+        <ng-container *ngIf="job.jobImageUrls; else defaultImg">
           <img [src]="job.jobImageUrls[0]" alt="" />
         </ng-container>
         <ng-template #defaultImg>

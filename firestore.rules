@@ -28,5 +28,9 @@ service cloud.firestore {
     match /likes/{id} {
       allow read, write: if true;
     }
+
+    match /customers/{userId} {
+      allow read, write: if request.auth.uid == userId;
+}
   }
 }

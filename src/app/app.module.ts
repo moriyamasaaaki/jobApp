@@ -22,6 +22,7 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { DeleteDialogComponent } from './delete-dialog/delete-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { ProfileDialogComponent } from './profile-dialog/profile-dialog.component';
 
 // //アルゴリア関連モジュール
 import { NgAisModule } from 'angular-instantsearch';
@@ -32,7 +33,8 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
     AppComponent,
     HeaderComponent,
     NotFoundComponent,
-    DeleteDialogComponent
+    DeleteDialogComponent,
+    ProfileDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -53,6 +55,6 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [DeleteDialogComponent]
+  entryComponents: [DeleteDialogComponent, ProfileDialogComponent]
 })
 export class AppModule {}

@@ -22,6 +22,8 @@ export class DetailComponent implements OnInit {
   likedCount: number;
   like: boolean;
   likeid: string;
+  jobId: string;
+  jobEdit: boolean;
 
   constructor(
     private jobPostService: JobPostService,
@@ -38,6 +40,20 @@ export class DetailComponent implements OnInit {
 
   ngOnInit() {
     this.getlikes();
+    this.companyUserEdit();
+  }
+
+  companyUserEdit() {
+    this.route.paramMap.subscribe(params => {
+      this.jobPostService.getJobPost(params.get('id')).subscribe(job => {
+        this.jobId = job.jobId;
+        if (this.jobId === this.authService.uid) {
+          this.jobEdit = true;
+        } else {
+          this.jobEdit = false;
+        }
+      });
+    });
   }
 
   openDeleteDialog() {

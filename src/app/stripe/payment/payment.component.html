@@ -1,0 +1,45 @@
+<div class="stripe">
+  <div class="stripe__card">
+    <h2>クレジットカード登録</h2>
+    <form novalidate (ngSubmit)="buy()" [formGroup]="stripeTest">
+      <mat-form-field class="stripe__field">
+        <mat-label>カード名義</mat-label>
+        <input
+          matInput
+          placeholder="TARO YAMADA"
+          formControlName="name"
+          required
+        />
+      </mat-form-field>
+      <mat-form-field class="stripe__field">
+        <mat-label>メールアドレス</mat-label>
+        <input
+          matInput
+          placeholder="tokyo@bite.com"
+          formControlName="email"
+          required
+        />
+      </mat-form-field>
+      <ngx-stripe-card
+        [options]="cardOptions"
+        [elementsOptions]="elementsOptions"
+      ></ngx-stripe-card>
+      <div class="stripe__img">
+        <img src="assets/stripe.png" width="100" alt="" />
+      </div>
+      <div class="stripe__submit-btn">
+        <button mat-stroked-button color="basic" matDialogClose>
+          キャンセル
+        </button>
+        <button
+          type="submit"
+          mat-raised-button
+          color="primary"
+          [matDialogClose]="true"
+        >
+          登録
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

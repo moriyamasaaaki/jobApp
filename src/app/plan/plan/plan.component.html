@@ -11,12 +11,26 @@
 
     <div class="plan__box">
       <h3>有料プラン</h3>
-      <span>¥580</span>
-      <span>（¥580/月）</span>
-      <div class="plan__register-btn">
-        <button mat-flat-button color="primary">登録</button>
-      </div>
+      <span>¥980</span>
+      <span>（¥980/月）</span>
+      <ng-container *ngIf="!subscriptionID; else subscription">
+        <div class="plan__register-btn">
+          <button mat-flat-button color="primary" (click)="stripeDialog()">
+            登録
+          </button>
+        </div>
+      </ng-container>
+      <ng-template #subscription>
+        <div class="plan__register-btn">
+          <button mat-flat-button color="primary" (click)="stripeDialog()">
+            解約
+          </button>
+        </div>
+      </ng-template>
     </div>
   </div>
-  <button mat-raised-button color="accent">クレジットカード登録</button>
+  <button mat-raised-button color="accent" (click)="creditDialog()">
+    クレジットカード
+    {{ text ? '変更' : '登録' }}
+  </button>
 </section>

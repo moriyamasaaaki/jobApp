@@ -3,6 +3,10 @@ import { FormBuilder, Validators, FormControl } from '@angular/forms';
 import { UserProfileService } from 'src/app/services/user-profile.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { JobPostService } from 'src/app/services/job-post.service';
+import { CompanyProfileService } from 'src/app/services/company-profile.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatDialog } from '@angular/material/dialog';
+import { ProfileDialogComponent } from 'src/app/profile-dialog/profile-dialog.component';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -103,7 +107,8 @@ export class ProfileComponent implements OnInit {
     private fb: FormBuilder,
     private userProfileService: UserProfileService,
     private authService: AuthService,
-    private jobPostService: JobPostService
+    private companyProfileService: CompanyProfileService,
+    private dialog: MatDialog
   ) {}
 
   ngOnInit() {
@@ -123,14 +128,21 @@ export class ProfileComponent implements OnInit {
     }
   }
   submit() {
-    console.log(this.form.value);
-    this.userProfileService.createUser(
-      {
-        userId: this.authService.uid,
-        ...this.form.value
-      },
-      this.image
+    const companyProfile = this.companyProfileService.getCompanyUser(
+      this.authService.uid
     );
+    console.log(this.form.value);
+    if (!companyProfile) {
+      this.userProfileService.createUser(
+        {
+          userId: this.authService.uid,
+          ...this.form.value
+        },
+        this.image
+      );
+    } else if (companyProfile) {
+      this.dialog.open(ProfileDialogComponent).afterClosed();
+    }
   }
   @HostListener('window:beforeunload', ['$event'])
   unloadNotification($event: any) {

@@ -24,7 +24,7 @@ export class CompanyGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    return this.authService.getCompanyLogin().pipe(
+    return this.authService.getCompanyLogin(this.authService.uid).pipe(
       map(user => !!user),
       tap(login => {
         if (!!login) {

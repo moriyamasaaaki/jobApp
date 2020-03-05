@@ -10,9 +10,6 @@ service cloud.firestore {
     match /JobPosts/{userId} {
       allow read, write: if true;
     }
-    match /reviews/{userId} {
-      allow read, write: if true;
-    }
     match /likes/{id}/likedUsers/{userId} {
       allow read, write: if true;
     }
@@ -28,5 +25,14 @@ service cloud.firestore {
     match /likes/{id} {
       allow read, write: if true;
     }
+
+    match /users/{uid} {
+      allow read, write: if true;
+    }
+
+    match /companys/{uid} {
+      allow read, write: if true;
+    }
+
   }
 }

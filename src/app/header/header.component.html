@@ -49,11 +49,11 @@
 </header>
 <ng-container *ngIf="!(user$ | async)">
   <div class="search-button-row">
-    <button (click)="userLogin()" mat-raised-button color="primary">
+    <button (click)="loginUser()" mat-raised-button color="primary">
       <span>ユーザーログイン</span>
       <i class="material-icons">person</i>
     </button>
-    <button (click)="companyLogin()" mat-raised-button color="accent">
+    <button (click)="loginCompany()" mat-raised-button color="accent">
       <span>企業ログイン</span>
       <i class="material-icons">business</i>
     </button>

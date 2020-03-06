@@ -40,10 +40,10 @@ export class DetailComponent implements OnInit {
 
   ngOnInit() {
     this.getlikes();
-    this.companyUserEdit();
+    this.editCompanyUser();
   }
 
-  companyUserEdit() {
+  editCompanyUser() {
     this.route.paramMap.subscribe(params => {
       this.jobPostService.getJobPost(params.get('id')).subscribe(job => {
         this.jobId = job.jobId;

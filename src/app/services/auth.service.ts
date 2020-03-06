@@ -24,19 +24,18 @@ export class AuthService {
     this.afUser$.subscribe(user => {
       this.uid = user && user.uid;
       this.displayName = user && user.displayName;
-      console.log(this.uid);
     });
   }
 
-  getUserLogin(uid: string): Observable<Status> {
+  getLoginUser(uid: string): Observable<Status> {
     return this.db.doc<Status>(`users/${uid}`).valueChanges();
   }
 
-  getCompanyLogin(uid: string): Observable<Status> {
+  getLoginCompany(uid: string): Observable<Status> {
     return this.db.doc<Status>(`companys/${uid}`).valueChanges();
   }
 
-  userLogin() {
+  loginUser() {
     this.afAuth.auth
       .signInWithPopup(new auth.GoogleAuthProvider())
       .then(result => {
@@ -44,7 +43,6 @@ export class AuthService {
           uid: result.user.uid,
           status: 'user'
         };
-        console.log(userData);
         this.db.doc(`users/${result.user.uid}`).set(userData);
         this.snackBar.open('ようこそTokyo biteへ!', null, {
           duration: 2000
@@ -64,7 +62,7 @@ export class AuthService {
     this.router.navigateByUrl('/');
   }
 
-  companyLogin() {
+  loginCompany() {
     this.afAuth.auth
       .signInWithPopup(new auth.GoogleAuthProvider())
       .then(result => {
@@ -72,7 +70,6 @@ export class AuthService {
           uid: result.user.uid,
           status: 'company'
         };
-        console.log(companyData);
         this.db.doc(`companys/${result.user.uid}`).set(companyData);
         this.snackBar.open('企業側としてログインしました。', null, {
           duration: 2000

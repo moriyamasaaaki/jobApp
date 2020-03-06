@@ -24,7 +24,7 @@ export class UserGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    return this.authService.getUserLogin(this.authService.uid).pipe(
+    return this.authService.getLoginUser(this.authService.uid).pipe(
       map(user => !!user),
       tap(login => {
         if (!!login) {

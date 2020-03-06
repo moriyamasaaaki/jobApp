@@ -16,39 +16,39 @@ export class HeaderComponent implements OnInit {
   constructor(private authService: AuthService) {}
 
   ngOnInit() {
-    this.userLoginToggle();
-    this.comapnyLoginToggles();
+    this.loginUserToggle();
+    this.loginCompanyToggle();
   }
 
-  userLoginToggle() {
-    if (this.authService.getUserLogin(this.authService.uid)) {
+  loginUserToggle() {
+    if (this.authService.getLoginUser(this.authService.uid)) {
       this.userLoginStatus = true;
       this.companyLoginStatus = false;
-    } else if (!this.authService.getUserLogin(this.authService.uid)) {
+    } else if (!this.authService.getLoginUser(this.authService.uid)) {
       this.userLoginStatus = false;
       this.companyLoginStatus = true;
     }
   }
-  comapnyLoginToggles() {
-    if (this.authService.getCompanyLogin(this.authService.uid)) {
+  loginCompanyToggle() {
+    if (this.authService.getLoginCompany(this.authService.uid)) {
       this.companyLoginStatus = true;
       this.userLoginStatus = false;
-    } else if (!this.authService.getCompanyLogin(this.authService.uid)) {
+    } else if (!this.authService.getLoginCompany(this.authService.uid)) {
       this.companyLoginStatus = false;
       this.userLoginStatus = true;
     }
   }
 
-  userLogin() {
-    this.authService.userLogin();
-    this.authService.getUserLogin(this.authService.uid);
+  loginUser() {
+    this.authService.loginUser();
+    this.authService.getLoginUser(this.authService.uid);
     this.userLoginStatus = true;
     this.companyLoginStatus = false;
   }
 
-  companyLogin() {
-    this.authService.companyLogin();
-    this.authService.getCompanyLogin(this.authService.uid);
+  loginCompany() {
+    this.authService.loginCompany();
+    this.authService.getLoginCompany(this.authService.uid);
     this.companyLoginStatus = true;
     this.userLoginStatus = false;
   }

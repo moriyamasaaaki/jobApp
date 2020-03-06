@@ -2,6 +2,9 @@ import { Component, OnInit, HostListener } from '@angular/core';
 import { FormBuilder, Validators, FormControl } from '@angular/forms';
 import { CompanyProfileService } from 'src/app/services/company-profile.service';
 import { AuthService } from 'src/app/services/auth.service';
+import { UserProfileService } from 'src/app/services/user-profile.service';
+import { ProfileDialogComponent } from 'src/app/profile-dialog/profile-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-register-form',
@@ -55,7 +58,9 @@ export class RegisterFormComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private companyProfileService: CompanyProfileService,
-    private authService: AuthService
+    private authService: AuthService,
+    private userProfile: UserProfileService,
+    private dialog: MatDialog
   ) {}
 
   ngOnInit() {
@@ -67,16 +72,18 @@ export class RegisterFormComponent implements OnInit {
         }
       });
   }
-  logout() {
-    this.authService.logout();
-  }
 
   submit() {
+    const userProfile = this.userProfile.getProfile(this.authService.uid);
     console.log(this.form.value);
-    this.companyProfileService.createCompanyUser({
-      companyUserId: this.authService.uid,
-      ...this.form.value
-    });
+    if (!userProfile) {
+      this.companyProfileService.createCompanyUser({
+        companyUserId: this.authService.uid,
+        ...this.form.value
+      });
+    } else if (userProfile) {
+      this.dialog.open(ProfileDialogComponent).afterClosed();
+    }
   }
   @HostListener('window:beforeunload', ['$event'])
   unloadNotification($event: any) {

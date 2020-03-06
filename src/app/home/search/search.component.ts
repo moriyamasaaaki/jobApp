@@ -18,8 +18,4 @@ export class SearchComponent implements OnInit {
   constructor(private authService: AuthService) {}
 
   ngOnInit() {}
-
-  companyLogin() {
-    this.authService.companyLogin();
-  }
 }

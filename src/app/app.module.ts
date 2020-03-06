@@ -24,6 +24,7 @@ import { AngularFireFunctionsModule } from '@angular/fire/functions';
 import { DeleteDialogComponent } from './delete-dialog/delete-dialog.component';
 import { StripeComponent } from './stripe/stripe/stripe.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { ProfileDialogComponent } from './profile-dialog/profile-dialog.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -42,6 +43,7 @@ import { PaymentComponent } from './stripe/payment/payment.component';
     HeaderComponent,
     NotFoundComponent,
     DeleteDialogComponent,
+    ProfileDialogComponent,
     StripeComponent,
     PaymentComponent
   ],
@@ -71,6 +73,11 @@ import { PaymentComponent } from './stripe/payment/payment.component';
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [DeleteDialogComponent, StripeComponent, PaymentComponent]
+  entryComponents: [
+    DeleteDialogComponent,
+    ProfileDialogComponent,
+    StripeComponent,
+    PaymentComponent
+  ]
 })
 export class AppModule {}

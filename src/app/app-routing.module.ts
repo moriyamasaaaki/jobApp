@@ -4,6 +4,9 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { AuthGuard } from './guards/auth.guard';
 import { SearchResultComponent } from './search-result/search-result.component';
 
+import { UserGuard } from './guards/user.guard';
+import { CompanyGuard } from './guards/company.guard';
+
 const routes: Routes = [
   {
     path: '',
@@ -14,9 +17,7 @@ const routes: Routes = [
   {
     path: 'detail',
     loadChildren: () =>
-      import('./detail/detail.module').then(m => m.DetailModule),
-    canLoad: [AuthGuard],
-    canActivate: [AuthGuard]
+      import('./detail/detail.module').then(m => m.DetailModule)
   },
 
   {
@@ -40,7 +41,7 @@ const routes: Routes = [
     path: 'keep',
     loadChildren: () => import('./keep/keep.module').then(m => m.KeepModule),
     canLoad: [AuthGuard],
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard, UserGuard]
   },
 
   {
@@ -48,7 +49,7 @@ const routes: Routes = [
     loadChildren: () =>
       import('./create-user-profile/profile.module').then(m => m.ProfileModule),
     canLoad: [AuthGuard],
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard, UserGuard]
   },
 
   {
@@ -56,7 +57,7 @@ const routes: Routes = [
     loadChildren: () =>
       import('./mypage/mypage.module').then(m => m.MypageModule),
     canLoad: [AuthGuard],
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard, UserGuard]
   },
 
   {
@@ -64,7 +65,7 @@ const routes: Routes = [
     loadChildren: () =>
       import('./recruitment/form.module').then(m => m.FormModule),
     canLoad: [AuthGuard],
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard, CompanyGuard]
   },
 
   {
@@ -86,7 +87,7 @@ const routes: Routes = [
         m => m.CompanySideModule
       ),
     canLoad: [AuthGuard],
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard, CompanyGuard]
   },
 
   {
@@ -96,7 +97,7 @@ const routes: Routes = [
         m => m.CompanyProfileModule
       ),
     canLoad: [AuthGuard],
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard, CompanyGuard]
   },
 
   {
@@ -114,7 +115,7 @@ const routes: Routes = [
         m => m.CompanyJobListModule
       ),
     canLoad: [AuthGuard],
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard, CompanyGuard]
   },
 
   {

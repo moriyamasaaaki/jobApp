@@ -1,5 +1,4 @@
 <app-header></app-header>
-
 <main class="container">
   <router-outlet></router-outlet>
 </main>
@@ -10,7 +9,6 @@
       <li><a routerLink="/comlaw">特定商取引法に基づく表示</a></li>
       <li><a routerLink="/terms">利用規約</a></li>
       <li><a routerLink="/about">Tokyo biteについて</a></li>
-      <li><a (click)="login()">企業の方はこちらから</a></li>
     </ul>
     <p class="footer__copyright">Copyright © Tokyo bite All rights reserved.</p>
   </div>
@@ -37,7 +35,7 @@
       </a>
     </div>
     <div class="footer-box__icon">
-      <a routerLink="/mypage">
+      <a routerLink="/companyProfile">
         <mat-icon aria-hidden="false">person</mat-icon>
         <span>マイページ</span>
       </a>

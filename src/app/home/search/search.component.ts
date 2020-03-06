@@ -39,8 +39,4 @@ export class SearchComponent implements OnInit {
   }
 
   ngOnInit() {}
-
-  companyLogin() {
-    this.authService.companyLogin();
-  }
 }

@@ -26,16 +26,17 @@ import { StripeComponent } from './stripe/stripe/stripe.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 
 // //アルゴリア関連モジュール
 import { NgAisModule } from 'angular-instantsearch';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 // ストライプ
 import { NgxStripeModule } from 'ngx-stripe';
 import { PaymentComponent } from './stripe/payment/payment.component';
+import { SearchResultComponent } from './search-result/search-result.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,7 +44,8 @@ import { PaymentComponent } from './stripe/payment/payment.component';
     NotFoundComponent,
     DeleteDialogComponent,
     StripeComponent,
-    PaymentComponent
+    PaymentComponent,
+    SearchResultComponent
   ],
   imports: [
     BrowserModule,
@@ -67,7 +69,8 @@ import { PaymentComponent } from './stripe/payment/payment.component';
     ReactiveFormsModule,
     FormsModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent],

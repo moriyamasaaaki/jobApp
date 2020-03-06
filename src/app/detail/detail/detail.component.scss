@@ -2,9 +2,10 @@
 
 .detail {
   margin: 0 8px 16px;
-  h1 {
+  &__title-text-weight {
     text-align: left;
-    font-size: 20px;
+    font-weight: 500;
+    font-size: 24px;
   }
   &__title-content {
     display: flex;

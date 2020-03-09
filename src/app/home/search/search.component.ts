@@ -10,7 +10,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class SearchComponent implements OnInit {
   user$ = this.authService.afUser$;
-
+  display: boolean;
   inputParams = {
     hitsPerPage: 10,
     query: ''

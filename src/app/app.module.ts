@@ -33,7 +33,8 @@ import { MatInputModule } from '@angular/material/input';
 import { NgAisModule } from 'angular-instantsearch';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatFormFieldModule } from '@angular/material/form-field';
-
+import { SearchInputComponent } from './search-input/search-input.component';
+import { SearchComponent } from '../app/home/search/search.component';
 // ストライプ
 import { NgxStripeModule } from 'ngx-stripe';
 import { PaymentComponent } from './stripe/payment/payment.component';
@@ -47,7 +48,9 @@ import { SearchResultComponent } from './search-result/search-result.component';
     ProfileDialogComponent,
     StripeComponent,
     PaymentComponent,
-    SearchResultComponent
+    SearchResultComponent,
+    SearchInputComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,

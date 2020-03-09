@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { AuthGuard } from './guards/auth.guard';
+import { SearchResultComponent } from './search-result/search-result.component';
 
 import { UserGuard } from './guards/user.guard';
 import { CompanyGuard } from './guards/company.guard';
@@ -115,6 +116,11 @@ const routes: Routes = [
       ),
     canLoad: [AuthGuard],
     canActivate: [AuthGuard, CompanyGuard]
+  },
+
+  {
+    path: 'search',
+    component: SearchResultComponent
   },
 
   {

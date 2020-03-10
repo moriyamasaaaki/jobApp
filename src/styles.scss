@@ -35,47 +35,58 @@ body {
 
 // footer スタイル
 .footer {
-  background-color: #0d47a1;
   padding: 16px 8px;
-  display: none;
+  color: #000;
+  opacity: 0.7;
   @include tab {
     display: grid;
+    background-color: #0d47a1;
     grid-template-columns: repeat(2, 1fr);
     justify-content: space-between;
     align-items: center;
+    opacity: 1;
+    padding: 24px 8px;
   }
   &__first-nav {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items: center;
     @include pc {
       justify-content: space-between;
     }
     li {
       list-style: none;
-      font-size: 12px;
+      font-size: 13px;
+      padding: 8px 8px 16px;
       @include tab {
         line-height: 2.5;
+        padding: 0;
       }
       @include pc {
         font-size: 14px;
       }
     }
     a {
-      color: #fff;
+      color: #000;
       text-decoration: none;
-      padding: 8px;
       &:hover {
         opacity: 0.7;
         text-decoration: underline;
+      }
+      @include tab {
+        color: #fff;
       }
     }
   }
   &__copyright {
     text-align: center;
     font-size: 14px;
-    color: #fff;
+    margin-top: 24px;
+    @include tab {
+      color: #fff;
+      margin: 0;
+    }
   }
 }
 

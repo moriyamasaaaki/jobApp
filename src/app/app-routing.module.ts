@@ -26,6 +26,11 @@ const routes: Routes = [
   },
 
   {
+    path: 'help',
+    loadChildren: () => import('./help/help.module').then(m => m.HelpModule)
+  },
+
+  {
     path: 'comlaw',
     loadChildren: () =>
       import('./comlaw/comlaw.module').then(m => m.ComlawModule)

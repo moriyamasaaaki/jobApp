@@ -1,2 +1,8 @@
 @import 'mixins';
 @import 'job-card';
+
+.keep {
+  &__liked {
+    margin-bottom: 24px;
+  }
+}

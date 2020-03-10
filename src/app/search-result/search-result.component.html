@@ -1,0 +1,56 @@
+<div class="search-result">
+  <ais-instantsearch [config]="config">
+    <ais-configure [searchParameters]="resultParams"></ais-configure>
+    <h1>検索結果一覧</h1>
+    <!-- 検索結果 -->
+    <ais-hits>
+      <!-- hitsに結果が入ってくる -->
+      <ng-template let-hits="hits" let-results="results">
+        <!-- ヒット件数 -->
+        <ng-container *ngIf="hits.length === 0; else result">
+          検索結果「{{ results.query }}」は見つかりませんでした。
+        </ng-container>
+        <ng-template #result>
+          <ais-stats>
+            <ng-template let-state="state">
+              <div class="search-result__hit">
+                検索結果「{{ results.query }}」は{{ state.nbHits }}
+                件ヒットしました。
+              </div>
+            </ng-template>
+          </ais-stats>
+        </ng-template>
+        <div *ngIf="results.query && results.query.length > 0">
+          <div class="job-box">
+            <div class="job-box__card" *ngFor="let hit of hits">
+              <ng-container *ngIf="hit.jobImageUrls; else defaultImg">
+                <a routerLink="/detail/{{ hit.id }}">
+                  <img [src]="hit.jobImageUrls[0]" alt="" />
+                </a>
+              </ng-container>
+              <ng-template #defaultImg>
+                <a
+                  routerLink="/detail/{{ hit.id }}"
+                  class="job-box__default-img"
+                >
+                  <img src="assets/unnamed.png" alt="" />
+                </a>
+              </ng-template>
+              <div class="job-box__content">
+                <p>
+                  <a routerLink="/detail/{{ hit.id }}" class="job-box__title"
+                    >{{ hit.companyName }}
+                  </a>
+                </p>
+                <ul>
+                  <li>{{ hit.workPlace }}</li>
+                  <li>{{ hit.salary }}円</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-template>
+    </ais-hits>
+  </ais-instantsearch>
+</div>

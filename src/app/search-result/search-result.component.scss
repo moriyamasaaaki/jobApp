@@ -4,7 +4,6 @@
 .job-box {
   margin-bottom: 16px;
   line-height: 1.5;
-  width: 100%;
   @include tab {
     display: flex;
     flex-wrap: wrap;
@@ -15,7 +14,7 @@
     margin: 0 auto 32px;
   }
   &__card {
-    @include mat-elevation(3);
+    @include mat-elevation(4);
     width: 100%;
     margin-bottom: 16px;
     padding-bottom: 16px;
@@ -30,11 +29,6 @@
       width: 31%;
       margin-bottom: 56px;
       padding-bottom: 40px;
-      transition: 0.5s;
-      &:hover {
-        transform: translateY(-12px);
-        @include mat-elevation(15);
-      }
     }
   }
   &__title {

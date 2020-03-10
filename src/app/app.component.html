@@ -1,45 +1,48 @@
-<app-header></app-header>
-<main class="container">
-  <router-outlet></router-outlet>
-</main>
+<div class="container">
+  <app-header></app-header>
+  <main class="content">
+    <router-outlet></router-outlet>
+  </main>
+  <footer>
+    <div class="footer">
+      <ul class="footer__first-nav">
+        <li><a routerLink="/comlaw">特定商取引法に基づく表示</a></li>
+        <li><a routerLink="/terms">利用規約</a></li>
+        <li><a routerLink="/privacy">プライバシーポリシー</a></li>
+        <li><a routerLink="/about">Tokyo biteについて</a></li>
+      </ul>
+      <p class="footer__copyright">
+        Copyright © Tokyo bite All rights reserved.
+      </p>
+    </div>
+  </footer>
 
-<footer>
-  <div class="footer">
-    <ul class="footer__first-nav">
-      <li><a routerLink="/comlaw">特定商取引法に基づく表示</a></li>
-      <li><a routerLink="/privacy">プライバシーポリシー</a></li>
-      <li><a routerLink="/terms">利用規約</a></li>
-      <li><a routerLink="/about">Tokyo biteについて</a></li>
-    </ul>
-    <p class="footer__copyright">Copyright © Tokyo bite All rights reserved.</p>
-  </div>
-</footer>
-
-<div class="footer-box">
-  <div class="footer-box__icons">
-    <div class="footer-box__icon">
-      <a routerLink="/">
-        <mat-icon aria-hidden="false">home</mat-icon>
-        <span>ホーム</span>
-      </a>
-    </div>
-    <div class="footer-box__icon">
-      <a routerLink="/help">
-        <mat-icon aria-hidden="false">help</mat-icon>
-        <span>ヘルプ</span>
-      </a>
-    </div>
-    <div class="footer-box__icon">
-      <a routerLink="/joblist">
-        <mat-icon aria-hidden="false">work</mat-icon>
-        <span>求人一覧</span>
-      </a>
-    </div>
-    <div class="footer-box__icon">
-      <a routerLink="/keep">
-        <mat-icon aria-hidden="false">star</mat-icon>
-        <span>お気に入り</span>
-      </a>
+  <div class="footer-box">
+    <div class="footer-box__icons">
+      <div class="footer-box__icon">
+        <a routerLink="/">
+          <mat-icon aria-hidden="false">home</mat-icon>
+          <span>ホーム</span>
+        </a>
+      </div>
+      <div class="footer-box__icon">
+        <a routerLink="/help">
+          <mat-icon aria-hidden="false">help</mat-icon>
+          <span>ヘルプ</span>
+        </a>
+      </div>
+      <div class="footer-box__icon">
+        <a routerLink="/joblist">
+          <mat-icon aria-hidden="false">work</mat-icon>
+          <span>求人一覧</span>
+        </a>
+      </div>
+      <div class="footer-box__icon">
+        <a routerLink="/keep">
+          <mat-icon aria-hidden="false">star</mat-icon>
+          <span>お気に入り</span>
+        </a>
+      </div>
     </div>
   </div>
 </div>

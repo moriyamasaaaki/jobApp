@@ -32,20 +32,7 @@ export class PlanComponent implements OnInit {
     private matDialog: MatDialog,
     private feeService: FeeService,
     private authServie: AuthService
-  ) {
-    this.card$.subscribe(card => {
-      this.cardName = card.card.brand.toLowerCase();
-      if (this.cardName === 'american express') {
-        const amexCard = this.cardName;
-        const amexHead = amexCard.slice(0, 2);
-        const amexFoot = amexCard.slice(9, 11);
-        this.amex = amexHead + amexFoot;
-        console.log(this.amex);
-      } else {
-        return this.cardName;
-      }
-    });
-  }
+  ) {}
 
   ngOnInit() {}
 

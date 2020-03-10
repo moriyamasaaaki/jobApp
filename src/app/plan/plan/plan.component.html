@@ -37,14 +37,13 @@
         <h3>カード情報</h3>
         <ng-container *ngIf="card$ | async as card; else noCard">
           <div class="plan__card-number">
-            <i class="fab fa-cc-visa" *ngIf="cardName === 'visa'"></i>
             <i
-              class="fab fa-cc-mastercard"
-              *ngIf="cardName === 'mastercard'"
+              class="fab fa-cc-{{
+                card.card.brand.toLowerCase() === 'american express'
+                  ? 'amex'
+                  : card.card.brand.toLowerCase()
+              }}"
             ></i>
-            <i class="fab fa-cc-amex" *ngIf="amex"></i>
-            <i class="fab fa-cc-jcb" *ngIf="cardName === 'jcb'"></i>
-            <i class="fab fa-cc-discover" *ngIf="cardName === 'discover'"></i>
             <span>**** **** **** {{ card.card.last4 }}</span>
           </div>
         </ng-container>

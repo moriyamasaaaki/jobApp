@@ -19,7 +19,7 @@
         </div>
         <mat-menu #menu="matMenu">
           <button mat-menu-item *ngIf="user$ | async" (click)="logout()">
-            <mat-icon>lock</mat-icon>
+            <mat-icon>input</mat-icon>
             <span>ログアウト</span>
           </button>
           <button mat-menu-item routerLink="/keep" *ngIf="userLoginStatus">
@@ -28,13 +28,13 @@
           </button>
           <ng-container *ngIf="userLoginStatus">
             <button mat-menu-item routerLink="/mypage">
-              <mat-icon>person_pin</mat-icon>
+              <mat-icon>person</mat-icon>
               <span>マイページ</span>
             </button>
           </ng-container>
           <ng-container *ngIf="companyLoginStatus">
             <button mat-menu-item routerLink="/companyProfile">
-              <mat-icon>person_pin</mat-icon>
+              <mat-icon>person</mat-icon>
               <span>マイページ</span>
             </button>
           </ng-container>

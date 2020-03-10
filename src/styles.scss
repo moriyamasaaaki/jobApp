@@ -3,6 +3,7 @@
 @import 'mixins';
 @import 'reset';
 
+// Angular テーマカラー
 @import '~@angular/material/theming';
 @include mat-core();
 
@@ -67,48 +68,60 @@ h1 {
   }
 }
 
+// footer スタイル
 .footer {
-  background-color: #0d47a1;
   padding: 16px 8px;
-  display: none;
+  color: #000;
+  opacity: 0.7;
   @include tab {
     display: grid;
+    background-color: #0d47a1;
     grid-template-columns: repeat(2, 1fr);
     justify-content: space-between;
     align-items: center;
+    opacity: 1;
+    padding: 24px 8px;
   }
   &__first-nav {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items: center;
     @include pc {
       justify-content: space-between;
     }
     li {
       list-style: none;
-      font-size: 12px;
+      font-size: 13px;
+      padding: 8px 8px 16px;
       @include tab {
         line-height: 2.5;
+        padding: 0;
       }
       @include pc {
         font-size: 14px;
       }
     }
     a {
-      color: #fff;
+      color: #000;
       text-decoration: none;
-      padding: 8px;
       &:hover {
         opacity: 0.7;
         text-decoration: underline;
+      }
+      @include tab {
+        color: #fff;
       }
     }
   }
   &__copyright {
     text-align: center;
     font-size: 14px;
-    color: #fff;
+    margin-top: 24px;
+    @include tab {
+      color: #fff;
+      margin: 0;
+    }
   }
 }
 
@@ -140,29 +153,43 @@ h1 {
   }
 }
 
-//アルゴリア関連スタイル
-.ais-SearchBox-form {
-  border: 2px solid #ccc;
-  border-radius: 4px;
-  display: flex;
-  justify-content: space-between;
-  padding: 8px;
-  margin: 0 auto 24px;
-  max-width: 500px;
-  @include pc {
-    margin: 0 auto 48px;
+// Algolia 検索スタイル
+.mat-form-field {
+  width: 100%;
+  display: block;
+  input {
+    display: block;
   }
 }
 
-.ais-SearchBox-input {
-  outline: none;
+.search-box {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.search-result {
+  max-width: 1000px;
+  margin: 0 auto;
+  h1 {
+    text-align: center;
+    border-bottom: 3px solid #0d47a1;
+    border-radius: 3px;
+    width: 170px;
+    margin: 0 auto;
+    margin-bottom: 56px;
+    padding-bottom: 8px;
+  }
+  &__hit {
+    margin-bottom: 40px;
+  }
 }
 
 .ais-Hits {
   text-align: center;
 }
 
-svg {
-  width: 13px;
-  height: 13px;
+.mat-form-field-appearance-legacy .mat-form-field-infix {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }

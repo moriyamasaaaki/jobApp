@@ -162,9 +162,12 @@ h1 {
   }
 }
 
-.search-box {
-  max-width: 700px;
-  margin: 0 auto;
+.search {
+  padding: 0 8px;
+  &__box {
+    max-width: 700px;
+    margin: 0 auto;
+  }
 }
 
 .search-result {

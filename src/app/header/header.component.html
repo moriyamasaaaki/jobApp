@@ -5,6 +5,9 @@
     </p>
     <nav class="header__nav">
       <div class="header__nav-item">
+        <button mat-icon-button *ngIf="searchIcon()" (click)="isSearch()">
+          <mat-icon>search</mat-icon>
+        </button>
         <button
           routerLink="/recruitment"
           mat-icon-button
@@ -47,15 +50,30 @@
     </nav>
   </mat-toolbar>
 </header>
-<ng-container *ngIf="!(user$ | async)">
-  <div class="search-button-row">
-    <button (click)="loginUser()" mat-raised-button color="primary">
-      <span>ユーザーログイン</span>
-      <i class="material-icons">person</i>
-    </button>
-    <button (click)="loginCompany()" mat-raised-button color="accent">
-      <span>企業ログイン</span>
-      <i class="material-icons">business</i>
-    </button>
-  </div>
-</ng-container>
+<div class="headeer-bottom">
+  <ng-container *ngIf="display">
+    <div class="header-search" [class.display]="display">
+      <ais-instantsearch [config]="config">
+        <ais-configure [searchParameters]="inputParams"></ais-configure>
+        <app-search-input
+          (querySuggestionSelected)="search($event)"
+        ></app-search-input>
+      </ais-instantsearch>
+    </div>
+    <div [class.displays]="display" (click)="notSearch()"></div>
+  </ng-container>
+  <app-search *ngIf="searchNone()"></app-search>
+
+  <ng-container *ngIf="!(user$ | async)">
+    <div class="search-button-row">
+      <button (click)="loginUser()" mat-raised-button color="primary">
+        <span>ユーザーログイン</span>
+        <i class="material-icons">person</i>
+      </button>
+      <button (click)="loginCompany()" mat-raised-button color="accent">
+        <span>企業ログイン</span>
+        <i class="material-icons">business</i>
+      </button>
+    </div>
+  </ng-container>
+</div>

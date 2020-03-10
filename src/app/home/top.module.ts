@@ -15,17 +15,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 
-import { NgAisModule } from 'angular-instantsearch';
-import { SearchInputComponent } from '../search-input/search-input.component';
-
 @NgModule({
-  declarations: [
-    TopComponent,
-    AttentionComponent,
-    NewComponent,
-    SearchComponent,
-    SearchInputComponent
-  ],
+  declarations: [TopComponent, AttentionComponent, NewComponent],
   imports: [
     CommonModule,
     TopRoutingModule,
@@ -36,7 +27,6 @@ import { SearchInputComponent } from '../search-input/search-input.component';
     MatFormFieldModule,
     MatButtonModule,
     MatInputModule,
-    NgAisModule,
     MatIconModule
   ]
 })

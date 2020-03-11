@@ -14,6 +14,7 @@ import {
 import { FeeService } from 'src/app/services/fee.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { take } from 'rxjs/operators';
+import { AuthService } from 'src/app/services/auth.service';
 @Component({
   selector: 'app-stripe',
   templateUrl: './stripe.component.html',
@@ -53,6 +54,7 @@ export class StripeComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
+    private authService: AuthService,
     private stripeService: StripeService,
     private feeService: FeeService,
     private snackbar: MatSnackBar
@@ -82,6 +84,7 @@ export class StripeComponent implements OnInit {
         if (result.token) {
           const tokenId = result.token.id;
           this.tokenID = tokenId;
+          this.feeService.setCard(this.authService.uid, result.token.card);
           this.feeService.createCustomer({
             source: tokenId,
             email,

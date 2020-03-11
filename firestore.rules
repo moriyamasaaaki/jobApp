@@ -36,6 +36,9 @@ service cloud.firestore {
 
     match /customers/{userId} {
       allow read, write: if request.auth.uid == userId;
-}
+    }
+    match /customers/{userId}/private/payment {
+      allow read, write: if request.auth.uid == userId;
+    }
   }
 }

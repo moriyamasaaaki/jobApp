@@ -12,6 +12,7 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrls: ['./register-form.component.scss']
 })
 export class RegisterFormComponent implements OnInit {
+  user: string;
   form = this.fb.group({
     name: ['', [Validators.required]],
     department: ['', []],
@@ -74,16 +75,17 @@ export class RegisterFormComponent implements OnInit {
   }
 
   submit() {
-    const userProfile = this.userProfile.getProfile(this.authService.uid);
     console.log(this.form.value);
-    if (!userProfile) {
-      this.companyProfileService.createCompanyUser({
-        companyUserId: this.authService.uid,
-        ...this.form.value
-      });
-    } else if (userProfile) {
-      this.dialog.open(ProfileDialogComponent).afterClosed();
-    }
+    this.userProfile.getProfile(this.authService.uid).subscribe(profile => {
+      if (profile) {
+        this.dialog.open(ProfileDialogComponent).afterClosed();
+      } else {
+        this.companyProfileService.createCompanyUser({
+          companyUserId: this.authService.uid,
+          ...this.form.value
+        });
+      }
+    });
   }
   @HostListener('window:beforeunload', ['$event'])
   unloadNotification($event: any) {

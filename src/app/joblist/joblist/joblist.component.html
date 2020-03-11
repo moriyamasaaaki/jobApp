@@ -10,10 +10,18 @@
       </div>
       <div class="job-card__content">
         <ng-container *ngIf="job.jobImageUrls; else defaultImg">
-          <img [src]="job.jobImageUrls[0]" alt="" />
+          <img
+            [src]="job.jobImageUrls[0]"
+            routerLink="/detail/{{ job.id }}"
+            alt=""
+          />
         </ng-container>
         <ng-template #defaultImg>
-          <img src="assets/unnamed.png" alt="" />
+          <img
+            src="assets/unnamed.png"
+            routerLink="/detail/{{ job.id }}"
+            alt=""
+          />
         </ng-template>
         <ul class="job-card__content-list">
           <li>

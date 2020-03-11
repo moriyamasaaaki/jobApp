@@ -2,13 +2,13 @@
   <h1>お気に入りした求人</h1>
   <ng-container *ngIf="jobs$ | async as jobs; else default">
     <p class="keep__liked">
-      お気に入り/<span class="job-card__number">{{ jobs.likedCount }}</span
+      お気に入り/<span class="job-card__number">{{ jobs.length }}</span
       >件
     </p>
     <div class="job-card__box" *ngFor="let job of jobs">
       <div class="job-card__title">
         <span>{{ job.companyName }}</span>
-        <a routerLink="/detail"
+        <a routerLink="/detail/{{ job.id }}"
           ><h3>{{ job.title }}</h3></a
         >
       </div>
@@ -36,7 +36,7 @@
         </ul>
       </div>
       <div class="job-card__btn">
-        <button mat-raised-button color="warn" (click)="deleteLikedJob(job)">
+        <button mat-raised-button color="warn" (click)="openDeleteDialog(job)">
           お気に入り削除
         </button>
         <button class="job-card__btn__right" mat-raised-button color="primary">

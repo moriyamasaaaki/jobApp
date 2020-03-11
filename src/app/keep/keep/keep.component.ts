@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { DetailJob } from 'src/app/interfaces/article';
-import { JobPostService } from 'src/app/services/job-post.service';
 import { Observable } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
 import { LikedService } from 'src/app/services/liked.service';
+import { DeleteDialogComponent } from 'src/app/delete-dialog/delete-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-keep',
@@ -12,18 +14,29 @@ import { LikedService } from 'src/app/services/liked.service';
 })
 export class KeepComponent implements OnInit {
   constructor(
-    private jobPostService: JobPostService,
     private authService: AuthService,
-    private likedService: LikedService
+    private likedService: LikedService,
+    private dialog: MatDialog,
+    private snackBar: MatSnackBar
   ) {}
 
   jobs$: Observable<DetailJob[]> = this.likedService.getLikedJobs(
     this.authService.uid
   );
 
-  deleteLikedJob(job: DetailJob) {
-    const joblikeId = job.id;
-    this.likedService.deleteLikedJobs(this.authService.uid, joblikeId);
+  openDeleteDialog(job: DetailJob) {
+    this.dialog
+      .open(DeleteDialogComponent)
+      .afterClosed()
+      .subscribe(status => {
+        if (status) {
+          const joblikeId = job.id;
+          this.likedService.deleteLikedJobs(this.authService.uid, joblikeId);
+        }
+        this.snackBar.open('選択した求人をお気に入りから削除しました。', null, {
+          duration: 2000
+        });
+      });
   }
 
   ngOnInit() {}

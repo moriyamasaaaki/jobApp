@@ -44,6 +44,12 @@
               <span>マイページ</span>
             </button>
           </ng-container>
+          <ng-container *ngIf="companyLoginStatus">
+            <button mat-menu-item routerLink="/companyjoblist">
+              <mat-icon>event_note</mat-icon>
+              <span>自社求人一覧</span>
+            </button>
+          </ng-container>
           <button mat-menu-item routerLink="/plan">
             <mat-icon>payment</mat-icon>
             <span>プラン</span>

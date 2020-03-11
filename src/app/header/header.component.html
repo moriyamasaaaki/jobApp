@@ -1,8 +1,11 @@
 <header>
   <mat-toolbar class="header" color="primary">
-    <p>
-      <a routerLink="/">Tokyo byte</a>
-    </p>
+    <div class="header__title" routerLink="/">
+      <p>
+        Proxy Works
+      </p>
+      <span>-代行サービスの求人-</span>
+    </div>
     <nav class="header__nav">
       <div class="header__nav-item">
         <button mat-icon-button *ngIf="searchIcon()" (click)="isSearch()">

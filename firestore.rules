@@ -2,29 +2,30 @@ rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
     match /userProfile/{userId} {
-      allow read, write: if true;
+      allow read: if true;
+      allow create: if request.auth.uid != null;
+      allow update: if request.auth.uid == resource.data.userId && resource.data.userId == request.resource.data.userId;
+      allow delete: if request.auth.uid == resource.data.userId;
     }
     match /companyProfile/{userId} {
-      allow read, write: if true;
+      allow read: if true;
+      allow create: if request.auth.uid != null;
+      allow update: if request.auth.uid == resource.data.companyUserId && resource.data.companyUserId == request.resource.data.companyUserId;
+      allow delete: if request.auth.uid == resource.data.companyUserId;
     }
-    match /JobPosts/{userId} {
-      allow read, write: if true;
-    }
+    match /JobPosts/{jobId} {
+      allow read: if true;
+      allow create: if request.auth.uid == resource.data.companyUserId;
+      allow update: if request.auth.uid == resource.data.resource.data.jobId && resource.data.resource.data.jobId == request.resource.data.resource.data.jobId;
+      allow delete: if request.auth.uid == resource.data.resource.data.jobId;
+}
     match /likes/{id}/likedUsers/{userId} {
-      allow read, write: if true;
-    }
+      allow read, write: if request.auth.uid == userId;
+  }
 
     match /LikedUsers/{userId}/LikedItems/{id} {
-      allow read, write: if true;
-    }
-
-    match /LikedUsers/{userId} {
-      allow read, write: if true;
-    }
-
-    match /likes/{id} {
-      allow read, write: if true;
-    }
+      allow read, write: if request.auth.uid == userId;
+  }
 
     match /users/{uid} {
       allow read, write: if true;

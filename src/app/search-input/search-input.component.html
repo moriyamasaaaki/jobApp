@@ -1,0 +1,40 @@
+<div class="search">
+  <form
+    (ngSubmit)="querySuggestionSelected.emit(inputControl.value)"
+    class="search__box"
+  >
+    <div>
+      <mat-form-field class="search__filed">
+        <input
+          matInput
+          [matAutocomplete]="auto"
+          [formControl]="inputControl"
+          placeholder="求人を検索"
+        />
+        <div class="search__btn">
+          <button
+            mat-icon-button
+            aria-label="Example icon-button with a heart icon"
+          >
+            <mat-icon>search</mat-icon>
+          </button>
+        </div>
+      </mat-form-field>
+    </div>
+    <mat-autocomplete
+      (optionSelected)="querySuggestionSelected.emit($event.option.value)"
+      #auto="matAutocomplete"
+      style="margin-top: 30px; max-height: 600px"
+    >
+      <div *ngFor="let index of state.indices || []">
+        <mat-option
+          *ngFor="let option of index.hits"
+          [value]="option.workPlace"
+          (click)="querySuggestionSelected.emit(option.workPlace)"
+        >
+          {{ option.workPlace }}
+        </mat-option>
+      </div>
+    </mat-autocomplete>
+  </form>
+</div>

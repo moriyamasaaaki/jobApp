@@ -13,6 +13,7 @@ import {
 } from 'ngx-stripe';
 import { FeeService } from 'src/app/services/fee.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { AuthService } from 'src/app/services/auth.service';
 @Component({
   selector: 'app-payment',
   templateUrl: './payment.component.html',
@@ -49,7 +50,8 @@ export class PaymentComponent implements OnInit {
     private fb: FormBuilder,
     private stripeService: StripeService,
     private feeService: FeeService,
-    private snackbar: MatSnackBar
+    private snackbar: MatSnackBar,
+    private authService: AuthService
   ) {}
 
   ngOnInit() {
@@ -76,6 +78,7 @@ export class PaymentComponent implements OnInit {
         if (result.token) {
           const tokenId = result.token.id;
           this.tokenID = tokenId;
+          this.feeService.setCard(this.authService.uid, result.token.card);
           this.feeService.createCustomer({
             source: tokenId,
             email,

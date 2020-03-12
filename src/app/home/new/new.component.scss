@@ -14,6 +14,7 @@
     border-bottom: 2px dotted #eee;
   }
   &__tag {
+    display: block;
     font-size: 11px;
     color: #fff;
     background-color: green;
@@ -35,7 +36,6 @@
     color: green;
   }
   &__pc-title {
-    display: none;
     font-size: 12px;
     margin-left: 8px;
     @include tab {
@@ -43,6 +43,7 @@
     }
   }
   &__head {
+    display: flex;
     padding-right: 8px;
     @include tab {
       display: flex;

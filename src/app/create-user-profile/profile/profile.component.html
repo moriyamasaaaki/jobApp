@@ -52,7 +52,7 @@
 
     <mat-form-field class="profile-form__field">
       <mat-select placeholder="月" formControlName="month" required>
-        <mat-option [value]="i" *ngFor="let month of months; let i = index"
+        <mat-option [value]="i + 1" *ngFor="let month of months; let i = index"
           >{{ i + 1 }}月</mat-option
         >
       </mat-select>
@@ -63,7 +63,7 @@
 
     <mat-form-field class="profile-form__field">
       <mat-select placeholder="日" formControlName="day" required>
-        <mat-option [value]="i" *ngFor="let day of days; let i = index"
+        <mat-option [value]="i + 1" *ngFor="let day of days; let i = index"
           >{{ i + 1 }}日</mat-option
         >
       </mat-select>

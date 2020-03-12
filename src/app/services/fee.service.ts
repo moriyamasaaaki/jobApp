@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFireFunctions } from '@angular/fire/functions';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AuthService } from './auth.service';
+import { Card } from '../interfaces/card';
 @Injectable({
   providedIn: 'root'
 })
@@ -21,6 +22,23 @@ export class FeeService {
     console.log(params);
     const callable = this.fns.httpsCallable('createCustomer');
     return callable(params).toPromise();
+  }
+
+  // カード情報
+  setCard(userId: string, card: any): Promise<void> {
+    const { address_zip, exp_month, exp_year, last4, brand, id } = card;
+    return this.db.doc<Card>(`customers/${userId}/private/payment`).set(
+      {
+        card: { address_zip, exp_month, exp_year, last4, brand, id }
+      },
+      { merge: true }
+    );
+  }
+
+  getCard(userId: string) {
+    return this.db
+      .doc<Card>(`customers/${userId}/private/payment`)
+      .valueChanges();
   }
 
   // サブスク開始

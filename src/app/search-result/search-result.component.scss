@@ -4,7 +4,6 @@
 .job-box {
   margin-bottom: 16px;
   line-height: 1.5;
-  width: 100%;
   @include tab {
     display: flex;
     flex-wrap: wrap;
@@ -15,10 +14,11 @@
     margin: 0 auto 32px;
   }
   &__card {
-    @include mat-elevation(3);
+    @include mat-elevation(4);
     width: 100%;
     margin-bottom: 16px;
     padding-bottom: 16px;
+    border: 2px solid #ededed;
     border-radius: 5px;
     box-sizing: border-box;
     @include tab {
@@ -29,32 +29,29 @@
       width: 31%;
       margin-bottom: 56px;
       padding-bottom: 40px;
-      transition: 0.5s;
-      &:hover {
-        transform: translateY(-12px);
-        @include mat-elevation(15);
-      }
     }
   }
   &__title {
     display: block;
     text-align: center;
     font-size: 16px;
-    text-decoration: underline;
     color: #0860c0;
+    text-decoration: underline;
     &:hover {
       opacity: 0.7;
     }
   }
   li {
     font-size: 13px;
-    color: #3c4043;
   }
   &__content {
     padding: 0 8px;
   }
   a {
     text-decoration: none;
+    &:hover {
+      opacity: 0.7;
+    }
   }
   img {
     width: 100%;

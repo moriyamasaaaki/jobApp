@@ -1,36 +1,67 @@
 <section class="plan">
-  <div class="plan__container">
-    <div class="plan__box">
-      <h3>無料プラン</h3>
-      <span>¥0</span>
-      <span>（¥0/月）</span>
-      <div class="plan__register-btn">
-        <button mat-flat-button color="primary">登録</button>
-      </div>
-    </div>
+  <h1>プラン/決済</h1>
+  <mat-tab-group>
+    <mat-tab label="プラン">
+      <div class="plan__container">
+        <div class="plan__box">
+          <h3>無料プラン</h3>
+          <span>¥0</span>
+          <span>（¥0/月）</span>
+          <div class="plan__register-btn">
+            <button mat-flat-button color="primary">登録</button>
+          </div>
+        </div>
 
-    <div class="plan__box">
-      <h3>有料プラン</h3>
-      <span>¥980</span>
-      <span>（¥980/月）</span>
-      <ng-container *ngIf="!subscriptionID; else subscription">
-        <div class="plan__register-btn">
-          <button mat-flat-button color="primary" (click)="stripeDialog()">
-            登録
-          </button>
+        <div class="plan__box">
+          <h3>有料プラン</h3>
+          <span>¥980</span>
+          <span>（¥980/月）</span>
+          <ng-container *ngIf="!subscriptionID; else subscription">
+            <div class="plan__register-btn">
+              <button mat-flat-button color="primary" (click)="stripeDialog()">
+                登録
+              </button>
+            </div>
+          </ng-container>
+          <ng-template #subscription>
+            <div class="plan__register-btn">
+              <button mat-flat-button color="primary" (click)="stripeDialog()">
+                解約
+              </button>
+            </div>
+          </ng-template>
         </div>
-      </ng-container>
-      <ng-template #subscription>
-        <div class="plan__register-btn">
-          <button mat-flat-button color="primary" (click)="stripeDialog()">
-            解約
-          </button>
-        </div>
-      </ng-template>
-    </div>
-  </div>
-  <button mat-raised-button color="accent" (click)="creditDialog()">
-    クレジットカード
-    {{ text ? '変更' : '登録' }}
-  </button>
+      </div>
+    </mat-tab>
+    <mat-tab label="決済情報">
+      <div class="plan__info">
+        <h3>カード情報</h3>
+        <ng-container *ngIf="card$ | async as card; else noCard">
+          <div class="plan__card-number">
+            <i
+              class="fab fa-cc-{{
+                card.card.brand.toLowerCase() === 'american express'
+                  ? 'amex'
+                  : card.card.brand.toLowerCase()
+              }}"
+            ></i>
+            <span>**** **** **** {{ card.card.last4 }}</span>
+          </div>
+        </ng-container>
+        <ng-template #noCard>
+          <p>クレジットカードはまだご登録されていません。</p>
+        </ng-template>
+        <button mat-raised-button color="accent" (click)="creditDialog()">
+          クレジットカード
+          {{ text ? '変更' : '登録' }}
+        </button>
+        <ol>
+          <li>カード情報は世界的に信頼が厚いStripeで厳重に管理されます。</li>
+          <li>
+            サービスではクレジットカード情報を保持しないので漏洩の心配はありません。
+          </li>
+        </ol>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
 </section>

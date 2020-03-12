@@ -7,9 +7,6 @@
           <p class="new-job-box__pc-title">{{ job.companyName }}</p>
         </a>
       </div>
-      <a routerLink="/detail/{{ job.id }}" (click)="router()">{{
-        job.title
-      }}</a>
       <a routerLink="/detail/{{ job.id }}">
         <span>{{ job.workPlace }}</span
         ><i class="material-icons">play_arrow</i>

@@ -13,16 +13,10 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-
-import { NgAisModule } from 'angular-instantsearch';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
-  declarations: [
-    TopComponent,
-    AttentionComponent,
-    NewComponent,
-    SearchComponent
-  ],
+  declarations: [TopComponent, AttentionComponent, NewComponent],
   imports: [
     CommonModule,
     TopRoutingModule,
@@ -33,7 +27,7 @@ import { NgAisModule } from 'angular-instantsearch';
     MatFormFieldModule,
     MatButtonModule,
     MatInputModule,
-    NgAisModule
+    MatIconModule
   ]
 })
 export class TopModule {}

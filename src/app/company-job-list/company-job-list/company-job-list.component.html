@@ -1,6 +1,10 @@
 <section class="company-job-list job-card">
-  <h1>自社投稿一覧</h1>
+  <h1>自社求人一覧</h1>
   <ng-container *ngIf="jobs$ | async as jobs; else default">
+    <p class="job-card__text">
+      投稿数/<span class="job-card__number">{{ jobs.length }}</span
+      >件
+    </p>
     <div class="job-card__box" *ngFor="let job of jobs">
       <div class="job-card__title">
         <span>{{ job.companyName }}</span>
@@ -29,12 +33,6 @@
           </li>
           <li><i class="material-icons"> access_time </i>{{ job.workTime }}</li>
         </ul>
-      </div>
-      <div class="job-card__btn">
-        <button mat-raised-button color="warn">お気に入り追加</button>
-        <button class="job-card__btn-right" mat-raised-button color="primary">
-          応募する
-        </button>
       </div>
     </div>
   </ng-container>

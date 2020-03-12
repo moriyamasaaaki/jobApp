@@ -1,4 +1,4 @@
-import { BrowserModule, Title } from '@angular/platform-browser';
+import { BrowserModule, Title, Meta } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -71,7 +71,7 @@ import { PaymentComponent } from './stripe/payment/payment.component';
     MatFormFieldModule,
     MatInputModule
   ],
-  providers: [Title],
+  providers: [Title, Meta],
   bootstrap: [AppComponent],
   entryComponents: [
     DeleteDialogComponent,

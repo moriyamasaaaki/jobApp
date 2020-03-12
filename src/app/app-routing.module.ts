@@ -14,23 +14,13 @@ const routes: Routes = [
     data: {
       title: 'Proxy Works-代行サービスの求人サービス-',
       descrption:
-        'Proxy Worksは代行サービスやレンタルなど人が代替えしてくれる求人サービスです。',
-      ogTitle: 'OGPTitle',
-      ogDescription: 'OGPDescription',
-      ogImage: 'OGPImage'
+        'Proxy Worksは代行サービスやレンタルなど人が代替えしてくれる求人サービスです。'
     },
     loadChildren: () => import('./home/top.module').then(m => m.TopModule)
   },
 
   {
     path: 'detail',
-    data: {
-      title: '求人詳細ページ',
-      descrption: '詳細ページの概要を表示',
-      ogTitle: 'OGPTitle',
-      ogDescription: 'OGPDescription',
-      ogImage: 'OGPImage'
-    },
     loadChildren: () =>
       import('./detail/detail.module').then(m => m.DetailModule)
   },
@@ -43,6 +33,7 @@ const routes: Routes = [
 
   {
     path: 'help',
+    data: { title: 'ヘルプ' },
     loadChildren: () => import('./help/help.module').then(m => m.HelpModule)
   },
 

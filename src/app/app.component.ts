@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Title, Meta, MetaDefinition } from '@angular/platform-browser';
+import { Title, Meta } from '@angular/platform-browser';
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 import { filter, map } from 'rxjs/operators';
 
@@ -53,7 +53,6 @@ export class AppComponent implements OnInit {
         } else {
           this.metaService.removeTag("name='description'");
         }
-
         if (data.robots) {
           this.metaService.updateTag({ name: 'robots', content: data.robots });
         } else {
@@ -73,32 +72,6 @@ export class AppComponent implements OnInit {
             property: 'og:url',
             content: this.router.url
           });
-        }
-
-        if (data.ogTitle) {
-          this.metaService.updateTag({
-            property: 'og:title',
-            content: data.ogTitle
-          });
-        } else {
-          this.metaService.removeTag("property='og:title'");
-        }
-        if (data.ogDescription) {
-          this.metaService.updateTag({
-            property: 'og:description',
-            content: data.ogDescription
-          });
-        } else {
-          this.metaService.removeTag("property='og:description'");
-        }
-
-        if (data.ogImage) {
-          this.metaService.updateTag({
-            property: 'og:image',
-            content: data.ogImage
-          });
-        } else {
-          this.metaService.removeTag("property='og:image'");
         }
       });
   }

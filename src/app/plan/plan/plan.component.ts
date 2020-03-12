@@ -4,6 +4,10 @@ import { StripeComponent } from 'src/app/stripe/stripe/stripe.component';
 import { FeeService } from 'src/app/services/fee.service';
 import { PaymentComponent } from 'src/app/stripe/payment/payment.component';
 import { AuthService } from 'src/app/services/auth.service';
+import { DeleteDialogComponent } from 'src/app/delete-dialog/delete-dialog.component';
+import { UserProfileService } from 'src/app/services/user-profile.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { CompanyProfileService } from 'src/app/services/company-profile.service';
 
 @Component({
   selector: 'app-plan',
@@ -31,7 +35,12 @@ export class PlanComponent implements OnInit {
   constructor(
     private matDialog: MatDialog,
     private feeService: FeeService,
-    private authServie: AuthService
+    private authServie: AuthService,
+    private dialog: MatDialog,
+    private authService: AuthService,
+    private userProfileService: UserProfileService,
+    private companyProfileSurvice: CompanyProfileService,
+    private snackbar: MatSnackBar
   ) {}
 
   ngOnInit() {}
@@ -42,5 +51,21 @@ export class PlanComponent implements OnInit {
 
   creditDialog() {
     this.matDialog.open(PaymentComponent);
+  }
+
+  openDeleteDialog() {
+    this.dialog
+      .open(DeleteDialogComponent)
+      .afterClosed()
+      .subscribe(status => {
+        if (status) {
+          console.log(this.authService.uid);
+          this.userProfileService.deleteProfile(this.authService.uid);
+          this.companyProfileSurvice.deleteCompanyUser(this.authService.uid);
+        }
+        this.snackbar.open('ご利用ありがとうございました。', null, {
+          duration: 3000
+        });
+      });
   }
 }

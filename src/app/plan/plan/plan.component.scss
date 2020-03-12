@@ -82,6 +82,19 @@
       font-size: 16px;
     }
   }
+  &__out {
+    span {
+      display: inline-block;
+    }
+    ul {
+      margin: 40px 0;
+      line-height: 1.5;
+      text-align: center;
+    }
+    li {
+      margin-bottom: 8px;
+    }
+  }
 }
 
 button {

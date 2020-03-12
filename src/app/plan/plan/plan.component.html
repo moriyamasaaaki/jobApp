@@ -1,5 +1,5 @@
 <section class="plan">
-  <h1>プラン/決済</h1>           
+  <h1>プラン/決済</h1>
   <mat-tab-group>
     <mat-tab label="プラン">
       <div class="plan__container">
@@ -61,6 +61,20 @@
             サービスではクレジットカード情報を保持しないので漏洩の心配はありません。
           </li>
         </ol>
+      </div>
+    </mat-tab>
+    <mat-tab label="退会">
+      <div class="plan__out">
+        <ul>
+          <li>退会すると利用データが完全に削除され、復元できません。</li>
+          <li>退会するとすべての定期購入が停止します。</li>
+        </ul>
+        <button mat-raised-button color="warn" (click)="openDeleteDialog()">
+          <span>退会する</span>
+          <mat-icon aria-hidden="false">
+            flag
+          </mat-icon>
+        </button>
       </div>
     </mat-tab>
   </mat-tab-group>

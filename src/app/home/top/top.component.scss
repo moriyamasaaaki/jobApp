@@ -31,14 +31,6 @@
   }
 }
 
-.new {
-  @include pc {
-    border: 2px solid #eee;
-    border-radius: 5px;
-    margin: 0 auto 64px;
-  }
-}
-
 .hdg {
   font-size: 18px;
   text-align: center;

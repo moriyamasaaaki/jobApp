@@ -1,62 +1,32 @@
 @import 'mixins';
+@import 'job-post';
+@import '~@angular/material/theming';
 
-.new-job-box {
-  margin: 0 0 24px;
-  @include pc {
-    margin: 0 auto 32px;
-    padding: 0 16px;
+.job-box__card {
+  position: relative;
+  &:before {
+    position: absolute;
+    content: '';
+    left: 0;
+    top: 0;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 80px 80px 0 0;
+    border-color: green transparent transparent transparent;
   }
-  &__post {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 8px 0;
-    border-bottom: 2px dotted #eee;
-  }
-  &__tag {
+  &:after {
+    position: absolute;
+    content: 'NEW';
+    transform: rotate(315deg);
     display: block;
-    font-size: 11px;
-    color: #fff;
-    background-color: green;
-    padding: 5px;
-    border-radius: 3px;
-  }
-  a {
-    font-size: 12px;
-    display: flex;
-    align-items: center;
-    color: #0860c0;
-    text-decoration: none;
-    &:hover {
-      text-decoration: underline;
-      opacity: 0.7;
-    }
-  }
-  i {
-    color: green;
-  }
-  &__pc-title {
-    font-size: 12px;
-    margin-left: 8px;
-    @include tab {
-      display: block;
-    }
-  }
-  &__head {
-    display: flex;
-    padding-right: 8px;
-    @include tab {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding-right: 0;
-    }
-  }
-  &__default-text {
-    text-align: center;
     font-size: 14px;
-    @include pc {
-      font-size: 16px;
-    }
+    white-space: pre;
+    color: #fff;
+    top: 17px;
+    left: 9px;
+    text-align: center;
+    z-index: 2;
+    line-height: 1.2;
   }
 }

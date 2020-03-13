@@ -1,21 +1,30 @@
-<div class="new-job-box">
+<section class="job-box">
   <ng-container *ngIf="jobs$ | async as jobs; else default">
-    <div class="new-job-box__post" *ngFor="let job of jobs">
-      <div class="new-job-box__head">
-        <span class="new-job-box__tag">New</span>
-        <a routerLink="/detail/{{ job.id }}">
-          <p class="new-job-box__pc-title">{{ job.companyName }}</p>
-        </a>
-      </div>
+    <div class="job-box__card" *ngFor="let job of jobs">
       <a routerLink="/detail/{{ job.id }}">
-        <span>{{ job.workPlace }}</span
-        ><i class="material-icons">play_arrow</i>
+        <ng-container *ngIf="job.jobImageUrls; else defaultImg">
+          <img [src]="job.jobImageUrls[0]" alt="" />
+        </ng-container>
+        <ng-template #defaultImg>
+          <a routerLink="/detail/{{ job.id }}" class="job-box__default-img">
+            <img src="assets/unnamed.png" alt="" />
+          </a>
+        </ng-template>
+        <div class="job-box__content">
+          <p class="job-box__title">
+            {{ job.companyName }}
+          </p>
+          <ul>
+            <li>{{ job.workPlace }}</li>
+            <li>{{ job.salary }}円</li>
+          </ul>
+        </div>
       </a>
     </div>
   </ng-container>
   <ng-template #default>
-    <p class="new-job-box__default-text">
+    <p class="job-box__default-text">
       新着の求人はまだありません。
     </p>
   </ng-template>
-</div>
+</section>

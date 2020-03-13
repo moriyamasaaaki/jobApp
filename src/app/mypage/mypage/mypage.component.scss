@@ -1,9 +1,2 @@
 @import 'mixins';
 @import 'profiles-card';
-
-img {
-  width: 100%;
-  @include tab {
-    width: 30%;
-  }
-}

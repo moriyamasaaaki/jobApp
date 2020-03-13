@@ -36,7 +36,7 @@
         <dd>{{ profile.tel }}</dd>
 
         <dt>学歴</dt>
-        <dd>{{ profile.belongs }},{{ profile.school }}{{ profile.state }}</dd>
+        <dd>{{ profile.belongs }}{{ profile.school }}{{ profile.state }}</dd>
 
         <dt>資格</dt>
         <dd>{{ profile.tagOne }}, {{ profile.tagSecond }}</dd>
@@ -51,7 +51,9 @@
       </dl>
     </div>
     <div class="profile-card__btn">
-      <a routerLink="/profile" mat-raised-button color="primary">編集する</a>
+      <button routerLink="/profile" mat-raised-button color="primary">
+        編集する
+      </button>
       <button mat-raised-button color="warn" (click)="openDeleteDialog()">
         削除する
       </button>
@@ -67,10 +69,4 @@
       </button>
     </div>
   </ng-template>
-  <div class="profile-card__footer-item">
-    <a routerLink="/plan">プラン</a>
-    <a routerLink="/comlaw">特定商取引法に基づく表示</a>
-    <a routerLink="/terms">利用規約</a>
-    <a routerLink="/about">Tokyo biteについて</a>
-  </div>
 </div>

@@ -9,6 +9,7 @@ import { AuthService } from 'src/app/services/auth.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { LikedService } from 'src/app/services/liked.service';
 import { take } from 'rxjs/operators';
+import { Title, Meta } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-detail',
@@ -31,7 +32,9 @@ export class DetailComponent implements OnInit {
     private dialog: MatDialog,
     private authService: AuthService,
     private snackBar: MatSnackBar,
-    private likedService: LikedService
+    private likedService: LikedService,
+    private titleService: Title,
+    private metaService: Meta
   ) {
     route.paramMap.subscribe(params => {
       this.jobs$ = this.jobPostService.getJobPost(params.get('id'));
@@ -41,6 +44,23 @@ export class DetailComponent implements OnInit {
   ngOnInit() {
     this.getlikes();
     this.editCompanyUser();
+    this.getTitle();
+  }
+
+  getTitle() {
+    this.route.paramMap.subscribe(params => {
+      this.jobPostService.getJobPost(params.get('id')).subscribe(data => {
+        this.titleService.setTitle(`求人詳細-${data.title}-`);
+        if (data.companyContent) {
+          this.metaService.updateTag({
+            name: 'description',
+            content: data.companyContent
+          });
+        } else {
+          this.metaService.removeTag("name='description'");
+        }
+      });
+    });
   }
 
   editCompanyUser() {

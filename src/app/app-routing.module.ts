@@ -11,6 +11,11 @@ const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
+    data: {
+      title: 'Proxy Works-代行サービスの求人サービス-',
+      descrption:
+        'Proxy Worksは代行サービスやレンタルなど人が代替えしてくれる求人サービスです。'
+    },
     loadChildren: () => import('./home/top.module').then(m => m.TopModule)
   },
 
@@ -22,28 +27,33 @@ const routes: Routes = [
 
   {
     path: 'terms',
+    data: { title: '利用規約' },
     loadChildren: () => import('./legal/legal.module').then(m => m.LegalModule)
   },
 
   {
     path: 'help',
+    data: { title: 'ヘルプ' },
     loadChildren: () => import('./help/help.module').then(m => m.HelpModule)
   },
 
   {
     path: 'comlaw',
+    data: { title: '特定商取引に関する表記' },
     loadChildren: () =>
       import('./comlaw/comlaw.module').then(m => m.ComlawModule)
   },
 
   {
     path: 'privacy',
+    data: { title: 'プライバシーポリシー' },
     loadChildren: () =>
       import('./privacy/privacy.module').then(m => m.PrivacyModule)
   },
 
   {
     path: 'keep',
+    data: { title: 'お気に入り一覧' },
     loadChildren: () => import('./keep/keep.module').then(m => m.KeepModule),
     canLoad: [AuthGuard],
     canActivate: [AuthGuard, UserGuard]
@@ -51,6 +61,7 @@ const routes: Routes = [
 
   {
     path: 'profile',
+    data: { title: 'プロフィール作成' },
     loadChildren: () =>
       import('./create-user-profile/profile.module').then(m => m.ProfileModule),
     canLoad: [AuthGuard],
@@ -59,6 +70,7 @@ const routes: Routes = [
 
   {
     path: 'mypage',
+    data: { title: 'マイページ' },
     loadChildren: () =>
       import('./mypage/mypage.module').then(m => m.MypageModule),
     canLoad: [AuthGuard],
@@ -67,6 +79,7 @@ const routes: Routes = [
 
   {
     path: 'recruitment',
+    data: { title: '求人作成' },
     loadChildren: () =>
       import('./recruitment/form.module').then(m => m.FormModule),
     canLoad: [AuthGuard],
@@ -75,11 +88,13 @@ const routes: Routes = [
 
   {
     path: 'about',
+    data: { title: '代行サービスについて' },
     loadChildren: () => import('./about/about.module').then(m => m.AboutModule)
   },
 
   {
     path: 'plan',
+    data: { title: 'プラン/決済' },
     loadChildren: () => import('./plan/plan.module').then(m => m.PlanModule),
     canLoad: [AuthGuard],
     canActivate: [AuthGuard]
@@ -87,6 +102,7 @@ const routes: Routes = [
 
   {
     path: 'companySideForm',
+    data: { title: 'プロフィール作成' },
     loadChildren: () =>
       import('./create-company-profile/company-side.module').then(
         m => m.CompanySideModule
@@ -97,6 +113,7 @@ const routes: Routes = [
 
   {
     path: 'companyProfile',
+    data: { title: 'プロフィール' },
     loadChildren: () =>
       import('./company-profile/company-profile.module').then(
         m => m.CompanyProfileModule
@@ -107,6 +124,7 @@ const routes: Routes = [
 
   {
     path: 'joblist',
+    data: { title: '求人一覧' },
     loadChildren: () =>
       import('./joblist/joblist.module').then(m => m.JoblistModule),
     canLoad: [AuthGuard],
@@ -115,6 +133,7 @@ const routes: Routes = [
 
   {
     path: 'companyjoblist',
+    data: { title: '自社求人一覧' },
     loadChildren: () =>
       import('./company-job-list/company-job-list.module').then(
         m => m.CompanyJobListModule
@@ -130,6 +149,7 @@ const routes: Routes = [
 
   {
     path: '**',
+    data: { title: 'ページが見つかりませんでした。' },
     component: NotFoundComponent
   }
 ];

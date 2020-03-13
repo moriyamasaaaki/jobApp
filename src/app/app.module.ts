@@ -1,4 +1,4 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, Title, Meta } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -77,7 +77,7 @@ import { SearchResultComponent } from './search-result/search-result.component';
     MatInputModule,
     MatButtonModule
   ],
-  providers: [],
+  providers: [Title, Meta],
   bootstrap: [AppComponent],
   entryComponents: [
     DeleteDialogComponent,

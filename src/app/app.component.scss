@@ -21,24 +21,14 @@
   }
 }
 
-button {
-  margin: 0 0 24px 8px;
-}
-.container__side-menu,
-.side__copyright {
-  padding-left: 16px;
+.mat-list-item {
+  color: black;
+  opacity: 0.7;
+  font-size: 14px;
 }
 
-.container__side-menu {
-  margin: 16px 0;
-  a {
-    text-decoration: none;
-    color: black;
-    opacity: 0.7;
-    &:hover {
-      text-decoration: underline;
-    }
-  }
+button {
+  margin: 0 0 24px 8px;
 }
 
 li {
@@ -48,6 +38,7 @@ li {
 
 .side__copyright {
   margin-top: 48px;
+  padding-left: 16px;
   font-size: 13px;
   color: black;
   opacity: 0.7;

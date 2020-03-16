@@ -2,17 +2,29 @@
   <app-header></app-header>
   <mat-drawer-container class="example-container">
     <mat-drawer mode="side" opened>
-      <ul class="container__side-menu">
-        <li><a routerLink="/">ホーム</a></li>
-        <li><a routerLink="/joblist">求人一覧</a></li>
-      </ul>
+      <mat-nav-list>
+        <mat-list-item routerLink="/">
+          ホーム
+        </mat-list-item>
+        <mat-list-item routerLink="/joblist">
+          求人一覧
+        </mat-list-item>
+      </mat-nav-list>
       <mat-divider></mat-divider>
-      <ul class="container__side-menu">
-        <li><a routerLink="/comlaw">特定商取引法に基づく表示</a></li>
-        <li><a routerLink="/terms">利用規約</a></li>
-        <li><a routerLink="/privacy">プライバシー</a></li>
-        <li><a routerLink="/about">Proxy Worksについて</a></li>
-      </ul>
+      <mat-nav-list>
+        <mat-list-item routerLink="/intl/comlaw">
+          特定商取引法に基づく表示
+        </mat-list-item>
+        <mat-list-item routerLink="/intl/terms">
+          利用規約
+        </mat-list-item>
+        <mat-list-item routerLink="/intl/privacy">
+          プライバシー
+        </mat-list-item>
+        <mat-list-item routerLink="/intl/about">
+          Proxy Worksについて
+        </mat-list-item>
+      </mat-nav-list>
       <p class="side__copyright">
         © Proxy Works All rights reserved.
       </p>

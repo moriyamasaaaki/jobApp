@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { AuthService } from '../services/auth.service';
+import { MAT_DIALOG_DATA } from '@angular/material';
 
 @Component({
   selector: 'app-profile-dialog',
@@ -9,7 +10,14 @@ import { AuthService } from '../services/auth.service';
 export class ProfileDialogComponent implements OnInit {
   name: string;
 
-  constructor(private authService: AuthService) {
+  constructor(
+    private authService: AuthService,
+    @Inject(MAT_DIALOG_DATA)
+    public data: {
+      title: string;
+      content: string;
+    }
+  ) {
     this.name = this.authService.displayName;
   }
 

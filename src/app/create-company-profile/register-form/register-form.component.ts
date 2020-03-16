@@ -78,7 +78,15 @@ export class RegisterFormComponent implements OnInit {
     console.log(this.form.value);
     this.userProfile.getProfile(this.authService.uid).subscribe(profile => {
       if (profile) {
-        this.dialog.open(ProfileDialogComponent).afterClosed();
+        this.dialog
+          .open(ProfileDialogComponent, {
+            data: {
+              title: '⚠️登録できません⚠️',
+              content:
+                '様はユーザー側にご登録されています。同じアカウントでユーザー側・企業側両方に登録することはできません。＊違うアカウントでご登録ください。'
+            }
+          })
+          .afterClosed();
       } else {
         this.companyProfileService.createCompanyUser({
           companyUserId: this.authService.uid,

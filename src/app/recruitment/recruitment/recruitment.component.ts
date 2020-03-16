@@ -5,6 +5,9 @@ import { AuthService } from 'src/app/services/auth.service';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { DetailJob } from 'src/app/interfaces/article';
+import { CompanyProfileService } from 'src/app/services/company-profile.service';
+import { MatDialog } from '@angular/material/dialog';
+import { ProfileDialogComponent } from 'src/app/profile-dialog/profile-dialog.component';
 
 @Component({
   selector: 'app-recruitment',
@@ -81,7 +84,9 @@ export class RecruitmentComponent implements OnInit {
     private fb: FormBuilder,
     private jobPostService: JobPostService,
     private authService: AuthService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private companyProfileService: CompanyProfileService,
+    private dialog: MatDialog
   ) {}
 
   ngOnInit() {
@@ -104,16 +109,31 @@ export class RecruitmentComponent implements OnInit {
   }
 
   create() {
-    this.jobPostService.createJobPost(
-      this.authService.uid,
-      {
-        createdAt: new Date(),
-        updatedAt: new Date(),
-        likedCount: 0,
-        ...this.form.value
-      },
-      this.images
-    );
+    this.companyProfileService
+      .getCompanyUser(this.authService.uid)
+      .subscribe(profile => {
+        if (profile) {
+          this.jobPostService.createJobPost(
+            this.authService.uid,
+            {
+              createdAt: new Date(),
+              updatedAt: new Date(),
+              likedCount: 0,
+              ...this.form.value
+            },
+            this.images
+          );
+        } else {
+          this.dialog
+            .open(ProfileDialogComponent, {
+              data: {
+                title: '⚠️求人を作成できません⚠️',
+                content: '様はプロフィールを作成してから求人作成をして下さい。'
+              }
+            })
+            .afterClosed();
+        }
+      });
   }
 
   update() {

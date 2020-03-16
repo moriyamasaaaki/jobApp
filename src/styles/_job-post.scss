@@ -5,10 +5,9 @@
   line-height: 1.5;
   width: 100%;
   @include tab {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: flex-start;
+    display: grid;
+    gap: 16px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   }
   @include pc {
     margin: 0 auto 32px;
@@ -20,12 +19,12 @@
     padding-bottom: 16px;
     border-radius: 5px;
     box-sizing: border-box;
+    display: flex;
+    flex-flow: column;
     @include tab {
-      width: 48%;
       margin: 0 auto 32px;
     }
     @include pc {
-      width: 31%;
       margin-bottom: 56px;
       padding-bottom: 40px;
       transition: 0.5s;
@@ -34,6 +33,10 @@
         @include mat-elevation(15);
       }
     }
+  }
+  &__thumbnail {
+    height: 200px;
+    background: center / cover;
   }
   &__title {
     display: block;
@@ -51,6 +54,7 @@
   }
   &__content {
     padding: 0 8px;
+    flex: 1;
   }
   a {
     text-decoration: none;
@@ -68,8 +72,5 @@
     @include pc {
       font-size: 16px;
     }
-  }
-  &__default-img {
-    border-bottom: 1px solid lightgray;
   }
 }

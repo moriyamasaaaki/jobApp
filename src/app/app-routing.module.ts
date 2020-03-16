@@ -26,29 +26,8 @@ const routes: Routes = [
   },
 
   {
-    path: 'terms',
-    data: { title: '利用規約' },
-    loadChildren: () => import('./legal/legal.module').then(m => m.LegalModule)
-  },
-
-  {
-    path: 'help',
-    data: { title: 'ヘルプ' },
-    loadChildren: () => import('./help/help.module').then(m => m.HelpModule)
-  },
-
-  {
-    path: 'comlaw',
-    data: { title: '特定商取引に関する表記' },
-    loadChildren: () =>
-      import('./comlaw/comlaw.module').then(m => m.ComlawModule)
-  },
-
-  {
-    path: 'privacy',
-    data: { title: 'プライバシーポリシー' },
-    loadChildren: () =>
-      import('./privacy/privacy.module').then(m => m.PrivacyModule)
+    path: 'intl',
+    loadChildren: () => import('./intl/intl.module').then(m => m.IntlModule)
   },
 
   {
@@ -84,12 +63,6 @@ const routes: Routes = [
       import('./recruitment/form.module').then(m => m.FormModule),
     canLoad: [AuthGuard],
     canActivate: [AuthGuard, CompanyGuard]
-  },
-
-  {
-    path: 'about',
-    data: { title: '代行サービスについて' },
-    loadChildren: () => import('./about/about.module').then(m => m.AboutModule)
   },
 
   {

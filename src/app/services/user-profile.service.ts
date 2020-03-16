@@ -28,13 +28,22 @@ export class UserProfileService {
       .doc(`userProfile/${userId}`)
       .set({ userId, ...profile })
       .then(() => {
-        this.snackBar.open('userを作成しました。', null, {
+        this.snackBar.open('プロフィールを作成しました。', null, {
           duration: 3000
         });
         if (avatarImage) {
           this.updateAvatar(userId, avatarImage);
         }
         this.router.navigateByUrl('/mypage');
+      })
+      .catch(error => {
+        this.snackBar.open(
+          `${error},プロフィールを作成できませんでした`,
+          null,
+          {
+            duration: 3000
+          }
+        );
       });
   }
 
@@ -62,6 +71,15 @@ export class UserProfileService {
         this.snackBar.open('プロフィールを削除しました。', null, {
           duration: 3000
         });
+      })
+      .catch(error => {
+        this.snackBar.open(
+          `${error},プロフィールを削除できませんでした`,
+          null,
+          {
+            duration: 3000
+          }
+        );
       });
   }
 }

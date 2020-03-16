@@ -30,6 +30,11 @@ export class JobPostService {
           this.uploadImages(images, id);
         }
         this.router.navigateByUrl(`/detail/${id}`);
+      })
+      .catch(error => {
+        this.snackBar.open(`${error},求人を更新できませんでした`, null, {
+          duration: 3000
+        });
       });
   }
 
@@ -59,12 +64,17 @@ export class JobPostService {
       .set({ id, jobId, ...article, createdAt: new Date() })
       .then(() => {
         this.snackBar.open('求人を作成しました', null, {
-          duration: 2000
+          duration: 3000
         });
         if (images) {
           this.uploadImages(images, id);
         }
         this.router.navigateByUrl(`/detail/${id}`);
+      })
+      .catch(error => {
+        this.snackBar.open(`${error},求人を作成できませんでした`, null, {
+          duration: 3000
+        });
       });
   }
 
@@ -105,6 +115,11 @@ export class JobPostService {
       .delete()
       .then(() => {
         this.snackBar.open('求人を削除しました。', null, {
+          duration: 3000
+        });
+      })
+      .catch(error => {
+        this.snackBar.open(`${error},求人を削除できませんでした。`, null, {
           duration: 3000
         });
       });

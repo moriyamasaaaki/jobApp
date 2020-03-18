@@ -27,5 +27,12 @@
   }
   img {
     width: 100%;
+    @include pc {
+      width: 50%;
+      margin: 0 auto;
+    }
+  }
+  &__img {
+    width: 100%;
   }
 }

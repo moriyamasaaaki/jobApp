@@ -133,7 +133,15 @@ export class ProfileComponent implements OnInit {
       .getCompanyUser(this.authService.uid)
       .subscribe(profile => {
         if (profile) {
-          this.dialog.open(ProfileDialogComponent).afterClosed();
+          this.dialog
+            .open(ProfileDialogComponent, {
+              data: {
+                title: '⚠️登録できません⚠️',
+                content:
+                  '様は企業側にご登録されています。同じアカウントでユーザー側・企業側両方に登録することはできません。＊違うアカウントでご登録ください。'
+              }
+            })
+            .afterClosed();
         } else {
           this.userProfileService.createUser(
             {

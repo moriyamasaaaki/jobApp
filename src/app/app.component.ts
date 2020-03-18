@@ -60,7 +60,31 @@ export class AppComponent implements OnInit {
             content: 'follow,index'
           });
         }
+        if (data.ogTitle) {
+          this.metaService.updateTag({
+            property: 'og:title',
+            content: data.ogTitle
+          });
+        } else {
+          this.metaService.removeTag("property='og:title'");
+        }
+        if (data.ogDescription) {
+          this.metaService.updateTag({
+            property: 'og:description',
+            content: data.ogDescription
+          });
+        } else {
+          this.metaService.removeTag("property='og:description'");
+        }
 
+        if (data.ogImage) {
+          this.metaService.updateTag({
+            property: 'og:image',
+            content: data.ogImage
+          });
+        } else {
+          this.metaService.removeTag("property='og:image'");
+        }
         if (data.ogUrl) {
           this.metaService.updateTag({
             property: 'og:url',

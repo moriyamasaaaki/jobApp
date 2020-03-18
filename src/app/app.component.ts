@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Title, Meta } from '@angular/platform-browser';
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 import { filter, map } from 'rxjs/operators';
+import { AuthService } from './services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -10,12 +11,18 @@ import { filter, map } from 'rxjs/operators';
 })
 export class AppComponent implements OnInit {
   title = 'Tokyo bite';
+  uid: string;
+  userLoginStatus: boolean;
+  companyLoginStatus: boolean;
+  user$ = this.authService.afUser$;
+  display: boolean;
 
   constructor(
     private titleService: Title,
     private metaService: Meta,
     private router: Router,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private authService: AuthService
   ) {}
 
   ngOnInit() {
@@ -97,5 +104,8 @@ export class AppComponent implements OnInit {
           });
         }
       });
+  }
+  searchNone() {
+    return this.router.url === '/';
   }
 }

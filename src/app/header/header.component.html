@@ -71,9 +71,7 @@
     </div>
     <div [class.displays]="display" (click)="notSearch()"></div>
   </ng-container>
-  <app-search *ngIf="searchNone()"></app-search>
-
-  <ng-container *ngIf="!(user$ | async)">
+  <ng-container *ngIf="!(user$ | async) && searchNone()">
     <div class="search-button-row">
       <button (click)="loginUser()" mat-raised-button color="primary">
         <span>ユーザーログイン</span>

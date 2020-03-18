@@ -59,6 +59,31 @@ export class DetailComponent implements OnInit {
         } else {
           this.metaService.removeTag("name='description'");
         }
+        if (data.title) {
+          this.metaService.updateTag({
+            property: 'og:title',
+            content: data.title
+          });
+        } else {
+          this.metaService.removeTag("property='og:title'");
+        }
+        if (data.companyContent) {
+          this.metaService.updateTag({
+            property: 'og:description',
+            content: data.companyContent
+          });
+        } else {
+          this.metaService.removeTag("property='og:description'");
+        }
+
+        if (data.jobImageUrls[0]) {
+          this.metaService.updateTag({
+            property: 'og:image',
+            content: data.jobImageUrls[0]
+          });
+        } else {
+          this.metaService.removeTag("property='og:image'");
+        }
       });
     });
   }

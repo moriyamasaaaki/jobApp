@@ -16,10 +16,6 @@
   h1 {
     font-size: 24px;
     text-align: center;
-    margin-bottom: 40px;
-    @include pc {
-      margin-bottom: 64px;
-    }
   }
   dl {
     display: flex;

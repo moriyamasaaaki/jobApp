@@ -23,30 +23,32 @@
         <div *ngIf="results.query && results.query.length > 0">
           <div class="job-box">
             <div class="job-box__card" *ngFor="let hit of hits">
-              <ng-container *ngIf="hit.jobImageUrls; else defaultImg">
-                <a routerLink="/detail/{{ hit.id }}">
-                  <img [src]="hit.jobImageUrls[0]" alt="" />
-                </a>
-              </ng-container>
-              <ng-template #defaultImg>
-                <a
-                  routerLink="/detail/{{ hit.id }}"
-                  class="job-box__default-img"
-                >
-                  <img src="assets/unnamed.png" alt="" />
-                </a>
-              </ng-template>
-              <div class="job-box__content">
-                <p>
-                  <a routerLink="/detail/{{ hit.id }}" class="job-box__title"
-                    >{{ hit.companyName }}
-                  </a>
-                </p>
-                <ul>
-                  <li>{{ hit.workPlace }}</li>
-                  <li>{{ hit.salary }}円</li>
-                </ul>
-              </div>
+              <a routerLink="/detail/{{ hit.id }}">
+                <ng-container *ngIf="hit.jobImageUrls; else defaultImg">
+                  <figure
+                    class="job-box__thumbnail"
+                    [style.background-image]="
+                      'url(' + hit.jobImageUrls[0] + ')'
+                    "
+                  ></figure>
+                </ng-container>
+                <ng-template #defaultImg>
+                  <img
+                    src="assets/unnamed.png"
+                    class="job-box__thumbnail"
+                    alt=""
+                  />
+                </ng-template>
+                <div class="job-box__content">
+                  <p class="job-box__title">
+                    {{ hit.title }}
+                  </p>
+                  <ul>
+                    <li>{{ hit.workPlace }}</li>
+                    <li>{{ hit.salary }}円</li>
+                  </ul>
+                </div>
+              </a>
             </div>
           </div>
         </div>

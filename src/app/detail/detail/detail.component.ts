@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DetailJob } from 'src/app/interfaces/article';
 import { JobPostService } from 'src/app/services/job-post.service';
 import { Observable } from 'rxjs';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { DeleteDialogComponent } from 'src/app/delete-dialog/delete-dialog.component';
 import { AuthService } from 'src/app/services/auth.service';
@@ -34,7 +34,8 @@ export class DetailComponent implements OnInit {
     private snackBar: MatSnackBar,
     private likedService: LikedService,
     private titleService: Title,
-    private metaService: Meta
+    private metaService: Meta,
+    private router: Router
   ) {
     route.paramMap.subscribe(params => {
       this.jobs$ = this.jobPostService.getJobPost(params.get('id'));
@@ -110,6 +111,7 @@ export class DetailComponent implements OnInit {
           this.route.paramMap.subscribe(params => {
             this.jobPostService.deleteJob(params.get('id'));
           });
+          this.router.navigateByUrl('/');
         }
       });
   }

@@ -192,7 +192,12 @@
   </ng-container>
   <ng-template #default>
     <div>
-      <button class="profile-form__btn" mat-raised-button color="primary">
+      <button
+        class="profile-form__btn"
+        mat-raised-button
+        color="primary"
+        [disabled]="form.invalid || form.pristine"
+      >
         求人広告を登録する
       </button>
     </div>

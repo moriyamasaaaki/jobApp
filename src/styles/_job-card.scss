@@ -22,13 +22,9 @@
     }
     h3,
     h2 {
+      font-weight: 500;
       font-size: 16px;
       margin-bottom: 8px;
-      &:hover {
-        opacity: 0.7;
-      }
-    }
-    a {
       color: #0860c0;
     }
   }
@@ -59,14 +55,15 @@
   img {
     width: 100%;
     margin-bottom: 16px;
-    outline: none;
-    cursor: pointer;
     @include pc {
       width: 30%;
       height: auto;
     }
   }
   &__box {
+    text-decoration: none;
+    outline: none;
+    cursor: pointer;
     @include mat-elevation(3);
     box-sizing: border-box;
     border: 1px solid #ededed;
@@ -77,23 +74,6 @@
     &:hover {
       transform: translateY(-12px);
       @include mat-elevation(15);
-    }
-  }
-  &__btn {
-    text-align: right;
-    span {
-      padding-right: 3px;
-    }
-    button {
-      @include pc {
-        padding: 8px 24px;
-      }
-    }
-  }
-  &__btn__right {
-    margin-left: 5px;
-    @include pc {
-      margin-left: 8px;
     }
   }
   &__content {

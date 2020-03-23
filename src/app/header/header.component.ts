@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
-import { Observable } from 'rxjs';
-import { Status } from '../interfaces/status';
 import { searchClient } from '../../environments/environment';
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -45,45 +43,33 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.loginUserToggle();
-    this.loginCompanyToggle();
+    this.loginToggle();
   }
 
-  loginUserToggle() {
-    if (this.authService.getLoginUser(this.authService.uid)) {
+  loginToggle() {
+    const status = localStorage.getItem('Status');
+    if (status === 'User') {
       this.userLoginStatus = true;
-      this.companyLoginStatus = false;
-    } else if (!this.authService.getLoginUser(this.authService.uid)) {
-      this.userLoginStatus = false;
+    } else if (status === 'Company') {
       this.companyLoginStatus = true;
-    }
-  }
-  loginCompanyToggle() {
-    if (this.authService.getLoginCompany(this.authService.uid)) {
-      this.companyLoginStatus = true;
-      this.userLoginStatus = false;
-    } else if (!this.authService.getLoginCompany(this.authService.uid)) {
-      this.companyLoginStatus = false;
-      this.userLoginStatus = true;
     }
   }
 
   loginUser() {
     this.authService.loginUser();
-    this.authService.getLoginUser(this.authService.uid);
+    localStorage.setItem('Status', 'User');
     this.userLoginStatus = true;
-    this.companyLoginStatus = false;
   }
 
   loginCompany() {
     this.authService.loginCompany();
-    this.authService.getLoginCompany(this.authService.uid);
+    localStorage.setItem('Status', 'Company');
     this.companyLoginStatus = true;
-    this.userLoginStatus = false;
   }
 
   logout() {
     this.authService.logout(this.authService.uid);
+    localStorage.removeItem('Status');
     this.userLoginStatus = false;
     this.companyLoginStatus = false;
   }

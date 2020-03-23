@@ -1,10 +1,12 @@
 @import 'mixins';
 
 .terms {
-  line-height: 1.7;
   padding: 8px;
-  max-width: 1200px;
+  max-width: 1000px;
   margin: 0 auto 40px;
+  @include pc {
+    padding: 0 16px;
+  }
   h1 {
     font-size: 24px;
     text-align: center;
@@ -12,12 +14,13 @@
   strong {
     display: block;
     font-size: 16px;
-    margin-bottom: 8px;
+    margin-bottom: 16px;
   }
   ul {
     margin-bottom: 24px;
   }
   li {
     font-size: 14px;
+    line-height: 1.7;
   }
 }

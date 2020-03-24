@@ -18,11 +18,13 @@
         >
           <mat-icon>add</mat-icon>
         </button>
-        <div class="header__user-icon">
-          <button mat-icon-button [matMenuTriggerFor]="menu">
-            <img *ngIf="user$ | async as user" [src]="user.photoURL" alt="" />
-          </button>
-        </div>
+        <ng-container *ngIf="user$ | async as user">
+          <div class="header__user-icon">
+            <button mat-icon-button [matMenuTriggerFor]="menu">
+              <img [src]="user.photoURL" alt="" />
+            </button>
+          </div>
+        </ng-container>
         <mat-menu #menu="matMenu">
           <button mat-menu-item *ngIf="user$ | async" (click)="logout()">
             <mat-icon>input</mat-icon>

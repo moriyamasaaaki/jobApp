@@ -37,12 +37,12 @@ export class LikedService {
   }
 
   // いいねを削除
-  deleteLike(userId: string, id: string): Promise<void> {
+  deleteLiked(userId: string, id: string): Promise<void> {
     return this.db.doc(`LikedUsers/${userId}/LikedItems/${id}`).delete();
   }
 
-  // いいねそたユーザー削除
-  deleteLikesUser(id: string, userId: string): Promise<void> {
+  // いいねしたユーザー削除
+  deleteLikedUser(id: string, userId: string): Promise<void> {
     return this.db.doc(`likes/${id}/likedUsers/${userId}`).delete();
   }
 

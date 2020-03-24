@@ -149,8 +149,8 @@ export class DetailComponent implements OnInit {
           duration: 1000
         });
       } else if (authId && this.like) {
-        this.likedService.deleteLike(authId, this.id);
-        this.likedService.deleteLikesUser(this.id, authId);
+        this.likedService.deleteLiked(authId, this.id);
+        this.likedService.deleteLikedUser(this.id, authId);
         this.likedCount--;
         this.like = false;
         this.snackBar.open('お気に入り削除しました。', null, {

@@ -37,7 +37,7 @@ export class LikedService {
   }
 
   // いいねを削除
-  deleteLikedJobs(userId: string, id: string): Promise<void> {
+  deleteLike(userId: string, id: string): Promise<void> {
     return this.db.doc(`LikedUsers/${userId}/LikedItems/${id}`).delete();
   }
 

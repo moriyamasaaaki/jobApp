@@ -149,7 +149,7 @@ export class DetailComponent implements OnInit {
           duration: 1000
         });
       } else if (authId && this.like) {
-        this.likedService.deleteLikedJobs(authId, this.id);
+        this.likedService.deleteLike(authId, this.id);
         this.likedService.deleteLikesUser(this.id, authId);
         this.likedCount--;
         this.like = false;

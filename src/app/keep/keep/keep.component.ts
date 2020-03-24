@@ -31,7 +31,7 @@ export class KeepComponent implements OnInit {
       .subscribe(status => {
         if (status) {
           const joblikeId = job.id;
-          this.likedService.deleteLikedJobs(this.authService.uid, joblikeId);
+          this.likedService.deleteLike(this.authService.uid, joblikeId);
         }
         this.snackBar.open('選択した求人をお気に入りから削除しました。', null, {
           duration: 2000

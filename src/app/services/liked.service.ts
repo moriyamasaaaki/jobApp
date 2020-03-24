@@ -47,7 +47,7 @@ export class LikedService {
   }
 
   // いいねしているかのチェック
-  isLiked(id: string, userId: string): Observable<boolean> {
+  checkIsLiked(id: string, userId: string): Observable<boolean> {
     return this.db
       .doc(`likes/${id}/likedUsers/${userId}`)
       .valueChanges()

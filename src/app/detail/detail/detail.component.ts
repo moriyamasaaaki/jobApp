@@ -126,7 +126,7 @@ export class DetailComponent implements OnInit {
           this.likeid = result.id;
           if (this.authService.uid) {
             this.likedService
-              .isLiked(this.likeid, this.authService.uid)
+              .checkIsLiked(this.likeid, this.authService.uid)
               .pipe(take(1))
               .subscribe(likedJob => {
                 this.like = likedJob;

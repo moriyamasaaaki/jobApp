@@ -129,13 +129,13 @@
     box-sizing: border-box;
   }
   iframe {
-    width: 180px;
+    width: 100%;
     height: auto;
-    @include tab {
-      width: 300px;
+    @include mobile {
+      width: 80%;
     }
     @include pc {
-      width: 250px;
+      width: 100%;
     }
   }
   &__default-text {

@@ -11,12 +11,12 @@ export class LikedService {
   constructor(private db: AngularFirestore) {}
 
   // いいね追加
-  likedItem(id: string, userId: string): Promise<void> {
+  likedPost(id: string, userId: string): Promise<void> {
     return this.db.doc(`LikedUsers/${userId}/LikedItems/${id}`).set({ id });
   }
 
   // いいねした人のユーザーID
-  likedUser(id: string, userId: string): Promise<void> {
+  getLikedUser(id: string, userId: string): Promise<void> {
     return this.db.doc(`likes/${id}/likedUsers/${userId}`).set({ userId });
   }
 

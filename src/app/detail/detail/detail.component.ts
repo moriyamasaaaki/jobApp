@@ -141,8 +141,8 @@ export class DetailComponent implements OnInit {
       const authId = this.authService.uid;
       this.id = params.get('id');
       if (authId && !this.like) {
-        this.likedService.likedItem(this.id, authId);
-        this.likedService.likedUser(this.id, authId);
+        this.likedService.likedPost(this.id, authId);
+        this.likedService.getLikedUser(this.id, authId);
         this.likedCount++;
         this.like = true;
         this.snackBar.open('お気に入り追加しました。', null, {

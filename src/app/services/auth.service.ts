@@ -86,4 +86,12 @@ export class AuthService {
         });
       });
   }
+
+  getLoginUser(uid: string): Observable<Status> {
+    return this.db.doc<Status>(`users/${uid}`).valueChanges();
+  }
+
+  getLoginCompany(uid: string): Observable<Status> {
+    return this.db.doc<Status>(`companys/${uid}`).valueChanges();
+  }
 }

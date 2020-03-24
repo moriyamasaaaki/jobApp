@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { JoblistRoutingModule } from './joblist-routing.module';
-import { JoblistComponent } from './joblist/joblist.component';
+import { JoblistRoutingModule } from './job-list-routing.module';
+import { JoblistComponent } from './job-list/job-list.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 

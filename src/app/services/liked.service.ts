@@ -11,12 +11,12 @@ export class LikedService {
   constructor(private db: AngularFirestore) {}
 
   // いいね追加
-  likedItem(id: string, userId: string): Promise<void> {
+  likedPost(id: string, userId: string): Promise<void> {
     return this.db.doc(`LikedUsers/${userId}/LikedItems/${id}`).set({ id });
   }
 
   // いいねした人のユーザーID
-  likedUser(id: string, userId: string): Promise<void> {
+  getLikedUser(id: string, userId: string): Promise<void> {
     return this.db.doc(`likes/${id}/likedUsers/${userId}`).set({ userId });
   }
 
@@ -37,17 +37,17 @@ export class LikedService {
   }
 
   // いいねを削除
-  deleteLikedJobs(userId: string, id: string): Promise<void> {
+  deleteLiked(userId: string, id: string): Promise<void> {
     return this.db.doc(`LikedUsers/${userId}/LikedItems/${id}`).delete();
   }
 
-  // いいねそたユーザー削除
-  deleteLikesUser(id: string, userId: string): Promise<void> {
+  // いいねしたユーザー削除
+  deleteLikedUser(id: string, userId: string): Promise<void> {
     return this.db.doc(`likes/${id}/likedUsers/${userId}`).delete();
   }
 
   // いいねしているかのチェック
-  isLiked(id: string, userId: string): Observable<boolean> {
+  checkIsLiked(id: string, userId: string): Observable<boolean> {
     return this.db
       .doc(`likes/${id}/likedUsers/${userId}`)
       .valueChanges()

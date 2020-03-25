@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { JoblistComponent } from './joblist.component';
+import { JoblistComponent } from './job-list.component';
 
 describe('JoblistComponent', () => {
   let component: JoblistComponent;
@@ -8,9 +8,8 @@ describe('JoblistComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ JoblistComponent ]
-    })
-    .compileComponents();
+      declarations: [JoblistComponent]
+    }).compileComponents();
   }));
 
   beforeEach(() => {

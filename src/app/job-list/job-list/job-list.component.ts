@@ -5,11 +5,11 @@ import { JobPostService } from 'src/app/services/job-post.service';
 
 @Component({
   selector: 'app-joblist',
-  templateUrl: './joblist.component.html',
-  styleUrls: ['./joblist.component.scss']
+  templateUrl: './job-list.component.html',
+  styleUrls: ['./job-list.component.scss']
 })
 export class JoblistComponent implements OnInit {
-  jobs$: Observable<DetailJob[]> = this.jobPostService.getAllJob();
+  jobs$: Observable<DetailJob[]> = this.jobPostService.getAllJobs();
 
   constructor(private jobPostService: JobPostService) {}
 

@@ -99,9 +99,7 @@ const routes: Routes = [
     path: 'joblist',
     data: { title: '求人一覧' },
     loadChildren: () =>
-      import('./joblist/joblist.module').then(m => m.JoblistModule),
-    canLoad: [AuthGuard],
-    canActivate: [AuthGuard]
+      import('./joblist/joblist.module').then(m => m.JoblistModule)
   },
 
   {

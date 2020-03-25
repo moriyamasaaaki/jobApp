@@ -1,27 +1,21 @@
 <section class="job-list job-card">
   <h1>求人一覧</h1>
   <ng-container *ngIf="jobs$ | async as jobs; else default">
-    <div class="job-card__box" *ngFor="let job of jobs">
+    <div
+      class="job-card__box"
+      *ngFor="let job of jobs"
+      routerLink="/detail/{{ job.id }}"
+    >
       <div class="job-card__title">
         <span>{{ job.companyName }}</span>
-        <a routerLink="/detail/{{ job.id }}">
-          <h3>{{ job.title }}</h3>
-        </a>
+        <h3>{{ job.title }}</h3>
       </div>
       <div class="job-card__content">
         <ng-container *ngIf="job.jobImageUrls; else defaultImg">
-          <img
-            [src]="job.jobImageUrls[0]"
-            routerLink="/detail/{{ job.id }}"
-            alt=""
-          />
+          <img [src]="job.jobImageUrls[0]" alt="" />
         </ng-container>
         <ng-template #defaultImg>
-          <img
-            src="assets/unnamed.png"
-            routerLink="/detail/{{ job.id }}"
-            alt=""
-          />
+          <img src="assets/unnamed.png" alt="" />
         </ng-template>
         <ul class="job-card__content-list">
           <li>
@@ -37,14 +31,6 @@
           </li>
           <li><i class="material-icons"> access_time </i>{{ job.workTime }}</li>
         </ul>
-      </div>
-      <div class="job-card__btn">
-        <a href="dammy@tokyobite.com">
-          <button mat-raised-button color="primary">
-            <span>応募する</span>
-            <mat-icon>send</mat-icon>
-          </button>
-        </a>
       </div>
     </div>
   </ng-container>

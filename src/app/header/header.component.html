@@ -8,21 +8,29 @@
     </div>
     <nav class="header__nav">
       <div class="header__nav-item">
-        <button mat-icon-button *ngIf="searchIcon()" (click)="isSearch()">
+        <button
+          mat-icon-button
+          matTooltip="求人検索する"
+          *ngIf="searchIcon()"
+          (click)="isSearch()"
+        >
           <mat-icon>search</mat-icon>
         </button>
         <button
           routerLink="/recruitment"
           mat-icon-button
+          matTooltip="求人作成する"
           *ngIf="companyLoginStatus"
         >
           <mat-icon>add</mat-icon>
         </button>
-        <div class="header__user-icon">
-          <button mat-icon-button [matMenuTriggerFor]="menu">
-            <img *ngIf="user$ | async as user" [src]="user.photoURL" alt="" />
-          </button>
-        </div>
+        <ng-container *ngIf="user$ | async as user">
+          <div class="header__user-icon">
+            <button mat-icon-button [matMenuTriggerFor]="menu">
+              <img [src]="user.photoURL" alt="" />
+            </button>
+          </div>
+        </ng-container>
         <mat-menu #menu="matMenu">
           <button mat-menu-item *ngIf="user$ | async" (click)="logout()">
             <mat-icon>input</mat-icon>
@@ -35,13 +43,13 @@
           <ng-container *ngIf="userLoginStatus">
             <button mat-menu-item routerLink="/mypage">
               <mat-icon>person</mat-icon>
-              <span>マイページ</span>
+              <span>プロフィール</span>
             </button>
           </ng-container>
           <ng-container *ngIf="companyLoginStatus">
             <button mat-menu-item routerLink="/companyProfile">
               <mat-icon>person</mat-icon>
-              <span>マイページ</span>
+              <span>プロフィール</span>
             </button>
           </ng-container>
           <ng-container *ngIf="companyLoginStatus">

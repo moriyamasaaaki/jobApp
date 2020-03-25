@@ -8,7 +8,12 @@
           <span>¥0</span>
           <span>（¥0/月）</span>
           <div class="plan__register-btn">
-            <button mat-flat-button disabled *ngIf="subscriptionID">
+            <button
+              mat-flat-button
+              color="primary"
+              *ngIf="subscriptionID"
+              (click)="stripeDialog()"
+            >
               登録
             </button>
             <button mat-flat-button disabled *ngIf="!subscriptionID">

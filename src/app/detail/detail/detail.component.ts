@@ -156,6 +156,10 @@ export class DetailComponent implements OnInit {
         this.snackBar.open('お気に入り削除しました。', null, {
           duration: 1000
         });
+      } else {
+        this.snackBar.open('いいねできません。ログインして下さい。', null, {
+          duration: 3000
+        });
       }
     });
   }

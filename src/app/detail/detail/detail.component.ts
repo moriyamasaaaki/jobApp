@@ -126,7 +126,7 @@ export class DetailComponent implements OnInit {
           this.likeid = result.id;
           if (this.authService.uid) {
             this.likedService
-              .isLiked(this.likeid, this.authService.uid)
+              .checkIsLiked(this.likeid, this.authService.uid)
               .pipe(take(1))
               .subscribe(likedJob => {
                 this.like = likedJob;
@@ -141,16 +141,16 @@ export class DetailComponent implements OnInit {
       const authId = this.authService.uid;
       this.id = params.get('id');
       if (authId && !this.like) {
-        this.likedService.likedItem(this.id, authId);
-        this.likedService.likedUser(this.id, authId);
+        this.likedService.likedPost(this.id, authId);
+        this.likedService.getLikedUser(this.id, authId);
         this.likedCount++;
         this.like = true;
         this.snackBar.open('お気に入り追加しました。', null, {
           duration: 1000
         });
       } else if (authId && this.like) {
-        this.likedService.deleteLikedJobs(authId, this.id);
-        this.likedService.deleteLikesUser(this.id, authId);
+        this.likedService.deleteLiked(authId, this.id);
+        this.likedService.deleteLikedUser(this.id, authId);
         this.likedCount--;
         this.like = false;
         this.snackBar.open('お気に入り削除しました。', null, {

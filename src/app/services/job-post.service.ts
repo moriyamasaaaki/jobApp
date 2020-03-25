@@ -100,7 +100,7 @@ export class JobPostService {
   }
 
   // 求人一覧取得
-  getAllJob(): Observable<DetailJob[]> {
+  getAllJobs(): Observable<DetailJob[]> {
     return this.db
       .collection<DetailJob>('JobPosts', ref => {
         return ref.orderBy('createdAt').limit(30);
@@ -126,7 +126,7 @@ export class JobPostService {
   }
 
   // 自社の投稿一覧表示
-  getMyCompanyJobList(companyUserId: string): Observable<DetailJob[]> {
+  getMyCompanyJobs(companyUserId: string): Observable<DetailJob[]> {
     return this.db
       .collection<DetailJob>(`JobPosts`, ref => {
         return ref.where('jobId', '==', companyUserId);

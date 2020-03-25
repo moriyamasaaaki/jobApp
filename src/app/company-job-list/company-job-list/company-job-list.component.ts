@@ -10,7 +10,7 @@ import { DetailJob } from 'src/app/interfaces/article';
   styleUrls: ['./company-job-list.component.scss']
 })
 export class CompanyJobListComponent implements OnInit {
-  jobs$: Observable<DetailJob[]> = this.jobPostService.getMyCompanyJobList(
+  jobs$: Observable<DetailJob[]> = this.jobPostService.getMyCompanyJobs(
     this.authService.uid
   );
 

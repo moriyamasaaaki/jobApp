@@ -23,7 +23,7 @@ export class CompanyProfileService {
       .valueChanges();
   }
 
-  getCompanyUsers(companyUserId: string): Observable<CompanyProfile[]> {
+  getCompanyUsers(): Observable<CompanyProfile[]> {
     return this.db.collection<CompanyProfile>(`companyProfile`).valueChanges();
   }
 

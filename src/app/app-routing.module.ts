@@ -96,7 +96,7 @@ const routes: Routes = [
   },
 
   {
-    path: 'joblist',
+    path: 'job-list',
     data: { title: '求人一覧' },
     loadChildren: () =>
       import('./joblist/joblist.module').then(m => m.JoblistModule)

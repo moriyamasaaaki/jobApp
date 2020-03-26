@@ -16,7 +16,6 @@
     @include mat-elevation(3);
     width: 100%;
     margin-bottom: 16px;
-    border-radius: 5px;
     box-sizing: border-box;
     display: flex;
     flex-flow: column;
@@ -43,7 +42,7 @@
     color: #333333;
   }
   &__sub-title {
-    color: #0860c0;
+    color: #e74c3c;
     font-size: 16px;
     margin-bottom: 16px;
   }
@@ -55,6 +54,9 @@
     text-align: left;
     padding: 16px;
     flex: 1;
+    i {
+      margin-right: 2px;
+    }
   }
   a {
     text-decoration: none;
@@ -89,14 +91,24 @@
       padding: 4px;
     }
   }
+  &__content-body {
+    display: flex;
+    align-items: center;
+    color: darkgray;
+    font-size: 13px;
+    margin-bottom: 8px;
+  }
   &__content-foot {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
     li {
       display: flex;
       align-items: center;
       color: darkgray;
+      &:first-child {
+        margin-right: 24px;
+      }
     }
   }
 }

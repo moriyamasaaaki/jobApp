@@ -24,16 +24,22 @@
               <li>特になし</li>
             </ul>
           </ng-template>
+          <span class="job-box__content-body">
+            <i class="material-icons">location_on</i>
+            {{ job.workPlace }}
+          </span>
           <ul class="job-box__content-foot">
-            <li>
-              <i class="material-icons">location_on</i>
-              {{ job.workPlace }}
-            </li>
             <li>
               <i class="material-icons">
                 money
               </i>
               {{ job.salary | number }}円
+            </li>
+            <li>
+              <i class="material-icons">
+                schedule
+              </i>
+              {{ job.createdAt.toDate() | date: 'yyy/MM/dd' }}
             </li>
           </ul>
         </div>

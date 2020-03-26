@@ -3,13 +3,12 @@
     (ngSubmit)="querySuggestionSelected.emit(inputControl.value)"
     class="search__box"
   >
-    <p>代行求人を探そう！!</p>
+    <p>代行求人を探しましょう</p>
     <div class="search__input">
       <input
-        matInput
         [matAutocomplete]="auto"
         [formControl]="inputControl"
-        placeholder="求人を検索"
+        placeholder="代行求人を検索"
       />
       <div class="search__btn">
         <button
@@ -25,7 +24,6 @@
     <mat-autocomplete
       (optionSelected)="querySuggestionSelected.emit($event.option.value)"
       #auto="matAutocomplete"
-      style="margin-top: 30px; max-height: 600px"
     >
       <div *ngFor="let index of state.indices || []">
         <mat-option

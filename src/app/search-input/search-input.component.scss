@@ -1,0 +1,21 @@
+@import 'mixins';
+
+.search {
+  background: url('../../assets/background.jpg') center / cover;
+  width: 100%;
+  height: 400px;
+  position: relative;
+  @include pc {
+    height: 400px;
+  }
+  &::before {
+    opacity: 0.3;
+    background-color: black;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    content: ' ';
+  }
+}

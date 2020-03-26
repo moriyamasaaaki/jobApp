@@ -3,23 +3,24 @@
     (ngSubmit)="querySuggestionSelected.emit(inputControl.value)"
     class="search__box"
   >
-    <div>
-      <mat-form-field class="search__filed">
-        <input
-          matInput
-          [matAutocomplete]="auto"
-          [formControl]="inputControl"
-          placeholder="求人を検索"
-        />
-        <div class="search__btn">
-          <button
-            mat-icon-button
-            aria-label="Example icon-button with a heart icon"
-          >
-            <mat-icon>search</mat-icon>
-          </button>
-        </div>
-      </mat-form-field>
+    <p>代行求人を探そう！!</p>
+    <div class="search__input">
+      <input
+        matInput
+        [matAutocomplete]="auto"
+        [formControl]="inputControl"
+        placeholder="求人を検索"
+      />
+      <div class="search__btn">
+        <button
+          mat-flat-button
+          color="warn"
+          aria-label="Example icon-button with a heart icon"
+        >
+          検索する
+          <mat-icon>search</mat-icon>
+        </button>
+      </div>
     </div>
     <mat-autocomplete
       (optionSelected)="querySuggestionSelected.emit($event.option.value)"

@@ -10,7 +10,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatButtonModule } from '@angular/material/button';
-
+import { MatCardModule } from '@angular/material/card';
 @NgModule({
   declarations: [RecruitmentComponent],
   imports: [
@@ -22,7 +22,8 @@ import { MatButtonModule } from '@angular/material/button';
     MatInputModule,
     MatSelectModule,
     MatRadioModule,
-    MatButtonModule
+    MatButtonModule,
+    MatCardModule
   ]
 })
 export class FormModule {}

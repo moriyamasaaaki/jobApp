@@ -21,7 +21,7 @@
     display: flex;
     flex-flow: column;
     @include tab {
-      margin: 0 auto 32px;
+      margin: 0 auto;
     }
     @include pc {
       margin-bottom: 56px;

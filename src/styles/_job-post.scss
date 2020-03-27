@@ -15,17 +15,17 @@
   &__card {
     @include mat-elevation(3);
     width: 100%;
-    margin-bottom: 16px;
+    margin-bottom: 8px;
     padding-bottom: 16px;
     border-radius: 5px;
     box-sizing: border-box;
     display: flex;
     flex-flow: column;
     @include tab {
-      margin: 0 auto 32px;
+      margin: 0 auto 8px;
     }
     @include pc {
-      margin-bottom: 56px;
+      margin-bottom: 8px;
       padding-bottom: 40px;
       transition: 0.5s;
       &:hover {

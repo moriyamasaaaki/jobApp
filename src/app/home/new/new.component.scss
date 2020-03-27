@@ -1,20 +1,3 @@
 @import 'mixins';
 @import 'job-post';
 @import '~@angular/material/theming';
-
-.job-box {
-  &__card {
-    position: relative;
-  }
-  &__category {
-    position: absolute;
-    top: 159px;
-    left: 0;
-    background-color: #e74c3c;
-    padding: 10px 15px;
-    color: #fff;
-    font-size: 14px;
-    font-weight: 600;
-    text-transform: uppercase;
-  }
-}

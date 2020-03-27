@@ -12,36 +12,25 @@
           <img src="assets/unnamed.png" class="job-box__thumbnail" alt="" />
         </ng-template>
         <div class="job-box__content">
+          <div class="job-box__category">Attention</div>
           <p class="job-box__title">
             {{ job.title }}
           </p>
           <p class="job-box__sub-title">{{ job.companyName }}</p>
-          <ul class="job-box__taglist" *ngIf="job.label; else default">
-            <li>{{ job.label }}</li>
+          <p class="job-box__description">{{ job.companyContent }}</p>
+          <ul class="job-box__content-body">
+            <li>
+              <i class="material-icons">location_on</i>
+              {{ job.workPlace }}
+            </li>
+            <li><i class="fas fa-yen-sign"></i> {{ job.salary | number }}円</li>
           </ul>
-          <ng-template #default>
-            <ul class="job-box__taglist">
-              <li>特になし</li>
-            </ul>
-          </ng-template>
-          <span class="job-box__content-body">
-            <i class="material-icons">location_on</i>
-            {{ job.workPlace }}
+          <span class="job-box__content-foot">
+            <i class="material-icons">
+              schedule
+            </i>
+            {{ job.createdAt.toDate() | date: 'yyy/MM/dd' }}
           </span>
-          <ul class="job-box__content-foot">
-            <li>
-              <i class="material-icons">
-                money
-              </i>
-              {{ job.salary | number }}円
-            </li>
-            <li>
-              <i class="material-icons">
-                schedule
-              </i>
-              {{ job.createdAt.toDate() | date: 'yyy/MM/dd' }}
-            </li>
-          </ul>
         </div>
       </a>
     </div>

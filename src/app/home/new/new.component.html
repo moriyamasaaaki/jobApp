@@ -17,32 +17,25 @@
             {{ job.title }}
           </p>
           <p class="job-box__sub-title">{{ job.companyName }}</p>
-          <ul class="job-box__taglist" *ngIf="job.label; else default">
-            <li>{{ job.label }}</li>
-          </ul>
-          <ng-template #default>
-            <ul class="job-box__taglist">
-              <li>特になし</li>
-            </ul>
-          </ng-template>
-          <span class="job-box__content-body">
-            <i class="material-icons">location_on</i>
-            {{ job.workPlace }}
-          </span>
-          <ul class="job-box__content-foot">
+          <p class="job-box__description">{{ job.companyContent }}</p>
+          <ul class="job-box__content-body">
+            <li>
+              <i class="material-icons">location_on</i>
+              {{ job.workPlace }}
+            </li>
             <li>
               <i class="material-icons">
                 money
               </i>
               {{ job.salary | number }}円
             </li>
-            <li>
-              <i class="material-icons">
-                schedule
-              </i>
-              {{ job.createdAt.toDate() | date: 'yyy/MM/dd' }}
-            </li>
           </ul>
+          <span class="job-box__content-foot">
+            <i class="material-icons">
+              schedule
+            </i>
+            {{ job.createdAt.toDate() | date: 'yyy/MM/dd' }}
+          </span>
         </div>
       </a>
     </div>

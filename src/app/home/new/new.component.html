@@ -23,12 +23,7 @@
               <i class="material-icons">location_on</i>
               {{ job.workPlace }}
             </li>
-            <li>
-              <i class="material-icons">
-                money
-              </i>
-              {{ job.salary | number }}円
-            </li>
+            <li><i class="fas fa-yen-sign"></i> {{ job.salary | number }}円</li>
           </ul>
           <span class="job-box__content-foot">
             <i class="material-icons">

@@ -10,7 +10,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { TermsComponent } from '../legal/terms/terms.component';
+import { TermsComponent } from '../intl/terms/terms.component';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   declarations: [RegisterFormComponent, TermsComponent],
@@ -23,7 +24,8 @@ import { TermsComponent } from '../legal/terms/terms.component';
     MatInputModule,
     MatCheckboxModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    MatCardModule
   ]
 })
 export class CompanySideModule {}

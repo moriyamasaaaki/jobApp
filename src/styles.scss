@@ -33,6 +33,7 @@ body {
   margin: 0;
   font-family: Arial, sans-serif;
   color: #3c4043;
+  background-color: #fafafa;
 }
 .container {
   display: flex;
@@ -42,6 +43,7 @@ body {
 
 .content {
   flex: 1;
+  margin-top: 112px;
 }
 
 h1 {
@@ -69,122 +71,78 @@ h1 {
   }
 }
 
-// footer スタイル
-.footer {
-  padding: 16px 8px;
-  color: #000;
-  opacity: 0.7;
-  margin-bottom: 64px;
-  @include tab {
-    display: grid;
-    background-color: #0d47a1;
-    grid-template-columns: repeat(2, 1fr);
-    justify-content: space-between;
-    align-items: center;
-    opacity: 1;
-    padding: 24px 8px;
-    margin-bottom: 0;
-  }
-  &__first-nav {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    align-items: center;
-    @include pc {
-      justify-content: space-between;
-    }
-    li {
-      list-style: none;
-      font-size: 13px;
-      padding: 8px 8px 16px;
-      @include tab {
-        line-height: 2.5;
-        padding: 0;
-      }
-      @include pc {
-        font-size: 14px;
-      }
-    }
-    a {
-      color: #000;
-      text-decoration: none;
-      &:hover {
-        opacity: 0.7;
-        text-decoration: underline;
-      }
-      @include tab {
-        color: #fff;
-      }
-    }
-  }
-  &__copyright {
-    text-align: center;
-    font-size: 14px;
-    margin-top: 24px;
-    @include tab {
-      color: #fff;
-      margin: 0;
-    }
-  }
-}
-
-.footer-box {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background-color: #0d47a1;
-  @include tab {
-    display: none;
-  }
-  a {
-    display: block;
-    color: #fff;
-    text-decoration: none;
-    padding: 8px;
-  }
-  &__icons {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    text-align: center;
-    span {
-      display: block;
-      font-size: 8px;
-      text-align: center;
-    }
-  }
-}
-
 // Algolia 検索スタイル
-.mat-form-field {
-  width: 100%;
-  display: block;
-  input {
-    display: block;
-  }
-}
 
 .search {
-  padding: 0 8px;
-  &__box {
-    max-width: 700px;
+  box-sizing: border-box;
+  width: 100%;
+  &__input {
+    display: block;
+    width: 100%;
+    position: absolute;
+    left: 0%;
+    top: 35%;
+    right: 50%;
+    bottom: 50%;
+    padding: 0 8px;
+    box-sizing: border-box;
+    @include tab {
+      display: flex;
+      justify-content: center;
+      align-items: baseline;
+    }
+    @include pc {
+      top: 45%;
+    }
+  }
+  input {
+    display: block;
+    box-sizing: border-box;
+    margin-bottom: 8px;
+    width: 100%;
+    padding: 16px;
+    border: 0.0625rem solid #fff;
+    border-radius: 4px;
+    outline: none;
+    font-size: 16px;
+    @include tab {
+      width: 80%;
+    }
+    @include pc {
+      width: 50%;
+    }
+  }
+  p {
+    position: absolute;
+    width: 100%;
+    text-align: center;
     margin: 0 auto;
+    top: 25%;
+    bottom: 50%;
+    font-size: 24px;
+    color: #fff;
+    font-weight: 600;
+    z-index: 99;
+    @include pc {
+      top: 30%;
+      font-size: 40px;
+    }
+  }
+  &__btn {
+    button {
+      font-size: 16px;
+      width: 100%;
+      padding: 8px 16px;
+      @include tab {
+        margin-left: 8px;
+      }
+    }
   }
 }
 
 .search-result {
   max-width: 1000px;
   margin: 0 auto;
-  h1 {
-    text-align: center;
-    border-bottom: 3px solid #0d47a1;
-    border-radius: 3px;
-    width: 170px;
-    margin: 0 auto;
-    margin-bottom: 56px;
-    padding-bottom: 8px;
-  }
   &__hit {
     margin-bottom: 40px;
   }
@@ -192,10 +150,4 @@ h1 {
 
 .ais-Hits {
   text-align: center;
-}
-
-.mat-form-field-appearance-legacy .mat-form-field-infix {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
 }

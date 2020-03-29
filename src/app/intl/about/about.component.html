@@ -1,0 +1,60 @@
+<div class="about">
+  <div class="about__title">
+    <h1>Proxy Worksについて</h1>
+    <p>ご利用方法</p>
+  </div>
+  <mat-tab-group>
+    <mat-tab label="企業側">
+      <mat-vertical-stepper [linear]="isLinear" #stepper>
+        <mat-step>
+          <ng-template matStepLabel>プロフィール作成</ng-template>
+          <div class="about__tab-content">
+            <p>企業側でログインしたらプロフィールを作成する。</p>
+            <p>＊プロフィールを作成しないと求人作成することはできません。</p>
+            <img src="assets/companyProfile.png" alt="" />
+            <img src="assets/create-companyProfile.png" alt="" />
+          </div>
+        </mat-step>
+        <mat-step>
+          <ng-template matStepLabel>求人作成</ng-template>
+          <div class="about__tab-content">
+            <p>求人広告の編集・削除について</p>
+            <img src="assets/recuit.png" alt="" />
+          </div>
+        </mat-step>
+        <mat-step>
+          <ng-template matStepLabel>求人の編集・削除</ng-template>
+          <div class="about__tab-content">
+            <p>
+              画像の右上に編集ボタン・削除ボタンがあるのでそこから求人の編集、削除を行ってください。
+            </p>
+            <img src="assets/job-write.png" alt="" />
+          </div>
+        </mat-step>
+      </mat-vertical-stepper>
+    </mat-tab>
+
+    <mat-tab label="ユーザー側">
+      <mat-vertical-stepper [linear]="isLinear" #stepper>
+        <mat-step>
+          <ng-template matStepLabel>プロフィール作成</ng-template>
+          <div class="about__tab-content">
+            <p>ユーザー側でログインしたらプロフィールを作成する。</p>
+            <p>プロフィールを作成しないと応募することはできません。</p>
+            <img src="assets/userProfile.png" alt="" />
+            <img src="assets/create-user.png" alt="" />
+          </div>
+        </mat-step>
+      </mat-vertical-stepper>
+    </mat-tab>
+    <mat-tab label="Proxy Worksについて">
+      <div class="about__tab-content about__tab-content-second">
+        <p>
+          Proxy
+          Worksは代行サービスやレンタルサービスなどを集めた求人サービスです。
+        </p>
+        <img class="about__img" src="assets/media.png" alt="" />
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+</div>

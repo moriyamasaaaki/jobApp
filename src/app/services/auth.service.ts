@@ -27,14 +27,6 @@ export class AuthService {
     });
   }
 
-  getLoginUser(uid: string): Observable<Status> {
-    return this.db.doc<Status>(`users/${uid}`).valueChanges();
-  }
-
-  getLoginCompany(uid: string): Observable<Status> {
-    return this.db.doc<Status>(`companys/${uid}`).valueChanges();
-  }
-
   loginUser() {
     this.afAuth.auth
       .signInWithPopup(new auth.GoogleAuthProvider())
@@ -48,18 +40,30 @@ export class AuthService {
           duration: 2000
         });
         this.router.navigateByUrl('/mypage');
+      })
+      .catch(error => {
+        this.snackBar.open(`${error},ログインに失敗しました。`, null, {
+          duration: 2000
+        });
       });
   }
 
   logout(uid: string) {
-    this.afAuth.auth.signOut().then(() => {
-      this.db.doc(`companys/${uid}`).delete();
-      this.db.doc(`users/${uid}`).delete();
-      this.snackBar.open('ログアウトしました。', null, {
-        duration: 2000
+    this.afAuth.auth
+      .signOut()
+      .then(() => {
+        this.db.doc(`companys/${uid}`).delete();
+        this.db.doc(`users/${uid}`).delete();
+        this.snackBar.open('ログアウトしました。', null, {
+          duration: 2000
+        });
+        this.router.navigateByUrl('/');
+      })
+      .catch(error => {
+        this.snackBar.open(`${error},ログアウトできませんでした。`, null, {
+          duration: 2000
+        });
       });
-    });
-    this.router.navigateByUrl('/');
   }
 
   loginCompany() {
@@ -75,6 +79,19 @@ export class AuthService {
           duration: 2000
         });
         this.router.navigateByUrl('/companyProfile');
+      })
+      .catch(error => {
+        this.snackBar.open(`${error},ログインに失敗しました。`, null, {
+          duration: 2000
+        });
       });
+  }
+
+  getLoginUser(uid: string): Observable<Status> {
+    return this.db.doc<Status>(`users/${uid}`).valueChanges();
+  }
+
+  getLoginCompany(uid: string): Observable<Status> {
+    return this.db.doc<Status>(`companys/${uid}`).valueChanges();
   }
 }

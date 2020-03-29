@@ -3,20 +3,21 @@
     <div class="job-box__card" *ngFor="let job of jobs">
       <a routerLink="/detail/{{ job.id }}">
         <ng-container *ngIf="job.jobImageUrls; else defaultImg">
-          <img [src]="job.jobImageUrls[0]" alt="" />
+          <figure
+            class="job-box__thumbnail"
+            [style.background-image]="'url(' + job.jobImageUrls[0] + ')'"
+          ></figure>
         </ng-container>
         <ng-template #defaultImg>
-          <a routerLink="/detail/{{ job.id }}" class="job-box__default-img">
-            <img src="assets/unnamed.png" alt="" />
-          </a>
+          <img src="assets/unnamed.png" class="job-box__thumbnail" alt="" />
         </ng-template>
         <div class="job-box__content">
           <p class="job-box__title">
-            {{ job.companyName }}
+            {{ job.title }}
           </p>
           <ul>
             <li>{{ job.workPlace }}</li>
-            <li>{{ job.salary }}円</li>
+            <li>{{ job.salary | number }}円</li>
           </ul>
         </div>
       </a>

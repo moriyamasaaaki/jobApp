@@ -2,44 +2,20 @@
 
 .profile-card {
   padding: 0 8px;
+  margin-bottom: 56px;
   &__list {
-    max-width: 1000px;
-    margin: 0 auto;
+    @include pc {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      max-width: 768px;
+      margin: 0 auto;
+      box-sizing: border-box;
+    }
   }
   h1 {
     font-size: 24px;
     text-align: center;
-  }
-  &__btn {
-    text-align: center;
-    margin: 24px 0 40px;
-    button {
-      margin: 8px;
-    }
-  }
-  &__footer-item {
-    a {
-      display: block;
-      text-decoration: none;
-      color: #454545;
-      text-align: center;
-      border-bottom: 2px solid #ededed;
-      font-size: 16px;
-      padding: 20px 0;
-      &:nth-child(1) {
-        border-top: 2px solid #ededed;
-      }
-      @include tab {
-        display: none;
-      }
-    }
-  }
-  &__default-text {
-    text-align: center;
-    font-size: 14px;
-    @include pc {
-      font-size: 16px;
-    }
   }
   dl {
     display: flex;
@@ -49,22 +25,52 @@
     font-size: 14px;
     margin-bottom: 16px;
     line-height: 1.5;
+    max-width: 768px;
+    margin: 0 auto;
     @include pc {
-      font-size: 16px;
+      font-size: 18px;
     }
-  }
-  dt,
-  dd {
-    box-sizing: border-box;
-    border-top: 1px solid #ccc;
-    padding: 16px;
   }
   dt {
     background: #f2f2f2;
     width: 30%;
   }
   dd {
+    margin: 0;
     border-left: 1px solid #ccc;
     width: 70%;
+  }
+  img {
+    width: 100%;
+    margin: 0 auto;
+    @include tab {
+      width: 60%;
+    }
+  }
+  dt,
+  dd {
+    padding: 24px 8px;
+    border-top: 1px solid #ccc;
+    box-sizing: border-box;
+    @include pc {
+      padding: 24px;
+    }
+  }
+  &__btn {
+    text-align: center;
+    margin: 24px 0 40px;
+    button {
+      margin: 8px;
+      @include pc {
+        padding: 8px 24px;
+      }
+    }
+  }
+  &__default-text {
+    text-align: center;
+    font-size: 14px;
+    @include pc {
+      font-size: 16px;
+    }
   }
 }

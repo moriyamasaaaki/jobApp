@@ -23,7 +23,7 @@ export class CompanyProfileService {
       .valueChanges();
   }
 
-  getCompanyUsers(companyUserId: string): Observable<CompanyProfile[]> {
+  getCompanyUsers(): Observable<CompanyProfile[]> {
     return this.db.collection<CompanyProfile>(`companyProfile`).valueChanges();
   }
 
@@ -39,6 +39,15 @@ export class CompanyProfileService {
           duration: 3000
         });
         this.router.navigateByUrl('/companyProfile');
+      })
+      .catch(error => {
+        this.snackBar.open(
+          `${error},プロフィールを登録できませんでした`,
+          null,
+          {
+            duration: 3000
+          }
+        );
       });
   }
 
@@ -50,6 +59,15 @@ export class CompanyProfileService {
         this.snackBar.open('プロフィールを削除しました。', null, {
           duration: 3000
         });
+      })
+      .catch(error => {
+        this.snackBar.open(
+          `${error},プロフィールを削除できませんでした`,
+          null,
+          {
+            duration: 3000
+          }
+        );
       });
   }
 }

@@ -1,9 +1,8 @@
 <div class="profile-dialog">
-  <h2 matDialogTitle>⚠️登録できません⚠️</h2>
+  <h2 matDialogTitle>{{ data.title }}</h2>
   <p>
-    {{
-      name
-    }}様は既にご登録されています。同じアカウントでユーザー側・企業側両方に登録することはできません。＊違うアカウントでご登録ください。
+    {{ name }}
+    {{ data.content }}
   </p>
   <div mat-dialog-actions>
     <button mat-flat-button color="warn" [matDialogClose]="true">OK</button>

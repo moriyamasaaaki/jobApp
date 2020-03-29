@@ -1,202 +1,210 @@
-<form [formGroup]="form" (ngSubmit)="submit()" class="profile profile-form">
-  <h1>プロフィール設定</h1>
-  <div>
-    <input type="file" (change)="setAvatar($event)" />
-  </div>
-  <div>
-    <mat-form-field class="profile-form__field">
-      <mat-label>氏名</mat-label>
-      <input
-        matInput
-        placeholder="名前"
-        name="name"
-        formControlName="name"
-        autocomplete="name"
-        required
-      />
-      <mat-error *ngIf="nameControl.hasError('required')"
-        >必須入力です</mat-error
-      >
-    </mat-form-field>
-  </div>
-
-  <div>
-    <mat-form-field class="profile-form__field">
-      <input
-        matInput
-        placeholder="住所"
-        name="address"
-        formControlName="address"
-        autocomplete="street-address"
-        required
-      />
-      <mat-error *ngIf="addressControl.hasError('required')"
-        >必須入力です</mat-error
-      >
-    </mat-form-field>
-  </div>
-  <div formGroupName="bday">
-    <mat-form-field class="profile-form__field">
-      <mat-select placeholder="年" formControlName="year" required>
-        <mat-option
-          [value]="bottom"
+<mat-card class="profile-form">
+  <form [formGroup]="form" (ngSubmit)="submit()" class="profile">
+    <h1>プロフィール設定</h1>
+    <div>
+      <input type="file" (change)="setAvatar($event)" />
+    </div>
+    <div>
+      <mat-form-field class="profile-form__field">
+        <mat-label>氏名</mat-label>
+        <input
+          matInput
+          placeholder="名前"
+          name="name"
+          formControlName="name"
+          autocomplete="name"
           required
-          *ngFor="let year of years; let i = index"
-          >{{ i + bottom }}年</mat-option
+        />
+        <mat-error *ngIf="nameControl.hasError('required')"
+          >必須入力です</mat-error
         >
-      </mat-select>
-      <mat-error *ngIf="yearControl.hasError('required')"
-        >必須入力です</mat-error
-      >
-    </mat-form-field>
+      </mat-form-field>
+    </div>
 
-    <mat-form-field class="profile-form__field">
-      <mat-select placeholder="月" formControlName="month" required>
-        <mat-option [value]="i + 1" *ngFor="let month of months; let i = index"
-          >{{ i + 1 }}月</mat-option
+    <div>
+      <mat-form-field class="profile-form__field">
+        <input
+          matInput
+          placeholder="住所"
+          name="address"
+          formControlName="address"
+          autocomplete="street-address"
+          required
+        />
+        <mat-error *ngIf="addressControl.hasError('required')"
+          >必須入力です</mat-error
         >
-      </mat-select>
-      <mat-error *ngIf="monthControl.hasError('required')"
-        >必須入力です</mat-error
-      >
-    </mat-form-field>
-
-    <mat-form-field class="profile-form__field">
-      <mat-select placeholder="日" formControlName="day" required>
-        <mat-option [value]="i + 1" *ngFor="let day of days; let i = index"
-          >{{ i + 1 }}日</mat-option
+      </mat-form-field>
+    </div>
+    <div formGroupName="bday">
+      <mat-form-field class="profile-form__field">
+        <mat-select placeholder="年" formControlName="year" required>
+          <mat-option
+            [value]="bottom"
+            required
+            *ngFor="let year of years; let i = index"
+            >{{ i + bottom }}年</mat-option
+          >
+        </mat-select>
+        <mat-error *ngIf="yearControl.hasError('required')"
+          >必須入力です</mat-error
         >
-      </mat-select>
-      <mat-error *ngIf="dayControl.hasError('required')"
-        >必須入力です</mat-error
-      >
-    </mat-form-field>
-  </div>
+      </mat-form-field>
 
-  <div class="profile-form__field">
-    <mat-label>性別：</mat-label>
-    <mat-radio-group formControlName="gender" required>
-      <mat-radio-button value="male">男性</mat-radio-button>
-      <mat-radio-button value="female">女性</mat-radio-button>
-    </mat-radio-group>
-  </div>
-
-  <div>
-    <mat-form-field class="profile-form__field">
-      <input
-        matInput
-        placeholder="Email"
-        formControlName="email"
-        required
-        autocomplete="email"
-      />
-      <mat-error *ngIf="emailControl.hasError('required')"
-        >必須入力です</mat-error
-      >
-      <mat-error *ngIf="emailControl.hasError('email')"
-        >メールアドレス形式ではありません。</mat-error
-      >
-    </mat-form-field>
-  </div>
-
-  <div>
-    <mat-form-field class="profile-form__field">
-      <input
-        type="tel"
-        matInput
-        placeholder="電話番号"
-        formControlName="tel"
-        required
-        autocomplete="tel"
-      />
-      <mat-error *ngIf="telControl.hasError('required')"
-        >必須入力です</mat-error
-      >
-      <mat-error *ngIf="telControl.hasError('pattern')"
-        >数字でハイフンなしでお願いします</mat-error
-      >
-    </mat-form-field>
-  </div>
-
-  <div>
-    <mat-form-field class="profile-form__field">
-      <textarea
-        matInput
-        placeholder="自己紹介"
-        formControlName="introduce"
-      ></textarea>
-    </mat-form-field>
-  </div>
-
-  <div>
-    <mat-form-field class="profile-form__field">
-      <mat-select placeholder="学校区分" formControlName="school" required>
-        <mat-option [value]="school" *ngFor="let school of schools">{{
-          school
-        }}</mat-option>
-      </mat-select>
-      <mat-error *ngIf="schoolControl.hasError('required')"
-        >選択してください</mat-error
-      >
-    </mat-form-field>
-
-    <mat-form-field class="profile-form__field">
-      <input
-        matInput
-        placeholder="〇〇大学〇〇学部"
-        formControlName="belongs"
-        required
-      />
-      <mat-error *ngIf="addressControl.hasError('required')"
-        >必須入力です</mat-error
-      >
-    </mat-form-field>
-
-    <mat-form-field class="profile-form__field">
-      <mat-select placeholder="卒業/在学/中退" formControlName="state" required>
-        <mat-option
-          [value]="state"
-          *ngFor="let state of states; let i = index"
-          >{{ state }}</mat-option
+      <mat-form-field class="profile-form__field">
+        <mat-select placeholder="月" formControlName="month" required>
+          <mat-option
+            [value]="i + 1"
+            *ngFor="let month of months; let i = index"
+            >{{ i + 1 }}月</mat-option
+          >
+        </mat-select>
+        <mat-error *ngIf="monthControl.hasError('required')"
+          >必須入力です</mat-error
         >
-      </mat-select>
-      <mat-error *ngIf="stateControl.hasError('required')"
-        >選択してください</mat-error
+      </mat-form-field>
+
+      <mat-form-field class="profile-form__field">
+        <mat-select placeholder="日" formControlName="day" required>
+          <mat-option [value]="i + 1" *ngFor="let day of days; let i = index"
+            >{{ i + 1 }}日</mat-option
+          >
+        </mat-select>
+        <mat-error *ngIf="dayControl.hasError('required')"
+          >必須入力です</mat-error
+        >
+      </mat-form-field>
+    </div>
+
+    <div class="profile-form__field">
+      <mat-label>性別：</mat-label>
+      <mat-radio-group formControlName="gender" required>
+        <mat-radio-button value="男性">男性</mat-radio-button>
+        <mat-radio-button value="女性">女性</mat-radio-button>
+      </mat-radio-group>
+    </div>
+
+    <div>
+      <mat-form-field class="profile-form__field">
+        <input
+          matInput
+          placeholder="Email"
+          formControlName="email"
+          required
+          autocomplete="email"
+        />
+        <mat-error *ngIf="emailControl.hasError('required')"
+          >必須入力です</mat-error
+        >
+        <mat-error *ngIf="emailControl.hasError('email')"
+          >メールアドレス形式ではありません。</mat-error
+        >
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field class="profile-form__field">
+        <input
+          type="tel"
+          matInput
+          placeholder="電話番号"
+          formControlName="tel"
+          required
+          autocomplete="tel"
+        />
+        <mat-error *ngIf="telControl.hasError('required')"
+          >必須入力です</mat-error
+        >
+        <mat-error *ngIf="telControl.hasError('pattern')"
+          >数字でハイフンなしでお願いします</mat-error
+        >
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field class="profile-form__field">
+        <textarea
+          matInput
+          placeholder="自己紹介"
+          formControlName="introduce"
+        ></textarea>
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field class="profile-form__field">
+        <mat-select placeholder="学校区分" formControlName="school" required>
+          <mat-option [value]="school" *ngFor="let school of schools">{{
+            school
+          }}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="schoolControl.hasError('required')"
+          >選択してください</mat-error
+        >
+      </mat-form-field>
+
+      <mat-form-field class="profile-form__field">
+        <input
+          matInput
+          placeholder="〇〇大学〇〇学部"
+          formControlName="belongs"
+          required
+        />
+        <mat-error *ngIf="addressControl.hasError('required')"
+          >必須入力です</mat-error
+        >
+      </mat-form-field>
+
+      <mat-form-field class="profile-form__field">
+        <mat-select
+          placeholder="卒業/在学/中退"
+          formControlName="state"
+          required
+        >
+          <mat-option
+            [value]="state"
+            *ngFor="let state of states; let i = index"
+            >{{ state }}</mat-option
+          >
+        </mat-select>
+        <mat-error *ngIf="stateControl.hasError('required')"
+          >選択してください</mat-error
+        >
+      </mat-form-field>
+    </div>
+
+    <div class="profile-form__field">
+      <mat-form-field class="profile-form__field">
+        <input matInput placeholder="資格１" formControlName="tagOne" />
+      </mat-form-field>
+
+      <mat-form-field class="profile-form__field">
+        <input matInput placeholder="資格２" formControlName="tagSecond" />
+      </mat-form-field>
+    </div>
+
+    <div class="profile-form__field">
+      <mat-form-field class="profile-form__field">
+        <textarea
+          matInput
+          placeholder="勤務可能な日時"
+          formControlName="possibleDay"
+          required
+        ></textarea>
+        <mat-error *ngIf="possibleDayControl.hasError('required')"
+          >必須入力です</mat-error
+        >
+      </mat-form-field>
+    </div>
+    <div>
+      <button
+        class="profile-form__btn"
+        [disabled]="form.invalid || form.pristine"
+        mat-raised-button
+        color="primary"
       >
-    </mat-form-field>
-  </div>
-
-  <div class="profile-form__field">
-    <mat-form-field class="profile-form__field">
-      <input matInput placeholder="資格１" formControlName="tagOne" />
-    </mat-form-field>
-
-    <mat-form-field class="profile-form__field">
-      <input matInput placeholder="資格２" formControlName="tagSecond" />
-    </mat-form-field>
-  </div>
-
-  <div class="profile-form__field">
-    <mat-form-field class="profile-form__field">
-      <textarea
-        matInput
-        placeholder="勤務可能な日時"
-        formControlName="possibleDay"
-        required
-      ></textarea>
-      <mat-error *ngIf="possibleDayControl.hasError('required')"
-        >必須入力です</mat-error
-      >
-    </mat-form-field>
-  </div>
-  <div>
-    <button
-      class="profile-form__btn"
-      [disabled]="form.invalid || form.pristine"
-      mat-raised-button
-      color="primary"
-    >
-      プロフィール登録
-    </button>
-  </div>
-</form>
+        プロフィール登録
+      </button>
+    </div>
+  </form>
+</mat-card>

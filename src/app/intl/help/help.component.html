@@ -1,0 +1,36 @@
+<div class="help">
+  <h1>ヘルプ</h1>
+  <mat-accordion>
+    <h2>サービス関連</h2>
+    <div class="help__filed">
+      <mat-expansion-panel *ngFor="let help of helps">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            {{ help.title }}
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-panel-description>
+          {{ help.description }}
+        </mat-panel-description>
+      </mat-expansion-panel>
+    </div>
+  </mat-accordion>
+  <div class="help__cantact">
+    <h3>お問い合わせ</h3>
+    <mat-card>
+      <p>
+        当サービスの不備、ご要望などありましたら運営スタッフまでご連絡ください。
+      </p>
+      <a
+        href="mailto:m.masa6262@gmail.com?subject=問い合わせ&amp;body=ご記入ください"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <button mat-flat-button color="primary">
+          <mat-icon>mail</mat-icon>
+          メールを送信する
+        </button>
+      </a>
+    </mat-card>
+  </div>
+</div>

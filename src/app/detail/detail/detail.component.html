@@ -5,8 +5,8 @@
         <div>
           <p class="detail__title-text-weight">{{ job.title }}</p>
           <ul class="detail__taglist">
-            <li>
-              <a href="">{{ job.label }}</a>
+            <li *ngIf="job.label">
+              {{ job.label }}
             </li>
           </ul>
         </div>
@@ -44,7 +44,7 @@
         <dd>{{ job.occupation }}</dd>
 
         <dt>給与</dt>
-        <dd>{{ job.salary }}円</dd>
+        <dd>{{ job.salary | number }}円</dd>
 
         <dt>福利厚生</dt>
         <dd>{{ job.welfare }}</dd>

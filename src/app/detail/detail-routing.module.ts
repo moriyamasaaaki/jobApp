@@ -9,7 +9,10 @@ const routes: Routes = [
   },
   {
     path: ':id',
-    component: DetailComponent
+    component: DetailComponent,
+    data: {
+      title: ''
+    }
   }
 ];
 

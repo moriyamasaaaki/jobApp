@@ -55,17 +55,19 @@ export class PlanComponent implements OnInit {
 
   openDeleteDialog() {
     this.dialog
-      .open(DeleteDialogComponent)
+      .open(DeleteDialogComponent, {
+        data: {
+          title: '退会しますか？？',
+          content:
+            '退会すると全てのデータが削除され、復元することはできません。',
+          btnText: '退会する'
+        }
+      })
       .afterClosed()
       .subscribe(status => {
         if (status) {
-          console.log(this.authService.uid);
-          this.userProfileService.deleteProfile(this.authService.uid);
-          this.companyProfileSurvice.deleteCompanyUser(this.authService.uid);
+          this.authService.withdrawUser();
         }
-        this.snackbar.open('ご利用ありがとうございました。', null, {
-          duration: 3000
-        });
       });
   }
 }

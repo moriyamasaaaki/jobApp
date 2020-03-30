@@ -7,7 +7,7 @@ service cloud.firestore {
       allow update: if request.auth.uid == resource.data.userId && resource.data.userId == request.resource.data.userId;
       allow delete: if request.auth.uid == resource.data.userId;
     }
-    match /companyProfile/{userId} {
+    match /companyProfile/{companyUserId} {
       allow read: if true;
       allow create: if request.auth.uid != null;
       allow update: if request.auth.uid == resource.data.companyUserId && resource.data.companyUserId == request.resource.data.companyUserId;

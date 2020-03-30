@@ -4,7 +4,7 @@
     <div
       class="job-card__box"
       *ngFor="let job of jobs"
-      routerLink="/detail/{{ job.id }}"
+      routerLink="/job/detail/{{ job.id }}"
     >
       <div class="job-card__title">
         <span>{{ job.companyName }}</span>

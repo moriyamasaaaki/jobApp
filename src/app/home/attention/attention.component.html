@@ -12,13 +12,25 @@
           <img src="assets/unnamed.png" class="job-box__thumbnail" alt="" />
         </ng-template>
         <div class="job-box__content">
+          <div class="job-box__category">Attention</div>
           <p class="job-box__title">
             {{ job.title }}
           </p>
-          <ul>
-            <li>{{ job.workPlace }}</li>
-            <li>{{ job.salary | number }}円</li>
+          <p class="job-box__sub-title">{{ job.companyName }}</p>
+          <p class="job-box__description">{{ job.companyContent }}</p>
+          <ul class="job-box__content-body">
+            <li>
+              <i class="material-icons">location_on</i>
+              {{ job.workPlace }}
+            </li>
+            <li><i class="fas fa-yen-sign"></i> {{ job.salary | number }}円</li>
           </ul>
+          <span class="job-box__content-foot">
+            <i class="material-icons">
+              schedule
+            </i>
+            {{ job.createdAt.toDate() | date: 'yyy/MM/dd' }}
+          </span>
         </div>
       </a>
     </div>

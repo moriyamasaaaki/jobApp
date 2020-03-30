@@ -84,20 +84,10 @@
   }
 }
 
-.search-button-row {
-  text-align: center;
-  margin: 96px 0 0 auto;
-  @include pc {
-    width: 80%;
-  }
+.header-auth {
   button {
-    padding: 8px;
+    padding: 0 8px;
     margin: 8px;
-    @include pc {
-      &:hover {
-        opacity: 0.7;
-      }
-    }
   }
 }
 

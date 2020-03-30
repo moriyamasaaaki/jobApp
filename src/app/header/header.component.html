@@ -61,6 +61,17 @@
           </button>
         </mat-menu>
       </div>
+      <ng-container *ngIf="!(user$ | async) && searchNone()">
+        <div class="header-auth">
+          <button (click)="loginUser()" mat-raised-button color="basic">
+            <span>ログイン</span>
+            <i class="material-icons">person</i>
+          </button>
+          <button (click)="loginCompany()" mat-raised-button color="accent">
+            企業方はこちら
+          </button>
+        </div>
+      </ng-container>
     </nav>
   </mat-toolbar>
 </header>
@@ -75,17 +86,5 @@
       </ais-instantsearch>
     </div>
     <div [class.displays]="display" (click)="notSearch()"></div>
-  </ng-container>
-  <ng-container *ngIf="!(user$ | async) && searchNone()">
-    <div class="search-button-row">
-      <button (click)="loginUser()" mat-raised-button color="primary">
-        <span>ユーザーログイン</span>
-        <i class="material-icons">person</i>
-      </button>
-      <button (click)="loginCompany()" mat-raised-button color="accent">
-        <span>企業ログイン</span>
-        <i class="material-icons">business</i>
-      </button>
-    </div>
   </ng-container>
 </div>

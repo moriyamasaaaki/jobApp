@@ -82,11 +82,27 @@
       font-size: 16px;
     }
   }
+  &__out {
+    span {
+      display: inline-block;
+    }
+    ul {
+      margin: 0 0 40px;
+      line-height: 1.5;
+      text-align: left;
+      @include tab {
+        text-align: center;
+      }
+    }
+    li {
+      margin-bottom: 8px;
+    }
+  }
 }
 
 button {
   display: block;
-  margin: 16px auto;
+  margin: 24px auto 32px;
   @include pc {
     padding: 8px 24px;
     margin: 32px auto;

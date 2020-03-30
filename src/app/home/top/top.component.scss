@@ -15,12 +15,8 @@
     justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid #d8d9db;
-    margin-bottom: 48px;
-    padding-bottom: 8px;
-  }
-  button {
-    display: block;
-    padding: 8px 16px;
+    margin-bottom: 16px;
+    padding-bottom: 16px;
   }
 }
 
@@ -32,7 +28,8 @@
 }
 
 .hdg {
-  font-weight: 500;
+  font-weight: 700;
+  font-size: 24px;
 }
 
 .new {

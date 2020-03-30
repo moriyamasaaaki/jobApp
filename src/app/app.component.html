@@ -1,7 +1,8 @@
 <div class="container">
   <app-header></app-header>
+  <app-search *ngIf="searchNone()"></app-search>
   <mat-drawer-container class="example-container">
-    <mat-drawer mode="side" opened>
+    <mat-drawer mode="side" opened *ngIf="!searchNone()">
       <mat-nav-list>
         <mat-list-item routerLink="/">
           ホーム
@@ -34,7 +35,6 @@
     </mat-drawer>
     <mat-drawer-content>
       <main class="content">
-        <app-search *ngIf="searchNone()"></app-search>
         <router-outlet></router-outlet>
       </main>
     </mat-drawer-content>

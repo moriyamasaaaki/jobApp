@@ -103,17 +103,27 @@ export class DetailComponent implements OnInit {
   }
 
   openDeleteDialog() {
-    this.dialog
-      .open(DeleteDialogComponent)
-      .afterClosed()
-      .subscribe(status => {
-        if (status) {
-          this.route.paramMap.subscribe(params => {
-            this.jobPostService.deleteJob(params.get('id'));
+    this.route.paramMap.subscribe(params => {
+      this.jobPostService.getJobPost(params.get('id')).subscribe(job => {
+        this.dialog
+          .open(DeleteDialogComponent, {
+            data: {
+              title: `${job.title}を削除しますか？？`,
+              content: '削除すると復元することはできません。',
+              btnText: '削除する'
+            }
+          })
+          .afterClosed()
+          .subscribe(status => {
+            if (status) {
+              this.route.paramMap.subscribe(params => {
+                this.jobPostService.deleteJob(params.get('id'));
+              });
+              this.router.navigateByUrl('/');
+            }
           });
-          this.router.navigateByUrl('/');
-        }
       });
+    });
   }
 
   getlikes() {

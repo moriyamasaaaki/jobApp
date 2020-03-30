@@ -95,5 +95,6 @@ export const deleteCustomer = functions.auth.user().onDelete(async user => {
   // コレクションから顧客を取得
   const customer: any = (await db.doc(`customers/${user.uid}`).get()).data();
   // 顧客IDを使って顧客を削除
-  return stripe.customers.del(customer.customerId);
+  stripe.customers.del(customer.customerId);
+  return db.doc(`customers/${user.uid}`).delete();
 });

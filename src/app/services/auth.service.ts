@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Status } from '../interfaces/status';
+import { error, log } from 'util';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +20,8 @@ export class AuthService {
     private afAuth: AngularFireAuth,
     private router: Router,
     private snackBar: MatSnackBar,
-    private db: AngularFirestore
+    private db: AngularFirestore,
+    private snackbar: MatSnackBar
   ) {
     this.afUser$.subscribe(user => {
       this.uid = user && user.uid;
@@ -93,5 +95,26 @@ export class AuthService {
 
   getLoginCompany(uid: string): Observable<Status> {
     return this.db.doc<Status>(`companys/${uid}`).valueChanges();
+  }
+
+  withdrawUser() {
+    return this.afAuth.auth.currentUser
+      .delete()
+      .then(() => {
+        this.router.navigateByUrl('/');
+        this.snackbar.open('ご利用ありがとうございました。', null, {
+          duration: 3000
+        });
+      })
+      .catch(error => {
+        this.snackbar.open(
+          '退会処理に失敗しました。もう一度行なって下さい。',
+          null,
+          {
+            duration: 3000
+          }
+        );
+        console.log(error);
+      });
   }
 }

@@ -1,8 +1,10 @@
 <div class="delete-dialog">
-  <h2 matDialogTitle>削除しますか？</h2>
-  <p>削除すると元には戻せません。</p>
+  <h2 matDialogTitle>{{ data.title }}</h2>
+  <p>{{ data.content }}</p>
   <div mat-dialog-actions>
     <button mat-flat-button matDialogClose>キャンセル</button>
-    <button mat-flat-button color="warn" [matDialogClose]="true">削除</button>
+    <button mat-flat-button color="warn" [matDialogClose]="true">
+      {{ data.btnText }}
+    </button>
   </div>
 </div>

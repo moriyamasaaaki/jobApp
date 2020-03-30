@@ -1,11 +1,7 @@
 @import 'mixins';
 
-.top__page {
+.top-page {
   padding: 16px 16px 0;
-}
-
-.attention,
-.new {
   @include pc {
     max-width: 1200px;
     margin: 0 auto;
@@ -18,22 +14,15 @@
     margin-bottom: 16px;
     padding-bottom: 16px;
   }
-}
-
-.attention {
-  margin-bottom: 48px;
-  @include pc {
-    margin: 0 auto 64px;
+  &__content {
+    @include pc {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
   }
 }
 
 .hdg {
   font-weight: 700;
   font-size: 24px;
-}
-
-.new {
-  @include pc {
-    margin-bottom: 56px;
-  }
 }

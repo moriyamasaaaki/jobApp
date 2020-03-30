@@ -1,7 +1,7 @@
 @import '~@angular/material/theming';
 
 .job-box {
-  margin-bottom: 16px;
+  margin-bottom: 40px;
   width: 100%;
   @include tab {
     display: grid;
@@ -9,7 +9,7 @@
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   }
   @include pc {
-    margin: 0 auto 32px;
+    margin: 0 auto 80px;
   }
   &__card {
     @include mat-elevation(3);

@@ -3,3 +3,4 @@ export * from './jobPost.function';
 export * from './stripe.function';
 export * from './sendEmail';
 export * from './userDelete.function';
+export * from './widhdrawEmail.function';

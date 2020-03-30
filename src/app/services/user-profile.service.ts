@@ -34,7 +34,7 @@ export class UserProfileService {
         if (avatarImage) {
           this.updateAvatar(userId, avatarImage);
         }
-        this.router.navigateByUrl('/mypage');
+        this.router.navigateByUrl('/user/mypage');
       })
       .catch(error => {
         this.snackBar.open(

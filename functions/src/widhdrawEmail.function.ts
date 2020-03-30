@@ -70,7 +70,9 @@ export const widhdrawCompanySendEmail = functions
                 },
                 templateId: 'd-5c9ad11acc93460aaf6f44d72b1a3b2e',
                 dynamicTemplateData: {
-                  name: company.name
+                  name: company.name,
+                  lastName: company.lastName,
+                  firstName: company.firstName
                 }
               };
               console.log(sgMail);

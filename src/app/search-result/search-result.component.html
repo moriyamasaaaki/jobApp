@@ -8,7 +8,7 @@
       <ng-template let-hits="hits" let-results="results">
         <!-- ヒット件数 -->
         <ng-container *ngIf="hits.length === 0; else result">
-          検索結果「{{ results.query }}」は見つかりませんでした。
+          条件に一致する求人は見つかりませんでした。
         </ng-container>
         <ng-template #result>
           <ais-stats>

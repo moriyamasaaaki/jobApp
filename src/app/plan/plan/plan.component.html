@@ -63,5 +63,16 @@
         </ol>
       </div>
     </mat-tab>
+    <mat-tab label="退会">
+      <div class="plan__out">
+        <button mat-raised-button color="warn" (click)="openDeleteDialog()">
+          退会する
+        </button>
+        <ul>
+          <li>退会すると利用データが完全に削除され、復元できません。</li>
+          <li>退会するとすべての定期購入が停止します。</li>
+        </ul>
+      </div>
+    </mat-tab>
   </mat-tab-group>
 </section>

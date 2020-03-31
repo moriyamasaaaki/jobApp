@@ -2,6 +2,9 @@
 
 .top__page {
   padding: 16px 16px 0;
+  @include pc {
+    padding: 16px 24px 0;
+  }
 }
 
 .attention,

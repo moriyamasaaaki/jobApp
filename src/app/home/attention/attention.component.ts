@@ -15,8 +15,25 @@ export class AttentionComponent implements OnInit {
     navigation: true,
     pagination: true,
     centeredSlides: true,
-    speed: 500,
-    slidesPerView: 4
+    speed: 600,
+    autoplay: {
+      delay: 4000,
+      disableOnInteraction: true
+    },
+    breakpoints: {
+      5000: {
+        slidesPerView: 4
+      },
+      1439: {
+        slidesPerView: 3
+      },
+      1023: {
+        slidesPerView: 2
+      },
+      767: {
+        slidesPerView: 1
+      }
+    }
   };
   selectedJobId = 0;
   jobs$: Observable<DetailJob[]> = this.jobPostService.getAttentionJobs();

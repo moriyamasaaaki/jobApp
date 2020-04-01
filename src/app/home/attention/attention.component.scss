@@ -5,9 +5,7 @@
   margin-bottom: 16px;
   width: 100%;
   @include tab {
-    display: grid;
-    gap: 16px;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    display: block;
   }
   @include pc {
     margin: 0 auto 32px;

@@ -27,7 +27,7 @@ export class AppComponent implements OnInit {
     private authService: AuthService,
     private drawerService: DrawerService
   ) {
-    this.drawerService.close();
+    // this.drawerService.close();
   }
 
   ngOnInit() {

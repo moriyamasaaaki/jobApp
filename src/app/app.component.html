@@ -2,7 +2,7 @@
   <app-header></app-header>
   <app-search *ngIf="searchNone()"></app-search>
   <mat-drawer-container class="example-container">
-    <mat-drawer #sidenav mode="side" [opened]="opened" *ngIf="!searchNone()">
+    <mat-drawer #sidenav mode="side" [opened]="opened">
       <mat-nav-list>
         <mat-list-item routerLink="/">
           ホーム

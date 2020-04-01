@@ -66,6 +66,8 @@
     }
   }
   &__title {
+    display: flex;
+    align-items: center;
     text-align: center;
     cursor: pointer;
     outline: none;
@@ -74,6 +76,9 @@
     span {
       font-size: 12px;
       font-family: Arial, sans-serif;
+    }
+    button {
+      margin-right: 16px;
     }
   }
 }

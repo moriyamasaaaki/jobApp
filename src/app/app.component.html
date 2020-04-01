@@ -2,7 +2,7 @@
   <app-header></app-header>
   <app-search *ngIf="searchNone()"></app-search>
   <mat-drawer-container class="example-container">
-    <mat-drawer mode="side" opened *ngIf="!searchNone()">
+    <mat-drawer #sidenav mode="side" [opened]="opened" *ngIf="!searchNone()">
       <mat-nav-list>
         <mat-list-item routerLink="/">
           ホーム
@@ -34,6 +34,9 @@
       </p>
     </mat-drawer>
     <mat-drawer-content>
+      <button mat-icon-button (click)="sidenav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
       <main class="content">
         <router-outlet></router-outlet>
       </main>

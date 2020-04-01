@@ -3,6 +3,7 @@ import { Title, Meta } from '@angular/platform-browser';
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 import { filter, map } from 'rxjs/operators';
 import { AuthService } from './services/auth.service';
+import { DrawerService } from './services/drawer.service';
 
 @Component({
   selector: 'app-root',
@@ -16,14 +17,18 @@ export class AppComponent implements OnInit {
   companyLoginStatus: boolean;
   user$ = this.authService.afUser$;
   display: boolean;
+  opened: boolean;
 
   constructor(
     private titleService: Title,
     private metaService: Meta,
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private authService: AuthService
-  ) {}
+    private authService: AuthService,
+    private drawerService: DrawerService
+  ) {
+    this.drawerService.close();
+  }
 
   ngOnInit() {
     this.getSetTitle();

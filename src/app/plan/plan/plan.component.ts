@@ -8,6 +8,7 @@ import { DeleteDialogComponent } from 'src/app/delete-dialog/delete-dialog.compo
 import { UserProfileService } from 'src/app/services/user-profile.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { CompanyProfileService } from 'src/app/services/company-profile.service';
+import { DrawerService } from 'src/app/services/drawer.service';
 
 @Component({
   selector: 'app-plan',
@@ -40,8 +41,11 @@ export class PlanComponent implements OnInit {
     private authService: AuthService,
     private userProfileService: UserProfileService,
     private companyProfileSurvice: CompanyProfileService,
-    private snackbar: MatSnackBar
-  ) {}
+    private snackbar: MatSnackBar,
+    private drawerService: DrawerService
+  ) {
+    this.drawerService.open();
+  }
 
   ngOnInit() {}
 

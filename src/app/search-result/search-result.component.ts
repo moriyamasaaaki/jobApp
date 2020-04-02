@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { searchClient } from '../../environments/environment';
+import { DrawerService } from '../services/drawer.service';
 
 @Component({
   selector: 'app-search-result',
@@ -17,7 +18,11 @@ export class SearchResultComponent implements OnInit {
     searchClient
   };
 
-  constructor(private route: ActivatedRoute) {
+  constructor(
+    private route: ActivatedRoute,
+    private drawerService: DrawerService
+  ) {
+    this.drawerService.open();
     this.route.queryParamMap.subscribe(map => {
       this.resultParams.query = map.get('workPlace');
     });

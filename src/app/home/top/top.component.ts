@@ -8,7 +8,7 @@ import { DrawerService } from 'src/app/services/drawer.service';
 })
 export class TopComponent implements OnInit {
   constructor(private drawerService: DrawerService) {
-    // this.drawerService.close();
+    this.drawerService.close();
   }
   ngOnInit() {}
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DrawerService } from 'src/app/services/drawer.service';
 
 @Component({
   selector: 'app-terms',
@@ -6,7 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./terms.component.scss']
 })
 export class TermsComponent implements OnInit {
-  constructor() {}
+  constructor(private drawerService: DrawerService) {
+    this.drawerService.open();
+  }
 
   ngOnInit() {}
 }

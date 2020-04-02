@@ -10,6 +10,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { LikedService } from 'src/app/services/liked.service';
 import { take } from 'rxjs/operators';
 import { Title, Meta } from '@angular/platform-browser';
+import { DrawerService } from 'src/app/services/drawer.service';
 
 @Component({
   selector: 'app-detail',
@@ -35,8 +36,10 @@ export class DetailComponent implements OnInit {
     private likedService: LikedService,
     private titleService: Title,
     private metaService: Meta,
-    private router: Router
+    private router: Router,
+    private drawerService: DrawerService
   ) {
+    this.drawerService.open();
     route.paramMap.subscribe(params => {
       this.jobs$ = this.jobPostService.getJobPost(params.get('id'));
     });

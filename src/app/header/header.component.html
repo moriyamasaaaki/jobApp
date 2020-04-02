@@ -1,7 +1,10 @@
 <header>
-  <mat-toolbar class="header">
-    <div class="header__title" routerLink="/">
-      <img src="assets/logo.png" alt="" />
+  <mat-toolbar class="header" color="primary">
+    <div class="header__title">
+      <button mat-icon-button (click)="sidenav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+        <img src="assets/logo.png" alt="" routerLink="/" />
     </div>
     <nav class="header__nav">
       <div class="header__nav-item">

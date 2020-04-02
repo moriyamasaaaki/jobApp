@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DrawerService } from 'src/app/services/drawer.service';
 
 @Component({
   selector: 'app-privacy',
@@ -6,7 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./privacy.component.scss']
 })
 export class PrivacyComponent implements OnInit {
-  constructor() {}
+  constructor(private drawerService: DrawerService) {
+    this.drawerService.open();
+  }
 
   ngOnInit() {}
 }

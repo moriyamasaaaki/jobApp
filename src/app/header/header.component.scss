@@ -78,7 +78,9 @@
       font-family: Arial, sans-serif;
     }
     button {
-      margin-right: 16px;
+      @include pc {
+        margin-right: 16px;
+      }
     }
   }
 }

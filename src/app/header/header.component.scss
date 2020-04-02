@@ -2,6 +2,7 @@
 @import '~@angular/material/theming';
 
 .header {
+  color: #333333;
   background-color: #fff;
   display: flex;
   justify-content: space-between;
@@ -15,10 +16,6 @@
   @include mat-elevation(1);
   @include pc {
     padding: 0 32px;
-  }
-  a {
-    color: #fff;
-    text-decoration: none;
   }
   p {
     font-size: 24px;
@@ -42,7 +39,6 @@
       align-items: center;
     }
     button {
-      color: #fff;
     }
   }
   &__nav-item {
@@ -57,7 +53,6 @@
       span {
         display: inline-flex;
         vertical-align: middle;
-        color: #fff;
       }
     }
     img {
@@ -78,6 +73,7 @@
     text-align: center;
     line-height: 1;
     img {
+      outline: none;
       cursor: pointer;
       width: 130px;
       @include pc {

@@ -18,6 +18,7 @@ export class AppComponent implements OnInit {
   user$ = this.authService.afUser$;
   display: boolean;
   opened: boolean;
+  sidenavMode: string;
 
   constructor(
     private titleService: Title,
@@ -27,7 +28,7 @@ export class AppComponent implements OnInit {
     private authService: AuthService,
     private drawerService: DrawerService
   ) {
-    // this.drawerService.close();
+    this.drawerService.isOpen$.subscribe(opened => (this.opened = opened));
   }
 
   ngOnInit() {
@@ -36,6 +37,7 @@ export class AppComponent implements OnInit {
       name: 'description',
       content: 'Article Description'
     });
+    this.handleResizeWindow(window.innerWidth);
   }
 
   getSetTitle() {
@@ -112,5 +114,13 @@ export class AppComponent implements OnInit {
   }
   searchNone() {
     return this.router.url === '/';
+  }
+
+  private handleResizeWindow(width: number) {
+    if (768 < width) {
+      this.sidenavMode = 'side';
+    } else {
+      this.sidenavMode = 'over';
+    }
   }
 }

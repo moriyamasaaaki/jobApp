@@ -5,14 +5,10 @@ import { ReplaySubject, Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class DrawerService {
-  //追記
-  isOpenSource = new ReplaySubject(1);
-  // isOpen$: ReplaySubject<boolean(1)>;
-  //  = this.isOpenSource.asObservable();
+  isOpenSource = new ReplaySubject<boolean>(1);
+  isOpen$: Observable<boolean> = this.isOpenSource.asObservable();
 
-  constructor() {
-    this.isOpenSource.asObservable();
-  }
+  constructor() {}
 
   open() {
     this.isOpenSource.next(true);

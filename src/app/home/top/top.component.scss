@@ -1,71 +1,28 @@
 @import 'mixins';
 
-.top__page {
+.top-page {
   padding: 16px 16px 0;
-}
-
-.attention,
-.new {
   @include pc {
     max-width: 1200px;
     margin: 0 auto;
   }
-}
-
-.attention {
-  margin-bottom: 48px;
-  @include pc {
-    margin: 0 auto 64px;
+  &__head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #d8d9db;
+    margin-bottom: 16px;
+    padding-bottom: 16px;
   }
-  a {
-    display: block;
-    font-size: 13px;
-    margin-bottom: 8px;
-    color: #0860c0;
-    text-decoration: underline;
-    text-align: right;
-    &:hover {
-      opacity: 0.7;
+  &__content {
+    @include pc {
+      max-width: 1200px;
+      margin: 0 auto;
     }
   }
 }
 
 .hdg {
-  font-size: 18px;
-  text-align: center;
-  margin-bottom: 32px;
-  position: relative;
-  display: block;
-  font-weight: 500;
-  &:before {
-    content: '';
-    text-align: center;
-    position: absolute;
-    bottom: -15px;
-    display: inline-block;
-    width: 60px;
-    height: 5px;
-    left: 50%;
-    right: 50%;
-    -webkit-transform: translateX(-50%);
-    transform: translateX(-50%);
-    background-color: #0d47a1;
-    border-radius: 2px;
-  }
-  @include pc {
-    font-size: 24px;
-    margin-bottom: 56px;
-  }
-}
-
-.hdg-pc {
-  @include pc {
-    padding-top: 16px;
-  }
-}
-
-button {
-  display: block;
-  margin: 0 auto;
-  padding: 8px 16px;
+  font-weight: 700;
+  font-size: 24px;
 }

@@ -1,13 +1,18 @@
-<article class="top__page">
-  <section class="attention">
-    <h1>注目の求人</h1>
+<article class="top-page">
+  <section class="top-page__content">
+    <div class="top-page__head">
+      <h2 class="hdg">注目の求人</h2>
+      <button routerLink="/job-list" mat-button color="warn">
+        求人一覧へ
+      </button>
+    </div>
     <app-attention></app-attention>
-    <button routerLink="/job/list" mat-stroked-button color="primary">
-      求人一覧へ >>
-    </button>
-  </section>
-  <section class="new">
-    <h2 class="hdg hdg-pc">新着の求人</h2>
+    <div class="top-page__head">
+      <h2 class="hdg">新着の求人</h2>
+      <button routerLink="/job-list" mat-button color="warn">
+        求人一覧へ
+      </button>
+    </div>
     <app-new></app-new>
   </section>
 </article>

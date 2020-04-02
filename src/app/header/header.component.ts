@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { searchClient } from '../../environments/environment';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -14,6 +14,8 @@ export class HeaderComponent implements OnInit {
   companyLoginStatus: boolean;
   user$ = this.authService.afUser$;
   display: boolean;
+
+  @Output() addOops: EventEmitter<string> = new EventEmitter();
 
   inputParams = {
     hitsPerPage: 10,

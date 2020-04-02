@@ -1,7 +1,7 @@
 <section class="job-box">
   <ng-container *ngIf="jobs$ | async as jobs; else default">
     <div class="job-box__card" *ngFor="let job of jobs">
-      <a routerLink="/detail/{{ job.id }}">
+      <a routerLink="/job/detail/{{ job.id }}">
         <ng-container *ngIf="job.jobImageUrls; else defaultImg">
           <figure
             class="job-box__thumbnail"

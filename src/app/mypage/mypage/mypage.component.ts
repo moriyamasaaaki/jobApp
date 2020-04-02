@@ -5,6 +5,7 @@ import { UserProfileService } from 'src/app/services/user-profile.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { Observable } from 'rxjs';
 import { UserProfile } from 'src/app/interfaces/profile';
+import { DrawerService } from 'src/app/services/drawer.service';
 
 @Component({
   selector: 'app-mypage',
@@ -19,8 +20,11 @@ export class MypageComponent implements OnInit {
   constructor(
     private dialog: MatDialog,
     private userProfileService: UserProfileService,
-    private authService: AuthService
-  ) {}
+    private authService: AuthService,
+    private drawerService: DrawerService
+  ) {
+    this.drawerService.open();
+  }
 
   openDeleteDialog() {
     this.dialog

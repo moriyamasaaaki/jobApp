@@ -1,10 +1,10 @@
 <header>
   <mat-toolbar class="header" color="primary">
-    <div class="header__title" routerLink="/">
-      <p>
-        Proxy Works
-      </p>
-      <span>-代行サービスの求人-</span>
+    <div class="header__title">
+      <button mat-icon-button (click)="sidenav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <img src="assets/logo.png" alt="" routerLink="/" />
     </div>
     <nav class="header__nav">
       <div class="header__nav-item">
@@ -17,7 +17,7 @@
           <mat-icon>search</mat-icon>
         </button>
         <button
-          routerLink="/recruitment"
+          routerLink="/company/recruitment"
           mat-icon-button
           matTooltip="求人作成する"
           *ngIf="companyLoginStatus"
@@ -36,24 +36,24 @@
             <mat-icon>input</mat-icon>
             <span>ログアウト</span>
           </button>
-          <button mat-menu-item routerLink="/keep" *ngIf="userLoginStatus">
+          <button mat-menu-item routerLink="/user/keep" *ngIf="userLoginStatus">
             <mat-icon>star</mat-icon>
             <span>お気に入り一覧</span>
           </button>
           <ng-container *ngIf="userLoginStatus">
-            <button mat-menu-item routerLink="/mypage">
+            <button mat-menu-item routerLink="/user/mypage">
               <mat-icon>person</mat-icon>
               <span>プロフィール</span>
             </button>
           </ng-container>
           <ng-container *ngIf="companyLoginStatus">
-            <button mat-menu-item routerLink="/companyProfile">
+            <button mat-menu-item routerLink="/company/profile">
               <mat-icon>person</mat-icon>
               <span>プロフィール</span>
             </button>
           </ng-container>
           <ng-container *ngIf="companyLoginStatus">
-            <button mat-menu-item routerLink="/companyjoblist">
+            <button mat-menu-item routerLink="/company/job/list">
               <mat-icon>event_note</mat-icon>
               <span>自社求人一覧</span>
             </button>

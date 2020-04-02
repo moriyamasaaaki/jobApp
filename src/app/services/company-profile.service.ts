@@ -38,7 +38,7 @@ export class CompanyProfileService {
         this.snackBar.open('企業側にプロフィールを登録しました。', null, {
           duration: 3000
         });
-        this.router.navigateByUrl('/companyProfile');
+        this.router.navigateByUrl('/company/profile');
       })
       .catch(error => {
         this.snackBar.open(

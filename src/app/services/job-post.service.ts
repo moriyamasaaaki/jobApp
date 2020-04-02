@@ -29,7 +29,7 @@ export class JobPostService {
         if (images) {
           this.uploadImages(images, id);
         }
-        this.router.navigateByUrl(`/detail/${id}`);
+        this.router.navigateByUrl(`/job/detail/${id}`);
       })
       .catch(error => {
         this.snackBar.open(`${error},求人を更新できませんでした`, null, {
@@ -69,7 +69,7 @@ export class JobPostService {
         if (images) {
           this.uploadImages(images, id);
         }
-        this.router.navigateByUrl(`/detail/${id}`);
+        this.router.navigateByUrl(`/job/detail/${id}`);
       })
       .catch(error => {
         this.snackBar.open(`${error},求人を作成できませんでした`, null, {

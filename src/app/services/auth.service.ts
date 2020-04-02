@@ -41,7 +41,7 @@ export class AuthService {
         this.snackBar.open('ようこそTokyo biteへ!', null, {
           duration: 2000
         });
-        this.router.navigateByUrl('/mypage');
+        this.router.navigateByUrl('/user/mypage');
       })
       .catch(error => {
         this.snackBar.open(`${error},ログインに失敗しました。`, null, {
@@ -80,7 +80,7 @@ export class AuthService {
         this.snackBar.open('企業側としてログインしました。', null, {
           duration: 2000
         });
-        this.router.navigateByUrl('/companyProfile');
+        this.router.navigateByUrl('/company/profile');
       })
       .catch(error => {
         this.snackBar.open(`${error},ログインに失敗しました。`, null, {

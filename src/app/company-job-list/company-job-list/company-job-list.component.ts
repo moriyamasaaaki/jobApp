@@ -3,6 +3,7 @@ import { JobPostService } from 'src/app/services/job-post.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { Observable } from 'rxjs';
 import { DetailJob } from 'src/app/interfaces/article';
+import { DrawerService } from 'src/app/services/drawer.service';
 
 @Component({
   selector: 'app-company-job-list',
@@ -16,8 +17,11 @@ export class CompanyJobListComponent implements OnInit {
 
   constructor(
     private jobPostService: JobPostService,
-    private authService: AuthService
-  ) {}
+    private authService: AuthService,
+    private drawerService: DrawerService
+  ) {
+    this.drawerService.open();
+  }
 
   ngOnInit() {}
 }

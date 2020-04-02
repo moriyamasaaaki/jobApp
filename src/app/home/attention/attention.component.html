@@ -1,39 +1,56 @@
 <section class="job-box">
   <ng-container *ngIf="jobs$ | async as jobs; else default">
-    <div class="job-box__card" *ngFor="let job of jobs">
-      <a routerLink="/job/detail/{{ job.id }}">
-        <ng-container *ngIf="job.jobImageUrls; else defaultImg">
-          <figure
-            class="job-box__thumbnail"
-            [style.background-image]="'url(' + job.jobImageUrls[0] + ')'"
-          ></figure>
-        </ng-container>
-        <ng-template #defaultImg>
-          <img src="assets/unnamed.png" class="job-box__thumbnail" alt="" />
-        </ng-template>
-        <div class="job-box__content">
-          <div class="job-box__category">Attention</div>
-          <p class="job-box__title">
-            {{ job.title }}
-          </p>
-          <p class="job-box__sub-title">{{ job.companyName }}</p>
-          <p class="job-box__description">{{ job.companyContent }}</p>
-          <ul class="job-box__content-body">
-            <li>
-              <i class="material-icons">location_on</i>
-              {{ job.workPlace }}
-            </li>
-            <li><i class="fas fa-yen-sign"></i> {{ job.salary | number }}円</li>
-          </ul>
-          <span class="job-box__content-foot">
-            <i class="material-icons">
-              schedule
-            </i>
-            {{ job.createdAt.toDate() | date: 'yyy/MM/dd' }}
-          </span>
-        </div>
-      </a>
-    </div>
+    <swiper [config]="config" [(index)]="selectedJobId">
+      <div class="job-box__card" *ngFor="let job of jobs">
+        <a routerLink="/detail/{{ job.id }}">
+          <ng-container *ngIf="job.jobImageUrls; else defaultImg">
+            <figure
+              class="job-box__thumbnail"
+              [style.background-image]="'url(' + job.jobImageUrls[0] + ')'"
+            ></figure>
+          </ng-container>
+          <ng-template #defaultImg>
+            <img src="assets/unnamed.png" class="job-box__thumbnail" alt="" />
+          </ng-template>
+          <div class="job-box__content">
+            <div class="job-box__category">Attention</div>
+            <p class="job-box__title">
+              {{ job.title.slice(0, 8) }}
+              <ng-container *ngIf="job.title.length > 8">
+                ...
+              </ng-container>
+            </p>
+            <p class="job-box__sub-title">
+              {{ job.companyName.slice(0, 15) }}
+              <ng-container *ngIf="job.companyName.length > 15">
+                ...
+              </ng-container>
+            </p>
+            <p class="job-box__description">
+              {{ job.companyContent.slice(0, 40) }}
+              <ng-container *ngIf="job.companyContent.length > 40">
+                ...もっと見る
+              </ng-container>
+            </p>
+            <ul class="job-box__content-body">
+              <li>
+                <i class="material-icons">location_on</i>
+                {{ job.workPlace }}
+              </li>
+              <li>
+                <i class="fas fa-yen-sign"></i> {{ job.salary | number }}円
+              </li>
+            </ul>
+            <span class="job-box__content-foot">
+              <i class="material-icons">
+                schedule
+              </i>
+              {{ job.createdAt.toDate() | date: 'yyy/MM/dd' }}
+            </span>
+          </div>
+        </a>
+      </div>
+    </swiper>
   </ng-container>
   <ng-template #default>
     <p class="job-box__default-text">

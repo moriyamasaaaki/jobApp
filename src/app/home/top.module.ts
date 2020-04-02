@@ -14,7 +14,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
-
+import { SwiperModule } from 'ngx-swiper-wrapper';
 @NgModule({
   declarations: [TopComponent, AttentionComponent, NewComponent],
   imports: [
@@ -27,7 +27,8 @@ import { MatIconModule } from '@angular/material/icon';
     MatFormFieldModule,
     MatButtonModule,
     MatInputModule,
-    MatIconModule
+    MatIconModule,
+    SwiperModule
   ]
 })
 export class TopModule {}

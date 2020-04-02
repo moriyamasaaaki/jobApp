@@ -2,7 +2,12 @@
   <app-header (click)="sidenav.toggle()"></app-header>
   <app-search *ngIf="searchNone()"></app-search>
   <mat-drawer-container class="example-container">
-    <mat-drawer class="ddd" #sidenav mode="{{ sidenavMode }}" [opened]="opened">
+    <mat-drawer
+      class="container__side-menu"
+      #sidenav
+      mode="{{ sidenavMode }}"
+      [opened]="opened"
+    >
       <mat-nav-list>
         <mat-list-item routerLink="/">
           ホーム

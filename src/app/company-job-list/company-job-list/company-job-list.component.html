@@ -1,5 +1,5 @@
 <section class="company-job-list job-card">
-  <h1>自社求人一覧</h1>
+  <h1 class="hdg">自社求人一覧</h1>
   <ng-container *ngIf="jobs$ | async as jobs; else default">
     <p class="job-card__text">
       投稿数/<span class="job-card__number">{{ jobs.length }}</span

@@ -3,6 +3,7 @@
 
 .job-card {
   padding: 0 8px;
+  text-decoration: none;
   margin-bottom: 24px;
   @include tab {
     width: 70%;
@@ -25,7 +26,7 @@
       font-weight: 500;
       font-size: 16px;
       margin-bottom: 8px;
-      color: #0860c0;
+      color: #e64a19;
     }
   }
   &__content-list {

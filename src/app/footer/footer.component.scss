@@ -12,7 +12,7 @@ footer {
   margin-bottom: 64px;
   @include tab {
     display: grid;
-    background-color: #0d47a1;
+    background-color: #333;
     grid-template-columns: repeat(2, 1fr);
     justify-content: space-between;
     align-items: center;
@@ -57,7 +57,7 @@ footer {
     font-size: 14px;
     margin-top: 24px;
     @include tab {
-      color: #fff;
+      color: #acacacac;
       margin: 0;
     }
   }
@@ -69,7 +69,7 @@ footer {
   bottom: 0;
   left: 0;
   right: 0;
-  background-color: #0d47a1;
+  background-color: #333;
   @include tab {
     display: none;
   }

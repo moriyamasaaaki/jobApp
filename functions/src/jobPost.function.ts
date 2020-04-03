@@ -1,5 +1,5 @@
 import * as functions from 'firebase-functions';
-import { addIndex, updateIndex, removeIndex } from './algolia';
+import { addIndex, updateIndex, removeIndex } from './algolia.function';
 
 export const createArticle = functions.firestore
   .document('JobPosts/{id}')

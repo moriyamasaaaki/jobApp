@@ -8,7 +8,7 @@
     <div class="job-card__box" *ngFor="let job of jobs">
       <div class="job-card__title">
         <span>{{ job.companyName }}</span>
-        <a routerLink="/detail/{{ job.id }}"
+        <a routerLink="/job/detail/{{ job.id }}"
           ><h3>{{ job.title }}</h3></a
         >
       </div>
@@ -17,14 +17,14 @@
         <ng-container *ngIf="job.jobImageUrls; else defaultImg">
           <img
             [src]="job.jobImageUrls[0]"
-            routerLink="/detail/{{ job.id }}"
+            routerLink="/job/detail/{{ job.id }}"
             alt=""
           />
         </ng-container>
         <ng-template #defaultImg>
           <img
             src="assets/unnamed.png"
-            routerLink="/detail/{{ job.id }}"
+            routerLink="/job/detail/{{ job.id }}"
             alt=""
           />
         </ng-template>

@@ -3,6 +3,7 @@ import { Title, Meta } from '@angular/platform-browser';
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 import { filter, map } from 'rxjs/operators';
 import { AuthService } from './services/auth.service';
+import { DrawerService } from './services/drawer.service';
 
 @Component({
   selector: 'app-root',
@@ -16,14 +17,19 @@ export class AppComponent implements OnInit {
   companyLoginStatus: boolean;
   user$ = this.authService.afUser$;
   display: boolean;
+  opened: boolean;
+  sidenavMode: string;
 
   constructor(
     private titleService: Title,
     private metaService: Meta,
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private authService: AuthService
-  ) {}
+    private authService: AuthService,
+    private drawerService: DrawerService
+  ) {
+    this.drawerService.isOpen$.subscribe(opened => (this.opened = opened));
+  }
 
   ngOnInit() {
     this.getSetTitle();
@@ -31,6 +37,7 @@ export class AppComponent implements OnInit {
       name: 'description',
       content: 'Article Description'
     });
+    this.handleResizeWindow(window.innerWidth);
   }
 
   getSetTitle() {
@@ -107,5 +114,13 @@ export class AppComponent implements OnInit {
   }
   searchNone() {
     return this.router.url === '/';
+  }
+
+  private handleResizeWindow(width: number) {
+    if (768 < width) {
+      this.sidenavMode = 'side';
+    } else {
+      this.sidenavMode = 'over';
+    }
   }
 }

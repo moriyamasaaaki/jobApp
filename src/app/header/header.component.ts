@@ -67,6 +67,9 @@ export class HeaderComponent implements OnInit, DoCheck {
       this.userLoginStatus = true;
     } else if (status === 'Company') {
       this.companyLoginStatus = true;
+    } else {
+      this.userLoginStatus = false;
+      this.companyLoginStatus = false;
     }
   }
 

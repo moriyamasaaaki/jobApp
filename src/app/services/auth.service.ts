@@ -107,6 +107,9 @@ export class AuthService {
     return this.afAuth.auth.currentUser
       .delete()
       .then(() => {
+        localStorage.removeItem('Status');
+        this.userLoginStatus = false;
+        this.companyLoginStatus = false;
         this.router.navigateByUrl('/');
         this.snackbar.open('ご利用ありがとうございました。', null, {
           duration: 3000

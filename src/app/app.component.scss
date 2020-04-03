@@ -1,22 +1,26 @@
 @import 'mixins';
 
-.mat-drawer {
-  display: none;
-  width: 18%;
-  line-height: 2;
-  position: fixed;
-  top: 10%;
-  left: 0;
-  bottom: 0;
-  min-height: 100%;
-  @include pc {
+.container {
+  &__side-menu {
     display: block;
+    width: 240px;
+    line-height: 2;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    min-height: 100%;
+    margin-top: 56px;
+    @include tab {
+      margin-top: 64px;
+    }
   }
 }
 .mat-drawer-content {
   width: 100%;
   @include pc {
     width: 82%;
+    margin: 0 auto;
   }
 }
 

@@ -2,6 +2,8 @@
 @import '~@angular/material/theming';
 
 .header {
+  color: #333333;
+  background-color: #fff;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -11,13 +13,9 @@
   right: 0;
   z-index: 999;
   padding: 0 8px;
-  @include mat-elevation(4);
+  @include mat-elevation(1);
   @include pc {
-    padding: 40px 32px;
-  }
-  a {
-    color: #fff;
-    text-decoration: none;
+    padding: 0 32px;
   }
   p {
     font-size: 24px;
@@ -41,7 +39,6 @@
       align-items: center;
     }
     button {
-      color: #fff;
     }
   }
   &__nav-item {
@@ -56,7 +53,6 @@
       span {
         display: inline-flex;
         vertical-align: middle;
-        color: #fff;
       }
     }
     img {
@@ -64,34 +60,38 @@
       height: 40px;
       border-radius: 50%;
     }
+    button {
+      margin-left: 8px;
+      @include pc {
+        margin-left: 16px;
+      }
+    }
   }
   &__title {
+    display: flex;
+    align-items: center;
     text-align: center;
-    cursor: pointer;
-    outline: none;
-    font-family: 'Times New Roman', Times, serif;
     line-height: 1;
-    span {
-      font-size: 12px;
-      font-family: Arial, sans-serif;
+    img {
+      outline: none;
+      cursor: pointer;
+      width: 130px;
+      @include pc {
+        width: 160px;
+      }
+    }
+    button {
+      @include pc {
+        margin-right: 16px;
+      }
     }
   }
 }
 
-.search-button-row {
-  text-align: center;
-  margin: 96px 0 0 auto;
-  @include pc {
-    width: 80%;
-  }
+.header-auth {
   button {
-    padding: 8px;
+    padding: 0 8px;
     margin: 8px;
-    @include pc {
-      &:hover {
-        opacity: 0.7;
-      }
-    }
   }
 }
 

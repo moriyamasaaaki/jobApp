@@ -8,7 +8,17 @@
           <span>¥0</span>
           <span>（¥0/月）</span>
           <div class="plan__register-btn">
-            <button mat-flat-button color="primary">登録</button>
+            <button
+              mat-flat-button
+              color="primary"
+              *ngIf="subscriptionID"
+              (click)="stripeDialog()"
+            >
+              登録
+            </button>
+            <button mat-flat-button disabled *ngIf="!subscriptionID">
+              登録中
+            </button>
           </div>
         </div>
 
@@ -61,6 +71,17 @@
             サービスではクレジットカード情報を保持しないので漏洩の心配はありません。
           </li>
         </ol>
+      </div>
+    </mat-tab>
+    <mat-tab label="退会">
+      <div class="plan__out">
+        <button mat-raised-button color="warn" (click)="openDeleteDialog()">
+          退会する
+        </button>
+        <ul>
+          <li>退会すると利用データが完全に削除され、復元できません。</li>
+          <li>退会するとすべての定期購入が停止します。</li>
+        </ul>
       </div>
     </mat-tab>
   </mat-tab-group>

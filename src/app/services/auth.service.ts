@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Status } from '../interfaces/status';
+import { error, log } from 'util';
 
 @Injectable({
   providedIn: 'root'
@@ -14,12 +15,15 @@ export class AuthService {
   afUser$: Observable<User> = this.afAuth.user;
   uid: string;
   displayName: string;
+  userLoginStatus: boolean;
+  companyLoginStatus: boolean;
 
   constructor(
     private afAuth: AngularFireAuth,
     private router: Router,
     private snackBar: MatSnackBar,
-    private db: AngularFirestore
+    private db: AngularFirestore,
+    private snackbar: MatSnackBar
   ) {
     this.afUser$.subscribe(user => {
       this.uid = user && user.uid;
@@ -36,10 +40,12 @@ export class AuthService {
           status: 'user'
         };
         this.db.doc(`users/${result.user.uid}`).set(userData);
+        localStorage.setItem('Status', 'User');
+        this.userLoginStatus = true;
         this.snackBar.open('ようこそTokyo biteへ!', null, {
           duration: 2000
         });
-        this.router.navigateByUrl('/mypage');
+        this.router.navigateByUrl('/user/mypage');
       })
       .catch(error => {
         this.snackBar.open(`${error},ログインに失敗しました。`, null, {
@@ -75,10 +81,12 @@ export class AuthService {
           status: 'company'
         };
         this.db.doc(`companys/${result.user.uid}`).set(companyData);
+        localStorage.setItem('Status', 'Company');
+        this.companyLoginStatus = true;
         this.snackBar.open('企業側としてログインしました。', null, {
           duration: 2000
         });
-        this.router.navigateByUrl('/companyProfile');
+        this.router.navigateByUrl('/company/profile');
       })
       .catch(error => {
         this.snackBar.open(`${error},ログインに失敗しました。`, null, {
@@ -93,5 +101,29 @@ export class AuthService {
 
   getLoginCompany(uid: string): Observable<Status> {
     return this.db.doc<Status>(`companys/${uid}`).valueChanges();
+  }
+
+  withdrawUser() {
+    return this.afAuth.auth.currentUser
+      .delete()
+      .then(() => {
+        localStorage.removeItem('Status');
+        this.userLoginStatus = false;
+        this.companyLoginStatus = false;
+        this.router.navigateByUrl('/');
+        this.snackbar.open('ご利用ありがとうございました。', null, {
+          duration: 3000
+        });
+      })
+      .catch(error => {
+        this.snackbar.open(
+          '退会処理に失敗しました。もう一度行なって下さい。',
+          null,
+          {
+            duration: 3000
+          }
+        );
+        console.log(error);
+      });
   }
 }

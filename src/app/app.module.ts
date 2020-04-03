@@ -41,6 +41,7 @@ import { SearchResultComponent } from './search-result/search-result.component';
 // ストライプ
 import { NgxStripeModule } from 'ngx-stripe';
 import { PaymentComponent } from './stripe/payment/payment.component';
+import { AuthDialogComponent } from './auth-dialog/auth-dialog.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -53,7 +54,8 @@ import { PaymentComponent } from './stripe/payment/payment.component';
     SearchResultComponent,
     SearchInputComponent,
     SearchComponent,
-    FooterComponent
+    FooterComponent,
+    AuthDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -89,7 +91,8 @@ import { PaymentComponent } from './stripe/payment/payment.component';
     DeleteDialogComponent,
     ProfileDialogComponent,
     StripeComponent,
-    PaymentComponent
+    PaymentComponent,
+    AuthDialogComponent
   ]
 })
 export class AppModule {}

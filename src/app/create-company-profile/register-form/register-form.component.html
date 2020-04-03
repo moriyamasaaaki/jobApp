@@ -1,11 +1,11 @@
-<div class="companyForm">
-  <h1>無料登録ページ</h1>
+<mat-card class="profile-form">
   <form
-    class="profile-form"
+    class="companyForm"
     [formGroup]="form"
     (ngSubmit)="submit()"
     class.mat-elevation-z8
   >
+    <h1>無料登録ページ</h1>
     <div>
       <mat-form-field class="profile-form__field">
         <input
@@ -137,4 +137,4 @@
     </button>
     <p>ご記入頂いた内容は後からでも変更可能です。</p>
   </form>
-</div>
+</mat-card>

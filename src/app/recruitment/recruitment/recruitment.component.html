@@ -1,7 +1,6 @@
-<div class="recruitment">
-  <h1>求人広告作成</h1>
-  <form [formGroup]="form" (ngSubmit)="submit()" class="profile-form">
-    <!-- <h1>求人広告作成</h1> -->
+<mat-card class="profile-form">
+  <form [formGroup]="form" (ngSubmit)="submit()" class="recruitment">
+    <h1>求人広告作成</h1>
     <div>
       <input type="file" (change)="setImage($event)" multiple />
     </div>
@@ -205,4 +204,4 @@
       </div>
     </ng-template>
   </form>
-</div>
+</mat-card>

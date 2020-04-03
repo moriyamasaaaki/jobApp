@@ -1,4 +1,6 @@
 export * from './like.function';
 export * from './jobPost.function';
 export * from './stripe.function';
-export * from './sendEmail';
+export * from './send-email.function';
+export * from './user-delete.function';
+export * from './widhdraw-email.function';

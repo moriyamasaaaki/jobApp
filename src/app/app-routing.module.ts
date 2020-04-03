@@ -20,7 +20,7 @@ const routes: Routes = [
   },
 
   {
-    path: 'detail',
+    path: 'job/detail',
     loadChildren: () =>
       import('./detail/detail.module').then(m => m.DetailModule)
   },
@@ -31,7 +31,7 @@ const routes: Routes = [
   },
 
   {
-    path: 'keep',
+    path: 'user/keep',
     data: { title: 'お気に入り一覧' },
     loadChildren: () => import('./keep/keep.module').then(m => m.KeepModule),
     canLoad: [AuthGuard],
@@ -39,7 +39,7 @@ const routes: Routes = [
   },
 
   {
-    path: 'profile',
+    path: 'user/profile/create',
     data: { title: 'プロフィール作成' },
     loadChildren: () =>
       import('./create-user-profile/profile.module').then(m => m.ProfileModule),
@@ -48,7 +48,7 @@ const routes: Routes = [
   },
 
   {
-    path: 'mypage',
+    path: 'user/mypage',
     data: { title: 'マイページ' },
     loadChildren: () =>
       import('./mypage/mypage.module').then(m => m.MypageModule),
@@ -57,7 +57,7 @@ const routes: Routes = [
   },
 
   {
-    path: 'recruitment',
+    path: 'company/recruitment',
     data: { title: '求人作成' },
     loadChildren: () =>
       import('./recruitment/form.module').then(m => m.FormModule),
@@ -74,7 +74,7 @@ const routes: Routes = [
   },
 
   {
-    path: 'companySideForm',
+    path: 'company/profile/create',
     data: { title: 'プロフィール作成' },
     loadChildren: () =>
       import('./create-company-profile/company-side.module').then(
@@ -85,7 +85,7 @@ const routes: Routes = [
   },
 
   {
-    path: 'companyProfile',
+    path: 'company/profile',
     data: { title: 'プロフィール' },
     loadChildren: () =>
       import('./company-profile/company-profile.module').then(
@@ -96,16 +96,14 @@ const routes: Routes = [
   },
 
   {
-    path: 'job-list',
+    path: 'job/list',
     data: { title: '求人一覧' },
     loadChildren: () =>
-      import('./job-list/job-list.module').then(m => m.JoblistModule),
-    canLoad: [AuthGuard],
-    canActivate: [AuthGuard]
+      import('./job-list/job-list.module').then(m => m.JoblistModule)
   },
 
   {
-    path: 'companyjoblist',
+    path: 'company/job/list',
     data: { title: '自社求人一覧' },
     loadChildren: () =>
       import('./company-job-list/company-job-list.module').then(

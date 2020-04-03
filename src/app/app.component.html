@@ -1,12 +1,18 @@
 <div class="container">
-  <app-header></app-header>
+  <app-header (click)="sidenav.toggle()"></app-header>
+  <app-search *ngIf="searchNone()"></app-search>
   <mat-drawer-container class="example-container">
-    <mat-drawer mode="side" opened>
+    <mat-drawer
+      class="container__side-menu"
+      #sidenav
+      mode="{{ sidenavMode }}"
+      [opened]="opened"
+    >
       <mat-nav-list>
         <mat-list-item routerLink="/">
           ホーム
         </mat-list-item>
-        <mat-list-item routerLink="/job-list">
+        <mat-list-item routerLink="/job/list">
           求人一覧
         </mat-list-item>
       </mat-nav-list>
@@ -34,7 +40,6 @@
     </mat-drawer>
     <mat-drawer-content>
       <main class="content">
-        <app-search *ngIf="searchNone()"></app-search>
         <router-outlet></router-outlet>
       </main>
     </mat-drawer-content>

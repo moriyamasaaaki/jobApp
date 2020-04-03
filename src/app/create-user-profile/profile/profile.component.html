@@ -1,6 +1,6 @@
-<div class="profile">
-  <h1>プロフィール設定</h1>
-  <form [formGroup]="form" (ngSubmit)="submit()" class="profile-form">
+<mat-card class="profile-form">
+  <form [formGroup]="form" (ngSubmit)="submit()" class="profile">
+    <h1>プロフィール設定</h1>
     <div>
       <input type="file" (change)="setAvatar($event)" />
     </div>
@@ -207,4 +207,4 @@
       </button>
     </div>
   </form>
-</div>
+</mat-card>

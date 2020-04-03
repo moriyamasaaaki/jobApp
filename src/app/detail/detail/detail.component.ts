@@ -10,6 +10,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { LikedService } from 'src/app/services/liked.service';
 import { take } from 'rxjs/operators';
 import { Title, Meta } from '@angular/platform-browser';
+import { DrawerService } from 'src/app/services/drawer.service';
 
 @Component({
   selector: 'app-detail',
@@ -35,8 +36,10 @@ export class DetailComponent implements OnInit {
     private likedService: LikedService,
     private titleService: Title,
     private metaService: Meta,
-    private router: Router
+    private router: Router,
+    private drawerService: DrawerService
   ) {
+    this.drawerService.open();
     route.paramMap.subscribe(params => {
       this.jobs$ = this.jobPostService.getJobPost(params.get('id'));
     });
@@ -103,17 +106,27 @@ export class DetailComponent implements OnInit {
   }
 
   openDeleteDialog() {
-    this.dialog
-      .open(DeleteDialogComponent)
-      .afterClosed()
-      .subscribe(status => {
-        if (status) {
-          this.route.paramMap.subscribe(params => {
-            this.jobPostService.deleteJob(params.get('id'));
+    this.route.paramMap.subscribe(params => {
+      this.jobPostService.getJobPost(params.get('id')).subscribe(job => {
+        this.dialog
+          .open(DeleteDialogComponent, {
+            data: {
+              title: `${job.title}を削除しますか？？`,
+              content: '削除すると復元することはできません。',
+              btnText: '削除する'
+            }
+          })
+          .afterClosed()
+          .subscribe(status => {
+            if (status) {
+              this.route.paramMap.subscribe(params => {
+                this.jobPostService.deleteJob(params.get('id'));
+              });
+              this.router.navigateByUrl('/');
+            }
           });
-          this.router.navigateByUrl('/');
-        }
       });
+    });
   }
 
   getlikes() {
@@ -155,6 +168,10 @@ export class DetailComponent implements OnInit {
         this.like = false;
         this.snackBar.open('お気に入り削除しました。', null, {
           duration: 1000
+        });
+      } else {
+        this.snackBar.open('いいねできません。ログインして下さい。', null, {
+          duration: 3000
         });
       }
     });

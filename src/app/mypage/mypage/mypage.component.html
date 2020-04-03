@@ -51,12 +51,9 @@
       </dl>
     </div>
     <div class="profile-card__btn">
-      <button routerLink="/profile" mat-raised-button color="primary">
-        編集する
-      </button>
-      <button mat-raised-button color="warn" (click)="openDeleteDialog()">
-        削除する
-      </button>
+      <a routerLink="/user/profile/create" mat-raised-button color="primary"
+        >編集する</a
+      >
     </div>
   </ng-container>
   <ng-template #default>
@@ -64,7 +61,11 @@
       プロフィールがありません。
     </p>
     <div class="profile-card__btn">
-      <button routerLink="/profile" mat-raised-button color="primary">
+      <button
+        routerLink="/user/profile/create"
+        mat-raised-button
+        color="primary"
+      >
         作成する
       </button>
     </div>

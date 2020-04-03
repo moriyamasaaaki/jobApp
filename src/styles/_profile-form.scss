@@ -9,10 +9,8 @@
   line-height: 5;
   @include mobile {
     margin: 0 auto 40px;
-    border: 1px solid #ededed;
-    border-radius: 8px;
     padding: 16px 16px 56px;
-    @include mat-elevation(4);
+    @include mat-elevation(3);
   }
   &__field {
     width: 100%;

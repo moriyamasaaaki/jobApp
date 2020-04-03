@@ -66,12 +66,8 @@
       </div>
       <ng-container *ngIf="!(user$ | async) && searchNone()">
         <div class="header-auth">
-          <button (click)="loginUser()" mat-raised-button color="basic">
+          <button (click)="authDialog()" mat-raised-button color="basic">
             <span>ログイン</span>
-            <i class="material-icons">person</i>
-          </button>
-          <button (click)="loginCompany()" mat-raised-button color="accent">
-            企業方はこちら
           </button>
         </div>
       </ng-container>

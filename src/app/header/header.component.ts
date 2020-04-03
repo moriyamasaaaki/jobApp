@@ -1,14 +1,22 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Output,
+  EventEmitter,
+  DoCheck
+} from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { searchClient } from '../../environments/environment';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MatDialog } from '@angular/material';
+import { AuthDialogComponent } from '../auth-dialog/auth-dialog.component';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, DoCheck {
   uid: string;
   userLoginStatus: boolean;
   companyLoginStatus: boolean;
@@ -37,7 +45,8 @@ export class HeaderComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private dialog: MatDialog
   ) {
     this.route.queryParamMap.subscribe(map => {
       this.inputParams.query = map.get('q');
@@ -48,6 +57,10 @@ export class HeaderComponent implements OnInit {
     this.loginToggle();
   }
 
+  ngDoCheck() {
+    this.loginToggle();
+  }
+
   loginToggle() {
     const status = localStorage.getItem('Status');
     if (status === 'User') {
@@ -55,18 +68,6 @@ export class HeaderComponent implements OnInit {
     } else if (status === 'Company') {
       this.companyLoginStatus = true;
     }
-  }
-
-  loginUser() {
-    this.authService.loginUser();
-    localStorage.setItem('Status', 'User');
-    this.userLoginStatus = true;
-  }
-
-  loginCompany() {
-    this.authService.loginCompany();
-    localStorage.setItem('Status', 'Company');
-    this.companyLoginStatus = true;
   }
 
   logout() {
@@ -89,5 +90,11 @@ export class HeaderComponent implements OnInit {
   }
   notSearch() {
     this.display = false;
+  }
+
+  authDialog() {
+    this.dialog.open(AuthDialogComponent, {
+      autoFocus: false
+    });
   }
 }

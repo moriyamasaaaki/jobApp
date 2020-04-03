@@ -15,6 +15,8 @@ export class AuthService {
   afUser$: Observable<User> = this.afAuth.user;
   uid: string;
   displayName: string;
+  userLoginStatus: boolean;
+  companyLoginStatus: boolean;
 
   constructor(
     private afAuth: AngularFireAuth,
@@ -38,6 +40,8 @@ export class AuthService {
           status: 'user'
         };
         this.db.doc(`users/${result.user.uid}`).set(userData);
+        localStorage.setItem('Status', 'User');
+        this.userLoginStatus = true;
         this.snackBar.open('ようこそTokyo biteへ!', null, {
           duration: 2000
         });
@@ -77,6 +81,8 @@ export class AuthService {
           status: 'company'
         };
         this.db.doc(`companys/${result.user.uid}`).set(companyData);
+        localStorage.setItem('Status', 'Company');
+        this.companyLoginStatus = true;
         this.snackBar.open('企業側としてログインしました。', null, {
           duration: 2000
         });

@@ -4,8 +4,8 @@
   margin: 0 8px 16px;
   &__title-text-weight {
     text-align: left;
-    font-weight: 500;
-    font-size: 24px;
+    font-weight: 700;
+    font-size: 28px;
   }
   &__title-content {
     display: flex;
@@ -23,8 +23,10 @@
     }
     span {
       display: block;
-      padding-bottom: 24px;
-      margin-bottom: 16px;
+      color: #e74c3c;
+      font-size: 20px;
+      font-weight: 400;
+      padding-bottom: 8px;
       border-bottom: 1px solid #ccc;
       @include pc {
         margin-bottom: 32px;
@@ -62,6 +64,9 @@
       width: 100%;
     }
   }
+  &__createdAt {
+    color: #6f737b;
+  }
   &__btn {
     text-align: center;
   }
@@ -77,21 +82,14 @@
     display: flex;
     justify-content: left;
     align-items: center;
+    margin: 0 5px 24px 0;
     li {
-      color: orange;
+      color: #6f737b;
       box-sizing: border-box;
-      border: 1px solid orange;
-      border-radius: 5px;
-      margin-right: 5px;
+      border: 1px solid #d8d9db;
+      border-radius: 16px;
       font-size: 11px;
-    }
-    a {
-      color: orange;
-      text-decoration: none;
-      padding: 5px;
-      &:hover {
-        opacity: 0.7;
-      }
+      padding: 5px 16px;
     }
   }
 
@@ -131,6 +129,7 @@
   iframe {
     width: 100%;
     height: auto;
+    margin-top: 8px;
     @include mobile {
       width: 80%;
     }

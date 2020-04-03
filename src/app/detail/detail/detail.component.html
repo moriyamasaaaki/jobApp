@@ -33,7 +33,9 @@
         </ng-container>
       </div>
       <span>{{ job.companyName }}</span>
-      <p>公開日： {{ job.createdAt.toDate() | date: 'yyy年MM月dd日' }}</p>
+      <p class="detail__createdAt">
+        募集日： {{ job.createdAt.toDate() | date: 'yyy/MM/dd' }}
+      </p>
     </div>
     <div class="detail__recruit">
       <dl>

@@ -42,6 +42,7 @@ import { SearchResultComponent } from './search-result/search-result.component';
 import { NgxStripeModule } from 'ngx-stripe';
 import { PaymentComponent } from './stripe/payment/payment.component';
 import { AuthDialogComponent } from './auth-dialog/auth-dialog.component';
+import { SharedModule } from './shared/shared.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -83,7 +84,8 @@ import { AuthDialogComponent } from './auth-dialog/auth-dialog.component';
     MatButtonModule,
     MatSidenavModule,
     MatDividerModule,
-    MatListModule
+    MatListModule,
+    SharedModule
   ],
   providers: [Title, Meta],
   bootstrap: [AppComponent],

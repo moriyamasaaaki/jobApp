@@ -1,5 +1,5 @@
 <section class="keep job-card">
-  <h1>お気に入りした求人</h1>
+  <h1 class="hdg">お気に入りした求人</h1>
   <ng-container *ngIf="jobs$ | async as jobs; else default">
     <p class="job-card__text">
       お気に入り/<span class="job-card__number">{{ jobs.length }}</span

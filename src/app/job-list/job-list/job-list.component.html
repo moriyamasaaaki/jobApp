@@ -1,42 +1,13 @@
-<section class="job-list job-card">
+<div class="job-list">
   <h1 class="hdg">求人一覧</h1>
-  <ng-container *ngIf="jobs$ | async as jobs; else default">
-    <div
-      class="job-card__box"
-      *ngFor="let job of jobs"
-      routerLink="/job/detail/{{ job.id }}"
-    >
-      <div class="job-card__title">
-        <span>{{ job.companyName }}</span>
-        <h3>{{ job.title }}</h3>
-      </div>
-      <div class="job-card__content">
-        <ng-container *ngIf="job.jobImageUrls; else defaultImg">
-          <img [src]="job.jobImageUrls[0]" alt="" />
-        </ng-container>
-        <ng-template #defaultImg>
-          <img src="assets/unnamed.png" alt="" />
-        </ng-template>
-        <ul class="job-card__content-list">
-          <li>
-            <i class="material-icons">compass_calibration</i>
-            <span>{{ job.workPlace }}</span>
-          </li>
-          <li><i class="material-icons"> work </i>{{ job.occupation }}</li>
-          <li>
-            <i class="material-icons">
-              money
-            </i>
-            時給{{ job.salary | number }}円
-          </li>
-          <li><i class="material-icons"> access_time </i>{{ job.workTime }}</li>
-        </ul>
-      </div>
-    </div>
-  </ng-container>
-  <ng-template #default>
-    <p class="job-card__default-text">
-      投稿はまだありません。
-    </p>
-  </ng-template>
-</section>
+  <section class="job-box">
+    <ng-container *ngIf="jobs$ | async as jobs; else default">
+      <app-job-card *ngFor="let job of jobs" [job]="job"></app-job-card>
+    </ng-container>
+    <ng-template #default>
+      <p class="job-box__default-text">
+        投稿はまだありません。
+      </p>
+    </ng-template>
+  </section>
+</div>

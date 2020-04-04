@@ -1,6 +1,11 @@
 @import 'mixins';
-@import 'job-card';
-
-.like {
-  background-color: #fbec46;
+@import 'job-post';
+@import '~@angular/material/theming';
+.job-list {
+  padding: 16px 16px 0;
+  @include pc {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 16px 24px 0;
+  }
 }

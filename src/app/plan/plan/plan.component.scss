@@ -82,7 +82,10 @@
     }
   }
   &__register-btn {
-    margin-top: 16px;
+    margin: 16px 0 24px;
+    @include pc {
+      margin: 16px 0 40px;
+    }
   }
   &__content-list {
     font-size: 14px;

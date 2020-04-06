@@ -10,7 +10,7 @@
           <div class="plan__register-btn">
             <button
               mat-flat-button
-              color="primary"
+              color="accent"
               *ngIf="subscriptionID"
               (click)="stripeDialog()"
             >
@@ -35,7 +35,7 @@
           </ng-container>
           <ng-template #subscription>
             <div class="plan__register-btn">
-              <button mat-flat-button color="primary" (click)="stripeDialog()">
+              <button mat-flat-button color="warn" (click)="stripeDialog()">
                 解約
               </button>
             </div>

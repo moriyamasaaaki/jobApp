@@ -3,7 +3,10 @@
   <ng-container *ngIf="likeUsers$ | async as likeUsers">
     <div class="user-list__card" *ngFor="let likeUser of likeUsers">
       <ng-container *ngIf="likeUser.photoURL; else defaultImg">
-        <img [src]="likeUser.photoURL" alt="" />
+        <figure
+          class="user-list__thumbnail"
+          [style.background-image]="'url(' + likeUser.photoURL + ')'"
+        ></figure>
       </ng-container>
       <ng-template #defaultImg>
         <img src="assets/user-2935527_1280.png" alt="" />

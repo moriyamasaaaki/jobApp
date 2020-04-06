@@ -1,0 +1,17 @@
+<h1 class="hdg">いいねしたユーザー</h1>
+<section class="user-list">
+  <ng-container *ngIf="likeUsers$ | async as likeUsers">
+    <div class="user-list__card" *ngFor="let likeUser of likeUsers">
+      <ng-container *ngIf="likeUser.photoURL; else defaultImg">
+        <img [src]="likeUser.photoURL" alt="" />
+      </ng-container>
+      <ng-template #defaultImg>
+        <img src="assets/user-2935527_1280.png" alt="" />
+      </ng-template>
+      <div class="user-list__content">
+        <strong>{{ likeUser.name }}</strong>
+        <p>{{ likeUser.introduce }}</p>
+      </div>
+    </div>
+  </ng-container>
+</section>

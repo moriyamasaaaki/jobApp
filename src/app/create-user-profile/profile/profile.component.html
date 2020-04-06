@@ -1,11 +1,11 @@
+<h1 class="hdg">プロフィール設定</h1>
 <mat-card class="profile-form">
   <form [formGroup]="form" (ngSubmit)="submit()" class="profile">
-    <h1>プロフィール設定</h1>
     <div>
       <input type="file" (change)="setAvatar($event)" />
     </div>
     <div>
-      <mat-form-field class="profile-form__field">
+      <mat-form-field class="profile-form__field" color="accent">
         <mat-label>氏名</mat-label>
         <input
           matInput
@@ -22,7 +22,7 @@
     </div>
 
     <div>
-      <mat-form-field class="profile-form__field">
+      <mat-form-field class="profile-form__field" color="accent">
         <input
           matInput
           placeholder="住所"
@@ -37,7 +37,7 @@
       </mat-form-field>
     </div>
     <div formGroupName="bday">
-      <mat-form-field class="profile-form__field">
+      <mat-form-field class="profile-form__field" color="accent">
         <mat-select placeholder="年" formControlName="year" required>
           <mat-option
             [value]="bottom"
@@ -51,7 +51,7 @@
         >
       </mat-form-field>
 
-      <mat-form-field class="profile-form__field">
+      <mat-form-field class="profile-form__field" color="accent">
         <mat-select placeholder="月" formControlName="month" required>
           <mat-option
             [value]="i + 1"
@@ -64,7 +64,7 @@
         >
       </mat-form-field>
 
-      <mat-form-field class="profile-form__field">
+      <mat-form-field class="profile-form__field" color="accent">
         <mat-select placeholder="日" formControlName="day" required>
           <mat-option [value]="i + 1" *ngFor="let day of days; let i = index"
             >{{ i + 1 }}日</mat-option
@@ -85,7 +85,7 @@
     </div>
 
     <div>
-      <mat-form-field class="profile-form__field">
+      <mat-form-field class="profile-form__field" color="accent">
         <input
           matInput
           placeholder="Email"
@@ -103,7 +103,7 @@
     </div>
 
     <div>
-      <mat-form-field class="profile-form__field">
+      <mat-form-field class="profile-form__field" color="accent">
         <input
           type="tel"
           matInput
@@ -122,7 +122,7 @@
     </div>
 
     <div>
-      <mat-form-field class="profile-form__field">
+      <mat-form-field class="profile-form__field" color="accent">
         <textarea
           matInput
           placeholder="自己紹介"
@@ -132,7 +132,7 @@
     </div>
 
     <div>
-      <mat-form-field class="profile-form__field">
+      <mat-form-field class="profile-form__field" color="accent">
         <mat-select placeholder="学校区分" formControlName="school" required>
           <mat-option [value]="school" *ngFor="let school of schools">{{
             school
@@ -143,7 +143,7 @@
         >
       </mat-form-field>
 
-      <mat-form-field class="profile-form__field">
+      <mat-form-field class="profile-form__field" color="accent">
         <input
           matInput
           placeholder="〇〇大学〇〇学部"
@@ -155,7 +155,7 @@
         >
       </mat-form-field>
 
-      <mat-form-field class="profile-form__field">
+      <mat-form-field class="profile-form__field" color="accent">
         <mat-select
           placeholder="卒業/在学/中退"
           formControlName="state"
@@ -174,17 +174,17 @@
     </div>
 
     <div class="profile-form__field">
-      <mat-form-field class="profile-form__field">
+      <mat-form-field class="profile-form__field" color="accent">
         <input matInput placeholder="資格１" formControlName="tagOne" />
       </mat-form-field>
 
-      <mat-form-field class="profile-form__field">
+      <mat-form-field class="profile-form__field" color="accent">
         <input matInput placeholder="資格２" formControlName="tagSecond" />
       </mat-form-field>
     </div>
 
     <div class="profile-form__field">
-      <mat-form-field class="profile-form__field">
+      <mat-form-field class="profile-form__field" color="accent">
         <textarea
           matInput
           placeholder="勤務可能な日時"

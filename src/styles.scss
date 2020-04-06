@@ -7,11 +7,11 @@
 @import '~@angular/material/theming';
 @include mat-core();
 
-$candy-app-primary: mat-palette($mat-blue, 900);
+$candy-app-primary: mat-palette($mat-deep-orange, 700);
 
-$candy-app-accent: mat-palette($mat-orange, A100);
+$candy-app-accent: mat-palette($mat-cyan, 800);
 
-$candy-app-warn: mat-palette($mat-red);
+$candy-app-warn: mat-palette($mat-red, 700);
 
 $my-theme: mat-light-theme(
   $candy-app-primary,
@@ -46,7 +46,11 @@ body {
   margin-top: 112px;
 }
 
-h1 {
+.mat-drawer-container {
+  flex: 1;
+}
+
+.hdg {
   text-align: center;
   margin-bottom: 32px;
   position: relative;
@@ -63,7 +67,7 @@ h1 {
     right: 50%;
     -webkit-transform: translateX(-50%);
     transform: translateX(-50%);
-    background-color: #0d47a1;
+    background-color: #e64a19;
     border-radius: 2px;
   }
   @include pc {

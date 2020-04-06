@@ -9,7 +9,7 @@
     @include tab {
       display: grid;
       gap: 16px;
-      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       margin: 32px auto;
     }
   }

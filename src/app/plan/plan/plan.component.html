@@ -4,8 +4,7 @@
     <mat-tab label="プラン">
       <div class="plan__container">
         <div class="plan__box plan__box-cyan">
-          <h3>FREEプラン</h3>
-          <span>¥0</span>
+          <h3>フリープラン</h3>
           <span>（¥0/月）</span>
           <ul class="plan__content-list">
             <li>サービス登録時の初期プラン</li>
@@ -27,9 +26,8 @@
         </div>
 
         <div class="plan__box plan__box-orange">
-          <h3>PREMIUNプラン</h3>
-          <span>¥980</span>
-          <span>（¥980/月）</span>
+          <h3>プレミアムプラン</h3>
+          <span>（¥1,200/月）</span>
           <ul class="plan__content-list">
             <li>プレミア会員限定の求人が閲覧可能</li>
             <li>無制限のいいね</li>
@@ -44,7 +42,7 @@
           <ng-template #subscription>
             <div class="plan__register-btn">
               <button mat-flat-button color="warn" (click)="stripeDialog()">
-                解約
+                フリープランに戻す
               </button>
             </div>
           </ng-template>

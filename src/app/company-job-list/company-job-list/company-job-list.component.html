@@ -5,12 +5,14 @@
       投稿数/<span class="job-card__number">{{ jobs.length }}</span
       >件
     </p>
-    <div class="job-card__box" *ngFor="let job of jobs">
+    <div
+      class="job-card__box"
+      *ngFor="let job of jobs"
+      routerLink="/job/detail/{{ job.id }}"
+    >
       <div class="job-card__title">
         <span>{{ job.companyName }}</span>
-        <a routerLink="/job/detail/{{ job.id }}">
-          <h2>{{ job.title }}</h2>
-        </a>
+        <h2>{{ job.title }}</h2>
       </div>
       <div class="job-card__content">
         <ng-container *ngIf="job.jobImageUrls; else defaultImg">

@@ -7,9 +7,16 @@ import { DrawerService } from 'src/app/services/drawer.service';
   styleUrls: ['./privacy.component.scss']
 })
 export class PrivacyComponent implements OnInit {
-  constructor(private drawerService: DrawerService) {
-    this.drawerService.open();
-  }
+  constructor(private drawerService: DrawerService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.handleResizeWindow(window.innerWidth);
+  }
+  handleResizeWindow(width: number) {
+    if (1023 < width) {
+      this.drawerService.open();
+    } else {
+      this.drawerService.close();
+    }
+  }
 }

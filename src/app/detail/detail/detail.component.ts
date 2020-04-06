@@ -51,6 +51,15 @@ export class DetailComponent implements OnInit {
     this.getlikes();
     this.editCompanyUser();
     this.getTitle();
+    this.handleResizeWindow(window.innerWidth);
+  }
+
+  handleResizeWindow(width: number) {
+    if (1023 < width) {
+      this.drawerService.open();
+    } else {
+      this.drawerService.close();
+    }
   }
 
   getTitle() {

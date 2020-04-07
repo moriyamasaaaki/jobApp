@@ -20,9 +20,7 @@ export class KeepComponent implements OnInit {
     private dialog: MatDialog,
     private snackBar: MatSnackBar,
     private drawerService: DrawerService
-  ) {
-    this.drawerService.open();
-  }
+  ) {}
 
   jobs$: Observable<DetailJob[]> = this.likedService.getLikedJobs(
     this.authService.uid
@@ -53,5 +51,14 @@ export class KeepComponent implements OnInit {
       });
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.handleResizeWindow(window.innerWidth);
+  }
+  handleResizeWindow(width: number) {
+    if (1023 < width) {
+      this.drawerService.open();
+    } else {
+      this.drawerService.close();
+    }
+  }
 }

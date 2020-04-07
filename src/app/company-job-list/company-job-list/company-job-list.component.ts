@@ -19,9 +19,16 @@ export class CompanyJobListComponent implements OnInit {
     private jobPostService: JobPostService,
     private authService: AuthService,
     private drawerService: DrawerService
-  ) {
-    this.drawerService.open();
-  }
+  ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.handleResizeWindow(window.innerWidth);
+  }
+  handleResizeWindow(width: number) {
+    if (1023 < width) {
+      this.drawerService.open();
+    } else {
+      this.drawerService.close();
+    }
+  }
 }

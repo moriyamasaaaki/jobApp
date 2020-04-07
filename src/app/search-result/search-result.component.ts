@@ -22,11 +22,19 @@ export class SearchResultComponent implements OnInit {
     private route: ActivatedRoute,
     private drawerService: DrawerService
   ) {
-    this.drawerService.open();
     this.route.queryParamMap.subscribe(map => {
       this.resultParams.query = map.get('workPlace');
     });
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.handleResizeWindow(window.innerWidth);
+  }
+  handleResizeWindow(width: number) {
+    if (1023 < width) {
+      this.drawerService.open();
+    } else {
+      this.drawerService.close();
+    }
+  }
 }

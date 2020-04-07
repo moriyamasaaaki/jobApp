@@ -1,2 +1,18 @@
 @import 'mixins';
-@import 'job-card';
+@import 'job-post';
+@import '~@angular/material/theming';
+
+.job-list {
+  padding: 16px 16px 0;
+  @include pc {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 16px 24px 0;
+  }
+  &__text {
+    margin-bottom: 16px;
+  }
+  &__number {
+    color: #e64a19;
+  }
+}

@@ -3,11 +3,10 @@ import { CommonModule } from '@angular/common';
 
 import { JoblistRoutingModule } from './job-list-routing.module';
 import { JoblistComponent } from './job-list/job-list.component';
-import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [JoblistComponent],
-  imports: [CommonModule, JoblistRoutingModule, MatButtonModule, MatIconModule]
+  imports: [CommonModule, JoblistRoutingModule, SharedModule]
 })
 export class JoblistModule {}

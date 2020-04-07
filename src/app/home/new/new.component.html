@@ -1,39 +1,6 @@
 <section class="job-box">
   <ng-container *ngIf="jobs$ | async as jobs; else default">
-    <div class="job-box__card" *ngFor="let job of jobs">
-      <a routerLink="/job/detail/{{ job.id }}">
-        <ng-container *ngIf="job.jobImageUrls; else defaultImg">
-          <figure
-            class="job-box__thumbnail"
-            [style.background-image]="'url(' + job.jobImageUrls[0] + ')'"
-          ></figure>
-        </ng-container>
-        <ng-template #defaultImg>
-          <img src="assets/unnamed.png" class="job-box__thumbnail" alt="" />
-        </ng-template>
-        <div class="job-box__content">
-          <div class="job-box__category">新着</div>
-          <p class="job-box__title">
-            {{ job.title }}
-          </p>
-          <p class="job-box__sub-title">{{ job.companyName }}</p>
-          <p class="job-box__description">{{ job.companyContent }}</p>
-          <ul class="job-box__content-body">
-            <li>
-              <i class="material-icons">location_on</i>
-              {{ job.workPlace }}
-            </li>
-            <li><i class="fas fa-yen-sign"></i> {{ job.salary | number }}円</li>
-          </ul>
-          <span class="job-box__content-foot">
-            <i class="material-icons">
-              schedule
-            </i>
-            {{ job.createdAt.toDate() | date: 'yyy/MM/dd' }}
-          </span>
-        </div>
-      </a>
-    </div>
+    <app-job-card *ngFor="let job of jobs" [job]="job"></app-job-card>
   </ng-container>
   <ng-template #default>
     <p class="job-box__default-text">

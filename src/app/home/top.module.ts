@@ -7,7 +7,6 @@ import { AttentionComponent } from './attention/attention.component';
 
 import { MatButtonModule } from '@angular/material/button';
 import { NewComponent } from './new/new.component';
-import { SearchComponent } from './search/search.component';
 
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
@@ -15,6 +14,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { SwiperModule } from 'ngx-swiper-wrapper';
+import { SharedModule } from '../shared/shared.module';
 @NgModule({
   declarations: [TopComponent, AttentionComponent, NewComponent],
   imports: [
@@ -28,7 +28,8 @@ import { SwiperModule } from 'ngx-swiper-wrapper';
     MatButtonModule,
     MatInputModule,
     MatIconModule,
-    SwiperModule
+    SwiperModule,
+    SharedModule
   ]
 })
 export class TopModule {}

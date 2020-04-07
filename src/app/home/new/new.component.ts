@@ -11,7 +11,6 @@ import { JobPostService } from 'src/app/services/job-post.service';
 export class NewComponent implements OnInit {
   id: string;
   jobs$: Observable<DetailJob[]> = this.jobPostService.getNewJobs();
-
   constructor(private jobPostService: JobPostService) {}
 
   ngOnInit() {}

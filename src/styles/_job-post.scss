@@ -13,6 +13,7 @@
   }
   &__card {
     @include mat-elevation(3);
+    outline: none;
     position: relative;
     background-color: #fff;
     width: 100%;

@@ -73,7 +73,7 @@
     margin-bottom: 48px;
     transition: 0.5s;
     &:hover {
-      transform: translateY(-12px);
+      transform: translateY(-3px);
       @include mat-elevation(15);
     }
   }

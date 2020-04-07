@@ -30,16 +30,26 @@ export class KeepComponent implements OnInit {
 
   openDeleteDialog(job: DetailJob) {
     this.dialog
-      .open(DeleteDialogComponent)
+      .open(DeleteDialogComponent, {
+        data: {
+          title: `${job.title}をお気に入りから削除しますか？`,
+          content: '削除すると復元することはできません。',
+          btnText: '削除する'
+        }
+      })
       .afterClosed()
       .subscribe(status => {
         if (status) {
           const joblikeId = job.id;
           this.likedService.deleteLiked(this.authService.uid, joblikeId);
+          this.snackBar.open(
+            '選択した求人をお気に入りから削除しました。',
+            null,
+            {
+              duration: 2000
+            }
+          );
         }
-        this.snackBar.open('選択した求人をお気に入りから削除しました。', null, {
-          duration: 2000
-        });
       });
   }
 

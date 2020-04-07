@@ -3,6 +3,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { DetailJob, Favorite } from '../interfaces/article';
 import { Observable, combineLatest } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
+import { UserProfile } from '../interfaces/profile';
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +19,24 @@ export class LikedService {
   // いいねした人のユーザーID
   getLikedUser(id: string, userId: string): Promise<void> {
     return this.db.doc(`likes/${id}/likedUsers/${userId}`).set({ userId });
+  }
+
+  // いいねしたユーザーリスト一覧
+  getLikedUserList(id: string) {
+    return this.db
+      .collection<Favorite>(`likes/${id}/likedUsers`)
+      .valueChanges()
+      .pipe(
+        switchMap(docs => {
+          return combineLatest(
+            docs.map(doc =>
+              this.db
+                .doc<UserProfile>(`userProfile/${doc.userId}`)
+                .valueChanges()
+            )
+          );
+        })
+      );
   }
 
   // いいね一覧取得

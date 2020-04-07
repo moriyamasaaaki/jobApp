@@ -13,6 +13,14 @@
         <ng-container *ngIf="jobEdit">
           <div class="detail__title-btn">
             <button
+              mat-mini-fab
+              color="accent"
+              matTooltip="いいねしたユーザーを見る"
+              routerLink="/job/detail/{{ job.id }}/like"
+            >
+              <mat-icon>thumb_up</mat-icon>
+            </button>
+            <button
               [routerLink]="['/company/recruitment']"
               [queryParams]="{ id: job.id }"
               mat-mini-fab

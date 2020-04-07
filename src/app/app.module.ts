@@ -43,6 +43,7 @@ import { NgxStripeModule } from 'ngx-stripe';
 import { PaymentComponent } from './stripe/payment/payment.component';
 import { AuthDialogComponent } from './auth-dialog/auth-dialog.component';
 import { SharedModule } from './shared/shared.module';
+import { ServiceWorkerModule } from '@angular/service-worker';
 @NgModule({
   declarations: [
     AppComponent,
@@ -85,7 +86,10 @@ import { SharedModule } from './shared/shared.module';
     MatSidenavModule,
     MatDividerModule,
     MatListModule,
-    SharedModule
+    SharedModule,
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: environment.production
+    })
   ],
   providers: [Title, Meta],
   bootstrap: [AppComponent],

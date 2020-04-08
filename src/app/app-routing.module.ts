@@ -114,6 +114,17 @@ const routes: Routes = [
   },
 
   {
+    path: 'job/detail',
+    data: { title: 'いいねしたユーザー一覧' },
+    loadChildren: () =>
+      import('./favorite-user-list/favorite-user-list.module').then(
+        m => m.FavoriteUserListModule
+      ),
+    canLoad: [AuthGuard],
+    canActivate: [AuthGuard, CompanyGuard]
+  },
+
+  {
     path: 'search',
     component: SearchResultComponent
   },

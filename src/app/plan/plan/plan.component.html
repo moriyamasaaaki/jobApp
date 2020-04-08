@@ -1,16 +1,19 @@
 <section class="plan">
-  <h1>プラン/決済</h1>
+  <h1 class="hdg">プラン/決済</h1>
   <mat-tab-group>
     <mat-tab label="プラン">
       <div class="plan__container">
-        <div class="plan__box">
-          <h3>無料プラン</h3>
-          <span>¥0</span>
+        <div class="plan__box plan__box-cyan">
+          <h3>フリープラン</h3>
           <span>（¥0/月）</span>
+          <ul class="plan__content-list">
+            <li>サービス登録時の初期プラン</li>
+            <li>求人への応募ができる</li>
+          </ul>
           <div class="plan__register-btn">
             <button
               mat-flat-button
-              color="primary"
+              color="accent"
               *ngIf="subscriptionID"
               (click)="stripeDialog()"
             >
@@ -22,10 +25,13 @@
           </div>
         </div>
 
-        <div class="plan__box">
-          <h3>有料プラン</h3>
-          <span>¥980</span>
-          <span>（¥980/月）</span>
+        <div class="plan__box plan__box-orange">
+          <h3>プレミアムプラン</h3>
+          <span>（¥1,200/月）</span>
+          <ul class="plan__content-list">
+            <li>プレミア会員限定の求人が閲覧可能</li>
+            <li>無制限のいいね</li>
+          </ul>
           <ng-container *ngIf="!subscriptionID; else subscription">
             <div class="plan__register-btn">
               <button mat-flat-button color="primary" (click)="stripeDialog()">
@@ -35,8 +41,8 @@
           </ng-container>
           <ng-template #subscription>
             <div class="plan__register-btn">
-              <button mat-flat-button color="primary" (click)="stripeDialog()">
-                解約
+              <button mat-flat-button color="warn" (click)="stripeDialog()">
+                フリープランに戻す
               </button>
             </div>
           </ng-template>
@@ -71,6 +77,15 @@
             サービスではクレジットカード情報を保持しないので漏洩の心配はありません。
           </li>
         </ol>
+        <div class="plan__payment">
+          <h4>決済情報</h4>
+          <ng-container *ngIf="planID$ | async; else free">
+            <p>有料プラン開始日:{{ startedAt.toDate() | date: 'yyy/MM/dd' }}</p>
+          </ng-container>
+          <ng-template #free>
+            <p>決済情報はありません。</p>
+          </ng-template>
+        </div>
       </div>
     </mat-tab>
     <mat-tab label="退会">

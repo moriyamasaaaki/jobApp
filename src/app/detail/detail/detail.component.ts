@@ -11,6 +11,7 @@ import { LikedService } from 'src/app/services/liked.service';
 import { take } from 'rxjs/operators';
 import { Title, Meta } from '@angular/platform-browser';
 import { DrawerService } from 'src/app/services/drawer.service';
+import { UserProfileService } from 'src/app/services/user-profile.service';
 
 @Component({
   selector: 'app-detail',
@@ -37,7 +38,8 @@ export class DetailComponent implements OnInit {
     private titleService: Title,
     private metaService: Meta,
     private router: Router,
-    private drawerService: DrawerService
+    private drawerService: DrawerService,
+    private userProfile: UserProfileService
   ) {
     this.drawerService.open();
     route.paramMap.subscribe(params => {
@@ -49,6 +51,15 @@ export class DetailComponent implements OnInit {
     this.getlikes();
     this.editCompanyUser();
     this.getTitle();
+    this.handleResizeWindow(window.innerWidth);
+  }
+
+  handleResizeWindow(width: number) {
+    if (1023 < width) {
+      this.drawerService.open();
+    } else {
+      this.drawerService.close();
+    }
   }
 
   getTitle() {
@@ -153,27 +164,37 @@ export class DetailComponent implements OnInit {
     this.route.paramMap.subscribe(params => {
       const authId = this.authService.uid;
       this.id = params.get('id');
-      if (authId && !this.like) {
-        this.likedService.likedPost(this.id, authId);
-        this.likedService.getLikedUser(this.id, authId);
-        this.likedCount++;
-        this.like = true;
-        this.snackBar.open('お気に入り追加しました。', null, {
-          duration: 1000
-        });
-      } else if (authId && this.like) {
-        this.likedService.deleteLiked(authId, this.id);
-        this.likedService.deleteLikedUser(this.id, authId);
-        this.likedCount--;
-        this.like = false;
-        this.snackBar.open('お気に入り削除しました。', null, {
-          duration: 1000
-        });
-      } else {
-        this.snackBar.open('いいねできません。ログインして下さい。', null, {
-          duration: 3000
-        });
-      }
+      this.userProfile.getProfile(this.authService.uid).subscribe(profile => {
+        if (profile && authId && !this.like) {
+          this.likedService.likedPost(this.id, authId);
+          this.likedService.getLikedUser(this.id, authId);
+          this.likedCount++;
+          this.like = true;
+          this.snackBar.open('お気に入り追加しました。', null, {
+            duration: 1000
+          });
+        } else if (profile && authId && this.like) {
+          this.likedService.deleteLiked(authId, this.id);
+          this.likedService.deleteLikedUser(this.id, authId);
+          this.likedCount--;
+          this.like = false;
+          this.snackBar.open('お気に入り削除しました。', null, {
+            duration: 1000
+          });
+        } else if (!profile && authId) {
+          this.snackBar.open(
+            'いいねできません。ユーザープロフィールを作成してください。',
+            null,
+            {
+              duration: 3000
+            }
+          );
+        } else {
+          this.snackBar.open('いいねできません。ログインして下さい。', null, {
+            duration: 3000
+          });
+        }
+      });
     });
   }
 }

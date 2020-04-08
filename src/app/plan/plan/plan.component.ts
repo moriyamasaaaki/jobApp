@@ -5,9 +5,6 @@ import { FeeService } from 'src/app/services/fee.service';
 import { PaymentComponent } from 'src/app/stripe/payment/payment.component';
 import { AuthService } from 'src/app/services/auth.service';
 import { DeleteDialogComponent } from 'src/app/delete-dialog/delete-dialog.component';
-import { UserProfileService } from 'src/app/services/user-profile.service';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { CompanyProfileService } from 'src/app/services/company-profile.service';
 import { DrawerService } from 'src/app/services/drawer.service';
 
 @Component({
@@ -22,10 +19,12 @@ export class PlanComponent implements OnInit {
   customerId: string;
   cardName: string;
   amex: string;
+  startedAt: string;
   card$ = this.feeService.getCard(this.authServie.uid);
   planID$ = this.feeService.getCustomer().subscribe((plan: any) => {
     this.subscriptionID = plan.subscriptionId;
     this.customerId = plan.customerId;
+    this.startedAt = plan.startedAt;
     if (this.customerId) {
       this.text = true;
     } else {
@@ -39,15 +38,19 @@ export class PlanComponent implements OnInit {
     private authServie: AuthService,
     private dialog: MatDialog,
     private authService: AuthService,
-    private userProfileService: UserProfileService,
-    private companyProfileSurvice: CompanyProfileService,
-    private snackbar: MatSnackBar,
     private drawerService: DrawerService
-  ) {
-    this.drawerService.open();
-  }
+  ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.handleResizeWindow(window.innerWidth);
+  }
+  handleResizeWindow(width: number) {
+    if (1023 < width) {
+      this.drawerService.open();
+    } else {
+      this.drawerService.close();
+    }
+  }
 
   stripeDialog() {
     this.matDialog.open(StripeComponent);

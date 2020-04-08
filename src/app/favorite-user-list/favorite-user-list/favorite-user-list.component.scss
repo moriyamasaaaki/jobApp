@@ -1,0 +1,45 @@
+@import 'mixins';
+
+.user-list {
+  padding: 0 8px;
+  margin-bottom: 24px;
+  @include tab {
+    width: 100%;
+    margin: 0 auto 32px;
+    padding: 0;
+  }
+  &__card {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    margin: 0 auto;
+    border-bottom: 1px solid lightgray;
+    padding: 16px 0;
+    max-width: 350px;
+  }
+  &__thumbnail,
+  img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 16px;
+    background: center / cover;
+    @include pc {
+      width: 68px;
+      height: 68px;
+    }
+  }
+  &__content {
+    width: 80%;
+    strong {
+      display: block;
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    p {
+      font-size: 14px;
+      line-height: 1.5;
+    }
+  }
+}

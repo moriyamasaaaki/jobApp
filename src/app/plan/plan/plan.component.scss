@@ -5,42 +5,110 @@
   margin: 0 auto 40px;
   padding: 0 8px;
   &__container {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    margin: 0 auto 32px;
+    margin: 32px auto;
+    @include tab {
+      display: grid;
+      gap: 16px;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      margin: 32px auto;
+    }
   }
   &__box {
-    width: 45%;
-    margin: 8px;
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+    margin-bottom: 16px;
     text-align: center;
     line-height: 1.5;
     box-sizing: border-box;
     border: 1px solid #ededed;
-    border-radius: 8px;
     padding: 16px;
     box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2),
       0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
-    @include tab {
-      padding: 32px 8px;
+    button {
+      max-width: 400px;
+      width: 70%;
+      margin: 0 auto;
     }
-    @include pc {
-      padding: 48px 8px;
+  }
+  &__box-cyan {
+    position: relative;
+    &:before {
+      position: absolute;
+      content: '';
+      left: 0;
+      top: 0;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 100px 100px 0 0;
+      border-color: #0097a7 transparent transparent transparent;
+    }
+    &:after {
+      position: absolute;
+      left: 15px;
+      top: 20px;
+      content: '無料';
+      transform: rotate(315deg);
+      display: block;
+      font-size: 14px;
+      white-space: pre;
+      color: #fff;
+    }
+  }
+  &__box-orange {
+    position: relative;
+    &:before {
+      position: absolute;
+      content: '';
+      left: 0;
+      top: 0;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 100px 100px 0 0;
+      border-color: #ff5722 transparent transparent transparent;
+    }
+    &:after {
+      position: absolute;
+      left: 15px;
+      top: 20px;
+      content: '有料';
+      transform: rotate(315deg);
+      display: block;
+      font-size: 14px;
+      white-space: pre;
+      color: #fff;
     }
   }
   &__register-btn {
-    margin-top: 16px;
+    margin: 16px 0 24px;
+    @include pc {
+      margin: 16px 0 40px;
+    }
+  }
+  &__content-list {
+    font-size: 14px;
+    margin: 32px 0;
+    color: #666666;
+    li {
+      margin-bottom: 8px;
+    }
   }
   span {
     display: block;
-    font-size: 13px;
-  }
-  h3 {
-    text-align: center;
-    margin-bottom: 16px;
     font-size: 16px;
     @include pc {
       font-size: 24px;
+    }
+  }
+  h3 {
+    text-align: center;
+    padding: 24px 0;
+    font-size: 20px;
+    @include pc {
+      font-size: 26px;
+      padding: 40px 0;
     }
   }
   &__info {
@@ -97,6 +165,17 @@
     li {
       margin-bottom: 8px;
     }
+  }
+  h4 {
+    text-align: center;
+    font-size: 20px;
+    margin: 0 0 32px;
+    @include pc {
+      font-size: 24px;
+    }
+  }
+  &__payment {
+    margin: 80px 0;
   }
 }
 

@@ -116,11 +116,12 @@ export class AppComponent implements OnInit {
     return this.router.url === '/';
   }
 
-  private handleResizeWindow(width: number) {
+  handleResizeWindow(width: number) {
     if (768 < width) {
       this.sidenavMode = 'side';
     } else {
       this.sidenavMode = 'over';
+      this.drawerService.close();
     }
   }
 }

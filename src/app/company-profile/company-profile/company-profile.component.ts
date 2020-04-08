@@ -21,9 +21,7 @@ export class CompanyProfileComponent implements OnInit {
     private companyProfileSurvice: CompanyProfileService,
     private authService: AuthService,
     private drawerService: DrawerService
-  ) {
-    this.drawerService.open();
-  }
+  ) {}
 
   openDeleteDialog() {
     this.dialog
@@ -36,5 +34,14 @@ export class CompanyProfileComponent implements OnInit {
       });
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.handleResizeWindow(window.innerWidth);
+  }
+  handleResizeWindow(width: number) {
+    if (1023 < width) {
+      this.drawerService.open();
+    } else {
+      this.drawerService.close();
+    }
+  }
 }

@@ -2,7 +2,7 @@
   <div class="stripe__card">
     <h2>クレジットカード登録</h2>
     <form novalidate (ngSubmit)="buy()" [formGroup]="stripeTest">
-      <mat-form-field class="stripe__field">
+      <mat-form-field class="stripe__field" color="accent">
         <mat-label>カード名義</mat-label>
         <input
           matInput
@@ -11,7 +11,7 @@
           required
         />
       </mat-form-field>
-      <mat-form-field class="stripe__field">
+      <mat-form-field class="stripe__field" color="accent">
         <mat-label>メールアドレス</mat-label>
         <input
           matInput

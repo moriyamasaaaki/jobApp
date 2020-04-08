@@ -7,9 +7,16 @@ import { DrawerService } from '../services/drawer.service';
   styleUrls: ['./not-found.component.scss']
 })
 export class NotFoundComponent implements OnInit {
-  constructor(private drawerService: DrawerService) {
-    this.drawerService.open();
-  }
+  constructor(private drawerService: DrawerService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.handleResizeWindow(window.innerWidth);
+  }
+  handleResizeWindow(width: number) {
+    if (1023 < width) {
+      this.drawerService.open();
+    } else {
+      this.drawerService.close();
+    }
+  }
 }

@@ -1,7 +1,7 @@
 <div class="search-result">
   <ais-instantsearch [config]="config">
     <ais-configure [searchParameters]="resultParams"></ais-configure>
-    <h1>検索結果一覧</h1>
+    <h1 class="hdg">検索結果一覧</h1>
     <!-- 検索結果 -->
     <ais-hits>
       <!-- hitsに結果が入ってくる -->
@@ -23,32 +23,46 @@
         <div *ngIf="results.query && results.query.length > 0">
           <div class="job-box">
             <div class="job-box__card" *ngFor="let hit of hits">
-              <ng-container *ngIf="hit.jobImageUrls; else defaultImg">
-                <a routerLink="/job/detail/{{ hit.id }}">
-                  <img [src]="hit.jobImageUrls[0]" alt="" />
-                </a>
-              </ng-container>
-              <ng-template #defaultImg>
-                <a
-                  routerLink="/job/detail/{{ hit.id }}"
-                  class="job-box__default-img"
-                >
-                  <img src="assets/unnamed.png" alt="" />
-                </a>
-              </ng-template>
-              <div class="job-box__content">
-                <p>
-                  <a
-                    routerLink="/job/detail/{{ hit.id }}"
-                    class="job-box__title"
-                    >{{ hit.companyName }}
-                  </a>
-                </p>
-                <ul>
-                  <li>{{ hit.workPlace }}</li>
-                  <li>{{ hit.salary | number }}円</li>
-                </ul>
-              </div>
+              <a routerLink="/job/detail/{{ hit.id }}">
+                <ng-container *ngIf="hit.jobImageUrls; else defaultImg">
+                  <figure
+                    class="job-box__thumbnail"
+                    [style.background-image]="
+                      'url(' + hit.jobImageUrls[0] + ')'
+                    "
+                  ></figure>
+                </ng-container>
+                <ng-template #defaultImg>
+                  <img
+                    src="assets/unnamed.png"
+                    class="job-box__thumbnail"
+                    alt=""
+                  />
+                </ng-template>
+                <div class="job-box__content">
+                  <p class="job-box__title">
+                    {{ hit.title }}
+                  </p>
+                  <p class="job-box__sub-title">{{ hit.companyName }}</p>
+                  <p class="job-box__description">{{ hit.companyContent }}</p>
+                  <ul class="job-box__content-body">
+                    <li>
+                      <i class="material-icons">location_on</i>
+                      {{ hit.workPlace }}
+                    </li>
+                    <li>
+                      <i class="fas fa-yen-sign"></i>
+                      {{ hit.salary | number }}円
+                    </li>
+                  </ul>
+                  <span class="job-box__content-foot">
+                    <i class="material-icons">
+                      schedule
+                    </i>
+                    {{ hit.createdAt | date: 'yyy/MM/dd' }}
+                  </span>
+                </div>
+              </a>
             </div>
           </div>
         </div>

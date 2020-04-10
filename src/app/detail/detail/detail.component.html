@@ -1,5 +1,5 @@
 <section class="detail">
-  <div *ngIf="jobs$ | async as job">
+  <div class="detail__container" *ngIf="jobs$ | async as job">
     <div class="detail__title">
       <div class="detail__title-head">
         <div>
@@ -46,6 +46,22 @@
       </p>
     </div>
     <div class="detail__recruit">
+      <swiper [config]="config" [(index)]="selectedJobId">
+        <ng-container *ngIf="job.jobImageUrls; else defaultImg">
+          <div class="job-img">
+            <figure
+              class="detail__thumbnail"
+              [style.background-image]="'url(' + job.jobImageUrls[0] + ')'"
+            ></figure>
+            <!-- <img [src]="imageURL" *ngFor="let imageURL of job.jobImageUrls" alt="" /> -->
+          </div>
+        </ng-container>
+        <ng-template #defaultImg>
+          <div class="job-img">
+            <img src="assets/unnamed.png" alt="" />
+          </div>
+        </ng-template>
+      </swiper>
       <dl>
         <dt>概要</dt>
         <dd>{{ job.companyContent }}</dd>
@@ -74,20 +90,6 @@
           ></iframe>
         </dd>
       </dl>
-      <ng-container *ngIf="job.jobImageUrls; else defaultImg">
-        <div class="job-img">
-          <img
-            [src]="imageURL"
-            *ngFor="let imageURL of job.jobImageUrls"
-            alt=""
-          />
-        </div>
-      </ng-container>
-      <ng-template #defaultImg>
-        <div class="job-img">
-          <img src="assets/unnamed.png" alt="" />
-        </div>
-      </ng-template>
     </div>
     <div class="detail__btn">
       <ng-container *ngIf="like; else noLike">

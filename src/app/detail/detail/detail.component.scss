@@ -2,6 +2,16 @@
 
 .detail {
   margin: 0 8px 16px;
+  max-width: 1200px;
+  &__container {
+    @include tab {
+      width: 80%;
+      margin: 0 auto;
+    }
+    @include pc {
+      width: 70%;
+    }
+  }
   &__title-text-weight {
     text-align: left;
     font-weight: 700;
@@ -14,19 +24,13 @@
   }
   &__title {
     line-height: 1.5;
-    @include tab {
-      width: 80%;
-      margin: 0 auto;
-    }
-    @include pc {
-      width: 60%;
-    }
     span {
       display: block;
       color: #e74c3c;
       font-size: 20px;
       font-weight: 400;
       padding-bottom: 8px;
+      margin-bottom: 24px;
       border-bottom: 1px solid #ccc;
       @include pc {
         margin-bottom: 32px;
@@ -45,27 +49,26 @@
   }
   .job-img {
     @include tab {
-      margin: 0 auto;
-      width: 80%;
+      text-align: center;
     }
     @include pc {
-      width: 20%;
-      margin: 0 0 0 8px;
+      margin: 0 auto 16px;
     }
     img {
       width: 100%;
+      margin: 0 auto 16px;
     }
   }
   &__recruit {
     @include pc {
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
       width: 100%;
     }
   }
   &__createdAt {
     color: #6f737b;
+    @include pc {
+      margin-bottom: 8px;
+    }
   }
   &__btn {
     text-align: center;
@@ -102,28 +105,27 @@
     margin-bottom: 16px;
     line-height: 1.5;
     @include tab {
-      width: 80%;
       margin: 0 auto 16px;
-    }
-    @include pc {
-      width: 40%;
-      margin: 0;
+      font-size: 16px;
     }
   }
   dt {
     background: #f2f2f2;
     width: 30%;
-    padding: 10px;
-    box-sizing: border-box;
     border-top: 1px solid #ccc;
   }
   dd {
-    padding: 10px;
     margin: 0;
+    letter-spacing: 1px;
     border-left: 1px solid #ccc;
     border-top: 1px solid #ccc;
     width: 70%;
     background: #fff;
+  }
+  dt,
+  dd {
+    padding: 16px 8px;
+    line-height: 1.5;
     box-sizing: border-box;
   }
   iframe {
@@ -135,6 +137,7 @@
     }
     @include pc {
       width: 100%;
+      height: 250px;
     }
   }
   &__default-text {
@@ -142,6 +145,18 @@
     font-size: 14px;
     @include pc {
       font-size: 16px;
+    }
+  }
+  &__thumbnail {
+    height: 200px;
+    background: center / cover;
+    width: 100%;
+    margin: 0 auto 16px;
+    @include tab {
+      height: 300px;
+    }
+    @include pc {
+      height: 400px;
     }
   }
 }

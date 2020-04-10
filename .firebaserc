@@ -1,5 +1,6 @@
 {
   "projects": {
-    "default": "job-app-613fe"
+    "dev": "job-app-613fe",
+    "prod": "job-app-613fe-prod"
   }
 }

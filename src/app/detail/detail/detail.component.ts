@@ -12,6 +12,7 @@ import { take } from 'rxjs/operators';
 import { Title, Meta } from '@angular/platform-browser';
 import { DrawerService } from 'src/app/services/drawer.service';
 import { UserProfileService } from 'src/app/services/user-profile.service';
+import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
 
 @Component({
   selector: 'app-detail',
@@ -27,6 +28,15 @@ export class DetailComponent implements OnInit {
   likeid: string;
   jobId: string;
   jobEdit: boolean;
+  config: SwiperConfigInterface = {
+    loop: true,
+    navigation: true,
+    pagination: true,
+    centeredSlides: true,
+    slidesPerView: 1,
+    speed: 600
+  };
+  selectedJobId = 0;
 
   constructor(
     private jobPostService: JobPostService,

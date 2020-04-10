@@ -10,6 +10,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { SafePipeModule } from 'safe-pipe';
+import { SwiperModule } from 'ngx-swiper-wrapper';
+
 @NgModule({
   declarations: [DetailComponent],
   imports: [
@@ -20,7 +22,8 @@ import { SafePipeModule } from 'safe-pipe';
     SafePipeModule,
     MatIconModule,
     MatDialogModule,
-    MatTooltipModule
+    MatTooltipModule,
+    SwiperModule
   ]
 })
 export class DetailModule {}

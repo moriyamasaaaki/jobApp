@@ -8,8 +8,11 @@ import {
 import { AuthService } from '../services/auth.service';
 import { searchClient } from '../../environments/environment';
 import { ActivatedRoute, Router } from '@angular/router';
-import { MatDialog } from '@angular/material';
+import { MatDialog, MatSnackBar } from '@angular/material';
 import { AuthDialogComponent } from '../auth-dialog/auth-dialog.component';
+import { JobPostService } from '../services/job-post.service';
+import { FeeService } from '../services/fee.service';
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-header',
@@ -22,6 +25,8 @@ export class HeaderComponent implements OnInit, DoCheck {
   companyLoginStatus: boolean;
   user$ = this.authService.afUser$;
   display: boolean;
+  planCompany: string;
+  length: number;
 
   @Output() addOops: EventEmitter<string> = new EventEmitter();
 
@@ -46,7 +51,10 @@ export class HeaderComponent implements OnInit, DoCheck {
     private authService: AuthService,
     private route: ActivatedRoute,
     private router: Router,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private jobPostService: JobPostService,
+    private snackbar: MatSnackBar,
+    private feeService: FeeService
   ) {
     this.route.queryParamMap.subscribe(map => {
       this.inputParams.query = map.get('q');
@@ -59,6 +67,33 @@ export class HeaderComponent implements OnInit, DoCheck {
 
   ngDoCheck() {
     this.loginToggle();
+  }
+
+  createJob() {
+    this.jobPostService
+      .getMyCompanyJobs(this.authService.uid)
+      .pipe(take(1))
+      .subscribe(jobs => {
+        this.length = jobs.length;
+        this.feeService.getCustomer().subscribe((customer: any) => {
+          this.planCompany = customer.subscriptionId;
+          if (
+            (this.length > 1 && customer === undefined) ||
+            customer.subscriptionId === null
+          ) {
+            this.snackbar.open(
+              '求人掲載を１つ以上掲載する場合はプレミアムプランへの登録が必要です。',
+              null,
+              {
+                duration: 3000,
+                verticalPosition: 'top'
+              }
+            );
+          } else if (this.length < 1 || this.planCompany) {
+            this.router.navigateByUrl('/company/recruitment');
+          }
+        });
+      });
   }
 
   loginToggle() {

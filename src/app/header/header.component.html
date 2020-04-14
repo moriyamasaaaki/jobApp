@@ -17,9 +17,9 @@
           <mat-icon>search</mat-icon>
         </button>
         <button
-          routerLink="/company/recruitment"
           mat-icon-button
           matTooltip="求人作成する"
+          (click)="createJob()"
           *ngIf="companyLoginStatus"
         >
           <mat-icon>add</mat-icon>

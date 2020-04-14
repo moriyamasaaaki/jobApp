@@ -6,10 +6,16 @@
   @include tab {
     display: grid;
     gap: 16px;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fill, 360px);
+    margin: 0 auto 80px;
   }
   @include pc {
     margin: 0 auto 80px;
+    gap: 24px;
+    justify-content: center;
+  }
+  @include pclarg {
+    justify-content: space-between;
   }
   &__card {
     @include mat-elevation(3);
@@ -22,10 +28,9 @@
     display: flex;
     flex-flow: column;
     @include tab {
-      margin: 0 auto;
+      margin: 0;
     }
     @include pc {
-      margin-bottom: 56px;
       transition: 0.7s;
       &:hover {
         @include mat-elevation(12);

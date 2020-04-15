@@ -2,7 +2,9 @@
   <h2 matDialogTitle>{{ data.title }}</h2>
   <p>{{ data.content }}</p>
   <div mat-dialog-actions>
-    <button mat-flat-button matDialogClose>キャンセル</button>
+    <button mat-flat-button aria-label="キャンセル" matDialogClose>
+      キャンセル
+    </button>
     <button mat-flat-button color="warn" [matDialogClose]="true">
       {{ data.btnText }}
     </button>

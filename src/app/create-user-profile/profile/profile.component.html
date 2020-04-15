@@ -2,7 +2,7 @@
 <mat-card class="profile-form">
   <form [formGroup]="form" (ngSubmit)="submit()" class="profile">
     <div>
-      <input type="file" (change)="setAvatar($event)" />
+      <input type="file" aria-label="画像選択" (change)="setAvatar($event)" />
     </div>
     <div>
       <mat-form-field class="profile-form__field" color="accent">
@@ -10,6 +10,7 @@
         <input
           matInput
           placeholder="名前"
+          aria-label="名前"
           name="name"
           formControlName="name"
           autocomplete="name"
@@ -26,6 +27,7 @@
         <input
           matInput
           placeholder="住所"
+          aria-label="住所"
           name="address"
           formControlName="address"
           autocomplete="street-address"
@@ -89,6 +91,7 @@
         <input
           matInput
           placeholder="Email"
+          aria-label="Email"
           formControlName="email"
           required
           autocomplete="email"
@@ -108,6 +111,7 @@
           type="tel"
           matInput
           placeholder="電話番号"
+          aria-label="電話番号"
           formControlName="tel"
           required
           autocomplete="tel"
@@ -126,6 +130,7 @@
         <textarea
           matInput
           placeholder="自己紹介"
+          aria-label="自己紹介"
           formControlName="introduce"
         ></textarea>
       </mat-form-field>
@@ -147,6 +152,7 @@
         <input
           matInput
           placeholder="〇〇大学〇〇学部"
+          aria-label="大学、学部"
           formControlName="belongs"
           required
         />
@@ -175,11 +181,21 @@
 
     <div class="profile-form__field">
       <mat-form-field class="profile-form__field" color="accent">
-        <input matInput placeholder="資格１" formControlName="tagOne" />
+        <input
+          matInput
+          placeholder="資格１"
+          aria-label="資格"
+          formControlName="tagOne"
+        />
       </mat-form-field>
 
       <mat-form-field class="profile-form__field" color="accent">
-        <input matInput placeholder="資格２" formControlName="tagSecond" />
+        <input
+          matInput
+          placeholder="資格２"
+          aria-label="資格"
+          formControlName="tagSecond"
+        />
       </mat-form-field>
     </div>
 
@@ -188,6 +204,7 @@
         <textarea
           matInput
           placeholder="勤務可能な日時"
+          aria-label="勤務可能な日時"
           formControlName="possibleDay"
           required
         ></textarea>
@@ -201,6 +218,7 @@
         class="profile-form__btn"
         [disabled]="form.invalid || form.pristine"
         mat-raised-button
+        aria-label="プロフィール登録"
         color="primary"
       >
         プロフィール登録

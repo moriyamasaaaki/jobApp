@@ -11,6 +11,7 @@
         <input
           matInput
           placeholder="法人名（正式社名）"
+          aria-label="法人名（正式社名）"
           formControlName="name"
           autocomplete="organization"
           required
@@ -26,6 +27,7 @@
         <input
           matInput
           placeholder="部署名（＊任意）"
+          aria-label="部署名（＊任意）"
           formControlName="department"
           autocomplete="organization-title"
         />
@@ -37,6 +39,7 @@
         <input
           matInput
           placeholder="姓"
+          aria-label="姓"
           formControlName="lastName"
           autocomplete="family-name"
         />
@@ -51,6 +54,7 @@
         <input
           matInput
           placeholder="名"
+          aria-label="名"
           formControlName="firstName"
           autocomplete="given-name"
         />
@@ -69,6 +73,7 @@
           type="tel"
           matInput
           placeholder="電話番号"
+          aria-label="電話番号"
           formControlName="tel"
           required
           autocomplete="tel"
@@ -87,6 +92,7 @@
         <input
           matInput
           placeholder="メールアドレス"
+          aria-label="メールアドレス"
           formControlName="email"
           required
           autocomplete="email"
@@ -105,12 +111,18 @@
         <input
           matInput
           placeholder="パスワード"
+          aria-label="パスワード"
           [type]="hide ? 'password' : 'text'"
           formControlName="password"
           autocomplete="new-password"
           required
         />
-        <button mat-icon-button matSuffix (click)="hide = !hide">
+        <button
+          mat-icon-button
+          aria-label="パスワード"
+          matSuffix
+          (click)="hide = !hide"
+        >
           <mat-icon>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
         </button>
         <mat-error *ngIf="passwordControl.hasError('required')"
@@ -131,6 +143,7 @@
       [disabled]="form.invalid || form.pristine"
       class="profile-form__btn"
       mat-flat-button
+      aria-label="無料登録する"
       color="primary"
     >
       <span>無料登録する</span><i class="material-icons">done</i>

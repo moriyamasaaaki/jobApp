@@ -25,8 +25,6 @@ export class HeaderComponent implements OnInit, DoCheck {
   companyLoginStatus: boolean;
   user$ = this.authService.afUser$;
   display: boolean;
-  planCompany: string;
-  length: number;
 
   @Output() addOops: EventEmitter<string> = new EventEmitter();
 
@@ -69,16 +67,16 @@ export class HeaderComponent implements OnInit, DoCheck {
     this.loginToggle();
   }
 
-  createJob() {
+  navigateEditor() {
     this.jobPostService
       .getMyCompanyJobs(this.authService.uid)
       .pipe(take(1))
       .subscribe(jobs => {
-        this.length = jobs.length;
+        const jobLength = jobs.length;
         this.feeService.getCustomer().subscribe((customer: any) => {
-          this.planCompany = customer.subscriptionId;
+          const planCompany = customer.subscriptionId;
           if (
-            (this.length > 1 && customer === undefined) ||
+            (jobLength > 1 && customer === undefined) ||
             customer.subscriptionId === null
           ) {
             this.snackbar.open(
@@ -89,7 +87,7 @@ export class HeaderComponent implements OnInit, DoCheck {
                 verticalPosition: 'top'
               }
             );
-          } else if (this.length < 1 || this.planCompany) {
+          } else if (jobLength < 1 || planCompany) {
             this.router.navigateByUrl('/company/recruitment');
           }
         });

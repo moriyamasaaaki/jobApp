@@ -1,7 +1,7 @@
 <header>
   <mat-toolbar class="header" color="primary">
     <div class="header__title">
-      <button mat-icon-button aria-label="メニュー" (click)="sidenav.toggle()">
+      <button mat-icon-button (click)="sidenav.toggle()">
         <mat-icon>menu</mat-icon>
       </button>
       <img src="assets/logo.png" alt="" routerLink="/" />
@@ -10,7 +10,6 @@
       <div class="header__nav-item">
         <button
           mat-icon-button
-          aria-label="求人検索する"
           matTooltip="求人検索する"
           *ngIf="searchIcon()"
           (click)="isSearch()"
@@ -19,74 +18,47 @@
         </button>
         <button
           mat-icon-button
-          aria-label="求人作成する"
           matTooltip="求人作成する"
-          (click)="createJob()"
+          (click)="navigateEditor()"
           *ngIf="companyLoginStatus"
         >
           <mat-icon>add</mat-icon>
         </button>
         <ng-container *ngIf="user$ | async as user">
           <div class="header__user-icon">
-            <button
-              mat-icon-button
-              aria-label="ユーザー画像"
-              [matMenuTriggerFor]="menu"
-            >
+            <button mat-icon-button [matMenuTriggerFor]="menu">
               <img [src]="user.photoURL" alt="" />
             </button>
           </div>
         </ng-container>
         <mat-menu #menu="matMenu">
-          <button
-            mat-menu-item
-            aria-label="ログアウト"
-            *ngIf="user$ | async"
-            (click)="logout()"
-          >
+          <button mat-menu-item *ngIf="user$ | async" (click)="logout()">
             <mat-icon>input</mat-icon>
             <span>ログアウト</span>
           </button>
-          <button
-            mat-menu-item
-            aria-label="お気に入り一覧"
-            routerLink="/user/keep"
-            *ngIf="userLoginStatus"
-          >
+          <button mat-menu-item routerLink="/user/keep" *ngIf="userLoginStatus">
             <mat-icon>star</mat-icon>
             <span>お気に入り一覧</span>
           </button>
           <ng-container *ngIf="userLoginStatus">
-            <button
-              mat-menu-item
-              aria-label="プロフィール"
-              routerLink="/user/mypage"
-            >
+            <button mat-menu-item routerLink="/user/mypage">
               <mat-icon>person</mat-icon>
               <span>プロフィール</span>
             </button>
           </ng-container>
           <ng-container *ngIf="companyLoginStatus">
-            <button
-              mat-menu-item
-              aria-label="プロフィール"
-              routerLink="/company/profile"
-            >
+            <button mat-menu-item routerLink="/company/profile">
               <mat-icon>person</mat-icon>
               <span>プロフィール</span>
             </button>
           </ng-container>
           <ng-container *ngIf="companyLoginStatus">
-            <button
-              mat-menu-item
-              aria-label="自社求人一覧"
-              routerLink="/company/job/list"
-            >
+            <button mat-menu-item routerLink="/company/job/list">
               <mat-icon>event_note</mat-icon>
               <span>自社求人一覧</span>
             </button>
           </ng-container>
-          <button mat-menu-item aria-label="プラン" routerLink="/plan">
+          <button mat-menu-item routerLink="/plan">
             <mat-icon>payment</mat-icon>
             <span>プラン</span>
           </button>
@@ -94,12 +66,7 @@
       </div>
       <ng-container *ngIf="!(user$ | async) && searchNone()">
         <div class="header-auth">
-          <button
-            (click)="authDialog()"
-            mat-raised-button
-            aria-label="ログイン"
-            color="accent"
-          >
+          <button (click)="authDialog()" mat-raised-button color="accent">
             <span>ログイン</span>
           </button>
         </div>

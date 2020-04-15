@@ -5,7 +5,7 @@
   </div>
   <mat-tab-group>
     <mat-tab label="企業側">
-      <mat-vertical-stepper [linear]="isLinear" #stepper>
+      <mat-vertical-stepper #stepper>
         <mat-step>
           <ng-template matStepLabel>プロフィール作成</ng-template>
           <div class="about__tab-content">
@@ -35,7 +35,7 @@
     </mat-tab>
 
     <mat-tab label="ユーザー側">
-      <mat-vertical-stepper [linear]="isLinear" #stepper>
+      <mat-vertical-stepper #stepper>
         <mat-step>
           <ng-template matStepLabel>プロフィール作成</ng-template>
           <div class="about__tab-content">

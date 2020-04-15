@@ -2,7 +2,12 @@
 <mat-card class="profile-form">
   <form [formGroup]="form" (ngSubmit)="submit()" class="recruitment">
     <div>
-      <input type="file" (change)="setImage($event)" multiple />
+      <input
+        type="file"
+        aria-label="画像選択"
+        (change)="setImage($event)"
+        multiple
+      />
     </div>
 
     <div>
@@ -15,6 +20,7 @@
         <input
           matInput
           placeholder="【ご案内スタッフ】電話で簡単アンケート! 日払い◎"
+          aria-label="求人タイトル"
           formControlName="title"
           required
         />
@@ -33,6 +39,7 @@
         <textarea
           matInput
           placeholder="18:00~22:00"
+          aria-label="勤務時間"
           formControlName="workTime"
           required
         ></textarea>
@@ -51,6 +58,7 @@
         <input
           matInput
           placeholder="週3日"
+          aria-label="休日"
           formControlName="holiday"
           autocomplete="on"
           required
@@ -67,6 +75,7 @@
         <input
           matInput
           placeholder="あり"
+          aria-label="福利厚生の有無"
           formControlName="welfare"
           autocomplete="on"
           required
@@ -83,6 +92,7 @@
         <textarea
           matInput
           placeholder="お客様に、オトクな情報をご紹介！"
+          aria-label="求人の概要"
           formControlName="companyContent"
           autocomplete="off"
           required
@@ -102,6 +112,7 @@
         <input
           matInput
           placeholder="週２からOK!"
+          aria-label="タグ"
           formControlName="label"
           autocomplete="on"
         />
@@ -111,6 +122,7 @@
         <input
           matInput
           placeholder="頭髪制限なし"
+          aria-label="タグ"
           formControlName="label"
           autocomplete="on"
         />
@@ -123,6 +135,7 @@
         <input
           matInput
           placeholder="株式会社Tokyo bite"
+          aria-label="企業名"
           formControlName="companyName"
           autocomplete="organization"
           required
@@ -139,6 +152,7 @@
         <input
           matInput
           placeholder="1000~1200円"
+          aria-label="時給"
           formControlName="salary"
           autocomplete="off"
           required
@@ -155,6 +169,7 @@
         <input
           matInput
           placeholder="電話対応、清掃"
+          aria-label="募集の職種"
           formControlName="occupation"
           autocomplete="off"
           required
@@ -170,6 +185,7 @@
         <input
           matInput
           placeholder="渋谷、新宿"
+          aria-label="勤務地"
           formControlName="workPlace"
           autocomplete="on"
           required

@@ -2,15 +2,23 @@
   <h2 matDialogTitle>ログイン</h2>
   <div mat-dialog-actions>
     <div class="auth-dialog__user">
-      <button mat-stroked-button [matDialogClose]="true" (click)="loginUser()">
+      <button
+        mat-stroked-button
+        aria-label="Googleログイン"
+        [matDialogClose]="true"
+        (click)="loginUser()"
+      >
         <img src="assets/google.png" width="30" alt="" />
         Googleでログインする
       </button>
-      <button mat-flat-button color="warn" matDialogClose>戻る</button>
+      <button mat-flat-button aria-label="戻る" color="warn" matDialogClose>
+        戻る
+      </button>
     </div>
     <div class="auth-dialog__another">
       <button
         mat-button
+        aria-label="企業の方はこちらから"
         color="accent"
         [matDialogClose]="true"
         (click)="loginCompany()"

@@ -5,6 +5,13 @@
     {{ data.content }}
   </p>
   <div mat-dialog-actions>
-    <button mat-flat-button color="warn" [matDialogClose]="true">OK</button>
+    <button
+      mat-flat-button
+      color="warn"
+      aria-label="OK"
+      [matDialogClose]="true"
+    >
+      OK
+    </button>
   </div>
 </div>

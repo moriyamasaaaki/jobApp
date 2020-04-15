@@ -7,6 +7,7 @@
         <input
           matInput
           placeholder="TARO YAMADA"
+          aria-label="カード名義"
           formControlName="name"
           required
         />
@@ -16,6 +17,7 @@
         <input
           matInput
           placeholder="tokyo@bite.com"
+          aria-label="メールアドレス"
           formControlName="email"
           required
         />
@@ -28,12 +30,18 @@
         <img src="assets/stripe.png" width="100" alt="" />
       </div>
       <div class="stripe__submit-btn">
-        <button mat-stroked-button color="basic" matDialogClose>
+        <button
+          mat-stroked-button
+          aria-label="キャンセル"
+          color="basic"
+          matDialogClose
+        >
           キャンセル
         </button>
         <button
           type="submit"
           mat-raised-button
+          aria-label="クレジットカードを登録する"
           color="primary"
           [matDialogClose]="true"
         >

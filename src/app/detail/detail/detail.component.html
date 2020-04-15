@@ -16,6 +16,7 @@
               mat-mini-fab
               color="accent"
               matTooltip="いいねしたユーザーを見る"
+              aria-label="いいねしたユーザーを見る"
               routerLink="/job/detail/{{ job.id }}/like"
             >
               <mat-icon>thumb_up</mat-icon>
@@ -24,6 +25,7 @@
               [routerLink]="['/company/recruitment']"
               [queryParams]="{ id: job.id }"
               mat-mini-fab
+              aria-label="編集する"
               color="accent"
               matTooltip="編集する"
             >
@@ -31,6 +33,7 @@
             </button>
             <button
               mat-mini-fab
+              aria-label="削除する"
               color="warn"
               matTooltip="削除する"
               (click)="openDeleteDialog()"
@@ -95,6 +98,7 @@
       <ng-container *ngIf="like; else noLike">
         <button
           mat-raised-button
+          aria-label="お気に入り解除"
           class="detail__btn-add"
           (click)="toggleLiked()"
           [class.like]="like"
@@ -106,6 +110,7 @@
       <ng-template #noLike>
         <button
           mat-raised-button
+          aria-label="お気に入り追加"
           class="detail__btn-add"
           (click)="toggleLiked()"
           [class.like]="like"
@@ -115,7 +120,12 @@
         </button>
       </ng-template>
       <a href="dammy@tokyobite.com">
-        <button mat-raised-button color="primary" class="detail__btn-add">
+        <button
+          mat-raised-button
+          aria-label="応募する"
+          color="primary"
+          class="detail__btn-add"
+        >
           応募する
         </button>
       </a>

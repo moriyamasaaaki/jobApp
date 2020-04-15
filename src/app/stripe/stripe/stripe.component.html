@@ -14,7 +14,7 @@
           mat-raised-button
           aria-label="登録する"
           color="primary"
-          [matDialogClose]="true"
+          matDialogClose="true"
           (click)="startSubscribe()"
         >
           登録する
@@ -37,7 +37,7 @@
           mat-raised-button
           aria-label="フリープランに戻す"
           color="primary"
-          [matDialogClose]="true"
+          matDialogClose="true"
           (click)="stopSubscribe()"
         >
           解約する
@@ -90,7 +90,7 @@
             mat-raised-button
             aria-label="クレジットカード登録する"
             color="primary"
-            [matDialogClose]="true"
+            matDialogClose="true"
             [disabled]="stripeTest.invalid || stripeTest.pristine"
           >
             登録

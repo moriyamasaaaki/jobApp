@@ -1,3 +1,5 @@
+import { firestore } from 'firebase';
+
 export interface JobList {
   id: string;
   jobId: string;
@@ -13,10 +15,9 @@ export interface JobList {
 
 export interface DetailJob extends JobList {
   label: string[];
-  date: Date;
   companyContent: string;
   welfare: string;
-  createAt: Date;
+  createdAt: firestore.Timestamp;
 }
 
 export interface Favorite {

@@ -17,6 +17,7 @@ export class DeleteDialogComponent implements OnInit {
     public data: {
       title: string;
       content: string;
+      btnText: string;
     }
   ) {}
 

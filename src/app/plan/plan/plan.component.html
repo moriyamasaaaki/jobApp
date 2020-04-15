@@ -14,12 +14,18 @@
             <button
               mat-flat-button
               color="accent"
+              aria-label="無料プラン登録する"
               *ngIf="subscriptionID"
               (click)="stripeDialog()"
             >
               登録
             </button>
-            <button mat-flat-button disabled *ngIf="!subscriptionID">
+            <button
+              mat-flat-button
+              aria-label="無料プラン登録中"
+              disabled
+              *ngIf="!subscriptionID"
+            >
               登録中
             </button>
           </div>
@@ -34,14 +40,24 @@
           </ul>
           <ng-container *ngIf="!subscriptionID; else subscription">
             <div class="plan__register-btn">
-              <button mat-flat-button color="primary" (click)="stripeDialog()">
+              <button
+                mat-flat-button
+                aria-label="有料プラン登録する"
+                color="primary"
+                (click)="stripeDialog()"
+              >
                 登録
               </button>
             </div>
           </ng-container>
           <ng-template #subscription>
             <div class="plan__register-btn">
-              <button mat-flat-button color="warn" (click)="stripeDialog()">
+              <button
+                mat-flat-button
+                aria-label="フリープランに戻す"
+                color="warn"
+                (click)="stripeDialog()"
+              >
                 フリープランに戻す
               </button>
             </div>

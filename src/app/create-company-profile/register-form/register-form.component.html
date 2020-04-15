@@ -110,7 +110,12 @@
           autocomplete="new-password"
           required
         />
-        <button mat-icon-button matSuffix (click)="hide = !hide">
+        <button
+          mat-icon-button
+          aria-label="パスワード"
+          matSuffix
+          (click)="hide = !hide"
+        >
           <mat-icon>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
         </button>
         <mat-error *ngIf="passwordControl.hasError('required')"
@@ -131,6 +136,7 @@
       [disabled]="form.invalid || form.pristine"
       class="profile-form__btn"
       mat-flat-button
+      aria-label="無料登録する"
       color="primary"
     >
       <span>無料登録する</span><i class="material-icons">done</i>

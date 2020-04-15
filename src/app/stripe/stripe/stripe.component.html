@@ -7,9 +7,12 @@
         毎月980円の料金が発生します。解約しない限り毎月継続して料金が発生します。
       </p>
       <div class="subscription__submit-btn">
-        <button mat-button matDialogClose>キャンセル</button>
+        <button mat-button aria-label="キャンセル" matDialogClose>
+          キャンセル
+        </button>
         <button
           mat-raised-button
+          aria-label="登録する"
           color="primary"
           [matDialogClose]="true"
           (click)="startSubscribe()"
@@ -27,9 +30,12 @@
         解約すると月額購読は中止されます。
       </p>
       <div class="subscription__submit-btn">
-        <button mat-button matDialogClose>キャンセル</button>
+        <button mat-button aria-label="キャンセル" matDialogClose>
+          キャンセル
+        </button>
         <button
           mat-raised-button
+          aria-label="フリープランに戻す"
           color="primary"
           [matDialogClose]="true"
           (click)="stopSubscribe()"
@@ -69,12 +75,18 @@
           <img src="assets/stripe.png" width="100" alt="" />
         </div>
         <div class="stripe__submit-btn">
-          <button mat-stroked-button color="basic" matDialogClose>
+          <button
+            mat-stroked-button
+            aria-label="キャンセル"
+            color="basic"
+            matDialogClose
+          >
             キャンセル
           </button>
           <button
             type="submit"
             mat-raised-button
+            aria-label="クレジットカード登録する"
             color="primary"
             [matDialogClose]="true"
             [disabled]="stripeTest.invalid || stripeTest.pristine"

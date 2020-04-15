@@ -184,6 +184,7 @@
         <button
           class="profile-form__btn"
           mat-raised-button
+          aria-label="編集を完了する"
           color="primary"
           (click)="update()"
         >
@@ -196,6 +197,7 @@
         <button
           class="profile-form__btn"
           mat-raised-button
+          aria-label="求人広告を登録"
           color="primary"
           [disabled]="form.invalid || form.pristine"
         >

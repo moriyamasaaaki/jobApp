@@ -56,7 +56,6 @@
               class="detail__thumbnail"
               [style.background-image]="'url(' + job.jobImageUrls[0] + ')'"
             ></figure>
-            <!-- <img [src]="imageURL" *ngFor="let imageURL of job.jobImageUrls" alt="" /> -->
           </div>
         </ng-container>
         <ng-template #defaultImg>
@@ -119,16 +118,29 @@
           {{ likedCount }}
         </button>
       </ng-template>
-      <a routerLink="/job/detail/{{ job.id }}/entry">
+      <ng-container *ngIf="existRecuitForm; else endReciut">
         <button
           mat-raised-button
-          aria-label="応募する"
+          disabled
+          aria-label="応募しました"
           color="primary"
           class="detail__btn-add"
         >
-          応募する
+          応募しました
         </button>
-      </a>
+      </ng-container>
+      <ng-template #endReciut>
+        <a routerLink="/job/detail/{{ job.id }}/entry">
+          <button
+            mat-raised-button
+            aria-label="応募する"
+            color="primary"
+            class="detail__btn-add"
+          >
+            応募する
+          </button>
+        </a>
+      </ng-template>
     </div>
   </div>
 </section>

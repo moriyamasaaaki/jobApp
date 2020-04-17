@@ -8,11 +8,13 @@ import { DeleteDialogComponent } from 'src/app/delete-dialog/delete-dialog.compo
 import { AuthService } from 'src/app/services/auth.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { LikedService } from 'src/app/services/liked.service';
-import { take } from 'rxjs/operators';
+import { take, map } from 'rxjs/operators';
 import { Title, Meta } from '@angular/platform-browser';
 import { DrawerService } from 'src/app/services/drawer.service';
 import { UserProfileService } from 'src/app/services/user-profile.service';
 import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
+import { RecuitService } from 'src/app/services/recuit.service';
+import { Recuit } from 'src/app/interfaces/profile';
 
 @Component({
   selector: 'app-detail',
@@ -28,6 +30,7 @@ export class DetailComponent implements OnInit {
   likeid: string;
   jobId: string;
   jobEdit: boolean;
+  existRecuitForm: boolean;
   config: SwiperConfigInterface = {
     loop: true,
     navigation: true,
@@ -49,7 +52,8 @@ export class DetailComponent implements OnInit {
     private metaService: Meta,
     private router: Router,
     private drawerService: DrawerService,
-    private userProfile: UserProfileService
+    private userProfile: UserProfileService,
+    private recuitService: RecuitService
   ) {
     this.drawerService.open();
     route.paramMap.subscribe(params => {
@@ -61,6 +65,7 @@ export class DetailComponent implements OnInit {
     this.getlikes();
     this.editCompanyUser();
     this.getTitle();
+    this.isRecuit();
     this.handleResizeWindow(window.innerWidth);
   }
 
@@ -110,6 +115,24 @@ export class DetailComponent implements OnInit {
           this.metaService.removeTag("property='og:image'");
         }
       });
+    });
+  }
+
+  isRecuit() {
+    this.route.paramMap.subscribe(params => {
+      this.recuitService
+        .getRecuitForm(params.get('id'), this.authService.uid)
+        .subscribe(data => {
+          console.log(data.userId);
+          if (data.userId === this.authService.uid) {
+            this.existRecuitForm = true;
+          } else if (
+            data.userId !== this.authService.uid ||
+            data.userId === undefined
+          ) {
+            this.existRecuitForm = false;
+          }
+        });
     });
   }
 

@@ -115,6 +115,7 @@ export class RecruitmentComponent implements OnInit {
         if (profile) {
           this.jobPostService.createJobPost(
             this.authService.uid,
+            profile.email,
             {
               createdAt: new Date(),
               updatedAt: new Date(),

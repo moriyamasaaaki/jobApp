@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { DetailJob, Favorite, JobWidhFavorite } from '../interfaces/article';
+import { DetailJob } from '../interfaces/article';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { Observable, combineLatest, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { AngularFireStorage } from '@angular/fire/storage';
-import { map, switchMap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -57,11 +56,16 @@ export class JobPostService {
   }
 
   // 求人作成
-  createJobPost(jobId: string, article: DetailJob, images?: File[]) {
+  createJobPost(
+    jobId: string,
+    companyEmail: string,
+    article: DetailJob,
+    images?: File[]
+  ) {
     const id = this.db.createId();
     return this.db
       .doc(`JobPosts/${id}`)
-      .set({ id, jobId, ...article, createdAt: new Date() })
+      .set({ id, jobId, companyEmail, ...article, createdAt: new Date() })
       .then(() => {
         this.snackBar.open('求人を作成しました', null, {
           duration: 3000

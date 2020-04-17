@@ -28,3 +28,16 @@ export interface CompanyProfile {
   email: string;
   password: string;
 }
+
+export interface Recuit {
+  userId: string;
+  name: string;
+  year: number;
+  month: number;
+  day: number;
+  gender: 'male' | 'female';
+  email: string;
+  tel: number;
+  companyTitle: string;
+  companyEmail: string;
+}

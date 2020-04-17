@@ -19,6 +19,10 @@ service cloud.firestore {
       allow update: if request.auth.uid == resource.data.jobId && resource.data.jobId == request.resource.data.jobId;
       allow delete: if request.auth.uid == resource.data.jobId;
 }
+    match /JobPosts/{id}/recuit/{userId} {
+      allow read: if true;
+      allow write: if request.auth.uid != null;
+}
     match /likes/{id}/likedUsers/{userId} {
       allow read: if true;
       allow write: if request.auth.uid == userId;

@@ -125,6 +125,13 @@ const routes: Routes = [
   },
 
   {
+    path: 'job/detail',
+    data: { title: '応募入力フォーム' },
+    loadChildren: () => import('./entry/entry.module').then(m => m.EntryModule),
+    canLoad: [AuthGuard]
+  },
+
+  {
     path: 'search',
     component: SearchResultComponent
   },

@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
-import { UserProfile } from '../interfaces/profile';
+import { Recuit } from '../interfaces/profile';
 import { AuthService } from './auth.service';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { MatSnackBar } from '@angular/material';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -16,12 +17,19 @@ export class RecuitService {
     private router: Router
   ) {}
 
-  createRecuitForm(profile: Omit<UserProfile, 'userId'>): Promise<void> {
+  createRecuitForm(
+    id: string,
+    companyName: string,
+    companyTitle: string,
+    companyEmail: string,
+    profile: Recuit
+  ): Promise<void> {
     const userId = this.authService.uid;
     return this.db
-      .doc(`userProfile/${userId}`)
-      .set({ userId, ...profile })
+      .doc(`JobPosts/${id}/recuit/${userId}`)
+      .set({ userId, companyName, companyTitle, companyEmail, ...profile })
       .then(() => {
+        this.router.navigateByUrl('/');
         this.snackBar.open('応募フォームを送信しました', null, {
           duration: 3000
         });
@@ -32,5 +40,11 @@ export class RecuitService {
           duration: 3000
         });
       });
+  }
+
+  getRecuitForm(id: string, userId: string): Observable<Recuit> {
+    return this.db
+      .doc<Recuit>(`JobPosts/${id}/recuit/${userId}`)
+      .valueChanges();
   }
 }

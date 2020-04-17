@@ -19,6 +19,8 @@ export class EntryComponent implements OnInit {
   bottom = new Date().getFullYear() - 60;
   months = new Array(12).fill(null);
   days = new Array(31).fill(null);
+  id: string;
+  companyEmail: string;
 
   userId: string;
   jobs$: Observable<DetailJob>;
@@ -67,12 +69,12 @@ export class EntryComponent implements OnInit {
     private fb: FormBuilder,
     private userProfileService: UserProfileService,
     private authService: AuthService,
-    private companyProfileService: CompanyProfileService,
     private route: ActivatedRoute,
     private jobPostService: JobPostService,
     private recuitService: RecuitService
   ) {
     route.paramMap.subscribe(params => {
+      console.log(params.get('id'));
       this.jobs$ = this.jobPostService.getJobPost(params.get('id'));
     });
   }
@@ -88,10 +90,24 @@ export class EntryComponent implements OnInit {
   }
 
   submit() {
-    console.log(this.form.value);
-    this.recuitService.createRecuitForm({
-      userId: this.authService.uid,
-      ...this.form.value
+    this.route.paramMap.subscribe(params => {
+      this.jobPostService.getJobPost(params.get('id')).subscribe(param => {
+        console.log(param);
+        this.id = param.id;
+        const companyName = param.companyName;
+        const companyTitle = param.title;
+        const companyEmail = param.companyEmail;
+        this.recuitService.createRecuitForm(
+          this.id,
+          companyName,
+          companyTitle,
+          companyEmail,
+          {
+            userId: this.authService.uid,
+            ...this.form.value
+          }
+        );
+      });
     });
   }
   @HostListener('window:beforeunload', ['$event'])

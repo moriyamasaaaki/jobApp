@@ -74,7 +74,6 @@ export class EntryComponent implements OnInit {
     private recuitService: RecuitService
   ) {
     route.paramMap.subscribe(params => {
-      console.log(params.get('id'));
       this.jobs$ = this.jobPostService.getJobPost(params.get('id'));
     });
   }
@@ -92,7 +91,6 @@ export class EntryComponent implements OnInit {
   submit() {
     this.route.paramMap.subscribe(params => {
       this.jobPostService.getJobPost(params.get('id')).subscribe(param => {
-        console.log(param);
         this.id = param.id;
         const companyName = param.companyName;
         const companyTitle = param.title;

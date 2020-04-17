@@ -123,7 +123,6 @@ export class DetailComponent implements OnInit {
       this.recuitService
         .getRecuitForm(params.get('id'), this.authService.uid)
         .subscribe(data => {
-          console.log(data.userId);
           if (data.userId === this.authService.uid) {
             this.existRecuitForm = true;
           } else if (

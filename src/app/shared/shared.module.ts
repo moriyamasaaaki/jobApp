@@ -3,10 +3,11 @@ import { CommonModule } from '@angular/common';
 
 import { SharedRoutingModule } from './shared-routing.module';
 import { JobCardComponent } from './job-card/job-card.component';
+import { TermsTextComponent } from './terms-text/terms-text.component';
 
 @NgModule({
-  declarations: [JobCardComponent],
+  declarations: [JobCardComponent, TermsTextComponent],
   imports: [CommonModule, SharedRoutingModule],
-  exports: [JobCardComponent]
+  exports: [JobCardComponent, TermsTextComponent]
 })
 export class SharedModule {}

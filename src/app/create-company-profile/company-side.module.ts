@@ -10,11 +10,11 @@ import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { TermsComponent } from '../intl/terms/terms.component';
 import { MatCardModule } from '@angular/material/card';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
-  declarations: [RegisterFormComponent, TermsComponent],
+  declarations: [RegisterFormComponent],
   imports: [
     CommonModule,
     CompanySideRoutingModule,
@@ -25,7 +25,8 @@ import { MatCardModule } from '@angular/material/card';
     MatCheckboxModule,
     MatButtonModule,
     MatIconModule,
-    MatCardModule
+    MatCardModule,
+    SharedModule
   ]
 })
 export class CompanySideModule {}

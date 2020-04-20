@@ -14,6 +14,7 @@ import { ComlawComponent } from './comlaw/comlaw.component';
 import { PrivacyComponent } from './privacy/privacy.component';
 import { HelpComponent } from './help/help.component';
 import { AboutComponent } from './about/about.component';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { AboutComponent } from './about/about.component';
     MatCardModule,
     MatIconModule,
     MatTabsModule,
-    MatStepperModule
+    MatStepperModule,
+    SharedModule
   ]
 })
 export class IntlModule {}

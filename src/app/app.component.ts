@@ -77,13 +77,6 @@ export class AppComponent implements OnInit {
             })
           : meta.removeTag("property='og:description'");
 
-        data.ogDescription
-          ? meta.updateTag({
-              property: 'og:description',
-              content: data.ogDescription
-            })
-          : meta.removeTag("property='og:description'");
-
         data.ogImage
           ? meta.updateTag({ property: 'og:image', content: data.ogImage })
           : meta.removeTag("property='og:image'");

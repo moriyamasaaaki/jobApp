@@ -80,40 +80,32 @@ export class DetailComponent implements OnInit {
   getTitle() {
     this.route.paramMap.subscribe(params => {
       this.jobPostService.getJobPost(params.get('id')).subscribe(data => {
-        this.titleService.setTitle(`求人詳細-${data.title}-`);
-        if (data.companyContent) {
-          this.metaService.updateTag({
-            name: 'description',
-            content: data.companyContent
-          });
-        } else {
-          this.metaService.removeTag("name='description'");
-        }
-        if (data.title) {
-          this.metaService.updateTag({
-            property: 'og:title',
-            content: data.title
-          });
-        } else {
-          this.metaService.removeTag("property='og:title'");
-        }
-        if (data.companyContent) {
-          this.metaService.updateTag({
-            property: 'og:description',
-            content: data.companyContent
-          });
-        } else {
-          this.metaService.removeTag("property='og:description'");
-        }
+        this.titleService.setTitle(`${data.title}-求人詳細-`);
+        const meta = this.metaService;
+        data.companyContent
+          ? meta.updateTag({
+              name: 'description',
+              content: data.companyContent
+            })
+          : meta.removeTag("name='description'");
 
-        if (data.jobImageUrls[0]) {
-          this.metaService.updateTag({
-            property: 'og:image',
-            content: data.jobImageUrls[0]
-          });
-        } else {
-          this.metaService.removeTag("property='og:image'");
-        }
+        data.title
+          ? meta.updateTag({ property: 'og:title', content: data.title })
+          : meta.removeTag("property='og:title'");
+
+        data.companyContent
+          ? meta.updateTag({
+              property: 'og:description',
+              content: data.companyContent
+            })
+          : meta.removeTag("property='og:description'");
+
+        data.jobImageUrls[0]
+          ? meta.updateTag({
+              property: 'og:image',
+              content: data.jobImageUrls[0]
+            })
+          : meta.removeTag("property='og:image'");
       });
     });
   }

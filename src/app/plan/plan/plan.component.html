@@ -95,8 +95,8 @@
         </ol>
         <div class="plan__payment">
           <h4>決済情報</h4>
-          <ng-container *ngIf="planID$ | async; else free">
-            <p>有料プラン開始日:{{ startedAt }}</p>
+          <ng-container *ngIf="startedAt; else free">
+            <p>有料プラン開始日:{{ startedAt.toDate() | date: 'yyy/MM/dd' }}</p>
           </ng-container>
           <ng-template #free>
             <p>決済情報はありません。</p>

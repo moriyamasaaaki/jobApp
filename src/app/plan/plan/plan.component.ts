@@ -6,6 +6,7 @@ import { PaymentComponent } from 'src/app/stripe/payment/payment.component';
 import { AuthService } from 'src/app/services/auth.service';
 import { DeleteDialogComponent } from 'src/app/delete-dialog/delete-dialog.component';
 import { DrawerService } from 'src/app/services/drawer.service';
+import { firestore } from 'firebase';
 
 @Component({
   selector: 'app-plan',
@@ -19,7 +20,7 @@ export class PlanComponent implements OnInit {
   customerId: string;
   cardName: string;
   amex: string;
-  startedAt: string;
+  startedAt: firestore.Timestamp;
   card$ = this.feeService.getCard(this.authServie.uid);
   planID$ = this.feeService.getCustomer().subscribe((plan: any) => {
     this.subscriptionID = plan.subscriptionId;

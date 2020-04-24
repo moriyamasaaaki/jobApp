@@ -11,7 +11,6 @@ import { DrawerService } from './services/drawer.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  title = 'Tokyo bite';
   uid: string;
   userLoginStatus: boolean;
   companyLoginStatus: boolean;

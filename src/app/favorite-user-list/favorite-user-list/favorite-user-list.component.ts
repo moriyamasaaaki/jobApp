@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { AuthService } from 'src/app/services/auth.service';
+import { ActivatedRoute } from '@angular/router';
 import { UserProfile } from 'src/app/interfaces/profile';
 import { Observable } from 'rxjs';
 import { LikedService } from 'src/app/services/liked.service';
@@ -15,8 +14,6 @@ export class FavoriteUserListComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private authService: AuthService,
-    private router: Router,
     private likedService: LikedService
   ) {
     route.paramMap.subscribe(params => {

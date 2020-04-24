@@ -1,6 +1,4 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { UserProfileService } from '../services/user-profile.service';
-import { AuthService } from '../services/auth.service';
 import { MAT_DIALOG_DATA } from '@angular/material';
 
 @Component({
@@ -11,8 +9,6 @@ import { MAT_DIALOG_DATA } from '@angular/material';
 export class DeleteDialogComponent implements OnInit {
   userId: string;
   constructor(
-    private userProfileService: UserProfileService,
-    private authService: AuthService,
     @Inject(MAT_DIALOG_DATA)
     public data: {
       title: string;

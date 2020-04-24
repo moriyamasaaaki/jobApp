@@ -1,5 +1,5 @@
 <div class="container">
-  <app-header (click)="sidenav.toggle()"></app-header>
+  <app-header (sidenavClose)="sidenav.toggle()"></app-header>
   <app-search *ngIf="searchNone()"></app-search>
   <mat-drawer-container class="example-container">
     <mat-drawer

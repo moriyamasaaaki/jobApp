@@ -26,7 +26,7 @@ export class HeaderComponent implements OnInit, DoCheck {
   user$ = this.authService.afUser$;
   display: boolean;
 
-  @Output() addOops: EventEmitter<string> = new EventEmitter();
+  @Output() sidenavClose = new EventEmitter();
 
   inputParams = {
     hitsPerPage: 10,
@@ -65,6 +65,10 @@ export class HeaderComponent implements OnInit, DoCheck {
 
   ngDoCheck() {
     this.loginToggle();
+  }
+
+  onSidenavClose() {
+    this.sidenavClose.emit();
   }
 
   navigateEditor() {

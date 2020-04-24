@@ -83,7 +83,8 @@ export class RegisterFormComponent implements OnInit {
             data: {
               title: '⚠️登録できません⚠️',
               content:
-                '様はユーザー側にご登録されています。同じアカウントでユーザー側・企業側両方に登録することはできません。＊違うアカウントでご登録ください。'
+                '様はユーザー側にご登録されています。同じアカウントでユーザー側・企業側両方に登録することはできません。＊違うアカウントでご登録ください。',
+              btnText: 'OK'
             }
           })
           .afterClosed();

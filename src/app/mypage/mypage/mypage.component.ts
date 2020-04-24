@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { DeleteDialogComponent } from 'src/app/delete-dialog/delete-dialog.component';
 import { UserProfileService } from 'src/app/services/user-profile.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { Observable } from 'rxjs';
@@ -18,23 +16,10 @@ export class MypageComponent implements OnInit {
   );
 
   constructor(
-    private dialog: MatDialog,
     private userProfileService: UserProfileService,
     private authService: AuthService,
     private windowService: WindowService
   ) {}
-
-  openDeleteDialog() {
-    this.dialog
-      .open(DeleteDialogComponent)
-      .afterClosed()
-      .subscribe(status => {
-        if (status) {
-          console.log(this.authService.uid);
-          this.userProfileService.deleteProfile(this.authService.uid);
-        }
-      });
-  }
 
   ngOnInit() {
     this.windowService.handleResizeWindow(window.innerWidth);

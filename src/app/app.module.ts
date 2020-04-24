@@ -21,7 +21,6 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireFunctionsModule } from '@angular/fire/functions';
 
-import { DeleteDialogComponent } from './delete-dialog/delete-dialog.component';
 import { StripeComponent } from './stripe/stripe/stripe.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ProfileDialogComponent } from './profile-dialog/profile-dialog.component';
@@ -51,7 +50,6 @@ import { ServiceWorkerModule } from '@angular/service-worker';
     AppComponent,
     HeaderComponent,
     NotFoundComponent,
-    DeleteDialogComponent,
     ProfileDialogComponent,
     StripeComponent,
     PaymentComponent,
@@ -91,15 +89,11 @@ import { ServiceWorkerModule } from '@angular/service-worker';
     SharedModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production
-    }),
-    ServiceWorkerModule.register('ngsw-worker.js', {
-      enabled: environment.production
     })
   ],
   providers: [Title, Meta],
   bootstrap: [AppComponent],
   entryComponents: [
-    DeleteDialogComponent,
     ProfileDialogComponent,
     StripeComponent,
     PaymentComponent,

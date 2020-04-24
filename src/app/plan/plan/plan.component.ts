@@ -4,9 +4,9 @@ import { StripeComponent } from 'src/app/stripe/stripe/stripe.component';
 import { FeeService } from 'src/app/services/fee.service';
 import { PaymentComponent } from 'src/app/stripe/payment/payment.component';
 import { AuthService } from 'src/app/services/auth.service';
-import { DeleteDialogComponent } from 'src/app/delete-dialog/delete-dialog.component';
 import { firestore } from 'firebase';
 import { WindowService } from 'src/app/services/window.service';
+import { ProfileDialogComponent } from 'src/app/profile-dialog/profile-dialog.component';
 
 @Component({
   selector: 'app-plan',
@@ -55,7 +55,7 @@ export class PlanComponent implements OnInit {
 
   openDeleteDialog() {
     this.dialog
-      .open(DeleteDialogComponent, {
+      .open(ProfileDialogComponent, {
         data: {
           title: '退会しますか？？',
           content:

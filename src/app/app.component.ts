@@ -2,9 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Title, Meta } from '@angular/platform-browser';
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 import { filter, map } from 'rxjs/operators';
-import { AuthService } from './services/auth.service';
 import { DrawerService } from './services/drawer.service';
-import { WindowService } from './services/window.service';
 
 @Component({
   selector: 'app-root',
@@ -12,11 +10,6 @@ import { WindowService } from './services/window.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  uid: string;
-  userLoginStatus: boolean;
-  companyLoginStatus: boolean;
-  user$ = this.authService.afUser$;
-  display: boolean;
   opened: boolean;
   sidenavMode: string;
 
@@ -25,7 +18,6 @@ export class AppComponent implements OnInit {
     private metaService: Meta,
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private authService: AuthService,
     private drawerService: DrawerService
   ) {
     this.drawerService.isOpen$.subscribe(opened => (this.opened = opened));

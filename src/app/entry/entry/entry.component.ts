@@ -2,7 +2,6 @@ import { Component, OnInit, HostListener } from '@angular/core';
 import { Validators, FormControl, FormBuilder } from '@angular/forms';
 import { UserProfileService } from 'src/app/services/user-profile.service';
 import { AuthService } from 'src/app/services/auth.service';
-import { CompanyProfileService } from 'src/app/services/company-profile.service';
 import { ActivatedRoute } from '@angular/router';
 import { JobPostService } from 'src/app/services/job-post.service';
 import { Observable } from 'rxjs';

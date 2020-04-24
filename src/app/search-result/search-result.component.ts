@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { searchClient } from '../../environments/environment';
-import { DrawerService } from '../services/drawer.service';
+import { WindowService } from '../services/window.service';
 
 @Component({
   selector: 'app-search-result',
@@ -20,7 +20,7 @@ export class SearchResultComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private drawerService: DrawerService
+    private windowService: WindowService
   ) {
     this.route.queryParamMap.subscribe(map => {
       this.resultParams.query = map.get('workPlace');
@@ -28,13 +28,6 @@ export class SearchResultComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.handleResizeWindow(window.innerWidth);
-  }
-  handleResizeWindow(width: number) {
-    if (1023 < width) {
-      this.drawerService.open();
-    } else {
-      this.drawerService.close();
-    }
+    this.windowService.handleResizeWindow(window.innerWidth);
   }
 }

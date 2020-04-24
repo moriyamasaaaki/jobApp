@@ -2,9 +2,7 @@ import { Component, OnInit, HostListener } from '@angular/core';
 import { FormBuilder, Validators, FormControl } from '@angular/forms';
 import { UserProfileService } from 'src/app/services/user-profile.service';
 import { AuthService } from 'src/app/services/auth.service';
-import { JobPostService } from 'src/app/services/job-post.service';
 import { CompanyProfileService } from 'src/app/services/company-profile.service';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog } from '@angular/material/dialog';
 import { ProfileDialogComponent } from 'src/app/profile-dialog/profile-dialog.component';
 @Component({

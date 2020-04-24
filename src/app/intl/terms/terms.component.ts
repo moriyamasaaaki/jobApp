@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DrawerService } from 'src/app/services/drawer.service';
+import { WindowService } from 'src/app/services/window.service';
 
 @Component({
   selector: 'app-terms',
@@ -7,16 +7,9 @@ import { DrawerService } from 'src/app/services/drawer.service';
   styleUrls: ['./terms.component.scss']
 })
 export class TermsComponent implements OnInit {
-  constructor(private drawerService: DrawerService) {}
+  constructor(private windowService: WindowService) {}
 
   ngOnInit() {
-    this.handleResizeWindow(window.innerWidth);
-  }
-  handleResizeWindow(width: number) {
-    if (1023 < width) {
-      this.drawerService.open();
-    } else {
-      this.drawerService.close();
-    }
+    this.windowService.handleResizeWindow(window.innerWidth);
   }
 }

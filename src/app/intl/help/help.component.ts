@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DrawerService } from 'src/app/services/drawer.service';
+import { WindowService } from 'src/app/services/window.service';
 
 @Component({
   selector: 'app-help',
@@ -9,10 +9,10 @@ import { DrawerService } from 'src/app/services/drawer.service';
 export class HelpComponent implements OnInit {
   helps = [];
 
-  constructor(private drawerService: DrawerService) {}
+  constructor(private windowService: WindowService) {}
 
   ngOnInit() {
-    this.handleResizeWindow(window.innerWidth);
+    this.windowService.handleResizeWindow(window.innerWidth);
     this.helps = [
       {
         title: 'Proxy Worksとは何ですか？？',
@@ -33,12 +33,5 @@ export class HelpComponent implements OnInit {
           '今現在はGoogleログインしか対応しておりませんが、ユーザーの増加、ご要望等が多数あれば状況によって随時追加する予定です。'
       }
     ];
-  }
-  handleResizeWindow(width: number) {
-    if (1023 < width) {
-      this.drawerService.open();
-    } else {
-      this.drawerService.close();
-    }
   }
 }

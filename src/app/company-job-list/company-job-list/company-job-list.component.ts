@@ -4,6 +4,7 @@ import { AuthService } from 'src/app/services/auth.service';
 import { Observable } from 'rxjs';
 import { DetailJob } from 'src/app/interfaces/article';
 import { DrawerService } from 'src/app/services/drawer.service';
+import { WindowService } from 'src/app/services/window.service';
 
 @Component({
   selector: 'app-company-job-list',
@@ -18,17 +19,10 @@ export class CompanyJobListComponent implements OnInit {
   constructor(
     private jobPostService: JobPostService,
     private authService: AuthService,
-    private drawerService: DrawerService
+    private windowService: WindowService
   ) {}
 
   ngOnInit() {
-    this.handleResizeWindow(window.innerWidth);
-  }
-  handleResizeWindow(width: number) {
-    if (1023 < width) {
-      this.drawerService.open();
-    } else {
-      this.drawerService.close();
-    }
+    this.windowService.handleResizeWindow(window.innerWidth);
   }
 }

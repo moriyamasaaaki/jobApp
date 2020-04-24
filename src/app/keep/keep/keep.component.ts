@@ -6,7 +6,7 @@ import { LikedService } from 'src/app/services/liked.service';
 import { DeleteDialogComponent } from 'src/app/delete-dialog/delete-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { DrawerService } from 'src/app/services/drawer.service';
+import { WindowService } from 'src/app/services/window.service';
 
 @Component({
   selector: 'app-keep',
@@ -19,7 +19,7 @@ export class KeepComponent implements OnInit {
     private likedService: LikedService,
     private dialog: MatDialog,
     private snackBar: MatSnackBar,
-    private drawerService: DrawerService
+    private windowService: WindowService
   ) {}
 
   jobs$: Observable<DetailJob[]> = this.likedService.getLikedJobs(
@@ -52,13 +52,6 @@ export class KeepComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.handleResizeWindow(window.innerWidth);
-  }
-  handleResizeWindow(width: number) {
-    if (1023 < width) {
-      this.drawerService.open();
-    } else {
-      this.drawerService.close();
-    }
+    this.windowService.handleResizeWindow(window.innerWidth);
   }
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { MAT_DIALOG_DATA } from '@angular/material';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-profile-dialog',
@@ -12,13 +13,20 @@ export class ProfileDialogComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
+    private router: Router,
     @Inject(MAT_DIALOG_DATA)
     public data: {
       title: string;
       content: string;
+      btnText: string;
     }
   ) {
-    this.name = this.authService.displayName;
+    const url = this.router.url;
+    if (url === '/user/profile/create' || url === '/company/profile/create') {
+      this.name = this.authService.displayName;
+    } else {
+      return;
+    }
   }
 
   ngOnInit() {}

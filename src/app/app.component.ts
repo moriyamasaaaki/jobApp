@@ -57,58 +57,40 @@ export class AppComponent implements OnInit {
       )
       .subscribe(data => {
         this.titleService.setTitle(data);
-        if (data.descrption) {
-          this.metaService.updateTag({
-            name: 'description',
-            content: data.descrption
-          });
-        } else {
-          this.metaService.removeTag("name='description'");
-        }
-        if (data.robots) {
-          this.metaService.updateTag({ name: 'robots', content: data.robots });
-        } else {
-          this.metaService.updateTag({
-            name: 'robots',
-            content: 'follow,index'
-          });
-        }
-        if (data.ogTitle) {
-          this.metaService.updateTag({
-            property: 'og:title',
-            content: data.ogTitle
-          });
-        } else {
-          this.metaService.removeTag("property='og:title'");
-        }
-        if (data.ogDescription) {
-          this.metaService.updateTag({
-            property: 'og:description',
-            content: data.ogDescription
-          });
-        } else {
-          this.metaService.removeTag("property='og:description'");
-        }
+        const meta = this.metaService;
+        data.descrption
+          ? meta.updateTag({ name: 'description', content: data.descrption })
+          : meta.removeTag("name='description'");
 
-        if (data.ogImage) {
-          this.metaService.updateTag({
-            property: 'og:image',
-            content: data.ogImage
-          });
-        } else {
-          this.metaService.removeTag("property='og:image'");
-        }
-        if (data.ogUrl) {
-          this.metaService.updateTag({
-            property: 'og:url',
-            content: data.ogUrl
-          });
-        } else {
-          this.metaService.updateTag({
-            property: 'og:url',
-            content: this.router.url
-          });
-        }
+        data.robots
+          ? meta.updateTag({ name: 'robots', content: data.robots })
+          : meta.updateTag({ name: 'robots', content: 'follow,index' });
+
+        data.ogTitle
+          ? meta.updateTag({ property: 'og:title', content: data.ogTitle })
+          : meta.removeTag("property='og:title'");
+
+        data.ogDescription
+          ? meta.updateTag({
+              property: 'og:description',
+              content: data.ogDescription
+            })
+          : meta.removeTag("property='og:description'");
+
+        data.ogDescription
+          ? meta.updateTag({
+              property: 'og:description',
+              content: data.ogDescription
+            })
+          : meta.removeTag("property='og:description'");
+
+        data.ogImage
+          ? meta.updateTag({ property: 'og:image', content: data.ogImage })
+          : meta.removeTag("property='og:image'");
+
+        data.ogUrl
+          ? meta.updateTag({ property: 'og:url', content: data.ogUrl })
+          : meta.updateTag({ property: 'og:url', content: this.router.url });
       });
   }
   searchNone() {

@@ -1,5 +1,4 @@
 import { firestore } from 'firebase';
-import { CompanyProfile } from './profile';
 
 export interface JobList {
   id: string;

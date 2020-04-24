@@ -1,28 +1,27 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { DetailJob } from 'src/app/interfaces/article';
 import { JobPostService } from 'src/app/services/job-post.service';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
-import { DeleteDialogComponent } from 'src/app/delete-dialog/delete-dialog.component';
 import { AuthService } from 'src/app/services/auth.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { LikedService } from 'src/app/services/liked.service';
-import { take, map } from 'rxjs/operators';
+import { take } from 'rxjs/operators';
 import { Title, Meta } from '@angular/platform-browser';
 import { DrawerService } from 'src/app/services/drawer.service';
 import { UserProfileService } from 'src/app/services/user-profile.service';
 import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
 import { RecuitService } from 'src/app/services/recuit.service';
-import { Recuit } from 'src/app/interfaces/profile';
 import { WindowService } from 'src/app/services/window.service';
+import { ProfileDialogComponent } from 'src/app/profile-dialog/profile-dialog.component';
 
 @Component({
   selector: 'app-detail',
   templateUrl: './detail.component.html',
   styleUrls: ['./detail.component.scss']
 })
-export class DetailComponent implements OnInit {
+export class DetailComponent implements OnInit, OnDestroy {
   job: DetailJob;
   id: string;
   jobs$: Observable<DetailJob>;
@@ -32,6 +31,7 @@ export class DetailComponent implements OnInit {
   jobId: string;
   jobEdit: boolean;
   existRecuitForm: boolean;
+  likedValue: Subscription;
   config: SwiperConfigInterface = {
     loop: true,
     navigation: true,
@@ -69,6 +69,10 @@ export class DetailComponent implements OnInit {
     this.getTitle();
     this.isRecuit();
     this.windowService.handleResizeWindow(window.innerWidth);
+  }
+
+  ngOnDestroy() {
+    this.likedValue.unsubscribe();
   }
 
   getTitle() {
@@ -138,7 +142,7 @@ export class DetailComponent implements OnInit {
     this.route.paramMap.subscribe(params => {
       this.jobPostService.getJobPost(params.get('id')).subscribe(job => {
         this.dialog
-          .open(DeleteDialogComponent, {
+          .open(ProfileDialogComponent, {
             data: {
               title: `${job.title}を削除しますか？？`,
               content: '削除すると復元することはできません。',
@@ -159,7 +163,7 @@ export class DetailComponent implements OnInit {
   }
 
   getlikes() {
-    this.route.paramMap.subscribe(params => {
+    this.likedValue = this.route.paramMap.subscribe(params => {
       this.jobPostService
         .getJobPost(params.get('id'))
         .pipe(take(1))

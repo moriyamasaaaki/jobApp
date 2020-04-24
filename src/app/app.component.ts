@@ -4,6 +4,7 @@ import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 import { filter, map } from 'rxjs/operators';
 import { AuthService } from './services/auth.service';
 import { DrawerService } from './services/drawer.service';
+import { WindowService } from './services/window.service';
 
 @Component({
   selector: 'app-root',

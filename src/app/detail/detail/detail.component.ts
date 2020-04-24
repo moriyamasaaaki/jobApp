@@ -15,6 +15,7 @@ import { UserProfileService } from 'src/app/services/user-profile.service';
 import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
 import { RecuitService } from 'src/app/services/recuit.service';
 import { Recuit } from 'src/app/interfaces/profile';
+import { WindowService } from 'src/app/services/window.service';
 
 @Component({
   selector: 'app-detail',
@@ -53,7 +54,8 @@ export class DetailComponent implements OnInit {
     private router: Router,
     private drawerService: DrawerService,
     private userProfile: UserProfileService,
-    private recuitService: RecuitService
+    private recuitService: RecuitService,
+    private windowService: WindowService
   ) {
     this.drawerService.open();
     route.paramMap.subscribe(params => {
@@ -66,15 +68,7 @@ export class DetailComponent implements OnInit {
     this.editCompanyUser();
     this.getTitle();
     this.isRecuit();
-    this.handleResizeWindow(window.innerWidth);
-  }
-
-  handleResizeWindow(width: number) {
-    if (1023 < width) {
-      this.drawerService.open();
-    } else {
-      this.drawerService.close();
-    }
+    this.windowService.handleResizeWindow(window.innerWidth);
   }
 
   getTitle() {

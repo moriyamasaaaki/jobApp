@@ -5,8 +5,8 @@ import { FeeService } from 'src/app/services/fee.service';
 import { PaymentComponent } from 'src/app/stripe/payment/payment.component';
 import { AuthService } from 'src/app/services/auth.service';
 import { DeleteDialogComponent } from 'src/app/delete-dialog/delete-dialog.component';
-import { DrawerService } from 'src/app/services/drawer.service';
 import { firestore } from 'firebase';
+import { WindowService } from 'src/app/services/window.service';
 
 @Component({
   selector: 'app-plan',
@@ -39,20 +39,12 @@ export class PlanComponent implements OnInit {
     private authServie: AuthService,
     private dialog: MatDialog,
     private authService: AuthService,
-    private drawerService: DrawerService
+    private windowService: WindowService
   ) {}
 
   ngOnInit() {
-    this.handleResizeWindow(window.innerWidth);
+    this.windowService.handleResizeWindow(window.innerWidth);
   }
-  handleResizeWindow(width: number) {
-    if (1023 < width) {
-      this.drawerService.open();
-    } else {
-      this.drawerService.close();
-    }
-  }
-
   stripeDialog() {
     this.matDialog.open(StripeComponent);
   }

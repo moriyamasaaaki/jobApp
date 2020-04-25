@@ -24,7 +24,7 @@ export const updateLessonMeta = functions.firestore
 // 削除フック
 export const deleteArticle = functions.firestore
   .document('JobPosts/{id}')
-  .onDelete(async (snapshot, context) => {
+  .onDelete((snapshot, context) => {
     console.log(context);
     return removeIndex(context.params.id);
   });

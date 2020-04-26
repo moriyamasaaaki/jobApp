@@ -132,6 +132,12 @@ const routes: Routes = [
   },
 
   {
+    path: 'about',
+    data: { title: '代行求人サービス-Proxy Woprks-について' },
+    loadChildren: () => import('./about/about.module').then(m => m.AboutModule)
+  },
+
+  {
     path: 'search',
     component: SearchResultComponent
   },

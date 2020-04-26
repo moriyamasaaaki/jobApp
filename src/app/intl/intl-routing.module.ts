@@ -32,9 +32,9 @@ const routes: Routes = [
     component: HelpComponent
   },
   {
-    path: 'about',
+    path: 'usage',
     pathMatch: 'full',
-    data: { title: '代行サービスについて' },
+    data: { title: 'ご利用方法' },
     component: AboutComponent
   }
 ];

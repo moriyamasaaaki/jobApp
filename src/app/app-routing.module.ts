@@ -70,7 +70,7 @@ const routes: Routes = [
     data: { title: 'プラン/決済' },
     loadChildren: () => import('./plan/plan.module').then(m => m.PlanModule),
     canLoad: [AuthGuard],
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard, CompanyGuard]
   },
 
   {

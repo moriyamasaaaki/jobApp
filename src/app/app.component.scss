@@ -17,9 +17,8 @@
   }
 }
 .mat-drawer-content {
-  width: 100%;
+  box-sizing: border-box;
   @include pc {
-    width: 82%;
     margin: 0 auto;
   }
 }

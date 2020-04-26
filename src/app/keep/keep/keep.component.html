@@ -5,12 +5,14 @@
       お気に入り/<span class="job-card__number">{{ jobs.length }}</span
       >件
     </p>
-    <div class="job-card__box" *ngFor="let job of jobs">
+    <div
+      class="job-card__box"
+      *ngFor="let job of jobs"
+      routerLink="/job/detail/{{ job.id }}"
+    >
       <div class="job-card__title">
         <span>{{ job.companyName }}</span>
-        <a routerLink="/job/detail/{{ job.id }}"
-          ><h3>{{ job.title }}</h3></a
-        >
+        <h3>{{ job.title }}</h3>
       </div>
 
       <div class="job-card__content">
@@ -44,7 +46,12 @@
         </ul>
       </div>
       <div class="job-card__btn">
-        <button mat-raised-button color="warn" (click)="openDeleteDialog(job)">
+        <button
+          mat-raised-button
+          color="warn"
+          (click)="openDeleteDialog(job)"
+          (click)="$event.stopPropagation()"
+        >
           お気に入り削除
         </button>
       </div>

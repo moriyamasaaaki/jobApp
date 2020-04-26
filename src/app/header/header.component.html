@@ -57,11 +57,11 @@
               <mat-icon>event_note</mat-icon>
               <span>自社求人一覧</span>
             </button>
+            <button mat-menu-item routerLink="/plan">
+              <mat-icon>payment</mat-icon>
+              <span>プラン</span>
+            </button>
           </ng-container>
-          <button mat-menu-item routerLink="/plan">
-            <mat-icon>payment</mat-icon>
-            <span>プラン</span>
-          </button>
         </mat-menu>
       </div>
       <ng-container *ngIf="!(user$ | async) && searchNone()">

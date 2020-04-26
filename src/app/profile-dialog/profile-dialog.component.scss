@@ -10,6 +10,11 @@
     font-size: 14px;
   }
   button {
-    margin: 0 auto;
+    margin: 8px;
   }
+}
+
+.mat-dialog-actions {
+  display: block;
+  margin: 24px auto 0;
 }

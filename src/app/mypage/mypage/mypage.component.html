@@ -1,69 +1,88 @@
 <div class="mypage profile-card">
   <h1 class="hdg">マイページ</h1>
-  <ng-container *ngIf="profile$ | async as profile; else default">
-    <div class="profile-card__list">
-      <dl>
-        <dt>画像</dt>
-        <ng-container *ngIf="profile.photoURL; else defaultImg">
-          <dd><img [src]="profile.photoURL" alt="" /></dd>
-        </ng-container>
-        <ng-template #defaultImg>
-          <dd>
-            <img src="assets/user-2935527_1280.png" alt="" />
-          </dd>
-        </ng-template>
+  <mat-tab-group>
+    <mat-tab label="プロフィール">
+      <ng-container *ngIf="profile$ | async as profile; else default">
+        <div class="profile-card__list">
+          <dl>
+            <dt>画像</dt>
+            <ng-container *ngIf="profile.photoURL; else defaultImg">
+              <dd><img [src]="profile.photoURL" alt="" /></dd>
+            </ng-container>
+            <ng-template #defaultImg>
+              <dd>
+                <img src="assets/user-2935527_1280.png" alt="" />
+              </dd>
+            </ng-template>
 
-        <dt>名前</dt>
-        <dd>{{ profile.name }}</dd>
+            <dt>名前</dt>
+            <dd>{{ profile.name }}</dd>
 
-        <dt>住所</dt>
-        <dd>{{ profile.address }}</dd>
+            <dt>住所</dt>
+            <dd>{{ profile.address }}</dd>
 
-        <dt>生年月日</dt>
-        <dd>{{ profile.year }}年{{ profile.month }}月{{ profile.day }}日</dd>
+            <dt>生年月日</dt>
+            <dd>
+              {{ profile.year }}年{{ profile.month }}月{{ profile.day }}日
+            </dd>
 
-        <dt>性別</dt>
-        <dd>{{ profile.gender }}</dd>
+            <dt>性別</dt>
+            <dd>{{ profile.gender }}</dd>
 
-        <dt>メールアドレス</dt>
-        <dd>{{ profile.email }}</dd>
+            <dt>メールアドレス</dt>
+            <dd>{{ profile.email }}</dd>
 
-        <dt>電話番号</dt>
-        <dd>{{ profile.tel }}</dd>
+            <dt>電話番号</dt>
+            <dd>{{ profile.tel }}</dd>
 
-        <dt>学歴</dt>
-        <dd>{{ profile.belongs }}{{ profile.school }}{{ profile.state }}</dd>
+            <dt>学歴</dt>
+            <dd>
+              {{ profile.belongs }}{{ profile.school }}{{ profile.state }}
+            </dd>
 
-        <dt>資格</dt>
-        <dd>{{ profile.tagOne }}, {{ profile.tagSecond }}</dd>
+            <dt>資格</dt>
+            <dd>{{ profile.tagOne }}, {{ profile.tagSecond }}</dd>
 
-        <dt>勤務可能な日時</dt>
-        <dd>{{ profile.possibleDay }}</dd>
+            <dt>勤務可能な日時</dt>
+            <dd>{{ profile.possibleDay }}</dd>
 
-        <dt>自己紹介</dt>
-        <dd>
-          {{ profile.introduce }}
-        </dd>
-      </dl>
-    </div>
-    <div class="profile-card__btn">
-      <a routerLink="/user/profile/create" mat-raised-button color="primary"
-        >編集する</a
-      >
-    </div>
-  </ng-container>
-  <ng-template #default>
-    <p class="profile-card__default-text">
-      プロフィールがありません。
-    </p>
-    <div class="profile-card__btn">
-      <button
-        routerLink="/user/profile/create"
-        mat-raised-button
-        color="primary"
-      >
-        作成する
-      </button>
-    </div>
-  </ng-template>
+            <dt>自己紹介</dt>
+            <dd>
+              {{ profile.introduce }}
+            </dd>
+          </dl>
+        </div>
+        <div class="profile-card__btn">
+          <a routerLink="/user/profile/create" mat-raised-button color="primary"
+            >編集する</a
+          >
+        </div>
+      </ng-container>
+      <ng-template #default>
+        <p class="profile-card__default-text">
+          プロフィールがありません。
+        </p>
+        <div class="profile-card__btn">
+          <button
+            routerLink="/user/profile/create"
+            mat-raised-button
+            color="primary"
+          >
+            作成する
+          </button>
+        </div>
+      </ng-template>
+    </mat-tab>
+    <mat-tab label="退会">
+      <div class="profile-card__out">
+        <button mat-raised-button color="warn" (click)="openDeleteDialog()">
+          退会する
+        </button>
+        <ul>
+          <li>退会すると利用データが完全に削除され、復元できません。</li>
+          <li>退会するとすべての定期購入が停止します。</li>
+        </ul>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
 </div>

@@ -1,0 +1,193 @@
+@import 'mixins';
+@import '~@angular/material/theming';
+
+.about {
+  margin-top: -55px;
+  @include tab {
+    margin-top: -47px;
+  }
+  @include pc {
+    margin-top: -46px;
+  }
+  h2 {
+    color: #3c4043;
+    text-align: center;
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 24px;
+    @include pc {
+      font-size: 32px;
+      margin-bottom: 40px;
+    }
+  }
+  &__head {
+    width: 100%;
+    background: linear-gradient(to right, #fffcf6, #f9ecef);
+    border-bottom: 1px solid lightgrey;
+    margin-bottom: 100px;
+    @include tab {
+      margin-bottom: 180px;
+    }
+    @include tab {
+      padding: 48px 0;
+      display: flex;
+      flex-direction: row-reverse;
+      justify-content: space-evenly;
+      align-items: center;
+    }
+    img {
+      width: 100%;
+      margin-bottom: 16px;
+      transition: 1.5s;
+      @include tab {
+        width: 350px;
+        height: 350px;
+        border-radius: 50%;
+        border: 1px solid lightgrey;
+        @include mat-elevation(18);
+        margin-bottom: 8px;
+        &:hover {
+          @include mat-elevation(0);
+          border: 1px solid lightgrey;
+          transform: translateY(25px);
+        }
+      }
+      @include pc {
+        width: 550px;
+        height: 550px;
+      }
+    }
+  }
+  &__title {
+    h1 {
+      color: #3c4043;
+      line-height: 1.4;
+      margin-bottom: 16px;
+      text-align: center;
+      font-size: 24px;
+      font-weight: 600;
+      @include tab {
+        text-align: left;
+      }
+      @include pc {
+        font-size: 40px;
+        margin-bottom: 24px;
+      }
+    }
+    p {
+      text-align: center;
+      opacity: 0.6;
+      color: #3c4043;
+      font-size: 16px;
+      font-weight: 500;
+      margin-bottom: 40px;
+      @include pc {
+        font-size: 20px;
+      }
+    }
+    button {
+      display: block;
+      margin: 0 auto 32px;
+      @include tab {
+        margin: 0;
+        text-align: left;
+      }
+    }
+  }
+  &__container {
+    padding: 0 8px;
+    box-sizing: border-box;
+    max-width: 1024px;
+    margin: 0 auto;
+    @include tab {
+      padding: 0 16px;
+    }
+  }
+  &__introduce {
+    margin-bottom: 100px;
+    @include tab {
+      margin-bottom: 180px;
+    }
+    @include tab {
+      margin: 0 auto 120px;
+    }
+    @include pc {
+    }
+    p {
+      font-size: 16px;
+      font-weight: 500;
+      letter-spacing: 2px;
+      line-height: 1.8;
+      opacity: 0.6;
+      color: rgba(0, 0, 0, 0.87);
+      margin-bottom: 16px;
+      @include pc {
+        font-size: 18px;
+      }
+    }
+    a {
+      text-decoration: none;
+      color: #fff;
+    }
+    i {
+      margin-left: 4px;
+    }
+  }
+  &__introduce-btn {
+    text-align: right;
+  }
+  &__twitter {
+    margin-bottom: 100px;
+    @include tab {
+      margin-bottom: 180px;
+    }
+    img {
+      width: 100%;
+      margin-bottom: 16px;
+      @include tab {
+        width: 30%;
+        margin: 8px;
+      }
+    }
+  }
+  &__twitter-card {
+    margin: 0 auto;
+    @include tab {
+      display: flex;
+      justify-content: center;
+      align-items: baseline;
+    }
+  }
+  &__proxy-list {
+    margin-bottom: 100px;
+    @include tab {
+      margin: 0 auto 180px;
+    }
+    ul {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+    }
+    li {
+      text-align: center;
+      margin: 8px;
+      width: 100%;
+      color: #fff;
+      box-sizing: border-box;
+      border: 1px solid #d8d9db;
+      border-radius: 16px;
+      font-size: 16px;
+      padding: 12px 16px;
+      background-color: #00838f;
+      @include tab {
+        width: 150px;
+      }
+    }
+    span {
+      display: block;
+      text-align: right;
+      font-size: 20px;
+    }
+  }
+}

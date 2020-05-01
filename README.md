@@ -7,12 +7,12 @@ https://job-app-613fe.firebaseapp.com/
 [![Image from Gyazo](https://i.gyazo.com/2b53819211a33da411e63587576c0e9a.png)](https://gyazo.com/2b53819211a33da411e63587576c0e9a)
 
 
-# Overview/概要
+## Overview/概要
 求人サービスのようなものを作成しました。機能としては、求人の投稿、認証、検索、メール送信、課金（サブスク）です。
 
 Created something like a recruiting service. Functions include job posting, authentication, search, email transmission, and billing (subscription).
 
-# Description/詳細
+## Description/詳細
 このプロジェクトはAngular/Firebase/TypeScript/Rx.jsで作成しました。SaSSはAlgolia（検索）、SendGrid(メール送信)、Stripe（課金）を使用しています。
 登録方法
 １、ユーザーもしくは企業側のどちらかでログインする。
@@ -22,6 +22,19 @@ This project was created with Angular / Firebase / TypeScript / Rx.js. SaSS uses
 How to register
 1. Login with either user or company.
 2. Create a profile.
+
+## 使用言語・フレームワーク・ツール
+- Angular
+- TypeScript
+- RxJS
+- Firebase
+  1, Auth
+  2, Firestore
+  3, Storage
+  4, Functions
+- Algolia
+- SendGrid
+- Stripe
 
 ## Development server
 

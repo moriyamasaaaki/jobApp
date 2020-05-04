@@ -13,8 +13,9 @@ sgMail.setApiKey(API_KEY);
 console.log(API_KEY);
 
 //ユーザー登録のメール送信
-export const userSendEmail = functions.firestore
-  .document('userProfile/{userId}')
+export const userSendEmail = functions
+  .region('asia-northeast1')
+  .firestore.document('userProfile/{userId}')
   .onCreate(async (snap, context) => {
     const userId = context.params.userId;
     return db
@@ -51,8 +52,9 @@ export const userSendEmail = functions.firestore
   });
 
 // 企業の登録メール送信
-export const companySendEmail = functions.firestore
-  .document('companyProfile/{companyUserId}')
+export const companySendEmail = functions
+  .region('asia-northeast1')
+  .firestore.document('companyProfile/{companyUserId}')
   .onCreate(async (snap, context) => {
     const companyUserId = context.params.companyUserId;
 

@@ -13,8 +13,9 @@ sgMail.setApiKey(API_KEY);
 console.log(API_KEY);
 
 // 応募フォーム //
-export const recuitSendEmail = functions.firestore
-  .document('JobPosts/{id}/recuit/{userId}')
+export const recuitSendEmail = functions
+  .region('asia-northeast1')
+  .firestore.document('JobPosts/{id}/recuit/{userId}')
   .onCreate(async (snap, context) => {
     const userId = context.params.userId;
     const id = context.params.id;
@@ -60,8 +61,9 @@ export const recuitSendEmail = functions.firestore
   });
 
 // 応募完了メール //
-export const recuitCompletionEmail = functions.firestore
-  .document('JobPosts/{id}/recuit/{userId}')
+export const recuitCompletionEmail = functions
+  .region('asia-northeast1')
+  .firestore.document('JobPosts/{id}/recuit/{userId}')
   .onCreate(async (snap, context) => {
     const userId = context.params.userId;
     const id = context.params.id;

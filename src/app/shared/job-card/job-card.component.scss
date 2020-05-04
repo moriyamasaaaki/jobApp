@@ -1,3 +1,124 @@
 @import 'mixins';
-@import 'job-post';
 @import '~@angular/material/theming';
+
+.job-box {
+  margin-bottom: 40px;
+  width: 100%;
+  @include tab {
+    display: grid;
+    gap: 16px;
+    grid-template-columns: repeat(auto-fill, 360px);
+    margin: 0 auto 80px;
+  }
+  @include pc {
+    margin: 0 auto 80px;
+    gap: 24px;
+    justify-content: center;
+  }
+  @include pclarg {
+    justify-content: space-between;
+  }
+  &__card {
+    @include mat-elevation(3);
+    outline: none;
+    position: relative;
+    background-color: #fff;
+    width: 100%;
+    margin-bottom: 16px;
+    box-sizing: border-box;
+    display: flex;
+    flex-flow: column;
+    @include tab {
+      margin: 0;
+    }
+    @include pc {
+      transition: 0.7s;
+      &:hover {
+        @include mat-elevation(12);
+      }
+    }
+  }
+  &__category {
+    position: absolute;
+    top: 166px;
+    left: 0;
+    background-color: #e64a19;
+    padding: 10px 15px;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 2px;
+  }
+  &__thumbnail {
+    height: 200px;
+    background: center / cover;
+  }
+  &__title {
+    display: block;
+    font-size: 24px;
+    font-weight: 700;
+    color: #333333;
+    padding-bottom: 10px;
+  }
+  &__sub-title {
+    color: #e64a19;
+    font-size: 18px;
+    font-weight: 400;
+    padding-bottom: 20px;
+  }
+  li {
+    font-size: 13px;
+    color: #3c4043;
+  }
+  &__content {
+    text-align: left;
+    padding: 30px;
+    flex: 1;
+    i {
+      font-size: 13px;
+      margin-right: 2px;
+    }
+  }
+  a {
+    text-decoration: none;
+  }
+  img {
+    width: 100%;
+  }
+  button {
+    display: block;
+    margin: 0 auto;
+  }
+  &__default-text {
+    margin: 0 auto;
+    font-size: 14px;
+    @include pc {
+      font-size: 16px;
+    }
+  }
+  &__description {
+    color: #666666;
+    font-size: 14px;
+    line-height: 1.8em;
+  }
+  &__content-body {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 30px 0 8px;
+    li {
+      display: flex;
+      align-items: center;
+      color: darkgray;
+      &:first-child {
+        margin-right: 24px;
+      }
+    }
+  }
+  &__content-foot {
+    display: flex;
+    align-items: center;
+    color: darkgray;
+    font-size: 13px;
+  }
+}

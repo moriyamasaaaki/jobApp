@@ -1,5 +1,5 @@
 import { BrowserModule, Title, Meta } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -19,7 +19,10 @@ import { environment } from '../environments/environment';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
-import { AngularFireFunctionsModule } from '@angular/fire/functions';
+import {
+  AngularFireFunctionsModule,
+  FUNCTIONS_REGION
+} from '@angular/fire/functions';
 
 import { StripeComponent } from './stripe/stripe/stripe.component';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -91,7 +94,12 @@ import { ServiceWorkerModule } from '@angular/service-worker';
       enabled: environment.production
     })
   ],
-  providers: [Title, Meta],
+  providers: [
+    Title,
+    Meta,
+    { provide: LOCALE_ID, useValue: 'ja-JP' },
+    { provide: FUNCTIONS_REGION, useValue: 'asia-northeast1' }
+  ],
   bootstrap: [AppComponent],
   entryComponents: [
     ProfileDialogComponent,

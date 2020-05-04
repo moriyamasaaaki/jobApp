@@ -11,6 +11,7 @@
     "indexes": "firestore.indexes.json"
   },
   "hosting": {
+    "target": "jobapp",
     "public": "dist/jobapp",
     "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
     "rewrites": [

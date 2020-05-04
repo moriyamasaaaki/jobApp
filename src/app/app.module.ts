@@ -1,5 +1,5 @@
 import { BrowserModule, Title, Meta } from '@angular/platform-browser';
-import { NgModule, LOCALE_ID } from '@angular/core';
+import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -97,7 +97,6 @@ import { ServiceWorkerModule } from '@angular/service-worker';
   providers: [
     Title,
     Meta,
-    { provide: LOCALE_ID, useValue: 'ja-JP' },
     { provide: FUNCTIONS_REGION, useValue: 'asia-northeast1' }
   ],
   bootstrap: [AppComponent],

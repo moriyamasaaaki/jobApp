@@ -80,8 +80,14 @@ export class AuthService {
           uid: result.user.uid,
           status: 'company'
         };
-        this.db.doc(`companys/${result.user.uid}`).set(companyData);
-        localStorage.setItem('Status', 'Company');
+        this.db.doc(`companys/${result.user.uid}`).set(companyData),
+          this.db.doc(`customers/${result.user.uid}`).set({
+            userId: '',
+            email: '',
+            customerId: '',
+            subscriptionId: ''
+          }),
+          localStorage.setItem('Status', 'Company');
         this.companyLoginStatus = true;
         this.snackBar.open('企業側としてログインしました。', null, {
           duration: 2000

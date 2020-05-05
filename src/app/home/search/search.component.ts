@@ -20,10 +20,10 @@ export class SearchComponent implements OnInit {
     searchClient
   };
 
-  search(workPlace: string) {
+  search(label: string) {
     this.router.navigate(['/search'], {
       queryParams: {
-        workPlace
+        label
       }
     });
   }

@@ -23,7 +23,7 @@ export class SearchResultComponent implements OnInit {
     private windowService: WindowService
   ) {
     this.route.queryParamMap.subscribe(map => {
-      this.resultParams.query = map.get('workPlace');
+      this.resultParams.query = map.get('label');
     });
   }
 

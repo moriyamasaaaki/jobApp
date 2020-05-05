@@ -30,10 +30,10 @@
       <div *ngFor="let index of state.indices || []">
         <mat-option
           *ngFor="let option of index.hits"
-          [value]="option.workPlace"
-          (click)="querySuggestionSelected.emit(option.workPlace)"
+          [value]="option.label"
+          (click)="querySuggestionSelected.emit(option.label)"
         >
-          {{ option.workPlace }}
+          {{ option.label }}
         </mat-option>
       </div>
     </mat-autocomplete>

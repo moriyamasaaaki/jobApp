@@ -104,6 +104,13 @@ export class DetailComponent implements OnInit, OnDestroy {
               content: data.jobImageUrls[0]
             })
           : meta.removeTag("property='og:image'");
+
+        data.id
+          ? meta.updateTag({
+              property: 'og:url',
+              content: `https://job-app-613fe.firebaseapp.com/job/detail/${data.id}`
+            })
+          : meta.removeTag("property='og:image'");
       });
     });
   }

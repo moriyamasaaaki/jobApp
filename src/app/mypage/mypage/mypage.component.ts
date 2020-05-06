@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 import { UserProfile } from 'src/app/interfaces/profile';
 import { WindowService } from 'src/app/services/window.service';
 import { ProfileDialogComponent } from 'src/app/profile-dialog/profile-dialog.component';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-mypage',

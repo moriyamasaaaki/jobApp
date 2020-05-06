@@ -8,7 +8,8 @@ import {
 import { AuthService } from '../services/auth.service';
 import { searchClient } from '../../environments/environment';
 import { ActivatedRoute, Router } from '@angular/router';
-import { MatDialog, MatSnackBar } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { AuthDialogComponent } from '../auth-dialog/auth-dialog.component';
 import { JobPostService } from '../services/job-post.service';
 import { FeeService } from '../services/fee.service';

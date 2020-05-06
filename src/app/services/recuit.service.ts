@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Recuit } from '../interfaces/profile';
 import { AuthService } from './auth.service';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 

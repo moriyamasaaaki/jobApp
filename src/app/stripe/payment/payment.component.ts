@@ -22,7 +22,7 @@ import { AuthService } from 'src/app/services/auth.service';
 export class PaymentComponent implements OnInit {
   tokenID: string;
 
-  @ViewChild(StripeCardComponent, { static: false }) card: StripeCardComponent;
+  @ViewChild(StripeCardComponent) card: StripeCardComponent;
 
   cardOptions: ElementOptions = {
     style: {

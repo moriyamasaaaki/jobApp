@@ -28,7 +28,7 @@ export class StripeComponent implements OnInit {
     this.subscriptionID = plan.subscriptionId;
     this.customerId = plan.customerId;
   });
-  @ViewChild(StripeCardComponent, { static: false }) card: StripeCardComponent;
+  @ViewChild(StripeCardComponent) card: StripeCardComponent;
 
   cardOptions: ElementOptions = {
     style: {

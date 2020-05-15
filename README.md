@@ -8,9 +8,9 @@ https://job-app-613fe.firebaseapp.com/
 
 
 ## Overview/概要
-求人サービスのようなものを作成しました。機能としては、求人の投稿、認証、検索、メール送信、課金（サブスク）です。
+今流行りつつある代行サービスの求人のようなものを作成しました。機能としては、求人の投稿、認証、検索、メール送信、課金（サブスク）です。
 
-Created something like a recruiting service. Functions include job posting, authentication, search, email transmission, and billing (subscription).
+I've created something like a vacancies job agency service that is now in fashion. Functions include job posting, authentication, search, email transmission, and billing (subscription).
 
 ## Description/詳細
 このプロジェクトはAngular/Firebase/TypeScript/Rx.jsで作成しました。SaSSはAlgolia（検索）、SendGrid(メール送信)、Stripe（課金）を使用しています。

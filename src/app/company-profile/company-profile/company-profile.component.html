@@ -25,11 +25,13 @@
     <div class="profile-card__btn">
       <a
         routerLink="/company/profile/create"
-        mat-raised-button
+        mat-fab
         aria-label="編集する"
         color="primary"
-        >編集する</a
+        class="profile-card__btn-edit"
       >
+        <mat-icon>edit</mat-icon>
+      </a>
     </div>
   </ng-container>
   <ng-template #default>

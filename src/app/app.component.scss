@@ -16,6 +16,14 @@
     }
   }
 }
+.content {
+  margin-bottom: 88px;
+}
+
+.mat-drawer {
+  z-index: 999;
+}
+
 .mat-drawer-content {
   box-sizing: border-box;
   @include pc {

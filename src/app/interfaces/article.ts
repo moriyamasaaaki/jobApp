@@ -17,6 +17,7 @@ export interface DetailJob extends JobList {
   jobContent: string;
   createdAt: firestore.Timestamp;
   companyEmail: string;
+  url: string;
 }
 
 export interface Favorite {

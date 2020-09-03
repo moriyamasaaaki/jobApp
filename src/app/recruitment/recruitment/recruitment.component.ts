@@ -23,6 +23,7 @@ export class RecruitmentComponent implements OnInit {
 
   form = this.fb.group({
     title: ['', [Validators.required, Validators.maxLength(50)]],
+    url: ['', [Validators.required]],
     companyContent: ['', [Validators.required, Validators.maxLength(400)]],
     jobContent: ['', [Validators.required, Validators.maxLength(400)]],
     label: ['', []],
@@ -33,6 +34,10 @@ export class RecruitmentComponent implements OnInit {
 
   get titleControl() {
     return this.form.get('title') as FormControl;
+  }
+
+  get urlControl() {
+    return this.form.get('url') as FormControl;
   }
 
   get companyContentControl() {

@@ -74,6 +74,11 @@
         <dt>給与</dt>
         <dd>{{ job.salary | number }}円</dd>
 
+        <dt>サイトURL</dt>
+        <dd>
+          <a class="detail__url" :href="{{ job.url }}">{{ job.url }}</a>
+        </dd>
+
         <dt>勤務地</dt>
         <dd>
           {{ job.workPlace }}

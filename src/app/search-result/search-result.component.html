@@ -41,10 +41,23 @@
                 </ng-template>
                 <div class="job-box__content">
                   <p class="job-box__title">
-                    {{ hit.title }}
+                    {{ hit.title.slice(0, 8) }}
+                    <ng-container *ngIf="hit.title.length > 8">
+                      ...
+                    </ng-container>
                   </p>
-                  <p class="job-box__sub-title">{{ hit.companyName }}</p>
-                  <p class="job-box__description">{{ hit.companyContent }}</p>
+                  <p class="job-box__sub-title">
+                    {{ hit.companyName.slice(0, 15) }}
+                    <ng-container *ngIf="hit.companyName.length > 15">
+                      ...
+                    </ng-container>
+                  </p>
+                  <p class="job-box__description">
+                    {{ hit.companyContent.slice(0, 40) }}
+                    <ng-container *ngIf="hit.companyContent.length > 40">
+                      ...
+                    </ng-container>
+                  </p>
                   <ul class="job-box__content-body">
                     <li>
                       <i class="material-icons">location_on</i>

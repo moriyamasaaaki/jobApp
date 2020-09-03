@@ -23,20 +23,11 @@ export class RecruitmentComponent implements OnInit {
 
   form = this.fb.group({
     title: ['', [Validators.required, Validators.maxLength(50)]],
-    workTime: [
-      '',
-      [
-        Validators.required,
-        Validators.pattern(/([0-1][0-9]|2[0-3]):[0-5][0-9]/)
-      ]
-    ],
-    holiday: ['', [Validators.required]],
-    welfare: ['', [Validators.required]],
     companyContent: ['', [Validators.required, Validators.maxLength(400)]],
+    jobContent: ['', [Validators.required, Validators.maxLength(400)]],
     label: ['', []],
     companyName: ['', [Validators.required]],
     salary: ['', [Validators.required]],
-    occupation: ['', [Validators.required]],
     workPlace: ['', [Validators.required]]
   });
 
@@ -44,20 +35,12 @@ export class RecruitmentComponent implements OnInit {
     return this.form.get('title') as FormControl;
   }
 
-  get workTimeControl() {
-    return this.form.get('workTime') as FormControl;
-  }
-
-  get holidayControl() {
-    return this.form.get('holiday') as FormControl;
-  }
-
-  get welfareControl() {
-    return this.form.get('welfare') as FormControl;
-  }
-
   get companyContentControl() {
     return this.form.get('companyContent') as FormControl;
+  }
+
+  get jobContentControl() {
+    return this.form.get('jobContent') as FormControl;
   }
 
   get labelControl() {
@@ -70,10 +53,6 @@ export class RecruitmentComponent implements OnInit {
 
   get salaryControl() {
     return this.form.get('salary') as FormControl;
-  }
-
-  get occupationControl() {
-    return this.form.get('occupation') as FormControl;
   }
 
   get workPlaceControl() {

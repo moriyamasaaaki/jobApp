@@ -136,28 +136,6 @@
   &__introduce-btn {
     text-align: right;
   }
-  &__twitter {
-    margin-bottom: 100px;
-    @include tab {
-      margin-bottom: 180px;
-    }
-    img {
-      width: 100%;
-      margin-bottom: 16px;
-      @include tab {
-        width: 30%;
-        margin: 8px;
-      }
-    }
-  }
-  &__twitter-card {
-    margin: 0 auto;
-    @include tab {
-      display: flex;
-      justify-content: center;
-      align-items: baseline;
-    }
-  }
   &__proxy-list {
     margin-bottom: 100px;
     @include tab {

@@ -1,5 +1,5 @@
 <section class="keep job-card">
-  <h1 class="hdg">お気に入りした求人</h1>
+  <h1 class="hdg">お気に入りした代行</h1>
   <ng-container *ngIf="jobs$ | async as jobs; else default">
     <p class="job-card__text">
       お気に入り/<span class="job-card__number">{{ jobs.length }}</span
@@ -27,14 +27,12 @@
             <i class="material-icons">compass_calibration</i>
             <span>{{ job.workPlace }}</span>
           </li>
-          <li><i class="material-icons"> work </i>{{ job.occupation }}</li>
           <li>
             <i class="material-icons">
               money
             </i>
             時給{{ job.salary | number }}円
           </li>
-          <li><i class="material-icons"> access_time </i>{{ job.workTime }}</li>
         </ul>
       </div>
       <div class="job-card__btn">

@@ -101,31 +101,39 @@
     flex-wrap: wrap;
     border: 1px solid #ccc;
     border-top: none;
-    font-size: 14px;
     margin-bottom: 16px;
-    line-height: 1.5;
     @include tab {
       margin: 0 auto 16px;
-      font-size: 16px;
     }
   }
   dt {
     background: #f2f2f2;
     width: 30%;
     border-top: 1px solid #ccc;
+    font-size: 14px;
+    @include tab {
+      font-size: 16px;
+    }
   }
   dd {
     margin: 0;
-    letter-spacing: 1px;
     border-left: 1px solid #ccc;
     border-top: 1px solid #ccc;
     width: 70%;
     background: #fff;
+    color: #5e5d5d;
+    font-size: 14px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    @include tab {
+      font-size: 15px;
+    }
   }
   dt,
   dd {
     padding: 16px 8px;
-    line-height: 1.5;
+    line-height: 2;
+    letter-spacing: 1px;
     box-sizing: border-box;
   }
   iframe {

@@ -7,16 +7,14 @@ export interface JobList {
   title: string;
   jobImageUrls: string[];
   workPlace: string;
-  occupation: string;
   salary: string;
-  workTime: string;
   likedCount: number;
 }
 
 export interface DetailJob extends JobList {
   label: string[];
   companyContent: string;
-  welfare: string;
+  jobContent: string;
   createdAt: firestore.Timestamp;
   companyEmail: string;
 }

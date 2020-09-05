@@ -9,9 +9,10 @@
     ),
     url('../../assets/main.jpg') center / cover;
   width: 100%;
-  height: 26rem;
+  height: 100vh;
   position: relative;
   @include tab {
     margin-top: 64px;
+    height: 26rem;
   }
 }

@@ -12,6 +12,7 @@ import { DrawerService } from './services/drawer.service';
 export class AppComponent implements OnInit {
   opened: boolean;
   sidenavMode: string;
+  navs = [];
 
   constructor(
     private titleService: Title,
@@ -30,6 +31,49 @@ export class AppComponent implements OnInit {
       content: 'Article Description'
     });
     this.handleResizeWindow(window.innerWidth);
+
+    this.navs = [
+      {
+        title: 'ホーム',
+        link: '/',
+        color: 'orange'
+      },
+      {
+        title: '求人一覧',
+        link: '/job/list',
+        color: 'gold'
+      },
+      {
+        title: '特定商取引法に基づく表示',
+        link: '/intl/comlaw',
+        color: 'green'
+      },
+      {
+        title: '利用規約',
+        link: '/intl/terms',
+        color: 'cyan'
+      },
+      {
+        title: 'プライバシー',
+        link: '/intl/privacy',
+        color: 'blue'
+      },
+      {
+        title: 'ヘルプ',
+        link: '/intl/help',
+        color: 'purple'
+      },
+      {
+        title: 'ご利用方法',
+        link: '/intl/usage',
+        color: 'violet'
+      },
+      {
+        title: 'Proxy Worksについて',
+        link: '/about',
+        color: 'red'
+      }
+    ];
   }
 
   getSetTitle() {

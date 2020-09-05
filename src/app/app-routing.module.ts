@@ -12,9 +12,9 @@ const routes: Routes = [
     path: '',
     pathMatch: 'full',
     data: {
-      title: 'Proxy Works-代行サービスの求人サービス-',
+      title: 'Proxy Works-代行サービスを探そう-',
       descrption:
-        'Proxy Worksは代行サービスやレンタルなど人が代替えしてくれる求人サービスです。'
+        'Proxy Worksは代行サービスやレンタルなど人が代替えしてくれるサービスを集めたものです。'
     },
     loadChildren: () => import('./home/top.module').then(m => m.TopModule)
   },
@@ -58,7 +58,7 @@ const routes: Routes = [
 
   {
     path: 'company/recruitment',
-    data: { title: '求人作成' },
+    data: { title: '投稿作成' },
     loadChildren: () =>
       import('./recruitment/form.module').then(m => m.FormModule),
     canLoad: [AuthGuard],
@@ -97,14 +97,14 @@ const routes: Routes = [
 
   {
     path: 'job/list',
-    data: { title: '求人一覧' },
+    data: { title: '代行一覧' },
     loadChildren: () =>
       import('./job-list/job-list.module').then(m => m.JoblistModule)
   },
 
   {
     path: 'company/job/list',
-    data: { title: '自社求人一覧' },
+    data: { title: 'マイ投稿一覧' },
     loadChildren: () =>
       import('./company-job-list/company-job-list.module').then(
         m => m.CompanyJobListModule
@@ -126,7 +126,7 @@ const routes: Routes = [
 
   {
     path: 'about',
-    data: { title: '代行求人サービス-Proxy Woprks-について' },
+    data: { title: '代行サービス-Proxy Woprks-について' },
     loadChildren: () => import('./about/about.module').then(m => m.AboutModule)
   },
 

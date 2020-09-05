@@ -12,7 +12,6 @@ import { Title, Meta } from '@angular/platform-browser';
 import { DrawerService } from 'src/app/services/drawer.service';
 import { UserProfileService } from 'src/app/services/user-profile.service';
 import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
-import { RecuitService } from 'src/app/services/recuit.service';
 import { WindowService } from 'src/app/services/window.service';
 import { ProfileDialogComponent } from 'src/app/profile-dialog/profile-dialog.component';
 
@@ -54,7 +53,6 @@ export class DetailComponent implements OnInit, OnDestroy {
     private router: Router,
     private drawerService: DrawerService,
     private userProfile: UserProfileService,
-    private recuitService: RecuitService,
     private windowService: WindowService
   ) {
     this.drawerService.open();
@@ -67,7 +65,6 @@ export class DetailComponent implements OnInit, OnDestroy {
     this.getlikes();
     this.editCompanyUser();
     this.getTitle();
-    this.isRecuit();
     this.windowService.handleResizeWindow(window.innerWidth);
   }
 
@@ -112,23 +109,6 @@ export class DetailComponent implements OnInit, OnDestroy {
             })
           : meta.removeTag("property='og:image'");
       });
-    });
-  }
-
-  isRecuit() {
-    this.route.paramMap.subscribe(params => {
-      this.recuitService
-        .getRecuitForm(params.get('id'), this.authService.uid)
-        .subscribe(data => {
-          if (data.userId === this.authService.uid) {
-            this.existRecuitForm = true;
-          } else if (
-            data.userId !== this.authService.uid ||
-            data.userId === undefined
-          ) {
-            this.existRecuitForm = false;
-          }
-        });
     });
   }
 

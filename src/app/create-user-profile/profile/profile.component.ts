@@ -16,9 +16,6 @@ export class ProfileComponent implements OnInit {
   months = new Array(12).fill(null);
   days = new Array(31).fill(null);
 
-  schools = ['中学', '高校', '専門', '大学', '大学院'];
-  states = ['卒業', '在学中', '中退'];
-
   image: File;
   userId: string;
 
@@ -33,13 +30,7 @@ export class ProfileComponent implements OnInit {
     gender: ['', [Validators.required]],
     email: ['', [Validators.required, Validators.email]],
     tel: ['', [Validators.required, Validators.pattern(/^0\d{9,10}$/)]],
-    school: ['', [Validators.required]],
-    state: ['', [Validators.required]],
-    possibleDay: ['', [Validators.required]],
-    tagOne: ['', []],
-    tagSecond: ['', []],
-    introduce: ['', []],
-    belongs: ['', [Validators.required]]
+    introduce: ['', []]
   });
 
   get nameControl() {
@@ -73,32 +64,8 @@ export class ProfileComponent implements OnInit {
     return this.form.get('tel') as FormControl;
   }
 
-  get schoolControl() {
-    return this.form.get('school') as FormControl;
-  }
-
-  get stateControl() {
-    return this.form.get('state') as FormControl;
-  }
-
-  get possibleDayControl() {
-    return this.form.get('possibleDay') as FormControl;
-  }
-
-  get tagOneControl() {
-    return this.form.get('tagOne') as FormControl;
-  }
-
-  get tagSecondControl() {
-    return this.form.get('tagSecond') as FormControl;
-  }
-
   get introduceControl() {
     return this.form.get('introduce') as FormControl;
-  }
-
-  get belongsControl() {
-    return this.form.get('belongs') as FormControl;
   }
 
   constructor(

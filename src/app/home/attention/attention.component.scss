@@ -99,7 +99,7 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    margin: 30px 0 8px;
+    margin: 30px 0;
     li {
       display: flex;
       align-items: center;
@@ -110,9 +110,12 @@
     }
   }
   &__content-foot {
-    display: flex;
-    align-items: center;
-    color: darkgray;
-    font-size: 13px;
+    color: #fff;
+    box-sizing: border-box;
+    border: 1px solid #fff;
+    border-radius: 16px;
+    background-color: #0f9daa;
+    padding: 8px;
+    font-size: 12px;
   }
 }

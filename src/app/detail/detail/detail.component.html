@@ -10,38 +10,34 @@
             </li>
           </ul>
         </div>
-        <ng-container *ngIf="jobEdit">
-          <div class="detail__title-btn">
+        <div class="detail__btn">
+          <ng-container *ngIf="like; else noLike">
             <button
               mat-mini-fab
-              color="accent"
-              matTooltip="いいねしたユーザーを見る"
-              aria-label="いいねしたユーザーを見る"
-              routerLink="/job/detail/{{ job.id }}/like"
+              aria-label="お気に入り解除"
+              matTooltip="お気に入り解除"
+              class="detail__btn-add"
+              (click)="toggleLiked()"
+              [class.like]="like"
             >
-              <mat-icon>thumb_up</mat-icon>
+              <mat-icon>grade</mat-icon>
             </button>
-            <button
-              [routerLink]="['/company/recruitment']"
-              [queryParams]="{ id: job.id }"
-              mat-mini-fab
-              aria-label="編集する"
-              color="accent"
-              matTooltip="編集する"
-            >
-              <mat-icon>create</mat-icon>
-            </button>
+            <p class="detail__btn-likedCount">{{ likedCount }}</p>
+          </ng-container>
+          <ng-template #noLike>
             <button
               mat-mini-fab
-              aria-label="削除する"
-              color="warn"
-              matTooltip="削除する"
-              (click)="openDeleteDialog()"
+              aria-label="お気に入り追加"
+              matTooltip="お気に入り追加"
+              class="detail__btn-add"
+              (click)="toggleLiked()"
+              [class.like]="like"
             >
-              <mat-icon>delete</mat-icon>
+              <mat-icon>grade</mat-icon>
             </button>
-          </div>
-        </ng-container>
+            <p class="detail__btn-likedCount">{{ likedCount }}</p>
+          </ng-template>
+        </div>
       </div>
       <span>{{ job.companyName }}</span>
       <p class="detail__createdAt">
@@ -92,54 +88,37 @@
         </dd>
       </dl>
     </div>
-    <div class="detail__btn">
-      <ng-container *ngIf="like; else noLike">
+    <ng-container *ngIf="jobEdit">
+      <div class="detail__title-btn">
         <button
-          mat-raised-button
-          aria-label="お気に入り解除"
-          class="detail__btn-add"
-          (click)="toggleLiked()"
-          [class.like]="like"
+          mat-fab
+          color="accent"
+          matTooltip="いいねしたユーザーを見る"
+          aria-label="いいねしたユーザーを見る"
+          routerLink="/job/detail/{{ job.id }}/like"
         >
-          お気に入り解除
-          {{ likedCount }}
+          <mat-icon>thumb_up</mat-icon>
         </button>
-      </ng-container>
-      <ng-template #noLike>
         <button
-          mat-raised-button
-          aria-label="お気に入り追加"
-          class="detail__btn-add"
-          (click)="toggleLiked()"
-          [class.like]="like"
+          [routerLink]="['/company/recruitment']"
+          [queryParams]="{ id: job.id }"
+          mat-fab
+          aria-label="編集する"
+          color="accent"
+          matTooltip="編集する"
         >
-          お気に入り追加
-          {{ likedCount }}
+          <mat-icon>create</mat-icon>
         </button>
-      </ng-template>
-      <ng-container *ngIf="existRecuitForm; else endReciut">
         <button
-          mat-raised-button
-          disabled
-          aria-label="応募しました"
-          color="primary"
-          class="detail__btn-add"
+          mat-fab
+          aria-label="削除する"
+          color="warn"
+          matTooltip="削除する"
+          (click)="openDeleteDialog()"
         >
-          応募しました
+          <mat-icon>delete</mat-icon>
         </button>
-      </ng-container>
-      <ng-template #endReciut>
-        <a routerLink="/job/detail/{{ job.id }}/entry">
-          <button
-            mat-raised-button
-            aria-label="応募する"
-            color="primary"
-            class="detail__btn-add"
-          >
-            応募する
-          </button>
-        </a>
-      </ng-template>
-    </div>
+      </div>
+    </ng-container>
   </div>
 </section>

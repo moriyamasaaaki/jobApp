@@ -32,16 +32,15 @@
     </p>
     <ul class="job-box__content-body">
       <li>
-        <i class="material-icons">location_on</i>
-        {{ job.workPlace }}
+        <i class="material-icons">
+          schedule
+        </i>
+        {{ job.createdAt.toDate() | date: 'yyy/MM/dd' }}
       </li>
       <li><i class="fas fa-yen-sign"></i> {{ job.salary | number }}円</li>
     </ul>
     <span class="job-box__content-foot">
-      <i class="material-icons">
-        schedule
-      </i>
-      {{ job.createdAt.toDate() | date: 'yyy/MM/dd' }}
+      {{ job.label }}
     </span>
   </div>
 </div>

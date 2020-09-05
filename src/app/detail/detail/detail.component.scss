@@ -3,6 +3,7 @@
 .detail {
   margin: 0 8px 16px;
   max-width: 1200px;
+  position: relative;
   &__container {
     @include tab {
       width: 80%;
@@ -43,8 +44,16 @@
     align-items: center;
   }
   &__title-btn {
+    z-index: 999;
+    position: fixed;
+    bottom: 6%;
+    right: 2%;
+    @include tab {
+      bottom: 2%;
+    }
     button {
-      margin: 4px;
+      display: block;
+      margin: 16px 0;
     }
   }
   .job-img {
@@ -70,16 +79,15 @@
       margin-bottom: 8px;
     }
   }
-  &__btn {
-    text-align: center;
-  }
   &__btn-add {
-    margin: 10px 3px;
-    padding: 8px 40px;
-    @include pc {
-      margin: 16px 8px;
-      padding: 13px 72px;
-    }
+    background-color: lightgray;
+    margin-right: 8px;
+  }
+  &__btn-likedCount {
+    display: block;
+    padding: 0 0 0 40px;
+    color: #6f737b;
+    font-size: 13px;
   }
   &__taglist {
     display: flex;

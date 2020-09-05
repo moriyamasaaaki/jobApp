@@ -125,13 +125,6 @@ const routes: Routes = [
   },
 
   {
-    path: 'job/detail',
-    data: { title: '応募入力フォーム' },
-    loadChildren: () => import('./entry/entry.module').then(m => m.EntryModule),
-    canLoad: [AuthGuard]
-  },
-
-  {
     path: 'about',
     data: { title: '代行求人サービス-Proxy Woprks-について' },
     loadChildren: () => import('./about/about.module').then(m => m.AboutModule)

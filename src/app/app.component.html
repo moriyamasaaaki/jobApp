@@ -9,32 +9,15 @@
       [opened]="opened"
     >
       <mat-nav-list>
-        <mat-list-item routerLink="/">
-          ホーム
-        </mat-list-item>
-        <mat-list-item routerLink="/job/list">
-          求人一覧
-        </mat-list-item>
-      </mat-nav-list>
-      <mat-divider></mat-divider>
-      <mat-nav-list>
-        <mat-list-item routerLink="/intl/comlaw">
-          特定商取引法に基づく表示
-        </mat-list-item>
-        <mat-list-item routerLink="/intl/terms">
-          利用規約
-        </mat-list-item>
-        <mat-list-item routerLink="/intl/privacy">
-          プライバシー
-        </mat-list-item>
-        <mat-list-item routerLink="/intl/help">
-          ヘルプ
-        </mat-list-item>
-        <mat-list-item routerLink="/intl/usage">
-          ご利用方法
-        </mat-list-item>
-        <mat-list-item routerLink="/about">
-          Proxy Worksについて
+        <mat-list-item
+          class="container__side-menu-list"
+          *ngFor="let nav of navs"
+          routerLink="{{ nav.link }}"
+        >
+          <i class="material-icons" [style.color]="nav.color">
+            label
+          </i>
+          {{ nav.title }}
         </mat-list-item>
       </mat-nav-list>
       <p class="side__copyright">
